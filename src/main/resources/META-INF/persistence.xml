@@ -4,9 +4,10 @@
         xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
         version="2.0">
 
-    <persistence-unit name="br.com.fredericci.pu">
+    <persistence-unit name="unideb.hu.SFMProject">
         <description>Hibernate EntityManager Demo</description>
         <class>unideb.hu.SFMProject.Beszallito</class>
+        <class>unideb.hu.SFMProject.Product</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>

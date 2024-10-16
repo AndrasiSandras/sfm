@@ -13,8 +13,23 @@ public class Application {
     public static void main(String[] args) throws SQLException {
         startDatabase();
 
-        final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("br.com.fredericci.pu");
+        final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("unideb.hu.SFMProject");
         final EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+        Beszallito beszallito = new Beszallito();
+        Product product = new Product();
+
+        beszallito.setName("Lajos");
+        beszallito.setAddress("valami utca");
+        beszallito.setEmail("valami@valami.pi");
+
+        product.setCurrent(321);
+        product.setName("Jaeger");
+
+        entityManager.getTransaction().begin();
+        entityManager.persist(beszallito);
+        entityManager.persist(product);
+        entityManager.getTransaction().commit();
 
 
 

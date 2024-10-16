@@ -1,16 +1,20 @@
 package unideb.hu.SFMProject;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Beszallito {
 
+    @Id
+    @GeneratedValue
+    private int id;
     private String name;
     private String email;
     private String address;
 
-    public Beszallito(String name, String email, String address) {
-        this.name = name;
-        this.email = email;
-        this.address = address;
-    }
+
 
     public String getName() {
         return name;
