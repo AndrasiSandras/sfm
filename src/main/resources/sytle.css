@@ -1,0 +1,5 @@
+.anchor-pane-background {
+    -fx-background-image: url(image/palackmesterlogo.png);
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+}

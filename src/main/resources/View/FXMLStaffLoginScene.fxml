@@ -16,7 +16,7 @@
          <children>
             <ImageView fitHeight="400.0" fitWidth="400.0" layoutX="1.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../Desktop/459499836_409302971937330_6828273849308946219_n.png" />
+                  <Image url="@../../../../../../image/palackmesterlogo.png" />
                </image>
             </ImageView>
             <Button layoutX="169.0" layoutY="410.0" mnemonicParsing="false" style="-fx-background-color: #EA9215;" text="Go back" textFill="#3a4750" />
