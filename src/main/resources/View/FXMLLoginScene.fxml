@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane id="anchor-pane-background" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #3A4750;" stylesheets="@../sytle.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="unideb.hu.SFMProject.LoginScene">
+<AnchorPane id="anchor-pane-background" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #3A4750;" stylesheets="@../sytle.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="unideb.hu.SFMProject.SceneController">
    <children>
       <ImageView fitHeight="295.0" fitWidth="426.0" layoutX="153.0" pickOnBounds="true" preserveRatio="true">
          <image>
