@@ -13,9 +13,11 @@ public class Beszallito {
     private String name;
     private String email;
     private String address;
+    private String password;
 
-
-
+    public String getPassword() {
+        return password;
+    }
     public String getName() {
         return name;
     }
@@ -38,5 +40,9 @@ public class Beszallito {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
