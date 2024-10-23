@@ -14,7 +14,7 @@ public class Beszallito {
     private String email;
     private String address;
     private String password;
-
+    //Commit proba :3
     public String getPassword() {
         return password;
     }
