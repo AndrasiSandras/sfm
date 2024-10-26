@@ -33,11 +33,16 @@ public class Application extends javafx.application.Application{
         new Server().runTool("-tcp", "-web", "-ifNotExists");
     }
     @Override
-    public void start(Stage stage) throws IOException, SQLException {
-        startDatabase();
-        scene = new Scene(loadFXML("FXMLLoginScene"));
-        stage.setScene(scene);
-        stage.show();
+    public void start(Stage stage) {
+        try {
+            startDatabase();
+            Parent root = FXMLLoader.load(getClass().getResource("/view/FXMLLoginScene.fxml"));
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException | SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

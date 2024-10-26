@@ -10,25 +10,25 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="unideb.hu.SFMProject.SceneController">
    <left>
       <AnchorPane prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: #3A4750;" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="400.0" fitWidth="400.0" layoutX="1.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../image/palackmesterlogo.png" />
+                  <Image url="@../image/palackmesterlogo.png" />
                </image>
             </ImageView>
-            <Button layoutX="169.0" layoutY="410.0" mnemonicParsing="false" style="-fx-background-color: #EA9215;" text="Go back" textFill="#3a4750" />
+            <Button fx:id="GoBackButton" layoutX="169.0" layoutY="410.0" mnemonicParsing="false" onAction="#goBack" style="-fx-background-color: #EA9215;" text="Go back" textFill="#3a4750" />
          </children>
       </AnchorPane>
    </left>
    <right>
-      <AnchorPane prefHeight="500.0" prefWidth="300.0" style="-fx-background-color: #FFFFFFF;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="500.0" prefWidth="300.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
          <children>
             <TextField layoutX="74.0" layoutY="147.0" promptText="User Name" style="-fx-background-color: transparent; -fx-border-color: #3A4750; -fx-border-width: 0px 0px 3px 0px;" />
             <PasswordField layoutX="74.0" layoutY="216.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #3A4750; -fx-border-width: 0px 0px 3px 0px;" />
-            <Button layoutX="116.0" layoutY="299.0" mnemonicParsing="false" style="-fx-background-color: #3A4750;" text="Login" textFill="WHITE" />
+            <Button fx:id="LoginButton" layoutX="116.0" layoutY="299.0" mnemonicParsing="false" onAction="#logInClient" style="-fx-background-color: #3A4750;" text="Login" textFill="WHITE" />
             <Text fill="#3a4750" layoutX="119.0" layoutY="59.0" scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Client">
                <font>
                   <Font size="24.0" />
