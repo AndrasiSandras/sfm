@@ -24,11 +24,11 @@
       </AnchorPane>
    </left>
    <right>
-      <AnchorPane prefHeight="500.0" prefWidth="300.0" style="-fx-background-color: #FFFFFFF;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="500.0" prefWidth="300.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
          <children>
             <TextField layoutX="74.0" layoutY="147.0" promptText="User Name" style="-fx-background-color: transparent; -fx-border-color: #3A4750; -fx-border-width: 0px 0px 3px 0px;" />
             <PasswordField layoutX="74.0" layoutY="216.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #3A4750; -fx-border-width: 0px 0px 3px 0px;" />
-            <Button layoutX="116.0" layoutY="299.0" mnemonicParsing="false" style="-fx-background-color: #3A4750;" text="Login" textFill="WHITE" />
+            <Button fx:id="LoginButton" layoutX="116.0" layoutY="299.0" mnemonicParsing="false" onAction="#logInStaff" style="-fx-background-color: #3A4750;" text="Login" textFill="WHITE" />
             <Text fill="#3a4750" layoutX="119.0" layoutY="59.0" scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Staff">
                <font>
                   <Font size="24.0" />

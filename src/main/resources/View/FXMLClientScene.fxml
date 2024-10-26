@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="unideb.hu.SFMProject.SceneController">
+    <children>
+        <VBox prefHeight="400.0" prefWidth="240.0" style="-fx-background-color: #3A4750;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Pane prefHeight="40.0" prefWidth="240.0" />
+                <ImageView fitHeight="103.0" fitWidth="240.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../image/palacklogo.png" />
+                    </image>
+                </ImageView>
+                <Pane prefHeight="100.0" prefWidth="240.0" />
+                <HBox alignment="CENTER" prefHeight="47.0" prefWidth="240.0" spacing="10.0">
+                    <children>
+                        <Circle fill="#ea9215" radius="5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                        <Button mnemonicParsing="false" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-background-radius: 100;" text="Transaction In" textFill="#ea9215">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="47.0" prefWidth="240.0" spacing="10.0">
+                    <children>
+                        <Circle fill="#ea9215" radius="5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                        <Button mnemonicParsing="false" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-background-radius: 100;" text="Transaction Out" textFill="#ea9215">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="47.0" prefWidth="240.0" spacing="10.0">
+                    <children>
+                        <Circle fill="#ea9215" radius="5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                        <Button mnemonicParsing="false" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-background-radius: 100;" text="View Product Stock" textFill="#ea9215">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="47.0" prefWidth="240.0" spacing="10.0">
+                    <children>
+                        <Circle fill="#ea9215" radius="5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                        <Button mnemonicParsing="false" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-background-radius: 100;" text="Account" textFill="#ea9215">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </HBox>
+                <Pane prefHeight="100.0" prefWidth="240.0" />
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

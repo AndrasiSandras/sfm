@@ -44,4 +44,22 @@ public class SceneController {
         stage.show();
     }
 
+    @FXML
+    void logInStaff(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/view/FXMLStaffScene.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    void logInClient(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/view/FXMLClientScene.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
 }
