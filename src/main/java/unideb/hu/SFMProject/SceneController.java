@@ -27,6 +27,15 @@ public class SceneController {
     }
 
     @FXML
+    void goBackToLogin(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/view/FXMLClientLoginScene.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
     void staffLogin(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("/view/FXMLStaffLoginScene.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -56,6 +65,15 @@ public class SceneController {
     @FXML
     void logInClient(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("/view/FXMLClientScene.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    void registerNewClient(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/view/FXMLClientRegisterScene.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
