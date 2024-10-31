@@ -8,6 +8,7 @@
         <description>Hibernate EntityManager Demo</description>
         <class>unideb.hu.SFMProject.Beszallito</class>
         <class>unideb.hu.SFMProject.Product</class>
+        <class>unideb.hu.SFMProject.RegLogin</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>

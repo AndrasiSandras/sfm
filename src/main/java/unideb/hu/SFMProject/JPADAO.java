@@ -83,11 +83,21 @@ public class JPADAO extends DAO {
 
     }
 
+    @Override
+    public void saveRegLog(RegLogin a) {
+        entityManager.getTransaction().begin();
+        entityManager.persist(a);
+        entityManager.flush();
+        entityManager.getTransaction().commit();
+    }
+
     public void close() {
         if (entityManagerFactory != null) {
             entityManagerFactory.close(); // EntityManagerFactory bezárása
         }
     }
+
+
 
 
 

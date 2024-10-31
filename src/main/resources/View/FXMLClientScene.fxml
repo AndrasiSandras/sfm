@@ -63,50 +63,50 @@
                     </children>
                 </HBox>
                 <Pane prefHeight="359.0" prefWidth="240.0">
-               <children>
-                  <Button fx:id="LogoutButton" layoutX="61.0" layoutY="283.0" mnemonicParsing="false" onAction="#logOut" style="-fx-background-color: transparent; -fx-border-width: 5 5 5 5; -fx-border-color: #ea9215;" text="Logout" textFill="#ea9215">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Button>
-               </children></Pane>
+                    <children>
+                        <Button fx:id="LogoutButton" layoutX="61.0" layoutY="283.0" mnemonicParsing="false" onAction="#logOut" style="-fx-background-color: transparent; -fx-border-width: 5 5 5 5; -fx-border-color: #ea9215;" text="Logout" textFill="#ea9215">
+                            <font>
+                                <Font size="24.0" />
+                            </font>
+                        </Button>
+                    </children></Pane>
             </children>
         </VBox>
-      <AnchorPane fx:id="TransactionInForm" layoutX="240.0" prefHeight="800.0" prefWidth="959.0">
-         <children>
-            <Label layoutX="14.0" layoutY="14.0" text="Transaction In">
-               <font>
-                  <Font size="48.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="TransactionOutForm" layoutX="240.0" prefHeight="800.0" prefWidth="959.0" visible="false">
-         <children>
-            <Label layoutX="14.0" layoutY="14.0" text="Transaction Out">
-               <font>
-                  <Font size="48.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="ViewProductStocForm" layoutX="240.0" prefHeight="800.0" prefWidth="959.0" visible="false">
-         <children>
-            <Label layoutX="14.0" layoutY="14.0" text="View Product Stock">
-               <font>
-                  <Font size="48.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="AccountForm" layoutX="240.0" prefHeight="800.0" prefWidth="959.0" visible="false">
-         <children>
-            <Label layoutX="14.0" layoutY="14.0" text="Account">
-               <font>
-                  <Font size="48.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
+        <AnchorPane fx:id="TransactionInForm" layoutX="240.0" prefHeight="800.0" prefWidth="959.0">
+            <children>
+                <Label layoutX="14.0" layoutY="14.0" text="Transaction In">
+                    <font>
+                        <Font size="48.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+        <AnchorPane fx:id="TransactionOutForm" layoutX="240.0" prefHeight="800.0" prefWidth="959.0" visible="false">
+            <children>
+                <Label layoutX="14.0" layoutY="14.0" text="Transaction Out">
+                    <font>
+                        <Font size="48.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+        <AnchorPane fx:id="ViewProductStocForm" layoutX="240.0" prefHeight="800.0" prefWidth="959.0" visible="false">
+            <children>
+                <Label layoutX="14.0" layoutY="14.0" text="View Product Stock">
+                    <font>
+                        <Font size="48.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+        <AnchorPane fx:id="AccountForm" layoutX="240.0" prefHeight="800.0" prefWidth="959.0" visible="false">
+            <children>
+                <Label layoutX="14.0" layoutY="14.0" text="Account">
+                    <font>
+                        <Font size="48.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
     </children>
 </AnchorPane>

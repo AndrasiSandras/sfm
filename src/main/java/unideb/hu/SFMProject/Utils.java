@@ -24,14 +24,15 @@ public class Utils {
 
     }
 
-    public void runPUtils()
+    public void runPUtils(Product product)
     {
-        Product product = new Product();
-
-        product.setName("Jaeger");
-        product.setCurrent(100);
 
         pDAO.saveProduct(product);
 
+    }
+
+    public void runCUtils(RegLogin c)
+    {
+        pDAO.saveRegLog(c);
     }
 }
