@@ -31,11 +31,11 @@
                         <Font size="24.0" />
                     </font>
                 </Text>
-            <TextField layoutX="74.0" layoutY="119.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: #3A4750; -fx-border-width: 0px 0px 3px 0px;" />
-            <TextField layoutX="74.0" layoutY="172.0" promptText="User Name" style="-fx-background-color: transparent; -fx-border-color: #3A4750; -fx-border-width: 0px 0px 3px 0px;" />
-            <PasswordField layoutX="74.0" layoutY="236.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #3A4750; -fx-border-width: 0px 0px 3px 0px;" />
-            <PasswordField layoutX="74.0" layoutY="300.0" promptText="Reenter Password" style="-fx-background-color: transparent; -fx-border-color: #3A4750; -fx-border-width: 0px 0px 3px 0px;" />
-            <Button fx:id="RegisterButton" layoutX="118.0" layoutY="382.0" mnemonicParsing="false" onAction="#registerNewClient" style="-fx-background-color: #3A4750;" text="Register" textFill="WHITE" />
+            <TextField layoutX="74.0" layoutY="125.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: #3A4750; -fx-border-width: 0px 0px 3px 0px;" />
+            <TextField layoutX="74.0" layoutY="175.0" promptText="User Name" style="-fx-background-color: transparent; -fx-border-color: #3A4750; -fx-border-width: 0px 0px 3px 0px;" />
+            <PasswordField layoutX="74.0" layoutY="225.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #3A4750; -fx-border-width: 0px 0px 3px 0px;" />
+            <PasswordField layoutX="74.0" layoutY="275.0" promptText="Reenter Password" style="-fx-background-color: transparent; -fx-border-color: #3A4750; -fx-border-width: 0px 0px 3px 0px;" />
+            <Button fx:id="RegisterButton" layoutX="119.0" layoutY="400.0" mnemonicParsing="false" onAction="#registerNewClient" style="-fx-background-color: #3A4750;" text="Register" textFill="WHITE" />
             </children>
         </AnchorPane>
     </right>
