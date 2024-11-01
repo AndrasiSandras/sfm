@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 
 public class SceneController {
 
@@ -24,6 +25,10 @@ public class SceneController {
     private TextField UserNameText;
     @FXML
     private TextField rePasswordText;
+    @FXML
+    private TextField ClientUserNameText;
+    @FXML
+    private TextField ClientPasswordText;
 
 
 
@@ -74,11 +79,19 @@ public class SceneController {
 
     @FXML
     void logInClient(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/view/FXMLClientScene.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        String name = ClientUserNameText.getText();
+        String password = ClientPasswordText.getText();
+        String credentials = name + "," + password;
+
+       if(Clogin(credentials))
+       {
+           root = FXMLLoader.load(getClass().getResource("/view/FXMLClientScene.fxml"));
+           stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+           scene = new Scene(root);
+           stage.setScene(scene);
+           stage.show();
+       }
+
     }
 
     @FXML
@@ -107,7 +120,7 @@ public class SceneController {
             Utils cutil = new Utils(new JPADAO());
             cutil.runCUtils(Credentials);
 
-            root = FXMLLoader.load(getClass().getResource("/view/FXMLClientScene.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/view/FXMLClientLoginScene.fxml"));
             stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
@@ -118,7 +131,6 @@ public class SceneController {
     public boolean isItEamil()
     {
         String email = emailText.getText();
-        System.out.println(email);
 
         if(email.contains("@"))
         {
@@ -158,6 +170,23 @@ public class SceneController {
 
         }
 
+    }
+
+    public boolean Clogin(String Credentials)
+    {
+        Utils rutils = new Utils(new JPADAO());
+        List<String> list = rutils.runReadUtils();
+
+
+        if(list.contains(Credentials))
+        {
+            return true;
+        }
+        else
+        {
+            ClientUserNameText.setText("Hibás felhasználónév vagy jelszó!");
+            return false;
+        }
     }
 
 

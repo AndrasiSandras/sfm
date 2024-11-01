@@ -27,8 +27,8 @@
    <right>
       <AnchorPane prefHeight="500.0" prefWidth="300.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
          <children>
-            <TextField layoutX="74.0" layoutY="147.0" promptText="User Name" style="-fx-background-color: transparent; -fx-border-color: #3A4750; -fx-border-width: 0px 0px 3px 0px;" />
-            <PasswordField layoutX="74.0" layoutY="216.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #3A4750; -fx-border-width: 0px 0px 3px 0px;" />
+            <TextField fx:id="ClientUserNameText" layoutX="74.0" layoutY="147.0" promptText="User Name" style="-fx-background-color: transparent; -fx-border-color: #3A4750; -fx-border-width: 0px 0px 3px 0px;" />
+            <PasswordField fx:id="ClientPasswordText" layoutX="74.0" layoutY="216.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #3A4750; -fx-border-width: 0px 0px 3px 0px;" />
             <Button fx:id="ClientRegisterButton" alignment="BOTTOM_CENTER" layoutX="101.0" layoutY="415.0" mnemonicParsing="false" onAction="#registerNewClient" opacity="0.75" pickOnBounds="false" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: #3A4750;" text="     Register     " textAlignment="CENTER">
                <opaqueInsets>
                   <Insets />

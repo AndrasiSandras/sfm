@@ -12,6 +12,8 @@ public class JPADAO extends DAO {
     final EntityManager entityManager = entityManagerFactory.createEntityManager();
 
 
+
+
     @Override
     public void saveProduct(Product a) {
         entityManager.getTransaction().begin();
@@ -85,10 +87,28 @@ public class JPADAO extends DAO {
 
     @Override
     public void saveRegLog(RegLogin a) {
-        entityManager.getTransaction().begin();
-        entityManager.persist(a);
-        entityManager.flush();
-        entityManager.getTransaction().commit();
+
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.persist(a);
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            if (entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().rollback();
+            }
+            e.printStackTrace();
+        }
+    }
+
+
+    @Override
+    public List<String> getAllRegLog() {
+
+        TypedQuery<String> query = entityManager.createQuery(
+                "SELECT a.Credentials FROM RegLogin a", String.class);
+        List<String> result = query.getResultList();
+        System.out.println(result.toString());
+        return result;
     }
 
     public void close() {

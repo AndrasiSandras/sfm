@@ -14,4 +14,5 @@ public abstract class DAO {
     public abstract void deleteBeszallito(Beszallito a);
 
     public abstract void saveRegLog(RegLogin a);
+    public abstract List<String> getAllRegLog();
 }
