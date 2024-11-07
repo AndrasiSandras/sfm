@@ -65,7 +65,7 @@
                 </HBox>
                 <Pane prefHeight="359.0" prefWidth="240.0">
                <children>
-                  <Button fx:id="LogoutButton" layoutX="61.0" layoutY="283.0" mnemonicParsing="false" onAction="#logOut" style="-fx-background-color: transparent; -fx-border-width: 5 5 5 5; -fx-border-color: #ea9215;" text="Logout" textFill="#ea9215">
+                  <Button fx:id="LogoutButton" layoutX="61.0" layoutY="283.0" mnemonicParsing="false" onAction="#logOut" style="-fx-background-color: transparent; -fx-border-width: 5 5 5 5; -fx-border-color: #ea9215; -fx-border-radius: 10;" text="Logout" textFill="#ea9215">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -73,7 +73,7 @@
                </children></Pane>
             </children>
         </VBox>
-      <AnchorPane fx:id="TransactionInForm" layoutX="240.0" prefHeight="800.0" prefWidth="959.0" visible="false">
+      <AnchorPane fx:id="TransactionInForm" layoutX="240.0" prefHeight="800.0" prefWidth="959.0" style="-fx-border-width: 5 5 5 5; -fx-border-color: #ea9215;">
          <children>
             <Label layoutX="14.0" layoutY="14.0" text="Transaction In">
                <font>
@@ -82,7 +82,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="TransactionOutForm" layoutX="240.0" prefHeight="800.0" prefWidth="959.0" visible="false">
+      <AnchorPane fx:id="TransactionOutForm" layoutX="240.0" prefHeight="800.0" prefWidth="959.0" style="-fx-border-width: 5 5 5 5; -fx-border-color: #ea9215;" visible="false">
          <children>
             <Label layoutX="14.0" layoutY="14.0" text="Transaction Out">
                <font>
@@ -91,7 +91,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="ViewProductStocForm" layoutX="240.0" prefHeight="800.0" prefWidth="959.0" visible="false">
+      <AnchorPane fx:id="ViewProductStocForm" layoutX="240.0" prefHeight="800.0" prefWidth="959.0" style="-fx-border-width: 5 5 5 5; -fx-border-color: #ea9215;" visible="false">
          <children>
             <Label layoutX="14.0" layoutY="14.0" text="View Product Stock">
                <font>
@@ -100,7 +100,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="AccountForm" layoutX="240.0" prefHeight="800.0" prefWidth="959.0">
+      <AnchorPane fx:id="AccountForm" layoutX="240.0" prefHeight="800.0" prefWidth="959.0" style="-fx-border-width: 5 5 5 5; -fx-border-color: #ea9215;" visible="false">
          <children>
             <Label layoutX="14.0" layoutY="14.0" text="My Account" textFill="#3a4750">
                <font>
