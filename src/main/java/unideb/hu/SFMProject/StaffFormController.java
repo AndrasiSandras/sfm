@@ -37,10 +37,10 @@ public class StaffFormController {
     private AnchorPane AddProductForm;
 
     @FXML
-    private Button AddSuplierButton;
+    private Button AddSupplierButton;
 
     @FXML
-    private AnchorPane AddSuplierForm;
+    private AnchorPane AddSupplierForm;
 
     @FXML
     private Button ReportsButton;
@@ -64,7 +64,7 @@ public class StaffFormController {
     private Button ViewProdButton;
 
     @FXML
-    private AnchorPane ViewProductStocForm;
+    private AnchorPane ViewProductStockForm;
 
     @FXML
     private Button LogoutButton;
@@ -75,81 +75,81 @@ public class StaffFormController {
             AccountForm.setVisible(false);
             AddCostumerForm.setVisible(false);
             AddProductForm.setVisible(false);
-            AddSuplierForm.setVisible(false);
+            AddSupplierForm.setVisible(false);
             ReportsForm.setVisible(false);
             TransactionInForm.setVisible(false);
             TransactionOutForm.setVisible(true);
-            ViewProductStocForm.setVisible(false);
+            ViewProductStockForm.setVisible(false);
         }
         else if (event.getSource() == AccountButton) {
             AccountForm.setVisible(true);
             AddCostumerForm.setVisible(false);
             AddProductForm.setVisible(false);
-            AddSuplierForm.setVisible(false);
+            AddSupplierForm.setVisible(false);
             ReportsForm.setVisible(false);
             TransactionInForm.setVisible(false);
             TransactionOutForm.setVisible(false);
-            ViewProductStocForm.setVisible(false);
+            ViewProductStockForm.setVisible(false);
         }
         else if (event.getSource() == TransOutButton) {
             AccountForm.setVisible(false);
             AddCostumerForm.setVisible(false);
             AddProductForm.setVisible(false);
-            AddSuplierForm.setVisible(false);
+            AddSupplierForm.setVisible(false);
             ReportsForm.setVisible(false);
             TransactionOutForm.setVisible(false);
             TransactionInForm.setVisible(true);
-            ViewProductStocForm.setVisible(false);
+            ViewProductStockForm.setVisible(false);
         }
         else if (event.getSource() == ViewProdButton) {
             AccountForm.setVisible(false);
             AddCostumerForm.setVisible(false);
             AddProductForm.setVisible(false);
-            AddSuplierForm.setVisible(false);
+            AddSupplierForm.setVisible(false);
             ReportsForm.setVisible(false);
             TransactionOutForm.setVisible(false);
             TransactionInForm.setVisible(false);
-            ViewProductStocForm.setVisible(true);
+            ViewProductStockForm.setVisible(true);
         }
         else if (event.getSource() == AddCostumerButton) {
             AccountForm.setVisible(false);
             AddCostumerForm.setVisible(true);
             AddProductForm.setVisible(false);
-            AddSuplierForm.setVisible(false);
+            AddSupplierForm.setVisible(false);
             ReportsForm.setVisible(false);
             TransactionOutForm.setVisible(false);
             TransactionInForm.setVisible(false);
-            ViewProductStocForm.setVisible(false);
+            ViewProductStockForm.setVisible(false);
         }
         else if (event.getSource() == AddProductButton) {
             AccountForm.setVisible(false);
             AddCostumerForm.setVisible(false);
             AddProductForm.setVisible(true);
-            AddSuplierForm.setVisible(false);
+            AddSupplierForm.setVisible(false);
             ReportsForm.setVisible(false);
             TransactionOutForm.setVisible(false);
             TransactionInForm.setVisible(false);
-            ViewProductStocForm.setVisible(false);
+            ViewProductStockForm.setVisible(false);
         }
-        else if (event.getSource() == AddSuplierButton) {
+        else if (event.getSource() == AddSupplierButton) {
             AccountForm.setVisible(false);
             AddCostumerForm.setVisible(false);
             AddProductForm.setVisible(false);
-            AddSuplierForm.setVisible(true);
+            AddSupplierForm.setVisible(true);
             ReportsForm.setVisible(false);
             TransactionOutForm.setVisible(false);
             TransactionInForm.setVisible(false);
-            ViewProductStocForm.setVisible(false);
+            ViewProductStockForm.setVisible(false);
         }
         else if (event.getSource() == ReportsButton) {
             AccountForm.setVisible(false);
             AddCostumerForm.setVisible(false);
             AddProductForm.setVisible(false);
-            AddSuplierForm.setVisible(false);
+            AddSupplierForm.setVisible(false);
             ReportsForm.setVisible(true);
             TransactionOutForm.setVisible(false);
             TransactionInForm.setVisible(false);
-            ViewProductStocForm.setVisible(false);
+            ViewProductStockForm.setVisible(false);
         }
     }
 

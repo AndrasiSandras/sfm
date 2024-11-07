@@ -13,112 +13,99 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="unideb.hu.SFMProject.ClientFormController">
-    <children>
-        <VBox prefHeight="400.0" prefWidth="240.0" style="-fx-background-color: #3A4750;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <children>
-                <Pane prefHeight="40.0" prefWidth="240.0" />
-                <ImageView fitHeight="103.0" fitWidth="240.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../image/palacklogo.png" />
-                    </image>
-                </ImageView>
-                <Pane prefHeight="100.0" prefWidth="240.0" />
-                <HBox alignment="CENTER" prefHeight="47.0" prefWidth="240.0" spacing="10.0">
-                    <children>
-                        <Circle fill="#ea9215" radius="5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-                        <Button fx:id="TransInButton" mnemonicParsing="false" onAction="#switchForm" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-background-radius: 100;" text="Transaction In" textFill="#ea9215">
-                            <font>
-                                <Font size="18.0" />
-                            </font>
-                        </Button>
-                    </children>
-                </HBox>
-                <HBox alignment="CENTER" prefHeight="47.0" prefWidth="240.0" spacing="10.0">
-                    <children>
-                        <Circle fill="#ea9215" radius="5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-                        <Button fx:id="TransOutButton" mnemonicParsing="false" onAction="#switchForm" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-background-radius: 100;" text="Transaction Out" textFill="#ea9215">
-                            <font>
-                                <Font size="18.0" />
-                            </font>
-                        </Button>
-                    </children>
-                </HBox>
-                <HBox alignment="CENTER" prefHeight="47.0" prefWidth="240.0" spacing="10.0">
-                    <children>
-                        <Circle fill="#ea9215" radius="5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-                        <Button fx:id="ViewProdButton" mnemonicParsing="false" onAction="#switchForm" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-background-radius: 100;" text="View Product Stock" textFill="#ea9215">
-                            <font>
-                                <Font size="18.0" />
-                            </font>
-                        </Button>
-                    </children>
-                </HBox>
-                <HBox alignment="CENTER" prefHeight="47.0" prefWidth="240.0" spacing="10.0">
-                    <children>
-                        <Circle fill="#ea9215" radius="5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-                        <Button fx:id="AccountButton" mnemonicParsing="false" onAction="#switchForm" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-background-radius: 100;" text="Account" textFill="#ea9215">
-                            <font>
-                                <Font size="18.0" />
-                            </font>
-                        </Button>
-                    </children>
-                </HBox>
-                <Pane prefHeight="359.0" prefWidth="240.0">
-               <children>
-                  <Button fx:id="LogoutButton" layoutX="61.0" layoutY="283.0" mnemonicParsing="false" onAction="#logOut" style="-fx-background-color: transparent; -fx-border-width: 5 5 5 5; -fx-border-color: #ea9215; -fx-border-radius: 10;" text="Logout" textFill="#ea9215">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Button>
-               </children></Pane>
-            </children>
-        </VBox>
-      <AnchorPane fx:id="TransactionInForm" layoutX="240.0" prefHeight="800.0" prefWidth="959.0" style="-fx-border-width: 5 5 5 5; -fx-border-color: #ea9215;">
-         <children>
-            <Label layoutX="14.0" layoutY="14.0" text="Transaction In">
-               <font>
-                  <Font size="48.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="TransactionOutForm" layoutX="240.0" prefHeight="800.0" prefWidth="959.0" style="-fx-border-width: 5 5 5 5; -fx-border-color: #ea9215;" visible="false">
-         <children>
-            <Label layoutX="14.0" layoutY="14.0" text="Transaction Out">
-               <font>
-                  <Font size="48.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="ViewProductStocForm" layoutX="240.0" prefHeight="800.0" prefWidth="959.0" style="-fx-border-width: 5 5 5 5; -fx-border-color: #ea9215;" visible="false">
-         <children>
-            <Label layoutX="14.0" layoutY="14.0" text="View Product Stock">
-               <font>
-                  <Font size="48.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="AccountForm" layoutX="240.0" prefHeight="800.0" prefWidth="959.0" style="-fx-border-width: 5 5 5 5; -fx-border-color: #ea9215;" visible="false">
-         <children>
-            <Label layoutX="14.0" layoutY="14.0" text="My Account" textFill="#3a4750">
-               <font>
-                  <Font size="48.0" />
-               </font>
-            </Label>
-            <ListView layoutX="50.0" layoutY="176.0" prefHeight="600.0" prefWidth="800.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" />
-            <Label layoutX="50.0" layoutY="128.0" text="History:" textFill="#3a4750">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <Button layoutX="690.0" layoutY="32.0" mnemonicParsing="false" style="-fx-border-color: transparent; -fx-background-color: transparent;" text="Change password" textFill="#3a4750">
-               <font>
-                  <Font size="24.0" />
-               </font>
+    <VBox prefHeight="400.0" prefWidth="240.0" style="-fx-background-color: #3A4750;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Pane prefHeight="40.0" prefWidth="240.0" />
+        <ImageView fitHeight="103.0" fitWidth="240.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../image/palacklogo.png" />
+        </ImageView>
+        <Pane prefHeight="100.0" prefWidth="240.0" />
+        <HBox alignment="CENTER" prefHeight="47.0" prefWidth="240.0" spacing="10.0">
+            <Circle fill="#ea9215" radius="5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Button fx:id="TransInButton" mnemonicParsing="false" onAction="#switchForm" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-background-radius: 100;" text="Transaction In" textFill="#ea9215">
+                <font>
+                    <Font size="18.0" />
+                </font>
             </Button>
-         </children>
-      </AnchorPane>
-    </children>
+        </HBox>
+        <HBox alignment="CENTER" prefHeight="47.0" prefWidth="240.0" spacing="10.0">
+            <Circle fill="#ea9215" radius="5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Button fx:id="TransOutButton" mnemonicParsing="false" onAction="#switchForm" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-background-radius: 100;" text="Transaction Out" textFill="#ea9215">
+                <font>
+                    <Font size="18.0" />
+                </font>
+            </Button>
+        </HBox>
+        <HBox alignment="CENTER" prefHeight="47.0" prefWidth="240.0" spacing="10.0">
+            <Circle fill="#ea9215" radius="5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Button fx:id="ViewProdButton" mnemonicParsing="false" onAction="#switchForm" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-background-radius: 100;" text="View Product Stock" textFill="#ea9215">
+                <font>
+                    <Font size="18.0" />
+                </font>
+            </Button>
+        </HBox>
+        <HBox alignment="CENTER" prefHeight="47.0" prefWidth="240.0" spacing="10.0">
+            <Circle fill="#ea9215" radius="5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Button fx:id="AccountButton" mnemonicParsing="false" onAction="#switchForm" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-background-radius: 100;" text="Account" textFill="#ea9215">
+                <font>
+                    <Font size="18.0" />
+                </font>
+            </Button>
+        </HBox>
+        <Pane prefHeight="359.0" prefWidth="240.0">
+            <Button fx:id="LogoutButton" layoutX="63.0" layoutY="287.0" mnemonicParsing="false" onAction="#logOut" style="-fx-background-color: transparent; -fx-border-width: 3 3 3 3; -fx-border-color: #ea9215; -fx-border-radius: 10;" text="Logout" textFill="#ea9215">
+                <font>
+                    <Font size="24.0" />
+                </font>
+            </Button>
+            <Label layoutX="14.0" layoutY="249.0" text="Logged in as:" textFill="#ea9215">
+                <font>
+                    <Font size="18.0" />
+                </font>
+            </Label>
+            <Label layoutX="127.0" layoutY="249.0" prefHeight="27.0" prefWidth="99.0" text="Admin" textFill="#ea9215">
+                <font>
+                    <Font size="18.0" />
+                </font>
+            </Label>
+        </Pane>
+    </VBox>
+    <AnchorPane fx:id="TransactionInForm" layoutX="240.0" prefHeight="800.0" prefWidth="959.0">
+        <Label layoutX="14.0" layoutY="14.0" text="Transaction In">
+            <font>
+                <Font size="48.0" />
+            </font>
+        </Label>
+    </AnchorPane>
+    <AnchorPane fx:id="TransactionOutForm" layoutX="240.0" prefHeight="800.0" prefWidth="959.0" visible="false">
+        <Label layoutX="14.0" layoutY="14.0" text="Transaction Out">
+            <font>
+                <Font size="48.0" />
+            </font>
+        </Label>
+    </AnchorPane>
+    <AnchorPane fx:id="ViewProductStocForm" layoutX="240.0" prefHeight="800.0" prefWidth="959.0" visible="false">
+        <Label layoutX="14.0" layoutY="14.0" text="View Product Stock">
+            <font>
+                <Font size="48.0" />
+            </font>
+        </Label>
+    </AnchorPane>
+    <AnchorPane fx:id="AccountForm" layoutX="240.0" prefHeight="800.0" prefWidth="959.0" visible="false">
+        <Label layoutX="14.0" layoutY="14.0" text="My Account" textFill="#3a4750">
+            <font>
+                <Font size="48.0" />
+            </font>
+        </Label>
+        <ListView layoutX="50.0" layoutY="176.0" prefHeight="600.0" prefWidth="800.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" />
+        <Label layoutX="50.0" layoutY="128.0" text="History:" textFill="#3a4750">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Label>
+        <Button layoutX="690.0" layoutY="32.0" mnemonicParsing="false" style="-fx-border-color: transparent; -fx-background-color: transparent;" text="Change password" textFill="#3a4750">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Button>
+    </AnchorPane>
 </AnchorPane>
