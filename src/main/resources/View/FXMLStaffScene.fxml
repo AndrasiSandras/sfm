@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -109,10 +110,20 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
+                  <Label layoutX="14.0" layoutY="60.0" text="Logged in as:" textFill="#ea9215">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="136.0" layoutY="60.0" prefHeight="27.0" prefWidth="90.0" text="User" textFill="#ea9215">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
                </children></Pane>
          </children>
       </VBox>
-      <AnchorPane fx:id="AddProductForm" layoutX="240.0" prefHeight="800.0" prefWidth="961.0">
+      <AnchorPane fx:id="AddProductForm" layoutX="240.0" prefHeight="800.0" prefWidth="961.0" visible="false">
          <children>
             <Label layoutX="14.0" layoutY="14.0" text="Add Product">
                <font>
@@ -175,13 +186,24 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="AccountForm" layoutX="240.0" prefHeight="800.0" prefWidth="961.0" visible="false">
+      <AnchorPane fx:id="AccountForm" layoutX="240.0" prefHeight="800.0" prefWidth="961.0">
          <children>
-            <Label layoutX="14.0" layoutY="14.0" text="Account">
+            <Label layoutX="13.0" layoutY="14.0" text="My Account" textFill="#3a4750">
                <font>
                   <Font size="48.0" />
                </font>
             </Label>
+            <ListView layoutX="50.0" layoutY="176.0" prefHeight="600.0" prefWidth="800.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" />
+            <Label layoutX="50.0" layoutY="128.0" text="History:" textFill="#3a4750">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Button layoutX="690.0" layoutY="32.0" mnemonicParsing="false" style="-fx-border-color: transparent; -fx-background-color: transparent;" text="Change password" textFill="#3a4750">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>
