@@ -26,12 +26,10 @@ public class StaffFormController {
     @FXML
     private AnchorPane AccountForm, AddProductForm, ReportsForm, TransactionInForm, TransactionOutForm, ViewProductStockForm;
 
-    // Map to store button-pane relationships
     private Map<Button, AnchorPane> buttonPaneMap;
 
     @FXML
     public void initialize() {
-        // Initialize the map with button-pane pairs
         buttonPaneMap = new HashMap<>();
         buttonPaneMap.put(AccountButton, AccountForm);
         buttonPaneMap.put(AddProductButton, AddProductForm);
@@ -43,10 +41,8 @@ public class StaffFormController {
 
     @FXML
     void switchForm(ActionEvent event) {
-        // Hide all forms initially
         buttonPaneMap.values().forEach(pane -> pane.setVisible(false));
 
-        // Get the source button and make the corresponding pane visible
         Button sourceButton = (Button) event.getSource();
         AnchorPane targetPane = buttonPaneMap.get(sourceButton);
         if (targetPane != null) {

@@ -26,12 +26,10 @@ public class ClientFormController {
     @FXML
     private AnchorPane AccountForm, TransactionInForm, TransactionOutForm, ViewProductStocForm;
 
-    // Map to store button-pane relationships
     private Map<Button, AnchorPane> buttonPaneMap;
 
     @FXML
     public void initialize() {
-        // Initialize the map with button-pane pairs
         buttonPaneMap = new HashMap<>();
         buttonPaneMap.put(AccountButton, AccountForm);
         buttonPaneMap.put(TransInButton, TransactionInForm);
@@ -41,10 +39,8 @@ public class ClientFormController {
 
     @FXML
     void switchForm(ActionEvent event) {
-        // Hide all forms initially
         buttonPaneMap.values().forEach(pane -> pane.setVisible(false));
 
-        // Get the source button and make the corresponding pane visible
         Button sourceButton = (Button) event.getSource();
         AnchorPane targetPane = buttonPaneMap.get(sourceButton);
         if (targetPane != null) {

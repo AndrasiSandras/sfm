@@ -16,7 +16,6 @@ public class SceneController {
     private Scene scene;
     private Parent root;
 
-    // General method to load a scene
     private void loadScene(ActionEvent event, String fxmlPath) throws IOException {
         root = FXMLLoader.load(getClass().getResource(fxmlPath));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
