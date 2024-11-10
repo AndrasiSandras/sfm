@@ -180,12 +180,12 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Button layoutX="50.0" layoutY="733.0" mnemonicParsing="false" style="-fx-border-color: transparent; -fx-background-color: transparent;" text="Change password" textFill="#3a4750">
+      <Button layoutX="50.0" layoutY="733.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="372.0" style="-fx-border-color: transparent; -fx-background-color: transparent;" text="Change password" textFill="#3a4750">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Button layoutX="641.0" layoutY="733.0" mnemonicParsing="false" style="-fx-border-color: transparent; -fx-background-color: transparent;" text="Change profile picture" textFill="#3a4750">
+      <Button layoutX="502.0" layoutY="733.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="409.0" style="-fx-border-color: transparent; -fx-background-color: transparent;" text="Change profile picture" textFill="#3a4750">
          <font>
             <Font size="24.0" />
          </font>

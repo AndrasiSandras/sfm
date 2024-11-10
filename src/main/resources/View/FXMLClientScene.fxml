@@ -102,16 +102,16 @@
                 <Font size="24.0" />
             </font>
         </Label>
-        <Button layoutX="50.0" layoutY="736.0" mnemonicParsing="false" style="-fx-border-color: transparent; -fx-background-color: transparent;" text="Change password" textFill="#3a4750">
-            <font>
-                <Font size="24.0" />
-            </font>
-        </Button>
-      <Button layoutX="637.0" layoutY="736.0" mnemonicParsing="false" style="-fx-border-color: transparent; -fx-background-color: transparent;" text="Change profile picture" textFill="#3a4750">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="708.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" />
+      <Button layoutX="52.0" layoutY="736.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="372.0" style="-fx-border-color: transparent; -fx-background-color: transparent;" text="Change password" textFill="#3a4750">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="708.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" />
+      <Button layoutX="536.0" layoutY="736.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="372.0" style="-fx-border-color: transparent; -fx-background-color: transparent;" text="Change profile picture" textFill="#3a4750">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
     </AnchorPane>
 </AnchorPane>

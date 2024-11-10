@@ -11,6 +11,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class StaffFormController {
 
@@ -19,93 +21,36 @@ public class StaffFormController {
     private Parent root;
 
     @FXML
-    private Button AccountButton;
+    private Button AccountButton, AddProductButton, ReportsButton, TransInButton, TransOutButton, ViewProdButton, LogoutButton;
 
     @FXML
-    private AnchorPane AccountForm;
+    private AnchorPane AccountForm, AddProductForm, ReportsForm, TransactionInForm, TransactionOutForm, ViewProductStockForm;
+
+    // Map to store button-pane relationships
+    private Map<Button, AnchorPane> buttonPaneMap;
 
     @FXML
-    private Button AddProductButton;
-
-    @FXML
-    private AnchorPane AddProductForm;
-
-    @FXML
-    private Button ReportsButton;
-
-    @FXML
-    private AnchorPane ReportsForm;
-
-    @FXML
-    private Button TransInButton;
-
-    @FXML
-    private Button TransOutButton;
-
-    @FXML
-    private AnchorPane TransactionInForm;
-
-    @FXML
-    private AnchorPane TransactionOutForm;
-
-    @FXML
-    private Button ViewProdButton;
-
-    @FXML
-    private AnchorPane ViewProductStockForm;
-
-    @FXML
-    private Button LogoutButton;
+    public void initialize() {
+        // Initialize the map with button-pane pairs
+        buttonPaneMap = new HashMap<>();
+        buttonPaneMap.put(AccountButton, AccountForm);
+        buttonPaneMap.put(AddProductButton, AddProductForm);
+        buttonPaneMap.put(ReportsButton, ReportsForm);
+        buttonPaneMap.put(TransInButton, TransactionInForm);
+        buttonPaneMap.put(TransOutButton, TransactionOutForm);
+        buttonPaneMap.put(ViewProdButton, ViewProductStockForm);
+    }
 
     @FXML
     void switchForm(ActionEvent event) {
-        if (event.getSource() == TransInButton) {
-            AccountForm.setVisible(false);
-            AddProductForm.setVisible(false);
-            ReportsForm.setVisible(false);
-            TransactionInForm.setVisible(false);
-            TransactionOutForm.setVisible(true);
-            ViewProductStockForm.setVisible(false);
-        }
-        else if (event.getSource() == AccountButton) {
-            AccountForm.setVisible(true);
-            AddProductForm.setVisible(false);
-            ReportsForm.setVisible(false);
-            TransactionInForm.setVisible(false);
-            TransactionOutForm.setVisible(false);
-            ViewProductStockForm.setVisible(false);
-        }
-        else if (event.getSource() == TransOutButton) {
-            AccountForm.setVisible(false);
-            AddProductForm.setVisible(false);
-            ReportsForm.setVisible(false);
-            TransactionOutForm.setVisible(false);
-            TransactionInForm.setVisible(true);
-            ViewProductStockForm.setVisible(false);
-        }
-        else if (event.getSource() == ViewProdButton) {
-            AccountForm.setVisible(false);
-            AddProductForm.setVisible(false);
-            ReportsForm.setVisible(false);
-            TransactionOutForm.setVisible(false);
-            TransactionInForm.setVisible(false);
-            ViewProductStockForm.setVisible(true);
-        }
-        else if (event.getSource() == AddProductButton) {
-            AccountForm.setVisible(false);
-            AddProductForm.setVisible(true);
-            ReportsForm.setVisible(false);
-            TransactionOutForm.setVisible(false);
-            TransactionInForm.setVisible(false);
-            ViewProductStockForm.setVisible(false);
-        }
-        else if (event.getSource() == ReportsButton) {
-            AccountForm.setVisible(false);
-            AddProductForm.setVisible(false);
-            ReportsForm.setVisible(true);
-            TransactionOutForm.setVisible(false);
-            TransactionInForm.setVisible(false);
-            ViewProductStockForm.setVisible(false);
+        // Hide all forms initially
+        buttonPaneMap.values().forEach(pane -> pane.setVisible(false));
+
+        // Get the source button and make the corresponding pane visible
+        Button sourceButton = (Button) event.getSource();
+        AnchorPane targetPane = buttonPaneMap.get(sourceButton);
+        if (targetPane != null) {
+            targetPane.setVisible(true);
         }
     }
 
