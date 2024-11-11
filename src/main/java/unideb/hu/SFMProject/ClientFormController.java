@@ -11,6 +11,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ClientFormController {
 
@@ -19,68 +21,38 @@ public class ClientFormController {
     private Parent root;
 
     @FXML
-    private Button AccountButton;
+    private Button AccountButton, TransInOutButton, ViewProdButton, LogoutButton;
 
     @FXML
-    private AnchorPane AccountForm;
+    private AnchorPane AccountForm, TransactionInOutForm, ViewProductStocForm;
+
+    private Map<Button, AnchorPane> buttonPaneMap;
 
     @FXML
-    private Button TransInButton;
-
-    @FXML
-    private Button TransOutButton;
-
-    @FXML
-    private AnchorPane TransactionInForm;
-
-    @FXML
-    private AnchorPane TransactionOutForm;
-
-    @FXML
-    private Button ViewProdButton;
-
-    @FXML
-    private AnchorPane ViewProductStocForm;
-
-    @FXML
-    private Button LogoutButton;
+    public void initialize() {
+        buttonPaneMap = new HashMap<>();
+        buttonPaneMap.put(AccountButton, AccountForm);
+        buttonPaneMap.put(TransInOutButton, TransactionInOutForm);
+        buttonPaneMap.put(ViewProdButton, ViewProductStocForm);
+    }
 
     @FXML
     void switchForm(ActionEvent event) {
-        if (event.getSource() == TransInButton) {
-            AccountForm.setVisible(false);
-            TransactionInForm.setVisible(true);
-            TransactionOutForm.setVisible(false);
-            ViewProductStocForm.setVisible(false);
-        }
-        else if (event.getSource() == AccountButton) {
-            AccountForm.setVisible(true);
-            TransactionInForm.setVisible(false);
-            TransactionOutForm.setVisible(false);
-            ViewProductStocForm.setVisible(false);
-        }
-        else if (event.getSource() == TransOutButton) {
-            AccountForm.setVisible(false);
-            TransactionInForm.setVisible(false);
-            TransactionOutForm.setVisible(true);
-            ViewProductStocForm.setVisible(false);
-        }
-        else if (event.getSource() == ViewProdButton) {
-            AccountForm.setVisible(false);
-            TransactionInForm.setVisible(false);
-            TransactionOutForm.setVisible(false);
-            ViewProductStocForm.setVisible(true);
-        }
+        buttonPaneMap.values().forEach(pane -> pane.setVisible(false));
 
+        Button sourceButton = (Button) event.getSource();
+        AnchorPane targetPane = buttonPaneMap.get(sourceButton);
+        if (targetPane != null) {
+            targetPane.setVisible(true);
+        }
     }
 
     @FXML
     void logOut(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("/view/FXMLLoginScene.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
-
 }

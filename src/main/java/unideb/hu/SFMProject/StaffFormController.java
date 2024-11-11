@@ -11,6 +11,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class StaffFormController {
 
@@ -19,137 +21,31 @@ public class StaffFormController {
     private Parent root;
 
     @FXML
-    private Button AccountButton;
+    private Button AccountButton, AddProductButton, ReportsButton, TransInOutButton, ViewProdButton, LogoutButton;
 
     @FXML
-    private AnchorPane AccountForm;
+    private AnchorPane AccountForm, AddProductForm, ReportsForm, TransactionInOutForm, ViewProductStockForm;
+
+    private Map<Button, AnchorPane> buttonPaneMap;
 
     @FXML
-    private Button AddCostumerButton;
-
-    @FXML
-    private AnchorPane AddCostumerForm;
-
-    @FXML
-    private Button AddProductButton;
-
-    @FXML
-    private AnchorPane AddProductForm;
-
-    @FXML
-    private Button AddSuplierButton;
-
-    @FXML
-    private AnchorPane AddSuplierForm;
-
-    @FXML
-    private Button ReportsButton;
-
-    @FXML
-    private AnchorPane ReportsForm;
-
-    @FXML
-    private Button TransInButton;
-
-    @FXML
-    private Button TransOutButton;
-
-    @FXML
-    private AnchorPane TransactionInForm;
-
-    @FXML
-    private AnchorPane TransactionOutForm;
-
-    @FXML
-    private Button ViewProdButton;
-
-    @FXML
-    private AnchorPane ViewProductStocForm;
-
-    @FXML
-    private Button LogoutButton;
+    public void initialize() {
+        buttonPaneMap = new HashMap<>();
+        buttonPaneMap.put(AccountButton, AccountForm);
+        buttonPaneMap.put(AddProductButton, AddProductForm);
+        buttonPaneMap.put(ReportsButton, ReportsForm);
+        buttonPaneMap.put(TransInOutButton, TransactionInOutForm);
+        buttonPaneMap.put(ViewProdButton, ViewProductStockForm);
+    }
 
     @FXML
     void switchForm(ActionEvent event) {
-        if (event.getSource() == TransInButton) {
-            AccountForm.setVisible(false);
-            AddCostumerForm.setVisible(false);
-            AddProductForm.setVisible(false);
-            AddSuplierForm.setVisible(false);
-            ReportsForm.setVisible(false);
-            TransactionInForm.setVisible(false);
-            TransactionOutForm.setVisible(true);
-            ViewProductStocForm.setVisible(false);
-        }
-        else if (event.getSource() == AccountButton) {
-            AccountForm.setVisible(true);
-            AddCostumerForm.setVisible(false);
-            AddProductForm.setVisible(false);
-            AddSuplierForm.setVisible(false);
-            ReportsForm.setVisible(false);
-            TransactionInForm.setVisible(false);
-            TransactionOutForm.setVisible(false);
-            ViewProductStocForm.setVisible(false);
-        }
-        else if (event.getSource() == TransOutButton) {
-            AccountForm.setVisible(false);
-            AddCostumerForm.setVisible(false);
-            AddProductForm.setVisible(false);
-            AddSuplierForm.setVisible(false);
-            ReportsForm.setVisible(false);
-            TransactionOutForm.setVisible(false);
-            TransactionInForm.setVisible(true);
-            ViewProductStocForm.setVisible(false);
-        }
-        else if (event.getSource() == ViewProdButton) {
-            AccountForm.setVisible(false);
-            AddCostumerForm.setVisible(false);
-            AddProductForm.setVisible(false);
-            AddSuplierForm.setVisible(false);
-            ReportsForm.setVisible(false);
-            TransactionOutForm.setVisible(false);
-            TransactionInForm.setVisible(false);
-            ViewProductStocForm.setVisible(true);
-        }
-        else if (event.getSource() == AddCostumerButton) {
-            AccountForm.setVisible(false);
-            AddCostumerForm.setVisible(true);
-            AddProductForm.setVisible(false);
-            AddSuplierForm.setVisible(false);
-            ReportsForm.setVisible(false);
-            TransactionOutForm.setVisible(false);
-            TransactionInForm.setVisible(false);
-            ViewProductStocForm.setVisible(false);
-        }
-        else if (event.getSource() == AddProductButton) {
-            AccountForm.setVisible(false);
-            AddCostumerForm.setVisible(false);
-            AddProductForm.setVisible(true);
-            AddSuplierForm.setVisible(false);
-            ReportsForm.setVisible(false);
-            TransactionOutForm.setVisible(false);
-            TransactionInForm.setVisible(false);
-            ViewProductStocForm.setVisible(false);
-        }
-        else if (event.getSource() == AddSuplierButton) {
-            AccountForm.setVisible(false);
-            AddCostumerForm.setVisible(false);
-            AddProductForm.setVisible(false);
-            AddSuplierForm.setVisible(true);
-            ReportsForm.setVisible(false);
-            TransactionOutForm.setVisible(false);
-            TransactionInForm.setVisible(false);
-            ViewProductStocForm.setVisible(false);
-        }
-        else if (event.getSource() == ReportsButton) {
-            AccountForm.setVisible(false);
-            AddCostumerForm.setVisible(false);
-            AddProductForm.setVisible(false);
-            AddSuplierForm.setVisible(false);
-            ReportsForm.setVisible(true);
-            TransactionOutForm.setVisible(false);
-            TransactionInForm.setVisible(false);
-            ViewProductStocForm.setVisible(false);
+        buttonPaneMap.values().forEach(pane -> pane.setVisible(false));
+
+        Button sourceButton = (Button) event.getSource();
+        AnchorPane targetPane = buttonPaneMap.get(sourceButton);
+        if (targetPane != null) {
+            targetPane.setVisible(true);
         }
     }
 
