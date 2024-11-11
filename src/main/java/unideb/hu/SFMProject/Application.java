@@ -21,11 +21,6 @@ public class Application extends javafx.application.Application{
 
         launch();
 
-        Utils bUtils = new Utils(new JPADAO());
-        bUtils.runBUtils();
-        bUtils.runPUtils();
-
-
     }
 
     private static void startDatabase() throws SQLException {
