@@ -4,6 +4,8 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -184,7 +186,7 @@
          </children>
       </Pane>
    </AnchorPane>
-   <AnchorPane fx:id="ViewProductStockForm" layoutX="240.0" prefHeight="800.0" prefWidth="961.0" visible="false">
+   <AnchorPane fx:id="ViewProductStockForm" layoutX="240.0" prefHeight="800.0" prefWidth="900.0" visible="false">
       <Pane layoutY="-1.0" prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: #3a4750; -fx-background-radius: 0 0 20;">
          <children>
             <Label layoutX="45.0" layoutY="15.0" text="View Product Stock" textFill="#ea9215">
@@ -194,6 +196,15 @@
             </Label>
          </children>
       </Pane>
+      <Pane layoutX="75.0" layoutY="120.0" prefHeight="650.0" prefWidth="850.0" style="-fx-background-color: #3a4750; -fx-background-radius: 20;" />
+      <TableView layoutX="100.0" layoutY="150.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #3a4750; -fx-border-color: #ea9215; -fx-border-width: 5 5 5 5; -fx-border-radius: 0 0 20 20;">
+        <columns>
+          <TableColumn prefWidth="180.0" text="Image" />
+          <TableColumn prefWidth="420.0" text="Name" />
+            <TableColumn prefWidth="100.0" text="Price" />
+            <TableColumn prefWidth="100.0" text="Stock" />
+        </columns>
+      </TableView>
    </AnchorPane>
    <AnchorPane fx:id="ReportsForm" layoutX="240.0" prefHeight="800.0" prefWidth="961.0" visible="false">
       <Pane layoutY="-1.0" prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: #3a4750; -fx-background-radius: 0 0 20;">
@@ -203,6 +214,28 @@
                   <Font size="48.0" />
                </font>
             </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="70.0" layoutY="160.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #3a4750; -fx-background-radius: 20;">
+         <children>
+            <TableView layoutX="100.0" layoutY="30.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #3a4750; -fx-border-color: #ea9215; -fx-border-width: 5 5 5 5; -fx-border-radius: 0 0 20 20;">
+              <columns>
+                  <TableColumn prefWidth="108.00003051757812" text="Transaction ID" />
+                <TableColumn prefWidth="60.0" text="In/Out" />
+                <TableColumn prefWidth="175.199951171875" text="Transaction starter name" />
+                  <TableColumn prefWidth="245.60003662109375" text="Products" />
+              </columns>
+            </TableView>
+            <Button layoutX="297.0" layoutY="504.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-width: 3 3 3 3; -fx-border-color: #ea9215; -fx-border-radius: 10;" text="Generate report" textFill="#ea9215">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="ReportsButton1" layoutX="267.0" layoutY="448.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="41.0" prefWidth="266.0" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-background-radius: 100;" text="*... transaction selected*" textFill="#ea9215">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
    </AnchorPane>
