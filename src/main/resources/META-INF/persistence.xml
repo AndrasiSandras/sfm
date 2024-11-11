@@ -8,12 +8,14 @@
         <description>Hibernate EntityManager Demo</description>
         <class>unideb.hu.SFMProject.Beszallito</class>
         <class>unideb.hu.SFMProject.Product</class>
+        <class>unideb.hu.SFMProject.RegLogin</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
-            <property name="hibernate.hbm2ddl.auto" value="create"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.format_sql" value="true" />
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:my_database"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:file:./src/main/resources/Database/my_database"/>
             <property name="javax.persistence.jdbc.user" value="sa"/>
             <property name="javax.persistence.jdbc.password" value=""/>
         </properties>

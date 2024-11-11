@@ -1,5 +1,7 @@
 package unideb.hu.SFMProject;
 
+import java.util.List;
+
 public class Utils {
 
     private DAO pDAO;
@@ -11,7 +13,7 @@ public class Utils {
     }
 
 
-    public void runBUtils(){
+    public void runBUtils() {
         Beszallito beszallito = new Beszallito();
 
         /* SceneBuilder kiolvasás implementácio */
@@ -24,14 +26,20 @@ public class Utils {
 
     }
 
-    public void runPUtils()
-    {
-        Product product = new Product();
-
-        product.setName("Jaeger");
-        product.setCurrent(100);
+    public void runPUtils(Product product) {
 
         pDAO.saveProduct(product);
 
     }
+
+    public void runCUtils(RegLogin c) {
+        pDAO.saveRegLog(c);
+    }
+
+    public List<String> runReadUtils() {
+        List<String> result = pDAO.getAllRegLog();
+        System.out.println(result.toString());
+        return result;
+    }
+
 }

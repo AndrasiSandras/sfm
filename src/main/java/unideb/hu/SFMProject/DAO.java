@@ -12,4 +12,7 @@ public abstract class DAO {
     public  abstract List<Beszallito> getAllBeszallito();    //R
     public abstract void updateBeszallito(Beszallito a);     //U
     public abstract void deleteBeszallito(Beszallito a);
+
+    public abstract void saveRegLog(RegLogin a);
+    public abstract List<String> getAllRegLog();
 }
