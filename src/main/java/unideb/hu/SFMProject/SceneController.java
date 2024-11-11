@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -17,6 +18,11 @@ public class SceneController {
     private Stage stage;
     private Scene scene;
     private Parent root;
+
+    @FXML
+    private Label clientLoginErrorText;
+    @FXML
+    private Label registerErrorText;
     @FXML
     private TextField emailText;
     @FXML
@@ -89,8 +95,6 @@ public class SceneController {
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-
-
     }
 
     public void registerClient(ActionEvent actionEvent) throws IOException {
@@ -128,35 +132,30 @@ public class SceneController {
 
     public boolean samePassword(TextField rePasswordText)
     {
-
-
         return passwordText.getText().equals(rePasswordText.getText());
     }
 
     @FXML
     public boolean register()
     {
-
         if(!isItEamil())
         {
-            emailText.getText();
-            emailText.setText("Hibás formátumban van az email cím!");
+            registerErrorText.getText();
+            registerErrorText.setText("Invalid email address!");
             return false;
         }
         else
         {
             if(!samePassword(rePasswordText))
             {
-                emailText.setText("Nem egyezik meg a két jelszó!");
+                registerErrorText.setText("Passwords do not match!");
                 return false;
             }
             else
             {
                 return true;
             }
-
         }
-
     }
 
     public boolean Clogin(String Credentials)
@@ -164,14 +163,13 @@ public class SceneController {
         Utils rutils = new Utils(new JPADAO());
         List<String> list = rutils.runReadUtils();
 
-
         if(list.contains(Credentials))
         {
             return true;
         }
         else
         {
-            ClientUserNameText.setText("Hibás felhasználónév vagy jelszó!");
+            clientLoginErrorText.setText("The Username or Password is incorrect. Try again.");
             return false;
         }
     }
