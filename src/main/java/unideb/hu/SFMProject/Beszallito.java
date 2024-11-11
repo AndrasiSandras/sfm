@@ -12,7 +12,6 @@ public class Beszallito {
     private int id;
     private String name;
     private String email;
-    private String address;
     private String password;
     //Commit proba :3
     public String getPassword() {
@@ -26,20 +25,12 @@ public class Beszallito {
         return email;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public void setPassword(String password) {

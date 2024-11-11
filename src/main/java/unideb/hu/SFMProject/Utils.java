@@ -19,7 +19,6 @@ public class Utils {
         /* SceneBuilder kiolvasás implementácio */
         beszallito.setName("Lajos");
         beszallito.setEmail("Lajos@valami.hu");
-        beszallito.setAddress("Lajos utca 56");
         beszallito.setPassword("1234");
 
         pDAO.saveBeszallito(beszallito);
