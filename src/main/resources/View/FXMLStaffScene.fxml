@@ -137,7 +137,7 @@
          </Label>
          <ImageView fx:id="ProductImage" fitHeight="330.0" fitWidth="200.0" layoutX="436.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@../image/Jägermeister%2035%25%200,7L.jpg" />
+               <Image url="@../image/Jägermeister_35%_0,7L.jpg" />
             </image>
          </ImageView>
       </Pane>
