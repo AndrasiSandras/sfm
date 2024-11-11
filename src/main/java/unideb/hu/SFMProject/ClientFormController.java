@@ -21,10 +21,10 @@ public class ClientFormController {
     private Parent root;
 
     @FXML
-    private Button AccountButton, TransInButton, TransOutButton, ViewProdButton, LogoutButton;
+    private Button AccountButton, TransInOutButton, ViewProdButton, LogoutButton;
 
     @FXML
-    private AnchorPane AccountForm, TransactionInForm, TransactionOutForm, ViewProductStocForm;
+    private AnchorPane AccountForm, TransactionInOutForm, ViewProductStocForm;
 
     private Map<Button, AnchorPane> buttonPaneMap;
 
@@ -32,8 +32,7 @@ public class ClientFormController {
     public void initialize() {
         buttonPaneMap = new HashMap<>();
         buttonPaneMap.put(AccountButton, AccountForm);
-        buttonPaneMap.put(TransInButton, TransactionInForm);
-        buttonPaneMap.put(TransOutButton, TransactionOutForm);
+        buttonPaneMap.put(TransInOutButton, TransactionInOutForm);
         buttonPaneMap.put(ViewProdButton, ViewProductStocForm);
     }
 

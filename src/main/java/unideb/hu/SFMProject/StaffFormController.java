@@ -21,10 +21,10 @@ public class StaffFormController {
     private Parent root;
 
     @FXML
-    private Button AccountButton, AddProductButton, ReportsButton, TransInButton, TransOutButton, ViewProdButton, LogoutButton;
+    private Button AccountButton, AddProductButton, ReportsButton, TransInOutButton, ViewProdButton, LogoutButton;
 
     @FXML
-    private AnchorPane AccountForm, AddProductForm, ReportsForm, TransactionInForm, TransactionOutForm, ViewProductStockForm;
+    private AnchorPane AccountForm, AddProductForm, ReportsForm, TransactionInOutForm, ViewProductStockForm;
 
     private Map<Button, AnchorPane> buttonPaneMap;
 
@@ -34,8 +34,7 @@ public class StaffFormController {
         buttonPaneMap.put(AccountButton, AccountForm);
         buttonPaneMap.put(AddProductButton, AddProductForm);
         buttonPaneMap.put(ReportsButton, ReportsForm);
-        buttonPaneMap.put(TransInButton, TransactionInForm);
-        buttonPaneMap.put(TransOutButton, TransactionOutForm);
+        buttonPaneMap.put(TransInOutButton, TransactionInOutForm);
         buttonPaneMap.put(ViewProdButton, ViewProductStockForm);
     }
 
