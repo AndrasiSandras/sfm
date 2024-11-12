@@ -98,8 +98,8 @@ public class SceneController {
     }
 
     public void registerClient(ActionEvent actionEvent) throws IOException {
-        AuthController authController = new AuthController(emailText, passwordText, rePasswordText, userNameText, registerErrorText);
-        if (authController.register()) {
+        if(register())
+        {
             String name = userNameText.getText();
             String password = passwordText.getText();
 
@@ -119,6 +119,45 @@ public class SceneController {
         }
     }
 
+    public boolean isItEamil()
+    {
+        String email = emailText.getText();
+
+        if(email.contains("@"))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean samePassword(TextField rePasswordText)
+    {
+        return passwordText.getText().equals(rePasswordText.getText());
+    }
+
+    @FXML
+    public boolean register()
+    {
+        if(!isItEamil())
+        {
+            registerErrorText.getText();
+            registerErrorText.setText("Invalid email address!");
+            return false;
+        }
+        else
+        {
+            if(!samePassword(rePasswordText))
+            {
+                registerErrorText.setText("Passwords do not match!");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+    }
+
     public boolean Clogin(String Credentials)
     {
         Utils rutils = new Utils(new JPADAO());
@@ -134,6 +173,4 @@ public class SceneController {
             return false;
         }
     }
-
-
 }

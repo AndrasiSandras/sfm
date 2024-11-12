@@ -13,10 +13,16 @@ public class Beszallito {
     private String name;
     private String email;
     private String password;
+
+    //Csehely Bence |
+    //              |
+    //              V
     //Commit proba :3
+
     public String getPassword() {
         return password;
     }
+
     public String getName() {
         return name;
     }

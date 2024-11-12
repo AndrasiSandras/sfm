@@ -11,16 +11,12 @@ public class JPADAO extends DAO {
     final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("unideb.hu.SFMProject");
     final EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-
-
-
     @Override
     public void saveProduct(Product a) {
         entityManager.getTransaction().begin();
         entityManager.persist(a);
         entityManager.flush();
         entityManager.getTransaction().commit();
-
     }
 
     @Override
@@ -37,7 +33,6 @@ public class JPADAO extends DAO {
         entityManager.persist(a);
         entityManager.flush();
         entityManager.getTransaction().commit();
-
     }
 
     @Override
@@ -55,7 +50,6 @@ public class JPADAO extends DAO {
         entityManager.persist(a);
         entityManager.flush();
         entityManager.getTransaction().commit();
-
     }
 
     @Override
@@ -64,7 +58,6 @@ public class JPADAO extends DAO {
                 "SELECT a FROM Beszallito a", Beszallito.class);
         List<Beszallito> beszallito = query.getResultList();
         return beszallito;
-
     }
 
     @Override
@@ -73,7 +66,6 @@ public class JPADAO extends DAO {
         entityManager.persist(a);
         entityManager.flush();
         entityManager.getTransaction().commit();
-
     }
 
     @Override
@@ -82,12 +74,10 @@ public class JPADAO extends DAO {
         entityManager.remove(a);
         entityManager.flush();
         entityManager.getTransaction().commit();
-
     }
 
     @Override
     public void saveRegLog(RegLogin a) {
-
         try {
             entityManager.getTransaction().begin();
             entityManager.persist(a);
@@ -100,12 +90,9 @@ public class JPADAO extends DAO {
         }
     }
 
-
     @Override
     public List<String> getAllRegLog() {
-
-        TypedQuery<String> query = entityManager.createQuery(
-                "SELECT a.Credentials FROM RegLogin a", String.class);
+        TypedQuery<String> query = entityManager.createQuery("SELECT a.Credentials FROM RegLogin a", String.class);
         List<String> result = query.getResultList();
         System.out.println(result.toString());
         return result;
@@ -113,12 +100,7 @@ public class JPADAO extends DAO {
 
     public void close() {
         if (entityManagerFactory != null) {
-            entityManagerFactory.close(); // EntityManagerFactory bezárása
+            entityManagerFactory.close();
         }
     }
-
-
-
-
-
 }

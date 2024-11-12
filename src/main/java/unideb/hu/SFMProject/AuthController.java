@@ -60,7 +60,6 @@ public class AuthController {
             return false;
         }
 
-        // Ha minden feltétel teljesül, sikeres regisztráció
         registerErrorText.setText("Registration successful.");
         return true;
     }

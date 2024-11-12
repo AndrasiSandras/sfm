@@ -2,20 +2,16 @@ package unideb.hu.SFMProject;
 
 import java.io.IOException;
 import java.sql.SQLException;
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.h2.tools.Server;
 
-import static javafx.application.Application.launch;
-
 public class Application extends javafx.application.Application{
 
     private static Scene scene;
     private JPADAO jpadao = new JPADAO();
-
 
     public static void main(String[] args) throws SQLException {
         launch();
@@ -44,7 +40,6 @@ public class Application extends javafx.application.Application{
             jpadao.close();
         }
     }
-
 
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));

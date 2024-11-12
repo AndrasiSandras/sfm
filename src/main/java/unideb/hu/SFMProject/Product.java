@@ -7,14 +7,11 @@ import javax.persistence.Id;
 @Entity
 public class Product {
 
-
     @Id
     @GeneratedValue
     private int id;
     private String name;
     private int current;
-
-
 
     public String getName() {
         return name;
@@ -23,8 +20,6 @@ public class Product {
     public int getCurrent() {
         return current;
     }
-
-
 
     public void setName(String name) {
         this.name = name;
