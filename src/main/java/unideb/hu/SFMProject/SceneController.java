@@ -28,7 +28,7 @@ public class SceneController {
     @FXML
     private TextField passwordText;
     @FXML
-    private TextField UserNameText;
+    private TextField userNameText;
     @FXML
     private TextField rePasswordText;
     @FXML
@@ -98,9 +98,9 @@ public class SceneController {
     }
 
     public void registerClient(ActionEvent actionEvent) throws IOException {
-        if(register())
-        {
-            String name = UserNameText.getText();
+        AuthController authController = new AuthController(emailText, passwordText, rePasswordText, userNameText, registerErrorText);
+        if (authController.register()) {
+            String name = userNameText.getText();
             String password = passwordText.getText();
 
             String credentials = name + "," + password;
@@ -116,45 +116,6 @@ public class SceneController {
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-        }
-    }
-
-    public boolean isItEamil()
-    {
-        String email = emailText.getText();
-
-        if(email.contains("@"))
-        {
-            return true;
-        }
-        return false;
-    }
-
-    public boolean samePassword(TextField rePasswordText)
-    {
-        return passwordText.getText().equals(rePasswordText.getText());
-    }
-
-    @FXML
-    public boolean register()
-    {
-        if(!isItEamil())
-        {
-            registerErrorText.getText();
-            registerErrorText.setText("Invalid email address!");
-            return false;
-        }
-        else
-        {
-            if(!samePassword(rePasswordText))
-            {
-                registerErrorText.setText("Passwords do not match!");
-                return false;
-            }
-            else
-            {
-                return true;
-            }
         }
     }
 

@@ -33,11 +33,11 @@
                     </font>
                 </Text>
                 <TextField fx:id="emailText" layoutX="74.0" layoutY="125.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: #3A4750; -fx-border-width: 0px 0px 3px 0px;" />
-                <TextField fx:id="UserNameText" layoutX="74.0" layoutY="175.0" promptText="User Name" style="-fx-background-color: transparent; -fx-border-color: #3A4750; -fx-border-width: 0px 0px 3px 0px;" />
+                <TextField fx:id="userNameText" layoutX="74.0" layoutY="175.0" promptText="User Name" style="-fx-background-color: transparent; -fx-border-color: #3A4750; -fx-border-width: 0px 0px 3px 0px;" />
                 <PasswordField fx:id="passwordText" layoutX="74.0" layoutY="225.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #3A4750; -fx-border-width: 0px 0px 3px 0px;" />
                 <PasswordField fx:id="rePasswordText" layoutX="74.0" layoutY="275.0" promptText="Reenter Password" style="-fx-background-color: transparent; -fx-border-color: #3A4750; -fx-border-width: 0px 0px 3px 0px;" />
                 <Button fx:id="RegisterButton" layoutX="118.0" layoutY="400.0" mnemonicParsing="false" onAction="#registerClient" style="-fx-background-color: #3A4750;" text="Register" textFill="WHITE" />
-            <Label fx:id="registerErrorText" layoutX="90.0" layoutY="355.0" prefHeight="18.0" prefWidth="117.0" textFill="#3a4750" />
+            <Label fx:id="registerErrorText" alignment="CENTER" layoutY="332.0" prefHeight="18.0" prefWidth="300.0" textFill="#3a4750" />
             </children>
         </AnchorPane>
     </right>
