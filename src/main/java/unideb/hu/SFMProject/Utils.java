@@ -10,15 +10,6 @@ public class Utils {
         this.pDAO = pDAO;
     }
 
-    public void runBUtils() {
-        Beszallito beszallito = new Beszallito();
-        beszallito.setName("Lajos");
-        beszallito.setEmail("Lajos@valami.hu");
-        beszallito.setPassword("1234");
-
-        pDAO.saveBeszallito(beszallito);
-    }
-
     public void runPUtils(Product product) {
         pDAO.saveProduct(product);
     }

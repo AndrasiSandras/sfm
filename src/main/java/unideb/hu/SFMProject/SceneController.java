@@ -72,19 +72,20 @@ public class SceneController {
     }
 
     @FXML
-    void logInClient(ActionEvent event) throws IOException {
+    void logInClient(ActionEvent event) throws IOException, InterruptedException {
         String name = ClientUserNameText.getText();
         String password = ClientPasswordText.getText();
         String credentials = name + "," + password;
 
-       if(Clogin(credentials))
-       {
-           root = FXMLLoader.load(getClass().getResource("/view/FXMLClientScene.fxml"));
-           stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-           scene = new Scene(root);
-           stage.setScene(scene);
-           stage.show();
-       }
+        if(Clogin(credentials))
+        {
+            Thread.sleep(3000);
+            root = FXMLLoader.load(getClass().getResource("/view/FXMLClientScene.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
     }
 
     @FXML
@@ -98,8 +99,8 @@ public class SceneController {
     }
 
     public void registerClient(ActionEvent actionEvent) throws IOException {
-        if(register())
-        {
+        AuthController authController = new AuthController(emailText, passwordText, rePasswordText, userNameText, registerErrorText);
+        if (authController.register()) {
             String name = userNameText.getText();
             String password = passwordText.getText();
 
@@ -110,51 +111,6 @@ public class SceneController {
 
             Utils cutil = new Utils(new JPADAO());
             cutil.runCUtils(Credentials);
-
-            root = FXMLLoader.load(getClass().getResource("/view/FXMLClientLoginScene.fxml"));
-            stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        }
-    }
-
-    public boolean isItEamil()
-    {
-        String email = emailText.getText();
-
-        if(email.contains("@"))
-        {
-            return true;
-        }
-        return false;
-    }
-
-    public boolean samePassword(TextField rePasswordText)
-    {
-        return passwordText.getText().equals(rePasswordText.getText());
-    }
-
-    @FXML
-    public boolean register()
-    {
-        if(!isItEamil())
-        {
-            registerErrorText.getText();
-            registerErrorText.setText("Invalid email address!");
-            return false;
-        }
-        else
-        {
-            if(!samePassword(rePasswordText))
-            {
-                registerErrorText.setText("Passwords do not match!");
-                return false;
-            }
-            else
-            {
-                return true;
-            }
         }
     }
 
@@ -165,6 +121,7 @@ public class SceneController {
 
         if(list.contains(Credentials))
         {
+            //clientLoginErrorText.setText("Login successful. Welcome....");
             return true;
         }
         else

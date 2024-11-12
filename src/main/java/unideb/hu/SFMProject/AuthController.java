@@ -46,7 +46,7 @@ public class AuthController {
         }
 
         if (!validateEmail()) {
-            registerErrorText.setText("Invalid email address! (example: user@example.com)");
+            registerErrorText.setText("Invalid email address!");
             return false;
         }
 
