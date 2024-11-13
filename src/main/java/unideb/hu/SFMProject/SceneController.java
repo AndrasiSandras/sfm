@@ -11,6 +11,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class SceneController {
@@ -35,6 +37,8 @@ public class SceneController {
     private TextField ClientUserNameText;
     @FXML
     private TextField ClientPasswordText;
+
+    AuthController authController = new AuthController(emailText, passwordText, rePasswordText, userNameText, registerErrorText);
 
 
 
@@ -75,11 +79,12 @@ public class SceneController {
     void logInClient(ActionEvent event) throws IOException, InterruptedException {
         String name = ClientUserNameText.getText();
         String password = ClientPasswordText.getText();
-        String credentials = name + "," + password;
+
+         String[] credentials = {name,password};
 
         if(Clogin(credentials))
         {
-            Thread.sleep(3000);
+            Thread.sleep(1000);
             root = FXMLLoader.load(getClass().getResource("/view/FXMLClientScene.fxml"));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
@@ -99,12 +104,13 @@ public class SceneController {
     }
 
     public void registerClient(ActionEvent actionEvent) throws IOException {
-        AuthController authController = new AuthController(emailText, passwordText, rePasswordText, userNameText, registerErrorText);
+
         if (authController.register()) {
             String name = userNameText.getText();
             String password = passwordText.getText();
+            String email = emailText.getText();
 
-            String credentials = name + "," + password;
+            String credentials = name + "," + password + "," + email;
 
             RegLogin Credentials = new RegLogin();
             Credentials.setCredentials(credentials);
@@ -114,12 +120,24 @@ public class SceneController {
         }
     }
 
-    public boolean Clogin(String Credentials)
+    public boolean Clogin(String[] Credentials)
     {
         Utils rutils = new Utils(new JPADAO());
         List<String> list = rutils.runReadUtils();
+        String[] cred = new String[0];
+        boolean credentail = false;
 
-        if(list.contains(Credentials))
+        for (String e:list)
+        {
+            cred = e.split(",");
+            if(cred[0].equals(Credentials[0]) && cred[1].equals(Credentials[1]))
+            {
+                credentail = true;
+            }
+
+        }
+
+        if(credentail)
         {
             //clientLoginErrorText.setText("Login successful. Welcome....");
             return true;

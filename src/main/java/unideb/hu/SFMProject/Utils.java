@@ -20,7 +20,6 @@ public class Utils {
 
     public List<String> runReadUtils() {
         List<String> result = pDAO.getAllRegLog();
-        System.out.println(result.toString());
         return result;
     }
 }

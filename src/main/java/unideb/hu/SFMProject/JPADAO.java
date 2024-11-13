@@ -94,7 +94,6 @@ public class JPADAO extends DAO {
     public List<String> getAllRegLog() {
         TypedQuery<String> query = entityManager.createQuery("SELECT a.Credentials FROM RegLogin a", String.class);
         List<String> result = query.getResultList();
-        System.out.println(result.toString());
         return result;
     }
 
