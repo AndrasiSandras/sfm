@@ -149,14 +149,28 @@ public class SceneController {
     public boolean Clogin(String[] Credentials)
     {
         Utils rutils = new Utils(new JPADAO());
-        List<String> list = rutils.runReadUtils();
-        String[] cred;
+        List<String> Clist = rutils.runReadUtils();
+        List<String> Slist = rutils.runStaffUtils();
+        String[] Ccred;
+        String[] Scred;
         boolean credentail = false;
 
-        for (String e:list)
+
+        for (String e:Clist)
         {
-            cred = e.split(",");
-            if(cred[0].equals(Credentials[0]) && cred[1].equals(Credentials[1]))
+            Ccred = e.split(",");
+
+            if(Ccred[0].equals(Credentials[0]) && Ccred[1].equals(Credentials[1]))
+            {
+                credentail = true;
+            }
+
+        }
+
+        for(String e : Slist)
+        {
+            Scred = e.split(",");
+            if(Scred[0].equals(Credentials[0]) && Scred[1].equals(Credentials[1]))
             {
                 credentail = true;
             }
