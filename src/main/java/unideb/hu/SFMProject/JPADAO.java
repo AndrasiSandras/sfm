@@ -17,6 +17,7 @@ public class JPADAO extends DAO {
         entityManager.persist(a);
         entityManager.flush();
         entityManager.getTransaction().commit();
+
     }
 
     @Override
