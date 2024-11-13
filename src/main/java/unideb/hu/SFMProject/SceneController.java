@@ -6,7 +6,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -16,6 +18,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class SceneController {
+
+
 
     private Stage stage;
     private Scene scene;
@@ -37,6 +41,13 @@ public class SceneController {
     private TextField ClientUserNameText;
     @FXML
     private TextField ClientPasswordText;
+    @FXML
+    private TextField staffNameText;
+    @FXML
+    private TextField staffPasswordText;
+    @FXML
+    private Label LoginErrorText;
+
 
     AuthController authController = new AuthController(emailText, passwordText, rePasswordText, userNameText, registerErrorText);
 
@@ -71,8 +82,23 @@ public class SceneController {
     }
 
     @FXML
-    void logInStaff(ActionEvent event) throws IOException {
-        loadScene(event, "/view/FXMLStaffScene.fxml");
+    void logInStaff(ActionEvent event) throws IOException, InterruptedException {
+        String name = staffNameText.getText();
+        String password = staffPasswordText.getText();
+
+        String[] credentials = {name,password};
+
+        if(Slogin(credentials))
+        {
+            Thread.sleep(1000);
+            root = FXMLLoader.load(getClass().getResource("/view/FXMLStaffScene.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
+
+
     }
 
     @FXML
@@ -145,6 +171,34 @@ public class SceneController {
         else
         {
             clientLoginErrorText.setText("The Username or Password is incorrect. Try again.");
+            return false;
+        }
+
+    }
+    public boolean Slogin(String[] Credentials)
+    {
+        Utils sutils = new Utils(new JPADAO());
+        List<String> Slist = sutils.runStaffUtils();
+        String[] cred;
+        boolean Staffcred = false;
+
+        for(String e : Slist)
+        {
+            cred = e.split(",");
+            if(cred[0].equals(Credentials[0]) && cred[1].equals(Credentials[1]))
+            {
+                Staffcred = true;
+            }
+
+        }
+
+        if(Staffcred)
+        {
+            return true;
+        }
+        else
+        {
+            LoginErrorText.setText("The Username or Password is incorrect. Try again.");
             return false;
         }
     }

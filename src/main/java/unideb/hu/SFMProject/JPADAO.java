@@ -97,6 +97,13 @@ public class JPADAO extends DAO {
         return result;
     }
 
+    @Override
+    public List<String> getAllStaffCred() {
+        TypedQuery<String> query = entityManager.createQuery("SELECT a.Credentials FROM StaffCred a", String.class);
+        List<String> result = query.getResultList();
+        return result;
+    }
+
     public void close() {
         if (entityManagerFactory != null) {
             entityManagerFactory.close();

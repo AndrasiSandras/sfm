@@ -8,6 +8,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.h2.tools.Server;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 public class Application extends javafx.application.Application{
 
     private static Scene scene;
@@ -15,6 +19,8 @@ public class Application extends javafx.application.Application{
 
     public static void main(String[] args) throws SQLException {
         launch();
+
+
     }
 
     private static void startDatabase() throws SQLException {

@@ -22,4 +22,9 @@ public class Utils {
         List<String> result = pDAO.getAllRegLog();
         return result;
     }
+    public List<String> runStaffUtils()
+    {
+        List<String> result = pDAO.getAllStaffCred();
+        return  result;
+    }
 }
