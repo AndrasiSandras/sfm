@@ -3,6 +3,8 @@ package unideb.hu.SFMProject;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+import java.util.List;
+
 public class AuthController {
 
     private TextField emailText;
@@ -38,10 +40,46 @@ public class AuthController {
                 !passwordText.getText().isEmpty() &&
                 !rePasswordText.getText().isEmpty();
     }
+    public boolean fieldsCantContainDash()
+    {
+        return !emailText.getText().contains(",") &&
+                !userNameText.getText().contains(",") &&
+                !passwordText.getText().contains(",") &&
+                !rePasswordText.getText().contains(",");
+    }
+
+    public boolean isItAlreadyUsed()
+    {
+        Utils util = new Utils(new JPADAO());
+        List<String> list = util.runReadUtils();
+        String[] cred;
+        for(String e : list)
+        {
+            cred = e.split(",");
+            if(cred[0].equals(userNameText.getText()) && cred[2].equals(emailText.getText()));
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
 
     public boolean register() {
         if (!fieldsFilledOut()) {
             registerErrorText.setText("All fields must be filled out!");
+            return false;
+        }
+
+        if(!isItAlreadyUsed())
+        {
+            registerErrorText.setText("Username or Email is already being used!");
+            return false;
+        }
+
+        if (!fieldsCantContainDash())
+        {
+            registerErrorText.setText("No filed can contain dash character!");
             return false;
         }
 

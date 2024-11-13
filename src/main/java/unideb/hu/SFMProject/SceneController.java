@@ -104,7 +104,7 @@ public class SceneController {
     }
 
     public void registerClient(ActionEvent actionEvent) throws IOException {
-
+        AuthController authController = new AuthController(emailText, passwordText, rePasswordText, userNameText, registerErrorText);
         if (authController.register()) {
             String name = userNameText.getText();
             String password = passwordText.getText();
@@ -124,7 +124,7 @@ public class SceneController {
     {
         Utils rutils = new Utils(new JPADAO());
         List<String> list = rutils.runReadUtils();
-        String[] cred = new String[0];
+        String[] cred;
         boolean credentail = false;
 
         for (String e:list)
