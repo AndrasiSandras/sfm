@@ -15,4 +15,5 @@ public abstract class DAO {
 
     public abstract void saveRegLog(RegLogin a);
     public abstract List<String> getAllRegLog();
+    public abstract List<String> getAllStaffCred();
 }

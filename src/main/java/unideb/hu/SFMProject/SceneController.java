@@ -6,14 +6,20 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class SceneController {
+
+
 
     private Stage stage;
     private Scene scene;
@@ -28,13 +34,22 @@ public class SceneController {
     @FXML
     private TextField passwordText;
     @FXML
-    private TextField UserNameText;
+    private TextField userNameText;
     @FXML
     private TextField rePasswordText;
     @FXML
     private TextField ClientUserNameText;
     @FXML
     private TextField ClientPasswordText;
+    @FXML
+    private TextField staffNameText;
+    @FXML
+    private TextField staffPasswordText;
+    @FXML
+    private Label LoginErrorText;
+
+
+    AuthController authController = new AuthController(emailText, passwordText, rePasswordText, userNameText, registerErrorText);
 
 
 
@@ -67,24 +82,41 @@ public class SceneController {
     }
 
     @FXML
-    void logInStaff(ActionEvent event) throws IOException {
-        loadScene(event, "/view/FXMLStaffScene.fxml");
+    void logInStaff(ActionEvent event) throws IOException, InterruptedException {
+        String name = staffNameText.getText();
+        String password = staffPasswordText.getText();
+
+        String[] credentials = {name,password};
+
+        if(Slogin(credentials))
+        {
+            Thread.sleep(1000);
+            root = FXMLLoader.load(getClass().getResource("/view/FXMLStaffScene.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
+
+
     }
 
     @FXML
-    void logInClient(ActionEvent event) throws IOException {
+    void logInClient(ActionEvent event) throws IOException, InterruptedException {
         String name = ClientUserNameText.getText();
         String password = ClientPasswordText.getText();
-        String credentials = name + "," + password;
 
-       if(Clogin(credentials))
-       {
-           root = FXMLLoader.load(getClass().getResource("/view/FXMLClientScene.fxml"));
-           stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-           scene = new Scene(root);
-           stage.setScene(scene);
-           stage.show();
-       }
+         String[] credentials = {name,password};
+
+        if(Clogin(credentials))
+        {
+            Thread.sleep(1000);
+            root = FXMLLoader.load(getClass().getResource("/view/FXMLClientScene.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
     }
 
     @FXML
@@ -98,73 +130,56 @@ public class SceneController {
     }
 
     public void registerClient(ActionEvent actionEvent) throws IOException {
-        if(register())
-        {
-            String name = UserNameText.getText();
+        AuthController authController = new AuthController(emailText, passwordText, rePasswordText, userNameText, registerErrorText);
+        if (authController.register()) {
+            String name = userNameText.getText();
             String password = passwordText.getText();
+            String email = emailText.getText();
 
-            String credentials = name + "," + password;
+            String credentials = name + "," + password + "," + email;
 
             RegLogin Credentials = new RegLogin();
             Credentials.setCredentials(credentials);
 
             Utils cutil = new Utils(new JPADAO());
             cutil.runCUtils(Credentials);
-
-            root = FXMLLoader.load(getClass().getResource("/view/FXMLClientLoginScene.fxml"));
-            stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
         }
     }
 
-    public boolean isItEamil()
-    {
-        String email = emailText.getText();
-
-        if(email.contains("@"))
-        {
-            return true;
-        }
-        return false;
-    }
-
-    public boolean samePassword(TextField rePasswordText)
-    {
-        return passwordText.getText().equals(rePasswordText.getText());
-    }
-
-    @FXML
-    public boolean register()
-    {
-        if(!isItEamil())
-        {
-            registerErrorText.getText();
-            registerErrorText.setText("Invalid email address!");
-            return false;
-        }
-        else
-        {
-            if(!samePassword(rePasswordText))
-            {
-                registerErrorText.setText("Passwords do not match!");
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-    }
-
-    public boolean Clogin(String Credentials)
+    public boolean Clogin(String[] Credentials)
     {
         Utils rutils = new Utils(new JPADAO());
-        List<String> list = rutils.runReadUtils();
+        List<String> Clist = rutils.runReadUtils();
+        List<String> Slist = rutils.runStaffUtils();
+        String[] Ccred;
+        String[] Scred;
+        boolean credentail = false;
 
-        if(list.contains(Credentials))
+
+        for (String e:Clist)
         {
+            Ccred = e.split(",");
+
+            if(Ccred[0].equals(Credentials[0]) && Ccred[1].equals(Credentials[1]))
+            {
+                credentail = true;
+            }
+
+        }
+
+        for(String e : Slist)
+        {
+            Scred = e.split(",");
+            if(Scred[0].equals(Credentials[0]) && Scred[1].equals(Credentials[1]))
+            {
+                credentail = true;
+            }
+
+        }
+
+        if(credentail)
+        {
+            //clientLoginErrorText.setText("Login successful. Welcome....");
             return true;
         }
         else
@@ -172,7 +187,33 @@ public class SceneController {
             clientLoginErrorText.setText("The Username or Password is incorrect. Try again.");
             return false;
         }
+
     }
+    public boolean Slogin(String[] Credentials)
+    {
+        Utils sutils = new Utils(new JPADAO());
+        List<String> Slist = sutils.runStaffUtils();
+        String[] cred;
+        boolean Staffcred = false;
 
+        for(String e : Slist)
+        {
+            cred = e.split(",");
+            if(cred[0].equals(Credentials[0]) && cred[1].equals(Credentials[1]))
+            {
+                Staffcred = true;
+            }
 
+        }
+
+        if(Staffcred)
+        {
+            return true;
+        }
+        else
+        {
+            LoginErrorText.setText("The Username or Password is incorrect. Try again.");
+            return false;
+        }
+    }
 }

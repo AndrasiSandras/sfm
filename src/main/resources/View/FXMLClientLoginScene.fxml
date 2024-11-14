@@ -44,7 +44,7 @@
                   <Font size="24.0" />
                </font>
             </Text>
-            <Label fx:id="clientLoginErrorText" layoutX="17.0" layoutY="364.0" prefHeight="18.0" prefWidth="266.0" textFill="#3a4750" />
+            <Label fx:id="clientLoginErrorText" alignment="CENTER" layoutX="-2.0" layoutY="350.0" prefHeight="18.0" prefWidth="300.0" textFill="#3a4750" />
          </children>
       </AnchorPane>
    </right>
