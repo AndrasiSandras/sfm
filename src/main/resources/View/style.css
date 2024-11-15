@@ -42,10 +42,18 @@
     -fx-background-color 0.2s ease-in-out;
 }
 
+.front_grey_button:focused {
+    -fx-border-color: #EA9215; /* Narancssárga kiemelés fókusznál */
+    -fx-background-color: #EA9215;
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(gaussian, rgba(234, 146, 21, 0.5), 8, 0, 0, 2); /* Kiemelt árnyék */
+}
+
 .front_grey_button:hover {
     -fx-scale-x: 1.1; /* Vizualis nagyítás X tengelyen */
     -fx-scale-y: 1.1; /* Vizualis nagyítás Y tengelyen */
-    -fx-background-color: #3A4750; /* Színváltás */
+    -fx-border-color: #EA9215; /* Hover állapotban */
+    -fx-background-color: #EA9215;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 20, 0, 0, 5); /* Erősebb árnyék */
 }
 
@@ -70,5 +78,25 @@
     -fx-text-fill: black;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 20, 0, 0, 5); /* Erősebb árnyék */
 }
+
+.text-field {
+    -fx-background-color: transparent; /* Átlátszó háttér */
+    -fx-border-width: 0 0 3px 0; /* Csak alul legyen vonal */
+    -fx-border-color: #3A4750; /* Halvány szürke vonal */
+    -fx-padding: 5px;
+    -fx-font-size: 14px; /* Szöveg mérete */
+}
+.text-field:focused {
+    -fx-border-color: #EA9215; /* Narancssárga kiemelés fókusznál */
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(gaussian, rgba(234, 146, 21, 0.5), 8, 0, 0, 2); /* Kiemelt árnyék */
+}
+.text-field:hover {
+    -fx-border-color: #EA9215; /* Hover állapotban */
+    -fx-background-color: #FAFAFA;
+}
+
+
+
 
 

@@ -47,9 +47,9 @@
    <right>
       <AnchorPane prefHeight="500.0" prefWidth="300.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="ClientUserNameText" layoutX="75.0" layoutY="148.0" promptText="User Name" style="-fx-background-color: transparent; -fx-border-color: #3A4750; -fx-border-width: 0px 0px 3px 0px;" />
-            <PasswordField fx:id="ClientPasswordText" layoutX="74.0" layoutY="221.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #3A4750; -fx-border-width: 0px 0px 3px 0px;" />
-            <Button fx:id="ClientRegisterButton" alignment="BOTTOM_CENTER" layoutX="97.0" layoutY="411.0" mnemonicParsing="false" onAction="#registerNewClient" opacity="0.75" pickOnBounds="false" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: #3A4750;" styleClass="front_transparent_button" stylesheets="@style.css" text="     Register     " textAlignment="CENTER" textFill="#3a4750">
+            <TextField fx:id="ClientUserNameText" layoutX="64.0" layoutY="146.0" promptText="User Name" styleClass="text-field" stylesheets="@style.css" />
+            <PasswordField fx:id="ClientPasswordText" layoutX="64.0" layoutY="217.0" promptText="Password" styleClass="text-field" stylesheets="@style.css" />
+            <Button fx:id="ClientRegisterButton" alignment="BOTTOM_CENTER" layoutX="95.0" layoutY="411.0" mnemonicParsing="false" onAction="#registerNewClient" opacity="0.75" pickOnBounds="false" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: #3A4750;" styleClass="front_transparent_button" stylesheets="@style.css" text="     Register     " textAlignment="CENTER" textFill="#3a4750">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -57,7 +57,7 @@
                   <Insets bottom="0.1" />
                </padding>
             </Button>
-            <Button fx:id="LoginButton" layoutX="111.0" layoutY="297.0" mnemonicParsing="false" onAction="#logInClient" style="-fx-background-color: #3A4750;" styleClass="front_grey_button" stylesheets="@style.css" text="Login" textFill="WHITE" />
+            <Button fx:id="LoginButton" layoutX="110.0" layoutY="294.0" mnemonicParsing="false" onAction="#logInClient" styleClass="front_grey_button" stylesheets="@style.css" text="Login" textFill="WHITE" />
             <Text fill="#3a4750" layoutX="118.0" layoutY="56.0" scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Client">
                <font>
                   <Font size="24.0" />
