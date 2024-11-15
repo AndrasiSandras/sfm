@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import java.io.IOException;
@@ -15,6 +16,9 @@ import java.util.Map;
 
 public class StaffFormController {
 
+    public ImageView ProductImage;
+    public Button GenerateReportButton;
+    public ImageView ProfilePicture;
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -55,5 +59,8 @@ public class StaffFormController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void reportGenerator(ActionEvent actionEvent) {
     }
 }
