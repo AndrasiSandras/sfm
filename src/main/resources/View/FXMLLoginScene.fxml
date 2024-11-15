@@ -9,29 +9,31 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane id="anchor-pane-background" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #3A4750;" stylesheets="@../sytle.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="unideb.hu.SFMProject.SceneController">
-   <children>
-      <ImageView fitHeight="414.0" fitWidth="484.0" layoutX="93.0" layoutY="-56.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../image/palackmesterlogo.png" />
-         </image>
-      </ImageView>
-      <GridPane layoutX="20.0" layoutY="290.0" prefHeight="68.0" prefWidth="560.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+<AnchorPane id="anchor-pane-background" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #3A4750;"
+            stylesheets="@../sytle.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="unideb.hu.SFMProject.SceneController">
+    <ImageView fitHeight="414.0" fitWidth="484.0" layoutX="93.0" layoutY="-56.0" pickOnBounds="true"
+               preserveRatio="true">
+        <Image url="@../image/palackmesterlogo.png"/>
+    </ImageView>
+    <GridPane layoutX="20.0" layoutY="290.0" prefHeight="68.0" prefWidth="560.0" AnchorPane.leftAnchor="20.0"
+              AnchorPane.rightAnchor="20.0">
         <columnConstraints>
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints maxHeight="148.0" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="148.0" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES"/>
         </rowConstraints>
-         <children>
-            <Button fx:id="StaffLoginButton" alignment="CENTER" mnemonicParsing="false" onAction="#staffLogin" scaleX="1.5" scaleY="1.5" style="-fx-background-color: #EA9215;" text="Staff Login" textAlignment="CENTER" textFill="WHITE" />
-            <Button fx:id="ClientLoginButton" alignment="CENTER" mnemonicParsing="false" onAction="#clientLogin" scaleX="1.5" scaleY="1.5" style="-fx-background-color: #EA9215;" text="Client Login" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1">
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-            </Button>
-         </children>
-      </GridPane>
-   </children>
+        <Button fx:id="StaffLoginButton" alignment="CENTER" mnemonicParsing="false" onAction="#staffLogin"
+                scaleX="1.5" scaleY="1.5" style="-fx-background-color: #EA9215;" text="Staff Login"
+                textAlignment="CENTER" textFill="WHITE"/>
+        <Button fx:id="ClientLoginButton" alignment="CENTER" mnemonicParsing="false" onAction="#clientLogin"
+                scaleX="1.5" scaleY="1.5" style="-fx-background-color: #EA9215;" text="Client Login"
+                textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1">
+            <GridPane.margin>
+                <Insets/>
+            </GridPane.margin>
+        </Button>
+    </GridPane>
 </AnchorPane>

@@ -13,32 +13,37 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="unideb.hu.SFMProject.SceneController">
     <left>
-        <AnchorPane prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: #3A4750;" BorderPane.alignment="CENTER">
-            <children>
-                <ImageView fitHeight="400.0" fitWidth="400.0" layoutX="1.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../image/palackmesterlogo.png" />
-                    </image>
-                </ImageView>
-                <Button fx:id="GoBackToLogin" layoutX="169.0" layoutY="410.0" mnemonicParsing="false" onAction="#goBackToLogin" style="-fx-background-color: #EA9215;" text="Login" textFill="#3a4750" />
-            </children>
+        <AnchorPane prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: #3A4750;"
+                    BorderPane.alignment="CENTER">
+            <ImageView fitHeight="400.0" fitWidth="400.0" layoutX="1.0" layoutY="1.0" pickOnBounds="true"
+                       preserveRatio="true">
+                <Image url="@../image/palackmesterlogo.png"/>
+            </ImageView>
+            <Button fx:id="GoBackToLogin" layoutX="169.0" layoutY="410.0" mnemonicParsing="false"
+                    onAction="#goBackToLogin" style="-fx-background-color: #EA9215;" text="Login" textFill="#3a4750"/>
         </AnchorPane>
     </left>
     <right>
-        <AnchorPane prefHeight="500.0" prefWidth="300.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
-            <children>
-                <Text fill="#3a4750" layoutX="105.0" layoutY="64.0" scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Register">
-                    <font>
-                        <Font size="24.0" />
-                    </font>
-                </Text>
-                <TextField fx:id="emailText" layoutX="74.0" layoutY="125.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: #3A4750; -fx-border-width: 0px 0px 3px 0px;" />
-                <TextField fx:id="userNameText" layoutX="74.0" layoutY="175.0" promptText="User Name" style="-fx-background-color: transparent; -fx-border-color: #3A4750; -fx-border-width: 0px 0px 3px 0px;" />
-                <PasswordField fx:id="passwordText" layoutX="74.0" layoutY="225.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #3A4750; -fx-border-width: 0px 0px 3px 0px;" />
-                <PasswordField fx:id="rePasswordText" layoutX="74.0" layoutY="275.0" promptText="Reenter Password" style="-fx-background-color: transparent; -fx-border-color: #3A4750; -fx-border-width: 0px 0px 3px 0px;" />
-                <Button fx:id="RegisterButton" layoutX="118.0" layoutY="400.0" mnemonicParsing="false" onAction="#registerClient" style="-fx-background-color: #3A4750;" text="Register" textFill="WHITE" />
-            <Label fx:id="registerErrorText" alignment="CENTER" layoutY="332.0" prefHeight="18.0" prefWidth="300.0" textFill="#3a4750" />
-            </children>
+        <AnchorPane prefHeight="500.0" prefWidth="300.0" style="-fx-background-color: #FFFFFF;"
+                    BorderPane.alignment="CENTER">
+            <Text fill="#3a4750" layoutX="105.0" layoutY="64.0" scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE"
+                  strokeWidth="0.0" text="Register">
+                <font>
+                    <Font size="24.0"/>
+                </font>
+            </Text>
+            <TextField fx:id="emailText" layoutX="74.0" layoutY="125.0" promptText="Email"
+                       style="-fx-background-color: transparent; -fx-border-color: #3A4750; -fx-border-width: 0px 0px 3px 0px;"/>
+            <TextField fx:id="userNameText" layoutX="74.0" layoutY="175.0" promptText="User Name"
+                       style="-fx-background-color: transparent; -fx-border-color: #3A4750; -fx-border-width: 0px 0px 3px 0px;"/>
+            <PasswordField fx:id="passwordText" layoutX="74.0" layoutY="225.0" promptText="Password"
+                           style="-fx-background-color: transparent; -fx-border-color: #3A4750; -fx-border-width: 0px 0px 3px 0px;"/>
+            <PasswordField fx:id="rePasswordText" layoutX="74.0" layoutY="275.0" promptText="Reenter Password"
+                           style="-fx-background-color: transparent; -fx-border-color: #3A4750; -fx-border-width: 0px 0px 3px 0px;"/>
+            <Button fx:id="RegisterButton" layoutX="118.0" layoutY="400.0" mnemonicParsing="false"
+                    onAction="#registerClient" style="-fx-background-color: #3A4750;" text="Register" textFill="WHITE"/>
+            <Label fx:id="registerErrorText" alignment="CENTER" layoutY="332.0" prefHeight="18.0" prefWidth="300.0"
+                   textFill="#3a4750"/>
         </AnchorPane>
     </right>
 </BorderPane>
