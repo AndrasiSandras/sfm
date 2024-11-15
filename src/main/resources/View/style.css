@@ -9,10 +9,10 @@
     -fx-background-color: #EA9215;
     -fx-text-fill: white;
     -fx-font-size: 14px;
-    -fx-padding: 10px 15px;
+    -fx-padding: 8px 25px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 1);
-    -fx-border-radius: 5px;
-    -fx-background-radius: 5px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
     -fx-scale-x: 1; /* Alap skála */
     -fx-scale-y: 1; /* Alap skála */
     -fx-transition: -fx-scale-x 0.2s ease-in-out,
@@ -20,7 +20,6 @@
                     -fx-background-color 0.2s ease-in-out;
 }
 
-/* Hover (kurzor fölött) */
 .front_orange_button:hover {
     -fx-scale-x: 1.1; /* Vizualis nagyítás X tengelyen */
     -fx-scale-y: 1.1; /* Vizualis nagyítás Y tengelyen */
@@ -29,19 +28,47 @@
 }
 
 .front_grey_button {
-    -fx-background-color:   #3A4750; /* Alap szín */
-    -fx-text-fill: white; /* Szöveg szín */
-    -fx-font-size: 12px;
-    -fx-padding: 10px;
-    -fx-transition: 0.3s ease-in-out; /* Simított átmenet */
+    -fx-background-color: #3A4750;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 5px 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 1);
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-scale-x: 1; /* Alap skála */
+    -fx-scale-y: 1; /* Alap skála */
+    -fx-transition: -fx-scale-x 0.2s ease-in-out,
+    -fx-scale-y 0.2s ease-in-out,
+    -fx-background-color 0.2s ease-in-out;
+}
+
+.front_grey_button:hover {
+    -fx-scale-x: 1.1; /* Vizualis nagyítás X tengelyen */
+    -fx-scale-y: 1.1; /* Vizualis nagyítás Y tengelyen */
+    -fx-background-color: #3A4750; /* Színváltás */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 20, 0, 0, 5); /* Erősebb árnyék */
 }
 
 .front_transparent_button {
-    -fx-background-color:   transparent; /* Alap szín */
-    -fx-text-fill: #3A4750; /* Szöveg szín */
-    -fx-font-size: 12px;
-    -fx-padding: 10px;
-    -fx-transition: 0.3s ease-in-out; /* Simított átmenet */
+    -fx-background-color: transparent;
+    -fx-text-fill: #3A4750;
+    -fx-border-width: 0 0 3 0;
+    -fx-font-size: 10px;
+    -fx-padding: 5px 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 1);
+    -fx-scale-x: 1; /* Alap skála */
+    -fx-scale-y: 1; /* Alap skála */
+    -fx-transition: -fx-scale-x 0.2s ease-in-out,
+    -fx-scale-y 0.2s ease-in-out,
+    -fx-background-color 0.2s ease-in-out;
+}
+
+.front_transparent_button:hover {
+    -fx-scale-x: 1.1; /* Vizualis nagyítás X tengelyen */
+    -fx-scale-y: 1.1; /* Vizualis nagyítás Y tengelyen */
+    -fx-background-color:   #3A4750; /* Színváltás */
+    -fx-text-fill: black;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 20, 0, 0, 5); /* Erősebb árnyék */
 }
 
 

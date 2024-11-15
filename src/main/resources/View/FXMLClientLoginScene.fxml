@@ -24,7 +24,7 @@
                   <Image url="@../image/palackmesterlogo.png" />
                </image>
             </ImageView>
-            <Button fx:id="GoBackButton" layoutX="169.0" layoutY="410.0" mnemonicParsing="false" onAction="#goBack" style="-fx-background-color: #EA9215;" text="Go back">
+            <Button fx:id="GoBackButton" layoutX="150.0" layoutY="401.0" mnemonicParsing="false" onAction="#goBack" style="-fx-background-color: #EA9215;" styleClass="front_orange_button" stylesheets="@style.css" text="Go back">
                <textFill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -49,7 +49,7 @@
          <children>
             <TextField fx:id="ClientUserNameText" layoutX="75.0" layoutY="148.0" promptText="User Name" style="-fx-background-color: transparent; -fx-border-color: #3A4750; -fx-border-width: 0px 0px 3px 0px;" />
             <PasswordField fx:id="ClientPasswordText" layoutX="74.0" layoutY="221.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #3A4750; -fx-border-width: 0px 0px 3px 0px;" />
-            <Button fx:id="ClientRegisterButton" alignment="BOTTOM_CENTER" layoutX="112.0" layoutY="413.0" mnemonicParsing="false" onAction="#registerNewClient" opacity="0.75" pickOnBounds="false" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: #3A4750;" text="     Register     " textAlignment="CENTER">
+            <Button fx:id="ClientRegisterButton" alignment="BOTTOM_CENTER" layoutX="97.0" layoutY="411.0" mnemonicParsing="false" onAction="#registerNewClient" opacity="0.75" pickOnBounds="false" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: #3A4750;" styleClass="front_transparent_button" stylesheets="@style.css" text="     Register     " textAlignment="CENTER" textFill="#3a4750">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -57,7 +57,7 @@
                   <Insets bottom="0.1" />
                </padding>
             </Button>
-            <Button fx:id="LoginButton" layoutX="127.0" layoutY="298.0" mnemonicParsing="false" onAction="#logInClient" style="-fx-background-color: #3A4750;" text="Login" textFill="WHITE" />
+            <Button fx:id="LoginButton" layoutX="111.0" layoutY="297.0" mnemonicParsing="false" onAction="#logInClient" style="-fx-background-color: #3A4750;" styleClass="front_grey_button" stylesheets="@style.css" text="Login" textFill="WHITE" />
             <Text fill="#3a4750" layoutX="118.0" layoutY="56.0" scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Client">
                <font>
                   <Font size="24.0" />
