@@ -20,7 +20,7 @@
                         <Image url="@../image/palackmesterlogo.png" />
                     </image>
                 </ImageView>
-                <Button fx:id="GoBackToLogin" layoutX="169.0" layoutY="410.0" mnemonicParsing="false" onAction="#goBackToLogin" style="-fx-background-color: #EA9215;" text="Login" textFill="#3a4750" />
+                <Button fx:id="GoBackToLogin" layoutX="169.0" layoutY="410.0" mnemonicParsing="false" onAction="#goBackToLogin" style="-fx-background-color: #EA9215;" text="Login" textFill="WHITE" />
             </children>
         </AnchorPane>
     </left>
