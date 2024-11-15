@@ -25,7 +25,7 @@
       <Pane prefHeight="100.0" prefWidth="240.0" />
       <HBox alignment="CENTER" prefHeight="47.0" prefWidth="240.0" spacing="10.0">
          <Circle fill="#ea9215" radius="5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-         <Button fx:id="AddProductButton" mnemonicParsing="false" onAction="#switchForm" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-background-radius: 100;" text="Add Product" textFill="#ea9215">
+         <Button fx:id="AddProductButton" mnemonicParsing="false" onAction="#switchForm" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-background-radius: 100;" styleClass="user_transparent_button_borderless_small" stylesheets="@style.css" text="Add Product" textFill="#ea9215">
             <font>
                <Font size="18.0" />
             </font>
@@ -33,7 +33,7 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="47.0" prefWidth="240.0" spacing="10.0">
          <Circle fill="#ea9215" radius="5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-         <Button fx:id="TransInOutButton" mnemonicParsing="false" onAction="#switchForm" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-background-radius: 100;" text="Transaction In/Out" textFill="#ea9215">
+         <Button fx:id="TransInOutButton" mnemonicParsing="false" onAction="#switchForm" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-background-radius: 100;" styleClass="user_transparent_button_borderless_small" stylesheets="@style.css" text="Transaction In/Out" textFill="#ea9215">
             <font>
                <Font size="18.0" />
             </font>
@@ -41,7 +41,7 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="47.0" prefWidth="240.0" spacing="10.0">
          <Circle fill="#ea9215" radius="5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-         <Button fx:id="ViewProdButton" mnemonicParsing="false" onAction="#switchForm" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-background-radius: 100;" text="View Product Stock" textFill="#ea9215">
+         <Button fx:id="ViewProdButton" mnemonicParsing="false" onAction="#switchForm" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-background-radius: 100;" styleClass="user_transparent_button_borderless_small" stylesheets="@style.css" text="View Product Stock" textFill="#ea9215">
             <font>
                <Font size="18.0" />
             </font>
@@ -49,7 +49,7 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="47.0" prefWidth="240.0" spacing="10.0">
          <Circle fill="#ea9215" radius="5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-         <Button fx:id="ReportsButton" mnemonicParsing="false" onAction="#switchForm" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-background-radius: 100;" text="Reports" textFill="#ea9215">
+         <Button fx:id="ReportsButton" mnemonicParsing="false" onAction="#switchForm" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-background-radius: 100;" styleClass="user_transparent_button_borderless_small" stylesheets="@style.css" text="Reports" textFill="#ea9215">
             <font>
                <Font size="18.0" />
             </font>
@@ -57,24 +57,24 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="47.0" prefWidth="240.0" spacing="10.0">
          <Circle fill="#ea9215" radius="5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-         <Button fx:id="AccountButton" mnemonicParsing="false" onAction="#switchForm" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-background-radius: 100;" text="Account" textFill="#ea9215">
+         <Button fx:id="AccountButton" mnemonicParsing="false" onAction="#switchForm" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-background-radius: 100;" styleClass="user_transparent_button_borderless_small" stylesheets="@style.css" text="Account" textFill="#ea9215">
             <font>
                <Font size="18.0" />
             </font>
          </Button>
       </HBox>
       <Pane prefHeight="323.0" prefWidth="240.0">
-         <Button fx:id="LogoutButton" layoutX="60.0" layoutY="250.0" mnemonicParsing="false" onAction="#logOut" style="-fx-background-color: transparent; -fx-border-width: 3 3 3 3; -fx-border-color: #ea9215; -fx-border-radius: 10;" text="Logout" textFill="#ea9215">
+         <Button fx:id="LogoutButton" layoutX="42.0" layoutY="266.0" mnemonicParsing="false" onAction="#logOut" prefHeight="40.0" prefWidth="157.0" style="-fx-background-color: transparent; -fx-border-width: 3 3 3 3; -fx-border-color: #ea9215; -fx-border-radius: 10;" styleClass="user_transparent_button" stylesheets="@style.css" text="Logout" textFill="#ea9215">
             <font>
                <Font size="24.0" />
             </font>
          </Button>
-         <Label layoutX="5.0" layoutY="200.0" text="Logged in as:" textFill="#ea9215">
+         <Label layoutX="14.0" layoutY="216.0" text="Logged in as:" textFill="#ea9215">
             <font>
                <Font size="18.0" />
             </font>
          </Label>
-         <Label layoutX="120.0" layoutY="200.0" prefHeight="27.0" prefWidth="114.0" text="(Staff name)" textFill="#ea9215">
+         <Label layoutX="128.0" layoutY="216.0" prefHeight="27.0" prefWidth="105.0" text="(Staff name)" textFill="#ea9215">
             <font>
                <Font size="18.0" />
             </font>
@@ -90,12 +90,12 @@
          </Label>
       </Pane>
       <Pane layoutX="127.0" layoutY="172.0" prefHeight="455.0" prefWidth="707.0" style="-fx-background-color: #3a4750; -fx-background-radius: 20;">
-         <Button layoutX="111.0" layoutY="385.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="151.0" style="-fx-border-width: 2 2 2 2; -fx-background-color: transparent; -fx-border-color: #ea9215; -fx-border-radius: 10;" text="Add product" textFill="#ea9215">
+         <Button layoutX="109.0" layoutY="385.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="151.0" style="-fx-border-width: 2 2 2 2; -fx-background-color: transparent; -fx-border-color: #ea9215; -fx-border-radius: 10;" styleClass="user_transparent_button" stylesheets="@style.css" text="Add product" textFill="#ea9215">
             <font>
                <Font size="18.0" />
             </font>
          </Button>
-         <Label layoutX="133.0" layoutY="221.0" text="Product price" textFill="#ea9215">
+         <Label layoutX="132.0" layoutY="209.0" text="Product price" textFill="#ea9215">
             <font>
                <Font size="18.0" />
             </font>
@@ -105,22 +105,22 @@
                <Font size="18.0" />
             </font>
          </Label>
-         <TextField alignment="CENTER" layoutX="75.0" layoutY="94.0" opacity="0.8" promptText="Jägermeister 35% 0,7L" style="-fx-background-radius: 20;">
+         <TextField alignment="CENTER" layoutX="61.0" layoutY="109.0" opacity="0.8" promptText="Jägermeister 35% 0,7L" style="-fx-background-radius: 20;" styleClass="user_text-field" stylesheets="@style.css">
             <font>
                <Font size="18.0" />
             </font>
          </TextField>
-         <TextField alignment="CENTER" layoutX="75.0" layoutY="251.0" opacity="0.8" promptText="5 560,– Ft" style="-fx-background-radius: 20;">
+         <TextField alignment="CENTER" layoutX="61.0" layoutY="248.0" opacity="0.8" promptText="5 560,– Ft" style="-fx-background-radius: 20;" styleClass="user_text-field" stylesheets="@style.css">
             <font>
                <Font size="18.0" />
             </font>
          </TextField>
-         <Button layoutX="460.0" layoutY="385.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="151.0" style="-fx-border-width: 2 2 2 2; -fx-background-color: transparent; -fx-border-color: #ea9215; -fx-border-radius: 10;" text="Browse" textFill="#ea9215">
+         <Button layoutX="472.0" layoutY="385.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="151.0" style="-fx-border-width: 2 2 2 2; -fx-background-color: transparent; -fx-border-color: #ea9215; -fx-border-radius: 10;" styleClass="user_transparent_button" stylesheets="@style.css" text="Browse" textFill="#ea9215">
             <font>
                <Font size="18.0" />
             </font>
          </Button>
-         <Label layoutX="477.0" layoutY="68.0" text="Upload picture" textFill="#ea9215">
+         <Label layoutX="489.0" layoutY="68.0" text="Upload picture" textFill="#ea9215">
             <font>
                <Font size="18.0" />
             </font>
@@ -139,29 +139,29 @@
          </Label>
       </Pane>
       <Pane layoutX="100.0" layoutY="200.0" prefHeight="400.0" prefWidth="800.0" style="-fx-background-color: #3a4750; -fx-background-radius: 20;">
-         <ComboBox layoutX="50.0" layoutY="80.0" prefWidth="200.0" />
-         <Label layoutX="92.0" layoutY="31.0" text="Select item" textFill="#ea9215">
+         <ComboBox layoutX="76.0" layoutY="79.0" prefWidth="200.0" />
+         <Label layoutX="117.0" layoutY="33.0" text="Select item" textFill="#ea9215">
             <font>
                <Font size="24.0" />
             </font>
          </Label>
-         <TextField alignment="CENTER" layoutX="39.0" layoutY="200.0" opacity="0.8" promptText="6 db" style="-fx-background-radius: 20;">
+         <TextField alignment="CENTER" layoutX="65.0" layoutY="237.0" opacity="0.8" promptText="6 db" style="-fx-background-radius: 20;" styleClass="user_text-field_smaller" stylesheets="@style.css">
             <font>
                <Font size="18.0" />
             </font>
          </TextField>
-         <Button layoutX="75.0" layoutY="326.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="151.0" style="-fx-border-width: 2 2 2 2; -fx-background-color: transparent; -fx-border-color: #ea9215; -fx-border-radius: 10;" text="Add to list" textFill="#ea9215">
+         <Button layoutX="100.0" layoutY="326.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="151.0" style="-fx-border-width: 2 2 2 2; -fx-background-color: transparent; -fx-border-color: #ea9215; -fx-border-radius: 10;" styleClass="user_transparent_button" stylesheets="@style.css" text="Add to list" textFill="#ea9215">
             <font>
                <Font size="18.0" />
             </font>
          </Button>
          <ListView layoutX="360.0" layoutY="50.0" prefHeight="230.0" prefWidth="370.0" />
-         <Button layoutX="360.0" layoutY="326.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="170.0" style="-fx-border-width: 2 2 2 2; -fx-background-color: transparent; -fx-border-color: #ea9215; -fx-border-radius: 10;" text="Transaction in" textFill="#ea9215">
+         <Button layoutX="360.0" layoutY="326.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="170.0" style="-fx-border-width: 2 2 2 2; -fx-background-color: transparent; -fx-border-color: #ea9215; -fx-border-radius: 10;" styleClass="user_transparent_button" stylesheets="@style.css" text="Transaction in" textFill="#ea9215">
             <font>
                <Font size="18.0" />
             </font>
          </Button>
-         <Button layoutX="560.0" layoutY="326.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="170.0" style="-fx-border-width: 2 2 2 2; -fx-background-color: transparent; -fx-border-color: #ea9215; -fx-border-radius: 10;" text="Transaction out" textFill="#ea9215">
+         <Button layoutX="560.0" layoutY="326.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="170.0" style="-fx-border-width: 2 2 2 2; -fx-background-color: transparent; -fx-border-color: #ea9215; -fx-border-radius: 10;" styleClass="user_transparent_button" stylesheets="@style.css" text="Transaction out" textFill="#ea9215">
             <font>
                <Font size="18.0" />
             </font>
@@ -203,7 +203,7 @@
                <TableColumn prefWidth="245.60003662109375" text="Products" />
             </columns>
          </TableView>
-         <Button fx:id="GenerateReportButton" layoutX="297.0" layoutY="504.0" mnemonicParsing="false" onAction="#reportGenerator" style="-fx-background-color: transparent; -fx-border-width: 3 3 3 3; -fx-border-color: #ea9215; -fx-border-radius: 10;" text="Generate report" textFill="#ea9215">
+         <Button fx:id="GenerateReportButton" layoutX="275.0" layoutY="494.0" mnemonicParsing="false" onAction="#reportGenerator" style="-fx-background-color: transparent; -fx-border-width: 3 3 3 3; -fx-border-color: #ea9215; -fx-border-radius: 10;" styleClass="user_transparent_button_bigger" stylesheets="@style.css" text="Generate report" textFill="#ea9215">
             <font>
                <Font size="24.0" />
             </font>
@@ -216,7 +216,19 @@
       </Pane>
    </AnchorPane>
    <AnchorPane fx:id="AccountForm" layoutX="240.0" prefHeight="800.0" prefWidth="961.0" visible="false">
-      <Pane layoutX="35.0" layoutY="167.0" prefHeight="620.0" prefWidth="890.0" style="-fx-background-color: #3a4750; -fx-background-radius: 20;" />
+      <Pane layoutX="35.0" layoutY="167.0" prefHeight="620.0" prefWidth="890.0" style="-fx-background-color: #3a4750; -fx-background-radius: 20;">
+         <children>
+            <Button layoutX="115.0" layoutY="565.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="179.0" style="-fx-border-color: transparent; -fx-background-color: transparent;" styleClass="user_transparent_button_borderless" stylesheets="@style.css" text="Change password" textFill="#ea9215">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="585.0" layoutY="565.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="212.0" style="-fx-border-color: transparent; -fx-background-color: transparent;" styleClass="user_transparent_button_borderless" stylesheets="@style.css" text="Change profile picture" textFill="#ea9215">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+         </children></Pane>
       <Pane prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: #3a4750; -fx-background-radius: 0 0 20;">
          <Label layoutX="123.0" layoutY="15.0" text="My Account" textFill="#ea9215">
             <font>
@@ -230,16 +242,6 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Button layoutX="50.0" layoutY="733.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="372.0" style="-fx-border-color: transparent; -fx-background-color: transparent;" text="Change password" textFill="#ea9215">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Button>
-      <Button layoutX="502.0" layoutY="733.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="409.0" style="-fx-border-color: transparent; -fx-background-color: transparent;" text="Change profile picture" textFill="#ea9215">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Button>
       <ImageView fx:id="ProfilePicture" fitHeight="150.0" fitWidth="200.0" layoutX="803.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../image/profilkep.png" />
       </ImageView>
