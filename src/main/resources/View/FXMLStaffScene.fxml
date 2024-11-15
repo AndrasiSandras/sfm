@@ -64,7 +64,7 @@
          </Button>
       </HBox>
       <Pane prefHeight="323.0" prefWidth="240.0">
-         <Button fx:id="LogoutButton" layoutX="42.0" layoutY="266.0" mnemonicParsing="false" onAction="#logOut" prefHeight="40.0" prefWidth="157.0" style="-fx-background-color: transparent; -fx-border-width: 3 3 3 3; -fx-border-color: #ea9215; -fx-border-radius: 10;" styleClass="user_transparent_button" stylesheets="@style.css" text="Logout" textFill="#ea9215">
+         <Button fx:id="LogoutButton" layoutX="45.0" layoutY="266.0" mnemonicParsing="false" onAction="#logOut" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: transparent; -fx-border-width: 3 3 3 3; -fx-border-color: #ea9215; -fx-border-radius: 10;" styleClass="user_transparent_button" stylesheets="@style.css" text="Logout" textFill="#ea9215">
             <font>
                <Font size="24.0" />
             </font>
@@ -168,7 +168,7 @@
          </Button>
       </Pane>
    </AnchorPane>
-   <AnchorPane fx:id="ViewProductStockForm" layoutX="240.0" prefHeight="800.0" prefWidth="900.0" visible="false">
+   <AnchorPane fx:id="ViewProductStockForm" layoutX="240.0" prefHeight="800.0" prefWidth="961.0" visible="false">
       <Pane layoutY="-1.0" prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: #3a4750; -fx-background-radius: 0 0 20;">
          <Label layoutX="45.0" layoutY="15.0" text="View Product Stock" textFill="#ea9215">
             <font>
@@ -176,8 +176,8 @@
             </font>
          </Label>
       </Pane>
-      <Pane layoutX="75.0" layoutY="120.0" prefHeight="650.0" prefWidth="850.0" style="-fx-background-color: #3a4750; -fx-background-radius: 20;" />
-      <TableView layoutX="100.0" layoutY="150.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #3a4750; -fx-border-color: #ea9215; -fx-border-width: 5 5 5 5; -fx-border-radius: 0 0 20 20;">
+      <Pane layoutX="56.0" layoutY="122.0" prefHeight="650.0" prefWidth="850.0" style="-fx-background-color: #3a4750; -fx-background-radius: 20;" />
+      <TableView layoutX="81.0" layoutY="152.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #3a4750; -fx-border-color: #ea9215; -fx-border-width: 5 5 5 5; -fx-border-radius: 0 0 20 20;">
          <columns>
             <TableColumn prefWidth="180.0" text="Image" />
             <TableColumn prefWidth="420.0" text="Name" />
@@ -218,12 +218,12 @@
    <AnchorPane fx:id="AccountForm" layoutX="240.0" prefHeight="800.0" prefWidth="961.0" visible="false">
       <Pane layoutX="35.0" layoutY="167.0" prefHeight="620.0" prefWidth="890.0" style="-fx-background-color: #3a4750; -fx-background-radius: 20;">
          <children>
-            <Button layoutX="115.0" layoutY="565.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="179.0" style="-fx-border-color: transparent; -fx-background-color: transparent;" styleClass="user_transparent_button_borderless" stylesheets="@style.css" text="Change password" textFill="#ea9215">
+            <Button layoutX="74.0" layoutY="565.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="179.0" style="-fx-border-color: transparent; -fx-background-color: transparent;" styleClass="user_transparent_button_borderless" stylesheets="@style.css" text="Change password" textFill="#ea9215">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button layoutX="585.0" layoutY="565.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="212.0" style="-fx-border-color: transparent; -fx-background-color: transparent;" styleClass="user_transparent_button_borderless" stylesheets="@style.css" text="Change profile picture" textFill="#ea9215">
+            <Button layoutX="602.0" layoutY="565.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="212.0" style="-fx-border-color: transparent; -fx-background-color: transparent;" styleClass="user_transparent_button_borderless" stylesheets="@style.css" text="Change profile picture" textFill="#ea9215">
                <font>
                   <Font size="24.0" />
                </font>
