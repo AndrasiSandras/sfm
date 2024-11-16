@@ -20,7 +20,7 @@
                         <Image url="@../image/palackmesterlogo.png" />
                     </image>
                 </ImageView>
-                <Button fx:id="GoBackToLogin" layoutX="169.0" layoutY="410.0" mnemonicParsing="false" onAction="#goBackToLogin" style="-fx-background-color: #EA9215;" text="Login" textFill="#3a4750" />
+                <Button fx:id="GoBackToLogin" layoutX="158.0" layoutY="401.0" mnemonicParsing="false" onAction="#goBackToLogin" style="-fx-background-color: #EA9215;" styleClass="front_orange_button" stylesheets="@style.css" text="Login" textFill="WHITE" />
             </children>
         </AnchorPane>
     </left>
@@ -32,11 +32,11 @@
                         <Font size="24.0" />
                     </font>
                 </Text>
-                <TextField fx:id="emailText" layoutX="74.0" layoutY="125.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: #3A4750; -fx-border-width: 0px 0px 3px 0px;" />
-                <TextField fx:id="userNameText" layoutX="74.0" layoutY="175.0" promptText="User Name" style="-fx-background-color: transparent; -fx-border-color: #3A4750; -fx-border-width: 0px 0px 3px 0px;" />
-                <PasswordField fx:id="passwordText" layoutX="74.0" layoutY="225.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #3A4750; -fx-border-width: 0px 0px 3px 0px;" />
-                <PasswordField fx:id="rePasswordText" layoutX="74.0" layoutY="275.0" promptText="Reenter Password" style="-fx-background-color: transparent; -fx-border-color: #3A4750; -fx-border-width: 0px 0px 3px 0px;" />
-                <Button fx:id="RegisterButton" layoutX="118.0" layoutY="400.0" mnemonicParsing="false" onAction="#registerClient" style="-fx-background-color: #3A4750;" text="Register" textFill="WHITE" />
+                <TextField fx:id="emailText" layoutX="66.0" layoutY="124.0" promptText="Email" styleClass="front_text-field" stylesheets="@style.css" />
+                <TextField fx:id="userNameText" layoutX="66.0" layoutY="174.0" promptText="User Name" styleClass="front_text-field" stylesheets="@style.css" />
+                <PasswordField fx:id="passwordText" layoutX="64.0" layoutY="233.0" promptText="Password" styleClass="front_text-field" stylesheets="@style.css" />
+                <PasswordField fx:id="rePasswordText" layoutX="64.0" layoutY="282.0" promptText="Reenter Password" styleClass="front_text-field" stylesheets="@style.css" />
+                <Button fx:id="RegisterButton" layoutX="103.0" layoutY="400.0" mnemonicParsing="false" onAction="#registerClient" styleClass="front_grey_button" stylesheets="@style.css" text="Register" textFill="WHITE" />
             <Label fx:id="registerErrorText" alignment="CENTER" layoutY="332.0" prefHeight="18.0" prefWidth="300.0" textFill="#3a4750" />
             </children>
         </AnchorPane>
