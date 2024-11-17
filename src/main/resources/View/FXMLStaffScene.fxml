@@ -6,6 +6,7 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -90,27 +91,27 @@
          </Label>
       </Pane>
       <Pane layoutX="127.0" layoutY="172.0" prefHeight="455.0" prefWidth="707.0" style="-fx-background-color: #3a4750; -fx-background-radius: 20;">
-         <Button layoutX="111.0" layoutY="385.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="151.0" style="-fx-border-width: 2 2 2 2; -fx-background-color: transparent; -fx-border-color: #ea9215; -fx-border-radius: 10;" text="Add product" textFill="#ea9215">
+         <Button fx:id="AddButton" layoutX="109.0" layoutY="385.0" mnemonicParsing="false" onAction="#handleSaveProduct" prefHeight="43.0" prefWidth="151.0" style="-fx-border-width: 2 2 2 2; -fx-background-color: transparent; -fx-border-color: #ea9215; -fx-border-radius: 10;" text="Add product" textFill="#ea9215">
             <font>
                <Font size="18.0" />
             </font>
          </Button>
-         <Label layoutX="133.0" layoutY="221.0" text="Product price" textFill="#ea9215">
+         <Label layoutX="132.0" layoutY="102.0" text="Product price" textFill="#ea9215">
             <font>
                <Font size="18.0" />
             </font>
          </Label>
-         <Label layoutX="129.0" layoutY="68.0" text="Product name" textAlignment="CENTER" textFill="#ea9215">
+         <Label layoutX="127.0" layoutY="13.0" text="Product name" textAlignment="CENTER" textFill="#ea9215">
             <font>
                <Font size="18.0" />
             </font>
          </Label>
-         <TextField alignment="CENTER" layoutX="75.0" layoutY="94.0" opacity="0.8" promptText="Jägermeister 35% 0,7L" style="-fx-background-radius: 20;">
+         <TextField fx:id="productNameField" alignment="CENTER" layoutX="73.0" layoutY="39.0" opacity="0.8" promptText="Jägermeister 35% 0,7L" style="-fx-background-radius: 20;">
             <font>
                <Font size="18.0" />
             </font>
          </TextField>
-         <TextField alignment="CENTER" layoutX="75.0" layoutY="251.0" opacity="0.8" promptText="5 560,– Ft" style="-fx-background-radius: 20;">
+         <TextField fx:id="productPriceField" alignment="CENTER" layoutX="73.0" layoutY="129.0" opacity="0.8" promptText="5 560,– Ft" style="-fx-background-radius: 20;">
             <font>
                <Font size="18.0" />
             </font>
@@ -120,14 +121,24 @@
                <Font size="18.0" />
             </font>
          </Button>
-         <Label layoutX="477.0" layoutY="68.0" text="Upload picture" textFill="#ea9215">
+         <Label layoutX="476.0" layoutY="13.0" text="Upload picture" textFill="#ea9215">
             <font>
                <Font size="18.0" />
             </font>
          </Label>
-         <ImageView fx:id="ProductImage" fitHeight="227.0" fitWidth="223.0" layoutX="436.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true">
+         <ImageView fx:id="productImageView" fitHeight="323.0" fitWidth="254.0" layoutX="405.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@../image/Jägermeister_35%_0,7L.jpg" />
          </ImageView>
+         <Label layoutX="105.0" layoutY="193.0" text="Product description" textFill="#ea9215">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <TextArea fx:id="productDescriptionField" layoutX="73.0" layoutY="220.0" prefHeight="150.0" prefWidth="223.0" promptText="Delicious">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </TextArea>
       </Pane>
    </AnchorPane>
    <AnchorPane fx:id="TransactionInOutForm" layoutX="240.0" prefHeight="800.0" prefWidth="961.0" visible="false">

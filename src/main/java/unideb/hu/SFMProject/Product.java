@@ -12,22 +12,31 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    private int current;
+    private double price;
+    private String description;
 
     public String getName() {
         return name;
     }
 
-    public int getCurrent() {
-        return current;
+    public double getPrice() {
+        return price;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setCurrent(int current) {
-        this.current = current;
+    public void setPrice(double current) {
+        this.price = current;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
 }

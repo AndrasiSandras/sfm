@@ -1,3 +1,4 @@
+/*
 package unideb.hu.SFMProject;
 
 import javax.persistence.EntityManager;
@@ -8,8 +9,8 @@ import java.util.List;
 
 public class JPADAO extends DAO {
 
-    final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("unideb.hu.SFMProject");
-    final EntityManager entityManager = entityManagerFactory.createEntityManager();
+    EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("unideb.hu.SFMProject");
+    EntityManager entityManager = entityManagerFactory.createEntityManager();
 
     @Override
     public void saveProduct(Product a) {
@@ -17,7 +18,6 @@ public class JPADAO extends DAO {
         entityManager.persist(a);
         entityManager.flush();
         entityManager.getTransaction().commit();
-
     }
 
     @Override
@@ -103,6 +103,199 @@ public class JPADAO extends DAO {
         TypedQuery<String> query = entityManager.createQuery("SELECT a.Credentials FROM StaffCred a", String.class);
         List<String> result = query.getResultList();
         return result;
+    }
+
+    public void close() {
+        if (entityManagerFactory != null) {
+            entityManagerFactory.close();
+        }
+    }
+}
+*/
+
+package unideb.hu.SFMProject;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
+import java.util.List;
+
+public class JPADAO extends DAO {
+
+    private final EntityManagerFactory entityManagerFactory;
+
+    public JPADAO() {
+        this.entityManagerFactory = Persistence.createEntityManagerFactory("unideb.hu.SFMProject");
+    }
+
+    private EntityManager createEntityManager() {
+        return entityManagerFactory.createEntityManager();
+    }
+
+    @Override
+    public void saveProduct(Product a) {
+        EntityManager entityManager = createEntityManager();
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.persist(a);
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            if (entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().rollback();
+            }
+            throw e;
+        } finally {
+            entityManager.close();
+        }
+    }
+
+    @Override
+    public List<Product> getAllProduct() {
+        EntityManager entityManager = createEntityManager();
+        try {
+            TypedQuery<Product> query = entityManager.createQuery("SELECT a FROM Product a", Product.class);
+            return query.getResultList();
+        } finally {
+            entityManager.close();
+        }
+    }
+
+    @Override
+    public void updateProduct(Product a) {
+        EntityManager entityManager = createEntityManager();
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.merge(a); // persist helyett merge!
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            if (entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().rollback();
+            }
+            throw e;
+        } finally {
+            entityManager.close();
+        }
+    }
+
+    @Override
+    public void deleteProduct(Product a) {
+        EntityManager entityManager = createEntityManager();
+        try {
+            entityManager.getTransaction().begin();
+            Product product = entityManager.merge(a); // szükséges lehet a merge, mielőtt törölsz
+            entityManager.remove(product);
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            if (entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().rollback();
+            }
+            throw e;
+        } finally {
+            entityManager.close();
+        }
+    }
+
+    @Override
+    public void saveBeszallito(Beszallito a) {
+        EntityManager entityManager = createEntityManager();
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.persist(a);
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            if (entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().rollback();
+            }
+            throw e;
+        } finally {
+            entityManager.close();
+        }
+    }
+
+    @Override
+    public List<Beszallito> getAllBeszallito() {
+        EntityManager entityManager = createEntityManager();
+        try {
+            TypedQuery<Beszallito> query = entityManager.createQuery("SELECT a FROM Beszallito a", Beszallito.class);
+            return query.getResultList();
+        } finally {
+            entityManager.close();
+        }
+    }
+
+    @Override
+    public void updateBeszallito(Beszallito a) {
+        EntityManager entityManager = createEntityManager();
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.merge(a); // merge szükséges a frissítéshez
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            if (entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().rollback();
+            }
+            throw e;
+        } finally {
+            entityManager.close();
+        }
+    }
+
+    @Override
+    public void deleteBeszallito(Beszallito a) {
+        EntityManager entityManager = createEntityManager();
+        try {
+            entityManager.getTransaction().begin();
+            Beszallito beszallito = entityManager.merge(a); // szükséges lehet a merge, mielőtt törlöd
+            entityManager.remove(beszallito);
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            if (entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().rollback();
+            }
+            throw e;
+        } finally {
+            entityManager.close();
+        }
+    }
+
+    @Override
+    public void saveRegLog(RegLogin a) {
+        EntityManager entityManager = createEntityManager();
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.persist(a);
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            if (entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().rollback();
+            }
+            throw e;
+        } finally {
+            entityManager.close();
+        }
+    }
+
+    @Override
+    public List<String> getAllRegLog() {
+        EntityManager entityManager = createEntityManager();
+        try {
+            TypedQuery<String> query = entityManager.createQuery("SELECT a.Credentials FROM RegLogin a", String.class);
+            return query.getResultList();
+        } finally {
+            entityManager.close();
+        }
+    }
+
+    @Override
+    public List<String> getAllStaffCred() {
+        EntityManager entityManager = createEntityManager();
+        try {
+            TypedQuery<String> query = entityManager.createQuery("SELECT a.Credentials FROM StaffCred a", String.class);
+            return query.getResultList();
+        } finally {
+            entityManager.close();
+        }
     }
 
     public void close() {
