@@ -116,7 +116,7 @@
                <Font size="18.0" />
             </font>
          </TextField>
-         <Button layoutX="460.0" layoutY="385.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="151.0" style="-fx-border-width: 2 2 2 2; -fx-background-color: transparent; -fx-border-color: #ea9215; -fx-border-radius: 10;" text="Browse" textFill="#ea9215">
+         <Button fx:id="BrowseButton" layoutX="460.0" layoutY="385.0" mnemonicParsing="false" onAction="#handleBrowseImage" prefHeight="43.0" prefWidth="151.0" style="-fx-border-width: 2 2 2 2; -fx-background-color: transparent; -fx-border-color: #ea9215; -fx-border-radius: 10;" text="Browse" textFill="#ea9215">
             <font>
                <Font size="18.0" />
             </font>
@@ -126,7 +126,7 @@
                <Font size="18.0" />
             </font>
          </Label>
-         <ImageView fx:id="productImageView" fitHeight="323.0" fitWidth="254.0" layoutX="405.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+         <ImageView fx:id="ProductImageView" fitHeight="323.0" fitWidth="254.0" layoutX="405.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@../image/Jägermeister_35%_0,7L.jpg" />
          </ImageView>
          <Label layoutX="105.0" layoutY="193.0" text="Product description" textFill="#ea9215">

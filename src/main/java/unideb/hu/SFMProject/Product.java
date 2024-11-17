@@ -15,6 +15,9 @@ public class Product {
     @Column(nullable = false)
     private int quantity = 0; // Alapértelmezett érték
 
+    @Lob // Jelzi, hogy ez egy nagy méretű bináris adat
+    private byte[] image;
+
     public int getId() {
         return id;
     }
@@ -35,6 +38,10 @@ public class Product {
         return quantity;
     }
 
+    public byte[] getImage() {
+        return image;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -53,5 +60,9 @@ public class Product {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 }
