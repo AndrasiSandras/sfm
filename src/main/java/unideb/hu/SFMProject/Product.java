@@ -1,9 +1,6 @@
 package unideb.hu.SFMProject;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Product {
@@ -15,6 +12,13 @@ public class Product {
     private double price;
     private String description;
 
+    @Column(nullable = false)
+    private int quantity = 0; // Alapértelmezett érték
+
+    public int getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }
@@ -25,6 +29,14 @@ public class Product {
 
     public String getDescription() {
         return description;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setName(String name) {
@@ -39,4 +51,7 @@ public class Product {
         this.description = description;
     }
 
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 }

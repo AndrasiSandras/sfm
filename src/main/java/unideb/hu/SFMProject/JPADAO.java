@@ -164,19 +164,18 @@ public class JPADAO extends DAO {
     @Override
     public void updateProduct(Product a) {
         EntityManager entityManager = createEntityManager();
-        try {
-            entityManager.getTransaction().begin();
-            entityManager.merge(a); // persist helyett merge!
-            entityManager.getTransaction().commit();
-        } catch (Exception e) {
-            if (entityManager.getTransaction().isActive()) {
-                entityManager.getTransaction().rollback();
-            }
-            throw e;
-        } finally {
-            entityManager.close();
+        entityManager.getTransaction().begin();
+        Product existingProduct = entityManager.find(Product.class, a.getId());
+        if (existingProduct != null) {
+            existingProduct.setName(a.getName());
+            existingProduct.setDescription(a.getDescription());
+            existingProduct.setPrice(a.getPrice());
+            existingProduct.setQuantity(a.getQuantity()); // Új mező kezelése
+            entityManager.merge(existingProduct);
         }
+        entityManager.getTransaction().commit();
     }
+
 
     @Override
     public void deleteProduct(Product a) {
