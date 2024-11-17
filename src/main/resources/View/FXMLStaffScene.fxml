@@ -139,7 +139,7 @@
          </Label>
       </Pane>
       <Pane layoutX="100.0" layoutY="200.0" prefHeight="400.0" prefWidth="800.0" style="-fx-background-color: #3a4750; -fx-background-radius: 20;">
-         <ComboBox layoutX="76.0" layoutY="79.0" prefWidth="200.0" />
+         <ComboBox layoutX="76.0" layoutY="79.0" prefWidth="200.0" stylesheets="@style.css" />
          <Label layoutX="117.0" layoutY="33.0" text="Select item" textFill="#ea9215">
             <font>
                <Font size="24.0" />
@@ -155,7 +155,7 @@
                <Font size="18.0" />
             </font>
          </Button>
-         <ListView layoutX="360.0" layoutY="50.0" prefHeight="230.0" prefWidth="370.0" />
+         <ListView layoutX="360.0" layoutY="50.0" prefHeight="230.0" prefWidth="370.0" stylesheets="@style.css" />
          <Button layoutX="360.0" layoutY="326.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="170.0" style="-fx-border-width: 2 2 2 2; -fx-background-color: transparent; -fx-border-color: #ea9215; -fx-border-radius: 10;" styleClass="user_transparent_button" stylesheets="@style.css" text="Transaction in" textFill="#ea9215">
             <font>
                <Font size="18.0" />
@@ -177,7 +177,7 @@
          </Label>
       </Pane>
       <Pane layoutX="56.0" layoutY="122.0" prefHeight="650.0" prefWidth="850.0" style="-fx-background-color: #3a4750; -fx-background-radius: 20;" />
-      <TableView layoutX="81.0" layoutY="152.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #3a4750; -fx-border-color: #ea9215; -fx-border-width: 5 5 5 5; -fx-border-radius: 0 0 20 20;">
+      <TableView layoutX="81.0" layoutY="152.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #3a4750; -fx-border-color: #ea9215; -fx-border-width: 5 5 5 5; -fx-border-radius: 0 0 20 20;" stylesheets="@style.css">
          <columns>
             <TableColumn prefWidth="180.0" text="Image" />
             <TableColumn prefWidth="420.0" text="Name" />
@@ -195,12 +195,12 @@
          </Label>
       </Pane>
       <Pane layoutX="70.0" layoutY="160.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #3a4750; -fx-background-radius: 20;">
-         <TableView layoutX="100.0" layoutY="30.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #3a4750; -fx-border-color: #ea9215; -fx-border-width: 5 5 5 5; -fx-border-radius: 0 0 20 20;">
+         <TableView layoutX="100.0" layoutY="30.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #3a4750; -fx-border-color: #ea9215; -fx-border-width: 5 5 5 5; -fx-border-radius: 0 0 20 20;" stylesheets="@style.css">
             <columns>
-               <TableColumn prefWidth="108.00003051757812" text="Transaction ID" />
-               <TableColumn prefWidth="60.0" text="In/Out" />
-               <TableColumn prefWidth="175.199951171875" text="Transaction starter name" />
-               <TableColumn prefWidth="245.60003662109375" text="Products" />
+               <TableColumn prefWidth="123.33346557617188" text="Transaction ID" />
+               <TableColumn prefWidth="72.666748046875" text="In/Out" />
+               <TableColumn prefWidth="225.333251953125" text="Transaction starter name" />
+               <TableColumn prefWidth="167.3333740234375" text="Products" />
             </columns>
          </TableView>
          <Button fx:id="GenerateReportButton" layoutX="275.0" layoutY="494.0" mnemonicParsing="false" onAction="#reportGenerator" style="-fx-background-color: transparent; -fx-border-width: 3 3 3 3; -fx-border-color: #ea9215; -fx-border-radius: 10;" styleClass="user_transparent_button_bigger" stylesheets="@style.css" text="Generate report" textFill="#ea9215">
@@ -236,7 +236,7 @@
             </font>
          </Label>
       </Pane>
-      <ListView layoutX="50.0" layoutY="249.0" prefHeight="480.0" prefWidth="860.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.799999999999955" />
+      <ListView layoutX="50.0" layoutY="249.0" prefHeight="480.0" prefWidth="860.0" stylesheets="@style.css" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.799999999999955" />
       <Label layoutX="50.0" layoutY="190.0" text="History:" textFill="#ea9215">
          <font>
             <Font size="24.0" />
