@@ -115,10 +115,7 @@ public class JPADAO extends DAO {
 
 package unideb.hu.SFMProject;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
 import java.util.List;
 
 public class JPADAO extends DAO {
@@ -149,6 +146,7 @@ public class JPADAO extends DAO {
             entityManager.close();
         }
     }
+
 
     @Override
     public List<Product> getAllProduct() {
@@ -292,6 +290,23 @@ public class JPADAO extends DAO {
         try {
             TypedQuery<String> query = entityManager.createQuery("SELECT a.Credentials FROM StaffCred a", String.class);
             return query.getResultList();
+        } finally {
+            entityManager.close();
+        }
+    }
+
+
+    @Override
+    public Product findProductByName(String name) {
+
+        EntityManager entityManager = createEntityManager();
+
+        try {
+            return entityManager.createQuery("SELECT p FROM Product p WHERE p.name = :name", Product.class)
+                    .setParameter("name", name)
+                    .getSingleResult();
+        } catch (NoResultException e) {
+            return null; // Ha nincs ilyen termék, akkor null
         } finally {
             entityManager.close();
         }

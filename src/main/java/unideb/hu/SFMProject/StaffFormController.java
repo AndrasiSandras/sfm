@@ -6,22 +6,22 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import javax.persistence.NoResultException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class StaffFormController {
 
@@ -47,6 +47,18 @@ public class StaffFormController {
     private Button AccountButton, AddProductButton, ReportsButton, TransInOutButton, ViewProdButton, LogoutButton;
     @FXML
     private AnchorPane AccountForm, AddProductForm, ReportsForm, TransactionInOutForm, ViewProductStockForm;
+    @FXML
+    private ComboBox<String> productComboBox;
+    @FXML
+    private TextField productQuantityField;
+    @FXML
+    private ListView<String> productListView;
+    
+
+    private int current;
+    private int difference;
+
+
 
     private JPADAO jpaDAO = new JPADAO();
     private Map<Button, AnchorPane> buttonPaneMap;
@@ -113,9 +125,16 @@ public class StaffFormController {
         String priceText = productPriceField.getText();
         String description = productDescriptionField.getText();
 
+
         // 2. Adatok validálása
         if (name.isEmpty() || priceText.isEmpty() || description.isEmpty()) {
             showAlert("Error", "All fields must be filled in!", Alert.AlertType.ERROR);
+            return;
+        }
+
+        if(isItAlreadyIn(name))
+        {
+            showAlert("Error","Product already in database!",Alert.AlertType.ERROR);
             return;
         }
 
@@ -151,6 +170,23 @@ public class StaffFormController {
         }
     }
 
+    private boolean isItAlreadyIn(String name)
+    {
+        List<Product> products;
+        products = jpaDAO.getAllProduct();
+
+        List<String> productnames = products.stream()
+                .map(Product::getName)
+                .collect(Collectors.toList());
+
+
+        if(productnames.contains(name))
+        {
+            return true;
+        }
+        return false;
+    }
+
     private void clearForm() {
         productNameField.clear();
         productPriceField.clear();
@@ -169,4 +205,123 @@ public class StaffFormController {
 
     public void reportGenerator(ActionEvent actionEvent) {
     }
+
+    public void fillComboBox() {
+
+        List<Product> products;
+
+        products = jpaDAO.getAllProduct();
+
+        List<String> productNames = products.stream()
+                .map(Product::getName)
+                .collect(Collectors.toList());
+
+        productComboBox.getItems().addAll(productNames);
+        
+    }
+
+    int min = 0, max = 1000;
+    
+    public void transctionInHandle(ActionEvent actionEvent) {
+        String selectedProductName = productComboBox.getValue(); // Kiválasztott termék neve
+        if (selectedProductName == null) {
+            showAlert("Error", "Please select a product!", Alert.AlertType.ERROR);
+            return;
+        }
+
+        String quantityText = productQuantityField.getText(); // A beírt mennyiség
+        int quantity;
+
+        try {
+            quantity = Integer.parseInt(quantityText);
+        } catch (NumberFormatException e) {
+            showAlert("Error", "Please enter a valid number for quantity!", Alert.AlertType.ERROR);
+            return;
+        }
+
+        if (quantity <= min || quantity >= max) {
+            showAlert("Error", "Quantity must be between " + min+1 + " and " + max + "!", Alert.AlertType.ERROR);
+            return;
+        }
+
+
+        Product product = jpaDAO.findProductByName(selectedProductName);
+        if (product == null) {
+            showAlert("Error", "Product not found in the database!", Alert.AlertType.ERROR);
+            return;
+        }
+
+
+        if (product.getQuantity() + quantity > max) {
+            showAlert("Error", "The product quantity exceeds the maximum limit!", Alert.AlertType.ERROR);
+            return;
+        }
+
+
+        product.setQuantity(product.getQuantity() + quantity);
+
+
+        try {
+            jpaDAO.updateProduct(product);
+            productListView.getItems().add("Added " + quantity + " to " + product.getName() + " (New quantity: " + product.getQuantity() + ")");
+         } catch (Exception e) {
+            showAlert("Error", "Failed to update the product quantity!", Alert.AlertType.ERROR);
+        }
+
+    }
+
+
+    @FXML
+    private void transactionOutHandle(ActionEvent event) {
+            String selectedProductName = productComboBox.getValue(); // A kiválasztott termék neve
+            if (selectedProductName == null) {
+                showAlert("Error", "Please select a product!", Alert.AlertType.ERROR);
+                return;
+            }
+
+
+            String quantityText = productQuantityField.getText();
+            int quantity;
+
+
+            try {
+                quantity = Integer.parseInt(quantityText);
+            } catch (NumberFormatException e) {
+                showAlert("Error", "Please enter a valid number for quantity!", Alert.AlertType.ERROR);
+                return;
+            }
+
+            if (quantity < min || quantity > max) {
+                showAlert("Error", "Quantity must be between " + min + " and " + max + "!", Alert.AlertType.ERROR);
+                return;
+            }
+
+
+            Product product = jpaDAO.findProductByName(selectedProductName);
+            if (product == null) {
+                showAlert("Error", "Product not found in the database!", Alert.AlertType.ERROR);
+                return;
+            }
+
+
+            if (product.getQuantity() - quantity < 0) {
+                showAlert("Error", "The product quantity cannot be less than 0!", Alert.AlertType.ERROR);
+                return;
+            }
+
+
+            product.setQuantity(product.getQuantity() - quantity);
+
+
+            try {
+                jpaDAO.updateProduct(product);
+                productListView.getItems().add(("Removed " + quantity + " from " + product.getName() + " (New quantity: " + product.getQuantity() + ")"));
+
+            } catch (Exception e) {
+                showAlert("Error", "Failed to update the product quantity!", Alert.AlertType.ERROR);
+            }
+    }
+
+
+
 }

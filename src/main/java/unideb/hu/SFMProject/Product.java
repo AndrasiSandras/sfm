@@ -7,7 +7,7 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
     private String name;
     private double price;
     private String description;
@@ -18,8 +18,12 @@ public class Product {
     @Lob // Jelzi, hogy ez egy nagy méretű bináris adat
     private byte[] image;
 
-    public int getId() {
+    public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -42,9 +46,7 @@ public class Product {
         return image;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+
 
     public void setName(String name) {
         this.name = name;

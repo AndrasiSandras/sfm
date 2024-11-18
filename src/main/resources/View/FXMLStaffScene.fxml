@@ -150,29 +150,24 @@
          </Label>
       </Pane>
       <Pane layoutX="100.0" layoutY="200.0" prefHeight="400.0" prefWidth="800.0" style="-fx-background-color: #3a4750; -fx-background-radius: 20;">
-         <ComboBox layoutX="50.0" layoutY="80.0" prefWidth="200.0" />
+         <ComboBox fx:id="productComboBox" layoutX="50.0" layoutY="80.0" onMouseClicked="#fillComboBox" prefWidth="200.0" />
          <Label layoutX="92.0" layoutY="31.0" text="Select item" textFill="#ea9215">
             <font>
                <Font size="24.0" />
             </font>
          </Label>
-         <TextField alignment="CENTER" layoutX="39.0" layoutY="200.0" opacity="0.8" promptText="6 db" style="-fx-background-radius: 20;">
+         <TextField fx:id="productQuantityField" alignment="CENTER" layoutX="39.0" layoutY="200.0" opacity="0.8" promptText="6 db" style="-fx-background-radius: 20;">
             <font>
                <Font size="18.0" />
             </font>
          </TextField>
-         <Button layoutX="75.0" layoutY="326.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="151.0" style="-fx-border-width: 2 2 2 2; -fx-background-color: transparent; -fx-border-color: #ea9215; -fx-border-radius: 10;" text="Add to list" textFill="#ea9215">
+         <ListView fx:id="productListView" layoutX="360.0" layoutY="50.0" prefHeight="230.0" prefWidth="370.0" />
+         <Button fx:id="transactionInButton" layoutX="360.0" layoutY="326.0" mnemonicParsing="false" onAction="#transctionInHandle" prefHeight="43.0" prefWidth="170.0" style="-fx-border-width: 2 2 2 2; -fx-background-color: transparent; -fx-border-color: #ea9215; -fx-border-radius: 10;" text="Transaction in" textFill="#ea9215">
             <font>
                <Font size="18.0" />
             </font>
          </Button>
-         <ListView layoutX="360.0" layoutY="50.0" prefHeight="230.0" prefWidth="370.0" />
-         <Button layoutX="360.0" layoutY="326.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="170.0" style="-fx-border-width: 2 2 2 2; -fx-background-color: transparent; -fx-border-color: #ea9215; -fx-border-radius: 10;" text="Transaction in" textFill="#ea9215">
-            <font>
-               <Font size="18.0" />
-            </font>
-         </Button>
-         <Button layoutX="560.0" layoutY="326.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="170.0" style="-fx-border-width: 2 2 2 2; -fx-background-color: transparent; -fx-border-color: #ea9215; -fx-border-radius: 10;" text="Transaction out" textFill="#ea9215">
+         <Button fx:id="transactionOutButton" layoutX="560.0" layoutY="326.0" mnemonicParsing="false" onAction="#transactionOutHandle" prefHeight="43.0" prefWidth="170.0" style="-fx-border-width: 2 2 2 2; -fx-background-color: transparent; -fx-border-color: #ea9215; -fx-border-radius: 10;" text="Transaction out" textFill="#ea9215">
             <font>
                <Font size="18.0" />
             </font>

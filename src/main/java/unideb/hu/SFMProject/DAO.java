@@ -4,9 +4,13 @@ import java.util.List;
 
 public abstract class DAO {
     public abstract void saveProduct(Product a);       //C
+
+
+
     public  abstract List<Product> getAllProduct();    //R
     public abstract void updateProduct(Product a);     //U
     public abstract void deleteProduct(Product a);
+    public abstract Product findProductByName(String name);
 
     public abstract void saveBeszallito(Beszallito a);       //C
     public  abstract List<Beszallito> getAllBeszallito();    //R
