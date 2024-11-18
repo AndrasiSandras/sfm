@@ -1,5 +1,10 @@
 package unideb.hu.SFMProject;
 
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -53,6 +58,17 @@ public class StaffFormController {
     private TextField productQuantityField;
     @FXML
     private ListView<String> productListView;
+    @FXML
+    private TableView<Product> productTableView;
+    @FXML
+    private TableColumn<Product,String> tableName;
+    @FXML
+    private TableColumn<Product,Double> tablePrice;
+    @FXML
+    private TableColumn<Product,Integer> tableQuantity;
+    @FXML
+    private TableColumn<Product,String> tableDescription;
+
     
 
     private int current;
@@ -322,6 +338,22 @@ public class StaffFormController {
             }
     }
 
+    public void generateTableView()
+    {
+        ObservableList<Product> products;
+
+        products = FXCollections.observableList(jpaDAO.getAllProduct());
+
+        tableName.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getName()));
+        tablePrice.setCellValueFactory(cellData -> new SimpleDoubleProperty(cellData.getValue().getPrice()).asObject());
+        tableQuantity.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getQuantity()).asObject());
+        tableDescription.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDescription()));
+
+        productTableView.setItems(products);
+    }
 
 
+    public void refreshTableView(ActionEvent actionEvent) {
+        generateTableView();
+    }
 }

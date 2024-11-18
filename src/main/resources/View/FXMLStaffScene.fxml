@@ -182,13 +182,16 @@
             </font>
          </Label>
       </Pane>
-      <Pane layoutX="75.0" layoutY="120.0" prefHeight="650.0" prefWidth="850.0" style="-fx-background-color: #3a4750; -fx-background-radius: 20;" />
-      <TableView layoutX="100.0" layoutY="150.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #3a4750; -fx-border-color: #ea9215; -fx-border-width: 5 5 5 5; -fx-border-radius: 0 0 20 20;">
+      <Pane layoutX="25.0" layoutY="125.0" prefHeight="650.0" prefWidth="901.0" style="-fx-background-color: #3a4750; -fx-background-radius: 20;">
+         <children>
+            <Button fx:id="refreshButton" layoutX="22.0" layoutY="41.0" mnemonicParsing="false" onAction="#refreshTableView" prefHeight="25.0" prefWidth="81.0" style="-fx-border-width: 2 2 2 2; -fx-background-color: transparent; -fx-border-color: #ea9215; -fx-border-radius: 10;" text="Refresh" textFill="#ea9215" />
+         </children></Pane>
+      <TableView fx:id="productTableView" layoutX="151.0" layoutY="150.0" prefHeight="600.0" prefWidth="750.0" style="-fx-background-color: #3a4750; -fx-border-color: #ea9215; -fx-border-width: 5 5 5 5; -fx-border-radius: 0 0 20 20;">
          <columns>
-            <TableColumn prefWidth="180.0" text="Image" />
-            <TableColumn prefWidth="420.0" text="Name" />
-            <TableColumn prefWidth="100.0" text="Price" />
-            <TableColumn prefWidth="100.0" text="Stock" />
+            <TableColumn fx:id="tableName" prefWidth="175.0" text="Name" />
+            <TableColumn fx:id="tablePrice" prefWidth="175.0" text="Price" />
+            <TableColumn fx:id="tableQuantity" minWidth="0.0" prefWidth="175.0" text="Qunatity" />
+            <TableColumn fx:id="tableDescription" prefWidth="225.0" resizable="false" text="Description" />
          </columns>
       </TableView>
    </AnchorPane>
