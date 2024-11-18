@@ -2,7 +2,9 @@ package unideb.hu.SFMProject;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,13 +14,17 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.util.Callback;
 
-import javax.persistence.NoResultException;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -68,6 +74,8 @@ public class StaffFormController {
     private TableColumn<Product,Integer> tableQuantity;
     @FXML
     private TableColumn<Product,String> tableDescription;
+    @FXML
+    private TableColumn<Product, ImageView> tableImage;
 
     
 
@@ -348,6 +356,24 @@ public class StaffFormController {
         tablePrice.setCellValueFactory(cellData -> new SimpleDoubleProperty(cellData.getValue().getPrice()).asObject());
         tableQuantity.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getQuantity()).asObject());
         tableDescription.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDescription()));
+        tableImage.setCellValueFactory(new Callback<CellDataFeatures<Product, ImageView>, ObservableValue<ImageView>>() {
+            @Override
+            public ObservableValue<ImageView> call(CellDataFeatures<Product, ImageView> param) {
+                byte[] imageBytes = param.getValue().getImage();
+                Image image = null;
+
+                if (imageBytes != null) {
+                    image = new Image(new ByteArrayInputStream(imageBytes)); // Byte[] -> Image
+                }
+
+                ImageView imageView = new ImageView(image);
+                imageView.setFitWidth(150);
+                imageView.setFitHeight(150);
+                return new SimpleObjectProperty<>(imageView);
+            }
+        });
+
+
 
         productTableView.setItems(products);
     }
