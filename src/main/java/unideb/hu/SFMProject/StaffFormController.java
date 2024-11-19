@@ -78,6 +78,8 @@ public class StaffFormController {
     @FXML
     private TableColumn<Product, ImageView> tableImage;
 
+
+
     
 
     private int current;
@@ -216,8 +218,8 @@ public class StaffFormController {
         productNameField.clear();
         productPriceField.clear();
         productDescriptionField.clear();
-        // Alapértelmezett képre állítás, ha szükséges
-        //productImageView.setImage(null);
+        ProductImageView.setImage(null);
+        imageBytes = null;
     }
 
     private void showAlert(String title, String message, Alert.AlertType alertType) {
