@@ -24,6 +24,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.util.Callback;
 
+import javax.persistence.EntityManager;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -234,6 +235,8 @@ public class StaffFormController {
 
         List<Product> products;
 
+        productComboBox.getItems().clear();
+
         products = jpaDAO.getAllProduct();
 
         List<String> productNames = products.stream()
@@ -241,6 +244,9 @@ public class StaffFormController {
                 .collect(Collectors.toList());
 
         productComboBox.getItems().addAll(productNames);
+
+        productComboBox.hide();
+        productComboBox.show();
         
     }
 
@@ -381,5 +387,37 @@ public class StaffFormController {
 
     public void refreshTableView(ActionEvent actionEvent) {
         generateTableView();
+    }
+
+    public void deleteProductHandle(ActionEvent actionEvent) {
+
+        // Kiválasztott név lekérése
+        String selectedProductName = productComboBox.getValue();
+
+        if (selectedProductName == null || selectedProductName.isEmpty()) {
+            showAlert("Error", "Please select a product to delete!", Alert.AlertType.ERROR);
+            return;
+        }
+
+        // Keresd meg a Product objektumot a név alapján
+        Product productToDelete = jpaDAO.findProductByName(selectedProductName);
+
+        if (productToDelete == null) {
+            showAlert("Error", "The selected product was not found in the database.", Alert.AlertType.ERROR);
+            return;
+        }
+
+        // Törlés a jpaDAO.deleteProduct() segítségével
+        try {
+            jpaDAO.deleteProduct(productToDelete);
+            showAlert("Success", "The product has been successfully deleted!", Alert.AlertType.INFORMATION);
+
+            // Frissítsük a ComboBox tartalmát
+            productComboBox.getItems().remove(selectedProductName);
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Error", "Failed to delete the product.", Alert.AlertType.ERROR);
+        }
+
     }
 }
