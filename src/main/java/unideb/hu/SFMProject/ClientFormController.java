@@ -243,6 +243,7 @@ public class ClientFormController {
                     image = new Image(new ByteArrayInputStream(imageBytes)); // Byte[] -> Image
                 }
 
+
                 ImageView imageView = new ImageView(image);
                 imageView.setFitWidth(150);
                 imageView.setFitHeight(150);
