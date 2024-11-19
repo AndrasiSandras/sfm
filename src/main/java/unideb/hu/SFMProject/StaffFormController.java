@@ -341,6 +341,11 @@ public class StaffFormController {
                 return;
             }
 
+            if (product.getQuantity() + quantity > 0) {
+                showAlert("Error", "The product quantity cannot be more than 1000!", Alert.AlertType.ERROR);
+                return;
+            }
+
 
             product.setQuantity(product.getQuantity() - quantity);
 

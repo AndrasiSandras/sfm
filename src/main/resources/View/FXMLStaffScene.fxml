@@ -75,14 +75,14 @@
                <Font size="18.0" />
             </font>
          </Label>
-         <Label layoutX="120.0" layoutY="200.0" prefHeight="27.0" prefWidth="114.0" text="(Staff name)" textFill="#ea9215">
+         <Label fx:id="loggedInField" layoutX="120.0" layoutY="200.0" prefHeight="27.0" prefWidth="114.0" text="(Staff name)" textFill="#ea9215">
             <font>
                <Font size="18.0" />
             </font>
          </Label>
       </Pane>
    </VBox>
-   <AnchorPane fx:id="AddProductForm" layoutX="240.0" prefHeight="800.0" prefWidth="961.0">
+   <AnchorPane fx:id="AddProductForm" layoutX="240.0" prefHeight="800.0" prefWidth="961.0" visible="false">
       <Pane layoutY="-1.0" prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: #3a4750; -fx-background-radius: 0 0 20;">
          <Label layoutX="117.0" layoutY="15.0" text="Add Product" textFill="#ea9215">
             <font>
@@ -200,7 +200,7 @@
          </columns>
       </TableView>
    </AnchorPane>
-   <AnchorPane fx:id="ReportsForm" layoutX="240.0" prefHeight="800.0" prefWidth="961.0" visible="false">
+   <AnchorPane fx:id="ReportsForm" layoutX="240.0" prefHeight="800.0" prefWidth="961.0">
       <Pane layoutY="-1.0" prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: #3a4750; -fx-background-radius: 0 0 20;">
          <Label layoutX="168.0" layoutY="15.0" text="Reports" textFill="#ea9215">
             <font>
@@ -217,7 +217,7 @@
                <TableColumn prefWidth="245.60003662109375" text="Products" />
             </columns>
          </TableView>
-         <Button fx:id="GenerateReportButton" layoutX="297.0" layoutY="504.0" mnemonicParsing="false" onAction="#reportGenerator" style="-fx-background-color: transparent; -fx-border-width: 3 3 3 3; -fx-border-color: #ea9215; -fx-border-radius: 10;" text="Generate report" textFill="#ea9215">
+         <Button fx:id="GenerateReportButton" layoutX="473.0" layoutY="505.0" mnemonicParsing="false" onAction="#reportGenerator" style="-fx-background-color: transparent; -fx-border-width: 3 3 3 3; -fx-border-color: #ea9215; -fx-border-radius: 10;" text="Generate report" textFill="#ea9215">
             <font>
                <Font size="24.0" />
             </font>
@@ -227,6 +227,11 @@
                <Font size="18.0" />
             </font>
          </Label>
+         <Button fx:id="reportRefreshButton" layoutX="223.0" layoutY="508.0" mnemonicParsing="false" style="-fx-border-width: 2 2 2 2; -fx-background-color: transparent; -fx-border-color: #ea9215; -fx-border-radius: 10;" text="Refresh" textFill="#ea9215">
+            <font>
+               <Font size="24.0" />
+            </font>
+         </Button>
       </Pane>
    </AnchorPane>
    <AnchorPane fx:id="AccountForm" layoutX="240.0" prefHeight="800.0" prefWidth="961.0" visible="false">
