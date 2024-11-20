@@ -10,10 +10,6 @@ public class Utils {
         this.pDAO = pDAO;
     }
 
-    public void runPUtils(Product product) {
-        pDAO.saveProduct(product);
-    }
-
     public void runCUtils(RegLogin c) {
         pDAO.saveRegLog(c);
     }
