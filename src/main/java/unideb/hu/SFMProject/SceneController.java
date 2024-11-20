@@ -48,6 +48,15 @@ public class SceneController {
     @FXML
     private Label LoginErrorText;
 
+    private String loginName;
+
+    public String getloginName()
+    {
+        return loginName;
+    }
+
+
+
 
     AuthController authController = new AuthController(emailText, passwordText, rePasswordText, userNameText, registerErrorText);
 
@@ -177,9 +186,11 @@ public class SceneController {
 
         }
 
+
         if(credentail)
         {
-            //clientLoginErrorText.setText("Login successful. Welcome....");
+            loginName = Credentials[0];
+
             return true;
         }
         else
@@ -193,7 +204,7 @@ public class SceneController {
     {
         Utils sutils = new Utils(new JPADAO());
         List<String> Slist = sutils.runStaffUtils();
-        String[] cred;
+        String[] cred = new String[0];
         boolean Staffcred = false;
 
         for(String e : Slist)
@@ -206,8 +217,12 @@ public class SceneController {
 
         }
 
+
+
         if(Staffcred)
         {
+            loginName = Credentials[0];
+
             return true;
         }
         else
