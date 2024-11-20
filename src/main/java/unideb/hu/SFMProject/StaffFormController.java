@@ -198,7 +198,7 @@ public class StaffFormController {
         newProduct.setName(name);
         newProduct.setPrice(price);
         newProduct.setDescription(description);
-        //newProduct.setQuantity(0); // Alapértelmezett darabszám
+        //newProduct.setQuantity(0);
 
 
         // Kép hozzáadása
