@@ -306,7 +306,7 @@ public class JPADAO extends DAO {
                     .setParameter("name", name)
                     .getSingleResult();
         } catch (NoResultException e) {
-            return null; // Ha nincs ilyen termék, akkor null
+            return null;
         } finally {
             entityManager.close();
         }

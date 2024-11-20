@@ -7,6 +7,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,6 +24,7 @@ import javafx.stage.Stage;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.util.Callback;
+import org.h2.store.Data;
 
 import javax.persistence.EntityManager;
 import java.io.ByteArrayInputStream;
@@ -30,9 +32,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class StaffFormController {
@@ -77,13 +79,18 @@ public class StaffFormController {
     private TableColumn<Product,String> tableDescription;
     @FXML
     private TableColumn<Product, ImageView> tableImage;
-
-
-
-    
-
-    private int current;
-    private int difference;
+    @FXML
+    private TableView<Product> reportTableView;
+    @FXML
+    private TableColumn<Product,String> transactionId;
+    @FXML
+    private TableColumn<Product,String> inOut;
+    @FXML
+    private TableColumn<Product,String> pName;
+    @FXML
+    private TableColumn<Product,String> pQuantity;
+    @FXML
+    private Label loggedInField;
 
 
 
@@ -92,6 +99,19 @@ public class StaffFormController {
 
     private File selectedFile;
     private byte[] imageBytes;
+
+
+    ClientFormController clientFormController;
+
+    public ClientFormController getClientFormController() {
+        return clientFormController;
+    }
+
+    SceneController sceneController;
+
+    public SceneController getSceneController() {
+        return sceneController;
+    }
 
     @FXML
     public void initialize() {
@@ -296,6 +316,9 @@ public class StaffFormController {
         try {
             jpaDAO.updateProduct(product);
             productListView.getItems().add("Added " + quantity + " to " + product.getName() + " (New quantity: " + product.getQuantity() + ")");
+            //setTransIn(generateUniqueRandom()+ ",IN," + sceneController.getloginName()+ "," + product.getName()+ ": " + product.getQuantity() + "db\n");
+
+
          } catch (Exception e) {
             showAlert("Error", "Failed to update the product quantity!", Alert.AlertType.ERROR);
         }
@@ -341,10 +364,7 @@ public class StaffFormController {
                 return;
             }
 
-            if (product.getQuantity() + quantity > 0) {
-                showAlert("Error", "The product quantity cannot be more than 1000!", Alert.AlertType.ERROR);
-                return;
-            }
+
 
 
             product.setQuantity(product.getQuantity() - quantity);
@@ -353,8 +373,10 @@ public class StaffFormController {
             try {
                 jpaDAO.updateProduct(product);
                 productListView.getItems().add(("Removed " + quantity + " from " + product.getName() + " (New quantity: " + product.getQuantity() + ")"));
+                //setTransOut(generateUniqueRandom()+ ",OUT," + product.getName() + "," + product.getQuantity() + "db\n");
 
-            } catch (Exception e) {
+
+           } catch (Exception e) {
                 showAlert("Error", "Failed to update the product quantity!", Alert.AlertType.ERROR);
             }
     }
@@ -427,4 +449,28 @@ public class StaffFormController {
         }
 
     }
+
+
+        private static final int MIN = 100000;
+        private static final int MAX = 999999;
+        private Set<Integer> generatedNumbers = new HashSet<>();
+        private Random random = new Random();
+
+        public int generateUniqueRandom() {
+            if (generatedNumbers.size() >= (MAX - MIN + 1)) {
+                throw new IllegalStateException("Minden lehetséges 6 jegyű számot generáltál!");
+            }
+
+            int number;
+            do {
+                number = random.nextInt(MAX - MIN + 1) + MIN;
+            } while (generatedNumbers.contains(number));
+
+            generatedNumbers.add(number);
+            return number;
+
+
+        }
+
+
 }

@@ -7,6 +7,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,9 +24,10 @@ import javafx.util.Callback;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class ClientFormController {
@@ -59,10 +61,44 @@ public class ClientFormController {
     private TableColumn<Product,String> beszalTableDescription;
     @FXML
     private TableColumn<Product, ImageView> beszalTableImage;
+    @FXML
+    private Label loggedInField;
+
+    public void setLoggedInField(String s)
+    {
+        loggedInField.setText(s);
+    }
 
     private JPADAO jpaDAO = new JPADAO();
 
     private Map<Button, AnchorPane> buttonPaneMap;
+
+    private List<String> report2List;
+
+    public List<String> getReport2List()
+    {
+        return report2List;
+    }
+
+
+    private String transIn;
+    private String transOut;
+
+    public String getTransOut() {
+        return transOut;
+    }
+
+    public void setTransOut(String transOut) {
+        this.transOut = transOut;
+    }
+
+    public String getTransIn() {
+        return transIn;
+    }
+
+    public void setTransIn(String transIn) {
+        this.transIn = transIn;
+    }
 
     @FXML
     public void initialize() {
@@ -159,6 +195,9 @@ public class ClientFormController {
         try {
             jpaDAO.updateProduct(product);
             beszalListView.getItems().add("Added " + quantity + " to " + product.getName() + " (New quantity: " + product.getQuantity() + ")");
+            //setTransIn(generateUniqueRandom()+ ",IN," + product.getName() + "," + product.getQuantity() + "db\n");
+
+
         } catch (Exception e) {
             showAlert("Error", "Failed to update the product quantity!", Alert.AlertType.ERROR);
         }
@@ -202,10 +241,7 @@ public class ClientFormController {
             return;
         }
 
-        if (product.getQuantity() + quantity > 0) {
-            showAlert("Error", "The product quantity cannot be more than 1000!", Alert.AlertType.ERROR);
-            return;
-        }
+
 
 
         product.setQuantity(product.getQuantity() - quantity);
@@ -214,6 +250,7 @@ public class ClientFormController {
         try {
             jpaDAO.updateProduct(product);
             beszalListView.getItems().add(("Removed " + quantity + " from " + product.getName() + " (New quantity: " + product.getQuantity() + ")"));
+            //setTransOut(generateUniqueRandom()+ ",OUT," + product.getName() + "," + product.getQuantity() + "db\n");
 
         } catch (Exception e) {
             showAlert("Error", "Failed to update the product quantity!", Alert.AlertType.ERROR);
@@ -255,4 +292,27 @@ public class ClientFormController {
 
         beszallTableview.setItems(products);
     }
+
+
+    private static final int MIN = 100000;
+    private static final int MAX = 999999;
+    private Set<Integer> generatedNumbers = new HashSet<>();
+    private Random random = new Random();
+
+    public int generateUniqueRandom() {
+        if (generatedNumbers.size() >= (MAX - MIN + 1)) {
+            throw new IllegalStateException("Minden lehetséges 6 jegyű számot generáltál!");
+        }
+
+        int number;
+        do {
+            number = random.nextInt(MAX - MIN + 1) + MIN;
+        } while (generatedNumbers.contains(number));
+
+        generatedNumbers.add(number);
+        return number;
+    }
+
+
+
 }
