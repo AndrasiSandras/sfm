@@ -74,6 +74,7 @@
             </Label>
         </Pane>
         <Pane layoutX="100.0" layoutY="200.0" prefHeight="400.0" prefWidth="800.0" style="-fx-background-color: #3a4750; -fx-background-radius: 20;">
+
             <ComboBox fx:id="beszallComboBox" layoutX="50.0" layoutY="80.0" onMouseClicked="#fillComboBoxBeszall" prefWidth="200.0" />
             <Label layoutX="92.0" layoutY="31.0" text="Select item" textFill="#ea9215">
                 <font>
@@ -91,6 +92,7 @@
                     <Font size="18.0" />
                 </font>
             </Button>
+
             <Button fx:id="beszalTransOut" layoutX="560.0" layoutY="326.0" mnemonicParsing="false" onAction="#beszalTransOutHandle" prefHeight="43.0" prefWidth="170.0" style="-fx-border-width: 2 2 2 2; -fx-background-color: transparent; -fx-border-color: #ea9215; -fx-border-radius: 10;" text="Transaction out" textFill="#ea9215">
                 <font>
                     <Font size="18.0" />
