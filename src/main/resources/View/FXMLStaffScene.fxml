@@ -141,7 +141,7 @@
          </TextArea>
       </Pane>
    </AnchorPane>
-   <AnchorPane fx:id="TransactionInOutForm" layoutX="240.0" prefHeight="800.0" prefWidth="961.0">
+   <AnchorPane fx:id="TransactionInOutForm" layoutX="240.0" prefHeight="800.0" prefWidth="961.0" visible="false">
       <Pane layoutY="-1.0" prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: #3a4750; -fx-background-radius: 0 0 20;">
          <Label layoutX="53.0" layoutY="15.0" text="Transaction In/Out" textFill="#ea9215">
             <font>
@@ -178,7 +178,7 @@
             </font></Button>
       </Pane>
    </AnchorPane>
-   <AnchorPane fx:id="ViewProductStockForm" layoutX="240.0" prefHeight="800.0" prefWidth="961.0" visible="false">
+   <AnchorPane fx:id="ViewProductStockForm" layoutX="240.0" prefHeight="800.0" prefWidth="961.0">
       <Pane layoutY="-1.0" prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: #3a4750; -fx-background-radius: 0 0 20;">
          <Label layoutX="45.0" layoutY="15.0" text="View Product Stock" textFill="#ea9215">
             <font>
@@ -188,9 +188,9 @@
       </Pane>
       <Pane layoutX="25.0" layoutY="125.0" prefHeight="650.0" prefWidth="901.0" style="-fx-background-color: #3a4750; -fx-background-radius: 20;">
          <children>
-            <Button fx:id="refreshButton" layoutX="22.0" layoutY="41.0" mnemonicParsing="false" onAction="#refreshTableView" prefHeight="25.0" prefWidth="81.0" style="-fx-border-width: 2 2 2 2; -fx-background-color: transparent; -fx-border-color: #ea9215; -fx-border-radius: 10;" text="Refresh" textFill="#ea9215" />
+            <Button fx:id="refreshButton" layoutX="24.0" layoutY="41.0" mnemonicParsing="false" onAction="#refreshTableView" prefHeight="25.0" prefWidth="81.0" style="-fx-border-width: 2 2 2 2; -fx-background-color: transparent; -fx-border-color: #ea9215; -fx-border-radius: 10;" styleClass="user_transparent_button_borderless_small" stylesheets="@style.css" text="Refresh" textFill="#ea9215" />
          </children></Pane>
-      <TableView fx:id="productTableView" layoutX="151.0" layoutY="150.0" prefHeight="600.0" prefWidth="750.0" style="-fx-background-color: #3a4750; -fx-border-color: #ea9215; -fx-border-width: 5 5 5 5; -fx-border-radius: 0 0 20 20;">
+      <TableView fx:id="productTableView" layoutX="151.0" layoutY="150.0" prefHeight="600.0" prefWidth="750.0" style="-fx-background-color: #3a4750; -fx-border-color: #ea9215; -fx-border-width: 5 5 5 5; -fx-border-radius: 0 0 20 20;" stylesheets="@style.css">
          <columns>
             <TableColumn fx:id="tableImage" prefWidth="150.0" text="Image" />
             <TableColumn fx:id="tableName" prefWidth="150.0" text="Name" />
