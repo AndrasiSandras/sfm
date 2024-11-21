@@ -61,25 +61,11 @@ public class ClientFormController {
     private TableColumn<Product,String> beszalTableDescription;
     @FXML
     private TableColumn<Product, ImageView> beszalTableImage;
-    @FXML
-    private Label loggedInField;
 
-    public void setLoggedInField(String s)
-    {
-        loggedInField.setText(s);
-    }
 
     private JPADAO jpaDAO = new JPADAO();
 
     private Map<Button, AnchorPane> buttonPaneMap;
-
-    private List<String> report2List;
-
-    public List<String> getReport2List()
-    {
-        return report2List;
-    }
-
 
     private String transIn;
     private String transOut;

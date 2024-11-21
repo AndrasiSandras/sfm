@@ -50,19 +50,19 @@ public class AuthController {
 
     public boolean isItAlreadyUsed()
     {
-        Utils util = new Utils(new JPADAO());
-        List<String> list = util.runReadUtils();
+       JPADAO jpadao = new JPADAO();
+        List<String> list = jpadao.getAllRegLog();
         String[] cred;
         for(String e : list)
         {
             cred = e.split(",");
             if(cred[0].equals(userNameText.getText()) && cred[2].equals(emailText.getText()));
             {
-                return false;
+                return true;
             }
         }
 
-        return true;
+        return false;
     }
 
     public boolean register() {

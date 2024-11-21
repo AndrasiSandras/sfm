@@ -12,7 +12,7 @@ public class Product {
     private double price;
     private String description;
 
-    @Column(nullable = false)
+
     private int quantity = 0; // Alapértelmezett érték
 
     @Lob // Jelzi, hogy ez egy nagy méretű bináris adat
