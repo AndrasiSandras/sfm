@@ -17,7 +17,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="unideb.hu.SFMProject.StaffFormController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="unideb.hu.SFMProject.StaffFormController">
    <VBox prefHeight="400.0" prefWidth="240.0" style="-fx-background-color: #3A4750;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
       <Pane prefHeight="40.0" prefWidth="240.0" />
       <ImageView fitHeight="103.0" fitWidth="240.0" pickOnBounds="true" preserveRatio="true">
@@ -91,12 +91,12 @@
          </Label>
       </Pane>
       <Pane layoutX="127.0" layoutY="172.0" prefHeight="455.0" prefWidth="707.0" style="-fx-background-color: #3a4750; -fx-background-radius: 20;">
-         <Button fx:id="AddButton" layoutX="109.0" layoutY="385.0" mnemonicParsing="false" onAction="#handleSaveProduct" prefHeight="43.0" prefWidth="151.0" style="-fx-border-width: 2 2 2 2; -fx-background-color: transparent; -fx-border-color: #ea9215; -fx-border-radius: 10;" text="Add product" textFill="#ea9215">
+         <Button fx:id="AddButton" layoutX="109.0" layoutY="385.0" mnemonicParsing="false" onAction="#handleSaveProduct" prefHeight="43.0" prefWidth="151.0" style="-fx-border-width: 2 2 2 2; -fx-background-color: transparent; -fx-border-color: #ea9215; -fx-border-radius: 10;" styleClass="user_transparent_button" stylesheets="@style.css" text="Add product" textFill="#ea9215">
             <font>
                <Font size="18.0" />
             </font>
          </Button>
-         <Label layoutX="132.0" layoutY="209.0" text="Product price" textFill="#ea9215">
+         <Label layoutX="130.0" layoutY="95.0" text="Product price" textFill="#ea9215">
             <font>
                <Font size="18.0" />
             </font>
@@ -106,27 +106,27 @@
                <Font size="18.0" />
             </font>
          </Label>
-         <TextField fx:id="productNameField" alignment="CENTER" layoutX="73.0" layoutY="39.0" opacity="0.8" promptText="Jägermeister 35% 0,7L" style="-fx-background-radius: 20;">
+         <TextField fx:id="productNameField" alignment="CENTER" layoutX="59.0" layoutY="40.0" opacity="0.8" promptText="Jägermeister 35% 0,7L" style="-fx-background-radius: 20;" styleClass="user_text-field" stylesheets="@style.css">
             <font>
                <Font size="18.0" />
             </font>
          </TextField>
-         <TextField fx:id="productPriceField" alignment="CENTER" layoutX="73.0" layoutY="129.0" opacity="0.8" promptText="5 560,– Ft" style="-fx-background-radius: 20;">
+         <TextField fx:id="productPriceField" alignment="CENTER" layoutX="57.0" layoutY="122.0" opacity="0.8" promptText="5 560,– Ft" style="-fx-background-radius: 20;" styleClass="user_text-field" stylesheets="@style.css">
             <font>
                <Font size="18.0" />
             </font>
          </TextField>
-         <Button fx:id="BrowseButton" layoutX="460.0" layoutY="385.0" mnemonicParsing="false" onAction="#handleBrowseImage" prefHeight="43.0" prefWidth="151.0" style="-fx-border-width: 2 2 2 2; -fx-background-color: transparent; -fx-border-color: #ea9215; -fx-border-radius: 10;" text="Browse" textFill="#ea9215">
+         <Button fx:id="BrowseButton" layoutX="457.0" layoutY="385.0" mnemonicParsing="false" onAction="#handleBrowseImage" prefHeight="43.0" prefWidth="151.0" style="-fx-border-width: 2 2 2 2; -fx-background-color: transparent; -fx-border-color: #ea9215; -fx-border-radius: 10;" styleClass="user_transparent_button" stylesheets="@style.css" text="Browse" textFill="#ea9215">
             <font>
                <Font size="18.0" />
             </font>
          </Button>
-         <Label layoutX="489.0" layoutY="68.0" text="Upload picture" textFill="#ea9215">
+         <Label layoutX="474.0" layoutY="13.0" text="Upload picture" textFill="#ea9215">
             <font>
                <Font size="18.0" />
             </font>
          </Label>
-         <ImageView fx:id="ProductImageView" fitHeight="323.0" fitWidth="254.0" layoutX="405.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+         <ImageView fx:id="ProductImageView" fitHeight="331.0" fitWidth="252.0" layoutX="407.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@../image/Jägermeister_35%_0,7L.jpg" />
          </ImageView>
          <Label layoutX="105.0" layoutY="193.0" text="Product description" textFill="#ea9215">
@@ -134,7 +134,7 @@
                <Font size="18.0" />
             </font>
          </Label>
-         <TextArea fx:id="productDescriptionField" layoutX="73.0" layoutY="220.0" prefHeight="150.0" prefWidth="223.0" promptText="Delicious">
+         <TextArea fx:id="productDescriptionField" layoutX="73.0" layoutY="220.0" prefHeight="150.0" prefWidth="223.0" promptText="Delicious" stylesheets="@style.css">
             <font>
                <Font size="18.0" />
             </font>
