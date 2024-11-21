@@ -83,7 +83,9 @@ public class StaffFormController {
     @FXML
     private TableColumn<Report,String> pName;
     @FXML
+
     private TableColumn<Report,Integer> pQuantity;
+
 
 
     private JPADAO jpaDAO = new JPADAO();
@@ -471,9 +473,14 @@ public class StaffFormController {
 
             generatedNumbers.add(number);
             return number;
-
-
         }
+
+
+    public void setLoggedInUser(String loggedInUser) {
+        this.loggedInUser = loggedInUser;
+        // Frissítjük a Label-t
+        sUserLabel.setText("Logged in as: "+ loggedInUser);
+    }
 
     public void refreshReportHandle(ActionEvent actionEvent) {
         generateReportTableivew();
@@ -493,5 +500,6 @@ public class StaffFormController {
 
 
         reportTableView.setItems(reports);
+
     }
 }
