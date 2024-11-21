@@ -82,7 +82,7 @@
          </Label>
       </Pane>
    </VBox>
-   <AnchorPane fx:id="AddProductForm" layoutX="240.0" prefHeight="800.0" prefWidth="961.0" visible="false">
+   <AnchorPane fx:id="AddProductForm" layoutX="240.0" prefHeight="800.0" prefWidth="961.0">
       <Pane layoutY="-1.0" prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: #3a4750; -fx-background-radius: 0 0 20;">
          <Label layoutX="117.0" layoutY="15.0" text="Add Product" textFill="#ea9215">
             <font>
@@ -150,7 +150,7 @@
          </Label>
       </Pane>
       <Pane layoutX="100.0" layoutY="200.0" prefHeight="400.0" prefWidth="800.0" style="-fx-background-color: #3a4750; -fx-background-radius: 20;">
-         <ComboBox fx:id="productComboBox" layoutX="50.0" layoutY="79.0" onMouseClicked="#fillComboBox" prefWidth="200.0" />
+         <ComboBox fx:id="productComboBox" layoutX="50.0" layoutY="79.0" onMouseClicked="#fillComboBox" prefWidth="200.0" stylesheets="@style.css" />
          <Label layoutX="92.0" layoutY="31.0" text="Select item" textFill="#ea9215">
             <font>
                <Font size="24.0" />
@@ -200,7 +200,7 @@
          </columns>
       </TableView>
    </AnchorPane>
-   <AnchorPane fx:id="ReportsForm" layoutX="240.0" prefHeight="800.0" prefWidth="961.0">
+   <AnchorPane fx:id="ReportsForm" layoutX="240.0" prefHeight="800.0" prefWidth="961.0" visible="false">
       <Pane layoutY="-1.0" prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: #3a4750; -fx-background-radius: 0 0 20;">
          <Label layoutX="168.0" layoutY="15.0" text="Reports" textFill="#ea9215">
             <font>

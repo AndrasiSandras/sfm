@@ -16,7 +16,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="unideb.hu.SFMProject.ClientFormController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="unideb.hu.SFMProject.ClientFormController">
     <VBox prefHeight="400.0" prefWidth="240.0" style="-fx-background-color: #3A4750;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
         <Pane prefHeight="40.0" prefWidth="240.0" />
         <ImageView fitHeight="103.0" fitWidth="240.0" pickOnBounds="true" preserveRatio="true">
@@ -75,25 +75,25 @@
         </Pane>
         <Pane layoutX="100.0" layoutY="200.0" prefHeight="400.0" prefWidth="800.0" style="-fx-background-color: #3a4750; -fx-background-radius: 20;">
 
-            <ComboBox fx:id="beszallComboBox" layoutX="50.0" layoutY="80.0" onMouseClicked="#fillComboBoxBeszall" prefWidth="200.0" />
-            <Label layoutX="92.0" layoutY="31.0" text="Select item" textFill="#ea9215">
+            <ComboBox fx:id="beszallComboBox" layoutX="64.0" layoutY="83.0" onMouseClicked="#fillComboBoxBeszall" prefWidth="200.0" stylesheets="@style.css" />
+            <Label layoutX="106.0" layoutY="33.0" text="Select item" textFill="#ea9215">
                 <font>
                     <Font size="24.0" />
                 </font>
             </Label>
-            <TextField fx:id="beszallQuantityField" alignment="CENTER" layoutX="39.0" layoutY="250.0" opacity="0.8" promptText="6 db" style="-fx-background-radius: 20;">
+            <TextField fx:id="beszallQuantityField" alignment="CENTER" layoutX="38.0" layoutY="237.0" opacity="0.8" promptText="6 db" style="-fx-background-radius: 20;" styleClass="user_text-field" stylesheets="@style.css">
                 <font>
                     <Font size="18.0" />
                 </font>
             </TextField>
-            <ListView fx:id="beszalListView" layoutX="360.0" layoutY="50.0" prefHeight="230.0" prefWidth="370.0" />
-            <Button fx:id="beszalTransIn" layoutX="360.0" layoutY="326.0" mnemonicParsing="false" onAction="#beszalTransInHandle" prefHeight="43.0" prefWidth="170.0" style="-fx-border-width: 2 2 2 2; -fx-background-color: transparent; -fx-border-color: #ea9215; -fx-border-radius: 10;" text="Transaction in" textFill="#ea9215">
+            <ListView fx:id="beszalListView" layoutX="360.0" layoutY="50.0" prefHeight="230.0" prefWidth="370.0" stylesheets="@style.css" />
+            <Button fx:id="beszalTransIn" layoutX="360.0" layoutY="326.0" mnemonicParsing="false" onAction="#beszalTransInHandle" prefHeight="43.0" prefWidth="170.0" style="-fx-border-width: 2 2 2 2; -fx-background-color: transparent; -fx-border-color: #ea9215; -fx-border-radius: 10;" styleClass="user_transparent_button" stylesheets="@style.css" text="Transaction in" textFill="#ea9215">
                 <font>
                     <Font size="18.0" />
                 </font>
             </Button>
 
-            <Button fx:id="beszalTransOut" layoutX="560.0" layoutY="326.0" mnemonicParsing="false" onAction="#beszalTransOutHandle" prefHeight="43.0" prefWidth="170.0" style="-fx-border-width: 2 2 2 2; -fx-background-color: transparent; -fx-border-color: #ea9215; -fx-border-radius: 10;" text="Transaction out" textFill="#ea9215">
+            <Button fx:id="beszalTransOut" layoutX="560.0" layoutY="326.0" mnemonicParsing="false" onAction="#beszalTransOutHandle" prefHeight="43.0" prefWidth="170.0" style="-fx-border-width: 2 2 2 2; -fx-background-color: transparent; -fx-border-color: #ea9215; -fx-border-radius: 10;" styleClass="user_transparent_button" stylesheets="@style.css" text="Transaction out" textFill="#ea9215">
                 <font>
                     <Font size="18.0" />
                 </font>
