@@ -42,7 +42,6 @@ public class Application extends javafx.application.Application{
 
     @Override
     public void stop() {
-        // Bezárás és erőforrások felszabadítása
         if (scene != null) {
             jpadao.close();
         }
