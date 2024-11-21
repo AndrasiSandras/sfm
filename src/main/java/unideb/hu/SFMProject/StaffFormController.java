@@ -90,7 +90,9 @@ public class StaffFormController {
     @FXML
     private TableColumn<Product,String> pQuantity;
     @FXML
-    private Label loggedInField;
+    private Label userLabel;
+
+    private String loggedInUser;
 
 
 
@@ -468,9 +470,11 @@ public class StaffFormController {
 
             generatedNumbers.add(number);
             return number;
-
-
         }
 
-
+    public void setLoggedInUser(String loggedInUser) {
+        this.loggedInUser = loggedInUser;
+        // Frissítjük a Label-t
+        userLabel.setText("Logged in as: "+ loggedInUser);
+    }
 }

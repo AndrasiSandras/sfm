@@ -17,7 +17,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="unideb.hu.SFMProject.StaffFormController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="unideb.hu.SFMProject.StaffFormController">
    <VBox prefHeight="400.0" prefWidth="240.0" style="-fx-background-color: #3A4750;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
       <Pane prefHeight="40.0" prefWidth="240.0" />
       <ImageView fitHeight="103.0" fitWidth="240.0" pickOnBounds="true" preserveRatio="true">
@@ -70,12 +70,7 @@
                <Font size="24.0" />
             </font>
          </Button>
-         <Label layoutX="14.0" layoutY="216.0" text="Logged in as:" textFill="#ea9215">
-            <font>
-               <Font size="18.0" />
-            </font>
-         </Label>
-         <Label fx:id="loggedInField" layoutX="120.0" layoutY="200.0" prefHeight="27.0" prefWidth="114.0" text="(Staff name)" textFill="#ea9215">
+         <Label fx:id="userLabel" alignment="CENTER" layoutX="6.0" layoutY="216.0" prefHeight="27.0" prefWidth="229.0" text="(Staff name)" textFill="#ea9215">
             <font>
                <Font size="18.0" />
             </font>

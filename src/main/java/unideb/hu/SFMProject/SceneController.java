@@ -99,8 +99,16 @@ public class SceneController {
 
         if(Slogin(credentials))
         {
-            Thread.sleep(1000);
-            root = FXMLLoader.load(getClass().getResource("/view/FXMLStaffScene.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FXMLStaffScene.fxml"));
+            Parent root = loader.load();
+
+            // Lekérjük a Staff Scene controller-ét
+            StaffFormController staffController = loader.getController();
+
+            // Átadjuk a bejelentkezett felhasználó nevét
+            staffController.setLoggedInUser(loginName);
+
+            // Scene betöltése
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
