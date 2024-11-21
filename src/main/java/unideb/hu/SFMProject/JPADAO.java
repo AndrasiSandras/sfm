@@ -329,6 +329,17 @@ public class JPADAO extends DAO {
         }
     }
 
+    @Override
+    public List<Report> getAllReports() {
+        EntityManager entityManager = createEntityManager();
+        try {
+            TypedQuery<Report> query = entityManager.createQuery("SELECT a FROM Report a", Report.class);
+            return query.getResultList();
+        } finally {
+            entityManager.close();
+        }
+    }
+
     public void close() {
         if (entityManagerFactory != null) {
             entityManagerFactory.close();
