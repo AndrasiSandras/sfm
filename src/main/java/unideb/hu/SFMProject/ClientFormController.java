@@ -101,6 +101,11 @@ public class ClientFormController {
     }
 
     @FXML
+    private Label cUserLabel;
+
+    private String loggedInUser;
+
+    @FXML
     public void initialize() {
         buttonPaneMap = new HashMap<>();
         buttonPaneMap.put(AccountButton, AccountForm);
@@ -313,6 +318,10 @@ public class ClientFormController {
         return number;
     }
 
-
+    public void setLoggedInUser(String loggedInUser) {
+        this.loggedInUser = loggedInUser;
+        // Frissítjük a Label-t
+        cUserLabel.setText("Logged in as: " + loggedInUser);
+    }
 
 }

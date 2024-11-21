@@ -70,7 +70,7 @@
                <Font size="24.0" />
             </font>
          </Button>
-         <Label fx:id="userLabel" alignment="CENTER" layoutX="6.0" layoutY="216.0" prefHeight="27.0" prefWidth="229.0" text="(Staff name)" textFill="#ea9215">
+         <Label fx:id="sUserLabel" alignment="CENTER" layoutX="6.0" layoutY="216.0" prefHeight="27.0" prefWidth="229.0" text="(Staff name)" textFill="#ea9215">
             <font>
                <Font size="18.0" />
             </font>
