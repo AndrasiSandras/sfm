@@ -222,7 +222,9 @@
                <Font size="18.0" />
             </font>
          </Label>
-         <Button fx:id="reportRefreshButton" layoutX="100.0" layoutY="500.0" mnemonicParsing="false" style="-fx-border-width: 2 2 2 2; -fx-background-color: transparent; -fx-border-color: #ea9215; -fx-border-radius: 10;" styleClass="user_transparent_button_bigger" stylesheets="@style.css" text="Refresh Reports" textFill="#ea9215">
+
+         <Button fx:id="reportRefreshButton" layoutX="123.0" layoutY="506.0" onAction="#refreshReportHandle" mnemonicParsing="false" style="-fx-border-width: 2 2 2 2; -fx-background-color: transparent; -fx-border-color: #ea9215; -fx-border-radius: 10;" text="Refresh Reports" textFill="#ea9215">
+
             <font>
                <Font size="24.0" />
             </font>

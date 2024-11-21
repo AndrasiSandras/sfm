@@ -7,7 +7,6 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,16 +23,12 @@ import javafx.stage.Stage;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.util.Callback;
-import org.h2.store.Data;
 
-import javax.persistence.EntityManager;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -80,19 +75,16 @@ public class StaffFormController {
     @FXML
     private TableColumn<Product, ImageView> tableImage;
     @FXML
-    private TableView<Product> reportTableView;
+    private TableView<Report> reportTableView;
     @FXML
-    private TableColumn<Product,String> transactionId;
+    private TableColumn<Report,Integer> transactionId;
     @FXML
-    private TableColumn<Product,String> inOut;
+    private TableColumn<Report,String> inOut;
     @FXML
-    private TableColumn<Product,String> pName;
+    private TableColumn<Report,String> pName;
     @FXML
-    private TableColumn<Product,String> pQuantity;
-    @FXML
-    private Label sUserLabel;
 
-    private String loggedInUser;
+    private TableColumn<Report,Integer> pQuantity;
 
 
 
@@ -319,7 +311,12 @@ public class StaffFormController {
             jpaDAO.updateProduct(product);
             productListView.getItems().add("Added " + quantity + " to " + product.getName() + " (New quantity: " + product.getQuantity() + ")");
             //setTransIn(generateUniqueRandom()+ ",IN," + sceneController.getloginName()+ "," + product.getName()+ ": " + product.getQuantity() + "db\n");
-
+            Report report = new Report();
+            report.setTransactionId(generateUniqueRandom());
+            report.setInOut("IN");
+            report.setpName(product.getName());
+            report.setpQuantity(product.getQuantity());
+            jpaDAO.saveReport(report);
 
          } catch (Exception e) {
             showAlert("Error", "Failed to update the product quantity!", Alert.AlertType.ERROR);
@@ -377,6 +374,12 @@ public class StaffFormController {
                 productListView.getItems().add(("Removed " + quantity + " from " + product.getName() + " (New quantity: " + product.getQuantity() + ")"));
                 //setTransOut(generateUniqueRandom()+ ",OUT," + product.getName() + "," + product.getQuantity() + "db\n");
 
+                Report report = new Report();
+                report.setTransactionId(generateUniqueRandom());
+                report.setInOut("OUT");
+                report.setpName(product.getName());
+                report.setpQuantity(product.getQuantity());
+                jpaDAO.saveReport(report);
 
            } catch (Exception e) {
                 showAlert("Error", "Failed to update the product quantity!", Alert.AlertType.ERROR);
@@ -472,9 +475,31 @@ public class StaffFormController {
             return number;
         }
 
+
     public void setLoggedInUser(String loggedInUser) {
         this.loggedInUser = loggedInUser;
         // Frissítjük a Label-t
         sUserLabel.setText("Logged in as: "+ loggedInUser);
+    }
+
+    public void refreshReportHandle(ActionEvent actionEvent) {
+        generateReportTableivew();
+    }
+
+
+    public void generateReportTableivew()
+    {
+        ObservableList<Report> reports;
+
+        reports = FXCollections.observableList(jpaDAO.getAllReports());
+
+        transactionId.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getTransactionId()).asObject());
+        inOut.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getInOut()));
+        pName.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getpName()));
+        pQuantity.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getpQuantity()).asObject());
+
+
+        reportTableView.setItems(reports);
+
     }
 }

@@ -10,6 +10,7 @@
         <class>unideb.hu.SFMProject.Product</class>
         <class>unideb.hu.SFMProject.RegLogin</class>
         <class>unideb.hu.SFMProject.StaffCred</class>
+        <class>unideb.hu.SFMProject.Report</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>

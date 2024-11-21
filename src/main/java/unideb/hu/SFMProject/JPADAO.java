@@ -295,6 +295,23 @@ public class JPADAO extends DAO {
         }
     }
 
+    @Override
+    public void saveReport(Report a) {
+        EntityManager entityManager = createEntityManager();
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.persist(a);
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            if (entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().rollback();
+            }
+            throw e;
+        } finally {
+            entityManager.close();
+        }
+    }
+
 
     @Override
     public Product findProductByName(String name) {
@@ -307,6 +324,17 @@ public class JPADAO extends DAO {
                     .getSingleResult();
         } catch (NoResultException e) {
             return null;
+        } finally {
+            entityManager.close();
+        }
+    }
+
+    @Override
+    public List<Report> getAllReports() {
+        EntityManager entityManager = createEntityManager();
+        try {
+            TypedQuery<Report> query = entityManager.createQuery("SELECT a FROM Report a", Report.class);
+            return query.getResultList();
         } finally {
             entityManager.close();
         }
