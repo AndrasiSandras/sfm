@@ -317,7 +317,12 @@ public class StaffFormController {
             jpaDAO.updateProduct(product);
             productListView.getItems().add("Added " + quantity + " to " + product.getName() + " (New quantity: " + product.getQuantity() + ")");
             //setTransIn(generateUniqueRandom()+ ",IN," + sceneController.getloginName()+ "," + product.getName()+ ": " + product.getQuantity() + "db\n");
-
+            Report report = new Report();
+            report.setTransactionId(generateUniqueRandom());
+            report.setInOut("IN");
+            report.setpName(product.getName());
+            report.setpQuantity(product.getQuantity());
+            jpaDAO.saveReport(report);
 
          } catch (Exception e) {
             showAlert("Error", "Failed to update the product quantity!", Alert.AlertType.ERROR);
@@ -375,6 +380,12 @@ public class StaffFormController {
                 productListView.getItems().add(("Removed " + quantity + " from " + product.getName() + " (New quantity: " + product.getQuantity() + ")"));
                 //setTransOut(generateUniqueRandom()+ ",OUT," + product.getName() + "," + product.getQuantity() + "db\n");
 
+                Report report = new Report();
+                report.setTransactionId(generateUniqueRandom());
+                report.setInOut("OUT");
+                report.setpName(product.getName());
+                report.setpQuantity(product.getQuantity());
+                jpaDAO.saveReport(report);
 
            } catch (Exception e) {
                 showAlert("Error", "Failed to update the product quantity!", Alert.AlertType.ERROR);

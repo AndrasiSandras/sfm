@@ -295,6 +295,23 @@ public class JPADAO extends DAO {
         }
     }
 
+    @Override
+    public void saveReport(Report a) {
+        EntityManager entityManager = createEntityManager();
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.persist(a);
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            if (entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().rollback();
+            }
+            throw e;
+        } finally {
+            entityManager.close();
+        }
+    }
+
 
     @Override
     public Product findProductByName(String name) {
