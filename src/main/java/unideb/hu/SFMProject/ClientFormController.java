@@ -187,7 +187,12 @@ public class ClientFormController {
             jpaDAO.updateProduct(product);
             beszalListView.getItems().add("Added " + quantity + " to " + product.getName() + " (New quantity: " + product.getQuantity() + ")");
             //setTransIn(generateUniqueRandom()+ ",IN," + product.getName() + "," + product.getQuantity() + "db\n");
-
+            Report report = new Report();
+            report.setTransactionId(generateUniqueRandom());
+            report.setInOut("IN");
+            report.setpName(loggedInUser + " (Client)");
+            report.setProduct(product.getName()+": "+quantity + ",(New quantity: " + product.getQuantity() + ")");
+            jpaDAO.saveReport(report);
 
         } catch (Exception e) {
             showAlert("Error", "Failed to update the product quantity!", Alert.AlertType.ERROR);
@@ -242,6 +247,12 @@ public class ClientFormController {
             jpaDAO.updateProduct(product);
             beszalListView.getItems().add(("Removed " + quantity + " from " + product.getName() + " (New quantity: " + product.getQuantity() + ")"));
             //setTransOut(generateUniqueRandom()+ ",OUT," + product.getName() + "," + product.getQuantity() + "db\n");
+            Report report = new Report();
+            report.setTransactionId(generateUniqueRandom());
+            report.setInOut("OUT");
+            report.setpName(loggedInUser + " (Client)");
+            report.setProduct(product.getName()+": "+quantity + ",(New quantity: " + product.getQuantity() + ")");
+            jpaDAO.saveReport(report);
 
         } catch (Exception e) {
             showAlert("Error", "Failed to update the product quantity!", Alert.AlertType.ERROR);

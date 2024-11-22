@@ -40,6 +40,8 @@ public class Application extends javafx.application.Application{
         }
     }
 
+
+
     @Override
     public void stop() {
         if (scene != null) {

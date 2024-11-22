@@ -32,6 +32,8 @@ import java.nio.file.Files;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static unideb.hu.SFMProject.PDFGenerator.generateReport;
+
 public class StaffFormController {
 
     public Button GenerateReportButton;
@@ -249,6 +251,7 @@ public class StaffFormController {
     }
 
     public void reportGenerator(ActionEvent actionEvent) {
+        generateReport();
     }
 
     public void fillComboBox() {
@@ -317,7 +320,7 @@ public class StaffFormController {
             Report report = new Report();
             report.setTransactionId(generateUniqueRandom());
             report.setInOut("IN");
-            report.setpName(loggedInUser);
+            report.setpName(loggedInUser + " (Staff)");
             report.setProduct(product.getName()+": "+ quantity + ",(New quantity: " + product.getQuantity() + ")");
             jpaDAO.saveReport(report);
 
@@ -380,7 +383,7 @@ public class StaffFormController {
                 Report report = new Report();
                 report.setTransactionId(generateUniqueRandom());
                 report.setInOut("OUT");
-                report.setpName(loggedInUser);
+                report.setpName(loggedInUser + " (Staff)");
                 report.setProduct(product.getName()+": "+quantity + ",(New quantity: " + product.getQuantity() + ")");
                 jpaDAO.saveReport(report);
 
