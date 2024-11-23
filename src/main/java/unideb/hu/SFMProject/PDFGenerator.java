@@ -30,7 +30,7 @@ public class PDFGenerator {
         if (!directory.exists()) {
             boolean created = directory.mkdirs();
             if (!created) {
-                System.out.println("Nem sikerült létrehozni a célkönyvtárat: " + directoryPath);
+                System.out.println("Failed to create target directory: " + directoryPath);
                 return;
             }
         }
@@ -70,7 +70,7 @@ public class PDFGenerator {
             document.setMargins(50, 20, 20, 20); // A táblázatnak nagyobb margóval
 
             // Fejléc stílusa
-            Paragraph header = new Paragraph("Styled PDF Report")
+            Paragraph header = new Paragraph("PDF Report")
                     .setFontSize(18)
                     .setFontColor(new DeviceRgb(0, 102, 204)) // Kék szín
                     .setBold() // Félkövér
@@ -81,6 +81,7 @@ public class PDFGenerator {
             float[] columnWidths = {100, 200, 200, 200};
             Table table = new Table(columnWidths).setWidth(100);
 
+            /*
             // Táblázat fejlécek stílusa
             table.addCell(new Cell().add(new Paragraph("INOUT"))
                     .setBackgroundColor(new DeviceRgb(234,146,21))
@@ -99,6 +100,8 @@ public class PDFGenerator {
                     .setFontColor(new DeviceRgb(255, 255, 255)) // Fehér szöveg
                     .setBold());
 
+/*
+             */
             // Adatok hozzáadása a táblázathoz
             while (rs.next()) {
                 table.addCell(new Cell().add(new Paragraph(rs.getString("Inout"))
@@ -118,7 +121,7 @@ public class PDFGenerator {
             // Dokumentum lezárása
             document.close();
 
-            System.out.println("Styled PDF sikeresen létrehozva: " + filePath);
+            System.out.println("PDF successfully generated: " + filePath);
 
         } catch (Exception e) {
             e.printStackTrace();
