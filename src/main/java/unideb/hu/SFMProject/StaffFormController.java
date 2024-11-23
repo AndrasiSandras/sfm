@@ -47,7 +47,7 @@ public class StaffFormController {
     @FXML
     private TextField productPriceField; // Termék ára
     @FXML
-    private TextArea productDescriptionField; // Termék leírása
+    private TextField productDescriptionField; // Termék leírása
     @FXML
     private ImageView ProductImageView; // Termékkép
     @FXML
