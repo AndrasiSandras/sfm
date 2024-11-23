@@ -67,6 +67,7 @@
     -fx-background-color: transparent;
     -fx-text-fill: #3A4750;
     -fx-border-width: 0px 0px 3px 0px;
+    -fx-border-color: #3A4750;
     -fx-font-size: 10px;
     -fx-padding: 5px 20px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 1);
@@ -80,7 +81,7 @@
 .front_transparent_button:hover {
     -fx-scale-x: 1.1;
     -fx-scale-y: 1.1;
-    -fx-background-color:   #3A4750;
+    -fx-background-color: #3A4750;
     -fx-text-fill: black;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 20, 0, 0, 5);
 }

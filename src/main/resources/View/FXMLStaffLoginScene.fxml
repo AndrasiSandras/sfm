@@ -20,7 +20,7 @@
                   <Image url="@../image/palackmesterlogo.png" />
                </image>
             </ImageView>
-            <Button fx:id="GoBackButton" layoutX="150.0" layoutY="401.0" mnemonicParsing="false" onAction="#goBack" style="-fx-background-color: #EA9215;" styleClass="front_orange_button" stylesheets="@style.css" text="Go back" textFill="#3a4750" />
+            <Button fx:id="GoBackButton" layoutX="150.0" layoutY="401.0" mnemonicParsing="false" onAction="#goBack" styleClass="front_orange_button" stylesheets="@style.css" text="Go back" textFill="#3a4750" />
          </children>
       </AnchorPane>
    </left>
