@@ -15,18 +15,18 @@
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 1);
     -fx-border-radius: 20px;
     -fx-background-radius: 20px;
-    -fx-scale-x: 1; /* Alap skála */
-    -fx-scale-y: 1; /* Alap skála */
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
     -fx-transition: -fx-scale-x 0.2s ease-in-out,
-                    -fx-scale-y 0.2s ease-in-out,
-                    -fx-background-color 0.2s ease-in-out;
+    -fx-scale-y 0.2s ease-in-out,
+    -fx-background-color 0.2s ease-in-out;
 }
 
 .front_orange_button:hover {
-    -fx-scale-x: 1.1; /* Vizualis nagyítás X tengelyen */
-    -fx-scale-y: 1.1; /* Vizualis nagyítás Y tengelyen */
-    -fx-background-color: #FFAA33; /* Színváltás */
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 20, 0, 0, 5); /* Erősebb árnyék */
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-background-color: #FFAA33;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 20, 0, 0, 5);
 }
 
 
@@ -39,26 +39,26 @@
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 1);
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
-    -fx-scale-x: 1; /* Alap skála */
-    -fx-scale-y: 1; /* Alap skála */
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
     -fx-transition: -fx-scale-x 0.2s ease-in-out,
     -fx-scale-y 0.2s ease-in-out,
     -fx-background-color 0.2s ease-in-out;
 }
 
 .front_grey_button:focused {
-    -fx-border-color: #EA9215; /* Narancssárga kiemelés fókusznál */
+    -fx-border-color: #EA9215;
     -fx-background-color: #EA9215;
     -fx-border-width: 2px;
-    -fx-effect: dropshadow(gaussian, rgba(234, 146, 21, 0.5), 8, 0, 0, 2); /* Kiemelt árnyék */
+    -fx-effect: dropshadow(gaussian, rgba(234, 146, 21, 0.5), 8, 0, 0, 2);
 }
 
 .front_grey_button:hover {
-    -fx-scale-x: 1.1; /* Vizualis nagyítás X tengelyen */
-    -fx-scale-y: 1.1; /* Vizualis nagyítás Y tengelyen */
-    -fx-border-color: #EA9215; /* Hover állapotban */
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-border-color: #EA9215;
     -fx-background-color: #EA9215;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 20, 0, 0, 5); /* Erősebb árnyék */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 20, 0, 0, 5);
 }
 
 
@@ -66,97 +66,100 @@
 .front_transparent_button {
     -fx-background-color: transparent;
     -fx-text-fill: #3A4750;
-    -fx-border-width: 0 0 3 0;
+    -fx-border-width: 0px 0px 3px 0px;
+    -fx-border-color: #3A4750;
     -fx-font-size: 10px;
     -fx-padding: 5px 20px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 1);
-    -fx-scale-x: 1; /* Alap skála */
-    -fx-scale-y: 1; /* Alap skála */
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
     -fx-transition: -fx-scale-x 0.2s ease-in-out,
     -fx-scale-y 0.2s ease-in-out,
     -fx-background-color 0.2s ease-in-out;
 }
 
 .front_transparent_button:hover {
-    -fx-scale-x: 1.1; /* Vizualis nagyítás X tengelyen */
-    -fx-scale-y: 1.1; /* Vizualis nagyítás Y tengelyen */
-    -fx-background-color:   #3A4750; /* Színváltás */
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-background-color: #3A4750;
     -fx-text-fill: black;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 20, 0, 0, 5); /* Erősebb árnyék */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 20, 0, 0, 5);
 }
 
 
 
 .front_text-field {
-    -fx-background-color: transparent; /* Átlátszó háttér */
-    -fx-border-width: 0 0 3px 0; /* Csak alul legyen vonal */
-    -fx-border-color: #3A4750; /* Halvány szürke vonal */
-    -fx-border-radius: 5;
+    -fx-background-color: transparent;
+    -fx-border-width: 0px 0px 3px 0px;
+    -fx-border-color: #3A4750;
+    -fx-border-radius: 5px;
     -fx-padding: 5px;
-    -fx-font-size: 14px; /* Szöveg mérete */
+    -fx-font-size: 14px;
 }
 .front_text-field:focused {
-    -fx-border-color: #EA9215; /* Narancssárga kiemelés fókusznál */
-    -fx-border-radius: 5;
+    -fx-border-color: #EA9215;
+    -fx-border-radius: 5px;
     -fx-border-width: 2px;
     -fx-effect: dropshadow(gaussian, rgba(234, 146, 21, 0.5), 8, 0, 0, 2); /* Kiemelt árnyék */
 }
 .front_text-field:hover {
-    -fx-border-color: #EA9215; /* Hover állapotban */
+    -fx-border-color: #EA9215;
     -fx-background-color: #FAFAFA;
 }
 
 
 
 .user_transparent_button:hover {
-    -fx-scale-x: 1.1; /* Vizualis nagyítás X tengelyen */
-    -fx-scale-y: 1.1; /* Vizualis nagyítás Y tengelyen */
-    -fx-background-color:   #3A4750; /* Színváltás */
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-background-color: #3A4750;
     -fx-text-fill: black;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 20, 0, 0, 5); /* Erősebb árnyék */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 20, 0, 0, 5);
 }
 
 .user_text-field {
-    -fx-background-color: white; /* Átlátszó háttér */
+    -fx-background-color: white;
+    -fx-highlight-fill: #EA9215;
     -fx-border-radius: 20px;
     -fx-background-radius: 20px;
     -fx-padding: 8px 25px;
-    -fx-font-size: 18px; /* Szöveg mérete */
+    -fx-font-size: 18px;
 }
 .user_text-field:focused {
-    -fx-border-color: #EA9215; /* Narancssárga kiemelés fókusznál */
+    -fx-border-color: #EA9215;
     -fx-border-width: 3px;
-    -fx-effect: dropshadow(gaussian, rgba(234, 146, 21, 0.5), 8, 0, 0, 2); /* Kiemelt árnyék */
+    -fx-effect: dropshadow(gaussian, rgba(234, 146, 21, 0.5), 8, 0, 0, 2);
 }
 .user_text-field:hover {
-    -fx-border-color: #EA9215; /* Hover állapotban */
+    -fx-border-color: #EA9215;
     -fx-background-color: #FAFAFA;
 }
 
 
 
 .user_transparent_button:hover {
-    -fx-scale-x: 1.1; /* Vizualis nagyítás X tengelyen */
-    -fx-scale-y: 1.1; /* Vizualis nagyítás Y tengelyen */
-    -fx-background-color:   #3A4750; /* Színváltás */
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-background-color: #3A4750;
     -fx-text-fill: black;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 20, 0, 0, 5); /* Erősebb árnyék */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 20, 0, 0, 5);
 }
 
 .user_text-field_smaller {
-    -fx-background-color: white; /* Átlátszó háttér */
+    -fx-background-color: white;
+    -fx-highlight-fill: #EA9215;
     -fx-border-radius: 20px;
     -fx-background-radius: 20px;
     -fx-padding: 8px 10px;
-    -fx-font-size: 18px; /* Szöveg mérete */
+    -fx-font-size: 18px;
 }
 .user_text-field_smaller:focused {
-    -fx-border-color: #EA9215; /* Narancssárga kiemelés fókusznál */
+    -fx-border-color: #EA9215;
     -fx-border-width: 3px;
-    -fx-effect: dropshadow(gaussian, rgba(234, 146, 21, 0.5), 8, 0, 0, 2); /* Kiemelt árnyék */
+    -fx-effect: dropshadow(gaussian, rgba(234, 146, 21, 0.5), 8, 0, 0, 2);
 }
 .user_text-field_smaller:hover {
-    -fx-border-color: #EA9215; /* Hover állapotban */
+    -fx-border-color: #EA9215;
     -fx-background-color: #FAFAFA;
 }
 
@@ -166,23 +169,24 @@
     -fx-text-fill: #EA9215;
     -fx-border-color: #EA9215;
     -fx-border-width: 2px 2px 2px 2px;
-    -fx-border-radius: 10;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
     -fx-font-size: 18px;
     -fx-padding: 5px 20px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 1);
-    -fx-scale-x: 1; /* Alap skála */
-    -fx-scale-y: 1; /* Alap skála */
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
     -fx-transition: -fx-scale-x 0.2s ease-in-out,
     -fx-scale-y 0.2s ease-in-out,
     -fx-background-color 0.2s ease-in-out;
 }
 
 .user_transparent_button:hover {
-    -fx-scale-x: 1.1; /* Vizualis nagyítás X tengelyen */
-    -fx-scale-y: 1.1; /* Vizualis nagyítás Y tengelyen */
-    -fx-background-color:   #3A4750; /* Színváltás */
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-background-color: #3A4750;
     -fx-text-fill: #EA9215;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 20, 0, 0, 5); /* Erősebb árnyék */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 20, 0, 0, 5);
 }
 
 
@@ -191,72 +195,51 @@
     -fx-text-fill: #EA9215;
     -fx-border-color: #EA9215;
     -fx-border-width: 2px 2px 2px 2px;
-    -fx-border-radius: 10;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
     -fx-font-size: 24px;
     -fx-padding: 14px 38px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 1);
-    -fx-scale-x: 1; /* Alap skála */
-    -fx-scale-y: 1; /* Alap skála */
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
     -fx-transition: -fx-scale-x 0.2s ease-in-out,
     -fx-scale-y 0.2s ease-in-out,
     -fx-background-color 0.2s ease-in-out;
 }
 
 .user_transparent_button_bigger:hover {
-    -fx-scale-x: 1.1; /* Vizualis nagyítás X tengelyen */
-    -fx-scale-y: 1.1; /* Vizualis nagyítás Y tengelyen */
-    -fx-background-color:   #3A4750; /* Színváltás */
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-background-color: #3A4750;
     -fx-text-fill: #EA9215;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 20, 0, 0, 5); /* Erősebb árnyék */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 20, 0, 0, 5);
 }
+
 
 
 .user_transparent_button_borderless {
+    -fx-background-radius: 20px;
     -fx-background-color: transparent;
     -fx-text-fill: #EA9215;
     -fx-border-color: transparent;
-    -fx-border-radius: 10;
-    -fx-font-size: 20px;
+    -fx-font-size: 18px;
     -fx-padding: 5px 5px;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 1);
-    -fx-scale-x: 1; /* Alap skála */
-    -fx-scale-y: 1; /* Alap skála */
+    -fx-effect: dropshadow(gaussian, rgba(85, 85, 85, 0.3), 10, 0, 0, 1);
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
     -fx-transition: -fx-scale-x 0.2s ease-in-out,
     -fx-scale-y 0.2s ease-in-out,
-    -fx-background-color 0.2s ease-in-out;
+    -fx-background-color 0.2s ease-in-out,
+    -fx-effect 0.2s ease-in-out;
 }
 
 .user_transparent_button_borderless:hover {
-    -fx-scale-x: 1.1; /* Vizualis nagyítás X tengelyen */
-    -fx-scale-y: 1.1; /* Vizualis nagyítás Y tengelyen */
-    -fx-background-color:   #3A4750; /* Színváltás */
-    -fx-text-fill: #EA9000;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 20, 0, 0, 5); /* Erősebb árnyék */
+    -fx-text-fill: #FFD479; /* Erőteljesebb színváltás */
+    -fx-effect: dropshadow(gaussian, rgba(234, 146, 21, 0.8), 30, 0, 0, 5); /* Erősebb árnyék */
+    -fx-scale-x: 1.1; /* Gomb méretének enyhe növelése */
+    -fx-scale-y: 1.1;
 }
 
-
-.user_transparent_button_borderless_small {
-    -fx-background-color: transparent;
-    -fx-text-fill: #EA9215;
-    -fx-border-color: transparent;
-    -fx-border-radius: 10;
-    -fx-font-size: 18px;
-    -fx-padding: 5px 5px;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 1);
-    -fx-scale-x: 1; /* Alap skála */
-    -fx-scale-y: 1; /* Alap skála */
-    -fx-transition: -fx-scale-x 0.2s ease-in-out,
-    -fx-scale-y 0.2s ease-in-out,
-    -fx-background-color 0.2s ease-in-out;
-}
-
-.user_transparent_button_borderless_small:hover {
-    -fx-scale-x: 1.1; /* Vizualis nagyítás X tengelyen */
-    -fx-scale-y: 1.1; /* Vizualis nagyítás Y tengelyen */
-    -fx-background-color:   #3A4750; /* Színváltás */
-    -fx-text-fill: #EA9000;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 20, 0, 0, 5); /* Erősebb árnyék */
-}
 
 
 
@@ -266,91 +249,181 @@
     -fx-border-width: 2px;
     -fx-border-radius: 10px;
     -fx-background-radius: 10px;
+    -fx-padding: 5px;
+}
+
+.list-view .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 5px;
+}
+
+.list-view .list-cell:hover {
+    -fx-background-color: #EA9215;
+    -fx-text-fill: black;
+}
+
+.list-view .list-cell:selected {
+    -fx-background-color: #FFD479;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-border-color: #EA9215;
+    -fx-border-width: 1px;
+}
+
+.list-view .scroll-bar {
+    -fx-background-color: #282c30;
+}
+
+.list-view .scroll-bar .thumb {
+    -fx-background-color: #EA9215;
+    -fx-background-radius: 5px;
+}
+
+.list-view .list-cell:empty {
+    -fx-background-color: transparent;
 }
 
 
 
 .combo-box {
-    -fx-background-color: #3A4750; /* Alap sötétszürke háttér */
-    -fx-border-color: #EA9215;    /* Narancssárga keret */
-    -fx-border-width: 2px;        /* Vastagabb keret */
-    -fx-border-radius: 5px;       /* Lekerekített sarkok */
-    -fx-background-radius: 5px;
+    -fx-background-color: #3A4750;
+    -fx-border-color: #EA9215;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
     -fx-padding: 5px;
-    -fx-font-size: 14px;
-    -fx-text-fill: white;         /* Fehér szöveg */
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 2); /* Árnyék */
+    -fx-font-size: 16px;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 2);
 }
 
 .combo-box:hover {
-    -fx-background-color: #232931; /* Még sötétebb szürke hover állapotban */
-    -fx-border-color: #FFD479;    /* Világosabb narancssárga kiemelés */
-    -fx-effect: dropshadow(gaussian, rgba(234, 146, 21, 0.5), 12, 0, 0, 3); /* Erősebb árnyék */
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-background-color: #232931;
+    -fx-border-color: #FFD479;
+    -fx-effect: dropshadow(gaussian, rgba(234, 146, 21, 0.5), 12, 0, 0, 3);
 }
 
 .combo-box:focused {
-    -fx-border-color: #EA9215;    /* Narancssárga fókuszkeret */
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-border-color: #EA9215;
     -fx-background-color: #3A4750;
     -fx-effect: dropshadow(gaussian, rgba(234, 146, 21, 0.7), 15, 0, 0, 4);
 }
 
+.combo-box .list-cell {
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-background-color: #3A4750;
+    -fx-text-fill: white;
+    -fx-padding: 5px;
+}
+
 .combo-box .list-cell:hover {
-    -fx-background-color: #EA9215; /* Listaelemek hover állapotban */
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-background-color: #EA9215;
     -fx-text-fill: white;
 }
 
+.combo-box .list-cell:selected {
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-padding: 5px;
+    -fx-text-fill: white;
+}
+
+.combo-box-popup {
+    -fx-background-color: #232931;
+    -fx-border-color: #EA9215;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-padding: 5px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 8, 0, 0, 2);
+}
+
 .combo-box .arrow-button {
-    -fx-background-color: #232931; /* Sötétszürke gomb */
+    -fx-background-color: #232931;
     -fx-padding: 5px;
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
 }
 
 .combo-box .arrow-button:hover {
-    -fx-background-color: #EA9215; /* Narancssárga hover a nyílra */
+    -fx-background-color: #EA9215;
 }
 
 
 
 .table-view {
-    -fx-background-color: #3A4750; /* Sötétszürke háttér */
-    -fx-border-color: #EA9215;    /* Narancssárga keret */
-    -fx-border-width: 2px;        /* Vastagabb keret */
-    -fx-border-radius: 10px;       /* Lekerekített sarkok */
+    -fx-background-color: linear-gradient(to bottom, #3A4750, #282c30);
+    -fx-border-color: #EA9215;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
     -fx-background-radius: 10px;
+    -fx-padding: 5px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 2);
 }
 
 .table-view .column-header {
     -fx-text-fill: #EA9215;
-    -fx-background-color: #3A4750; /* Még sötétebb fejléc */
+    -fx-background-color: #ccb8a6;
     -fx-font-size: 16px;
     -fx-font-weight: bold;
-    -fx-border-color: #EA9215;     /* Narancssárga elválasztó vonal a fejlécben */
+    -fx-alignment: center;
+    -fx-border-color: #EA9215;
     -fx-border-width: 0px 2px 2px 0px;
+    -fx-padding: 10px;
 }
 
 .table-view .table-row-cell {
-    -fx-background-color: #3A4750; /* Sötétszürke páratlan sorok */
+    -fx-background-color: transparent;
 }
 
 .table-view .table-row-cell:hover {
-    -fx-background-color: #EA9215; /* Hover állapot narancssárga */
-    -fx-text-fill: white;          /* Fehér szöveg hover állapotban */
+    -fx-background-color: #EA9215;
+    -fx-text-fill: white;
 }
 
 .table-view .table-cell {
-    -fx-text-fill: white;          /* Fehér szöveg a cellákban */
+    -fx-text-fill: white;
     -fx-padding: 8px;
+    -fx-background-color: transparent;
+    -fx-alignment: center;
 }
 
-.table-view .table-cell:focused {
-    -fx-background-color: #FFD479; /* Világos narancssárga fókusz */
-    -fx-text-fill: black;          /* Fekete szöveg fókuszban */
+.table-view .table-cell:selected {
+    -fx-background-color: #FFD479;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
     -fx-border-color: #EA9215;
     -fx-border-width: 1px;
 }
 
 .table-view:focused {
-    -fx-border-color: #EA9215;     /* Az egész táblázat fókusz állapotban */
-    -fx-effect: dropshadow(gaussian, rgba(234, 146, 21, 0.7), 12, 0, 0, 4); /* Erősebb árnyék fókuszkor */
+    -fx-border-color: #EA9215;
+    -fx-effect: dropshadow(gaussian, rgba(234, 146, 21, 0.7), 12, 0, 0, 4);
+}
+
+.table-view .table-row-cell:empty {
+    -fx-background-color: transparent;
+}
+
+.table-view .scroll-bar {
+    -fx-background-color: #282c30;
+}
+
+.table-view .scroll-bar .thumb {
+    -fx-background-color: #EA9215;
+    -fx-background-radius: 5px;
+}
+
+.table-view .column-header:hover {
+    -fx-background-color: #EA9215;
+    -fx-text-fill: white;
 }
