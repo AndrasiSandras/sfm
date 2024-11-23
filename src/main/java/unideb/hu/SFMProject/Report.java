@@ -9,25 +9,25 @@ public class Report {
     private long id;
     private int transactionId;
     private String inOut;
-    private String pName;
+    private String starterName;
     @Column(nullable = false)
-    private int pQuantity;
+    private String product;
 
 
-    public int getpQuantity() {
-        return pQuantity;
+    public String getProduct() {
+        return product;
     }
 
-    public void setpQuantity(int pQuantity) {
-        this.pQuantity = pQuantity;
+    public void setProduct(String product) {
+        this.product = product;
     }
 
     public String getpName() {
-        return pName;
+        return starterName;
     }
 
     public void setpName(String pName) {
-        this.pName = pName;
+        this.starterName = pName;
     }
 
     public String getInOut() {

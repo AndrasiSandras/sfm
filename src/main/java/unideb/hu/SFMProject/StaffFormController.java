@@ -32,6 +32,8 @@ import java.nio.file.Files;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static unideb.hu.SFMProject.PDFGenerator.generateReport;
+
 public class StaffFormController {
 
     public Button GenerateReportButton;
@@ -84,8 +86,12 @@ public class StaffFormController {
     private TableColumn<Report,String> pName;
     @FXML
 
-    private TableColumn<Report,Integer> pQuantity;
+    private TableColumn<Report,String> pProduct;
 
+    @FXML
+    private Label sUserLabel;
+
+    private String loggedInUser;
 
 
     private JPADAO jpaDAO = new JPADAO();
@@ -245,6 +251,7 @@ public class StaffFormController {
     }
 
     public void reportGenerator(ActionEvent actionEvent) {
+        generateReport();
     }
 
     public void fillComboBox() {
@@ -310,12 +317,11 @@ public class StaffFormController {
         try {
             jpaDAO.updateProduct(product);
             productListView.getItems().add("Added " + quantity + " to " + product.getName() + " (New quantity: " + product.getQuantity() + ")");
-            //setTransIn(generateUniqueRandom()+ ",IN," + sceneController.getloginName()+ "," + product.getName()+ ": " + product.getQuantity() + "db\n");
             Report report = new Report();
             report.setTransactionId(generateUniqueRandom());
             report.setInOut("IN");
-            report.setpName(product.getName());
-            report.setpQuantity(product.getQuantity());
+            report.setpName(loggedInUser + " (Staff)");
+            report.setProduct(product.getName()+": "+ quantity + ",(New quantity: " + product.getQuantity() + ")");
             jpaDAO.saveReport(report);
 
          } catch (Exception e) {
@@ -377,8 +383,8 @@ public class StaffFormController {
                 Report report = new Report();
                 report.setTransactionId(generateUniqueRandom());
                 report.setInOut("OUT");
-                report.setpName(product.getName());
-                report.setpQuantity(product.getQuantity());
+                report.setpName(loggedInUser + " (Staff)");
+                report.setProduct(product.getName()+": "+quantity + ",(New quantity: " + product.getQuantity() + ")");
                 jpaDAO.saveReport(report);
 
            } catch (Exception e) {
@@ -496,7 +502,7 @@ public class StaffFormController {
         transactionId.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getTransactionId()).asObject());
         inOut.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getInOut()));
         pName.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getpName()));
-        pQuantity.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getpQuantity()).asObject());
+        pProduct.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getProduct()));
 
 
         reportTableView.setItems(reports);

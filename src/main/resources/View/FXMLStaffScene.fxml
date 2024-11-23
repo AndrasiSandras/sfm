@@ -77,7 +77,7 @@
          </Label>
       </Pane>
    </VBox>
-   <AnchorPane fx:id="AddProductForm" layoutX="240.0" prefHeight="800.0" prefWidth="961.0">
+   <AnchorPane fx:id="AddProductForm" layoutX="240.0" prefHeight="800.0" prefWidth="961.0" visible="false">
       <Pane layoutY="-1.0" prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: #3a4750; -fx-background-radius: 0 0 20;">
          <Label layoutX="117.0" layoutY="15.0" text="Add Product" textFill="#ea9215">
             <font>
@@ -195,7 +195,7 @@
          </columns>
       </TableView>
    </AnchorPane>
-   <AnchorPane fx:id="ReportsForm" layoutX="240.0" prefHeight="800.0" prefWidth="961.0" visible="false">
+   <AnchorPane fx:id="ReportsForm" layoutX="240.0" prefHeight="800.0" prefWidth="961.0">
       <Pane layoutY="-1.0" prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: #3a4750; -fx-background-radius: 0 0 20;">
          <Label layoutX="168.0" layoutY="15.0" text="Reports" textFill="#ea9215">
             <font>
@@ -209,7 +209,7 @@
                <TableColumn fx:id="transactionId" prefWidth="108.00003051757812" text="Transaction ID" />
                <TableColumn fx:id="inOut" prefWidth="60.0" text="In/Out" />
                <TableColumn fx:id="pName" prefWidth="175.199951171875" text="Transaction strater name" />
-               <TableColumn fx:id="pQuantity" prefWidth="245.60003662109375" text="Product " />
+               <TableColumn fx:id="pProduct" prefWidth="245.60003662109375" text="Product " />
             </columns>
          </TableView>
          <Button fx:id="GenerateReportButton" layoutX="451.0" layoutY="500.0" mnemonicParsing="false" onAction="#reportGenerator" style="-fx-background-color: transparent; -fx-border-width: 2 2 2 2; -fx-border-color: #ea9215; -fx-border-radius: 10;" styleClass="user_transparent_button_bigger" stylesheets="@style.css" text="Generate report" textFill="#ea9215">
@@ -217,13 +217,8 @@
                <Font size="24.0" />
             </font>
          </Button>
-         <Label layoutX="327.0" layoutY="451.0" text="*...report selected*" textFill="#ea9215">
-            <font>
-               <Font size="18.0" />
-            </font>
-         </Label>
 
-         <Button fx:id="reportRefreshButton" layoutX="123.0" layoutY="506.0" onAction="#refreshReportHandle" mnemonicParsing="false" style="-fx-border-width: 2 2 2 2; -fx-background-color: transparent; -fx-border-color: #ea9215; -fx-border-radius: 10;" text="Refresh Reports" textFill="#ea9215">
+         <Button fx:id="reportRefreshButton" layoutX="123.0" layoutY="506.0" mnemonicParsing="false" onAction="#refreshReportHandle" style="-fx-border-width: 2 2 2 2; -fx-background-color: transparent; -fx-border-color: #ea9215; -fx-border-radius: 10;" text="Refresh Reports" textFill="#ea9215">
 
             <font>
                <Font size="24.0" />
