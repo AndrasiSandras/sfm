@@ -128,7 +128,7 @@
                <Font size="18.0" />
             </font>
          </Label>
-         <TextField fx:id="productPriceField" alignment="TOP_LEFT" layoutX="56.0" layoutY="228.0" opacity="0.8" prefHeight="131.0" prefWidth="252.0" promptText="Delicious!" styleClass="user_text-field" stylesheets="@style.css">
+         <TextField fx:id="productDescriptionField" alignment="TOP_LEFT" layoutX="56.0" layoutY="228.0" opacity="0.8" prefHeight="131.0" prefWidth="252.0" promptText="Delicious!" styleClass="user_text-field" stylesheets="@style.css">
             <font>
                <Font size="18.0" />
             </font>
