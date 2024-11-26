@@ -32,8 +32,11 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 public class ClientFormController {
 
@@ -54,6 +57,8 @@ public class ClientFormController {
     private ComboBox<String> beszallComboBox;
     @FXML
     private ListView<String> beszalListView;
+    @FXML
+    private ListView<String> clientHistoryList;
     @FXML
     private TextField beszallQuantityField;
     @FXML
@@ -356,6 +361,7 @@ public class ClientFormController {
             report.setInOut("IN");
             report.setpName(loggedInUser + " (Client)");
             report.setProduct(product.getName()+": "+quantity + ",(New quantity: " + product.getQuantity() + ")");
+            report.setDate(LocalDateTime.now());
             jpaDAO.saveReport(report);
 
         } catch (Exception e) {
@@ -416,6 +422,7 @@ public class ClientFormController {
             report.setInOut("OUT");
             report.setpName(loggedInUser + " (Client)");
             report.setProduct(product.getName()+": "+quantity + ",(New quantity: " + product.getQuantity() + ")");
+            report.setDate(LocalDateTime.now());
             jpaDAO.saveReport(report);
 
         } catch (Exception e) {
@@ -482,7 +489,7 @@ public class ClientFormController {
     public void setLoggedInUser(String loggedInUser, String Creds, Image pImage) {
         this.loggedInUser = loggedInUser;
         this.Cred = Creds;
-        this.ProfilePicture.setImage(pImage);
+        ProfilePicture.setImage(pImage);
         // Frissítjük a Label-t
         cUserLabel.setText("Logged in as: " + loggedInUser);
     }
@@ -518,4 +525,17 @@ public class ClientFormController {
             }
         }
     }
+
+    public void handleClientHistoryRefresh(ActionEvent actionEvent) {
+        List<Report> reportList = jpaDAO.getAllReportsbyName(this.loggedInUser + " (Client)");
+
+        List<String> stringList = reportList.stream()
+                .map(report -> report.getpName() + ", " + report.getInOut() + ", " + report.getProduct() + ", " + report.getTransactionId() + ", " + report.getDate())
+                .collect(toList());
+
+        ObservableList<String> observableReportList = FXCollections.observableArrayList(stringList);
+        clientHistoryList.setItems(observableReportList);
+    }
+
 }
+
