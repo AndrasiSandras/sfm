@@ -1,6 +1,9 @@
 package unideb.hu.SFMProject;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 
 @Entity
 public class Report {
@@ -12,6 +15,8 @@ public class Report {
     private String starterName;
     @Column(nullable = false)
     private String product;
+    private String date;
+
 
 
     public String getProduct() {
@@ -45,4 +50,17 @@ public class Report {
     public void setTransactionId(int transactionId) {
         this.transactionId = transactionId;
     }
+
+   public String getDate()
+   {
+       return date;
+   }
+
+    public LocalDateTime setDate(LocalDateTime date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        this.date =  date.format(formatter);
+        return date;
+    }
+
+
 }

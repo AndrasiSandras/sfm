@@ -185,7 +185,7 @@ public class PDFGenerator {
         String password = "";
 
         try (Connection conn = DriverManager.getConnection(url, user, password)) {
-            String sql = "SELECT Inout, TransactionID, starterName, Product FROM Report";
+            String sql = "SELECT Inout, TransactionID, starterName, Date, Product FROM Report";
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
 
@@ -246,11 +246,11 @@ public class PDFGenerator {
     }
 
     private static Table createStyledTable() {
-        float[] columnWidths = {1, 2, 3, 3};
+        float[] columnWidths = {1, 2, 3, 5, 4};
         Table table = new Table(UnitValue.createPercentArray(columnWidths));
         table.setWidth(UnitValue.createPercentValue(100));
 
-        String[] headers = {"IN/OUT", "TransactionID", "TransactionStarterName", "Product"};
+        String[] headers = {"IN/OUT", "TransactionID", "TransactionStarterName", "Product", "Date"};
         for (String header : headers) {
             Cell headerCell = new Cell()
                     .add(new Paragraph(header).setBold().setFontColor(new DeviceRgb(255, 255, 255)))
@@ -268,6 +268,7 @@ public class PDFGenerator {
             table.addCell(createTableCell(rs.getString("TransactionID")));
             table.addCell(createTableCell(rs.getString("starterName")));
             table.addCell(createTableCell(rs.getString("Product")));
+            table.addCell(createTableCell(rs.getString("Date")));
         }
     }
 

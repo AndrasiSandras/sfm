@@ -1,9 +1,6 @@
 package unideb.hu.SFMProject;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class RegLogin {
@@ -11,6 +8,9 @@ public class RegLogin {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String Credentials;
+    @Lob
+    @Column(nullable = true)
+    private byte[] pImage;
 
     public void setCredentials(String credentials) {
         Credentials = credentials;
@@ -19,5 +19,17 @@ public class RegLogin {
     public String getCredentials()
     {
         return Credentials;
+    }
+
+    public byte[] getpImage() {
+        return pImage;
+    }
+
+    public void setpImage(byte[] pImage) {
+        this.pImage = pImage;
+    }
+
+    public int getId(){
+        return id;
     }
 }
