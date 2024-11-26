@@ -81,69 +81,6 @@ public class JPADAO extends DAO {
     }
 
     @Override
-    public void saveBeszallito(Beszallito a) {
-        EntityManager entityManager = createEntityManager();
-        try {
-            entityManager.getTransaction().begin();
-            entityManager.persist(a);
-            entityManager.getTransaction().commit();
-        } catch (Exception e) {
-            if (entityManager.getTransaction().isActive()) {
-                entityManager.getTransaction().rollback();
-            }
-            throw e;
-        } finally {
-            entityManager.close();
-        }
-    }
-
-    @Override
-    public List<Beszallito> getAllBeszallito() {
-        EntityManager entityManager = createEntityManager();
-        try {
-            TypedQuery<Beszallito> query = entityManager.createQuery("SELECT a FROM Beszallito a", Beszallito.class);
-            return query.getResultList();
-        } finally {
-            entityManager.close();
-        }
-    }
-
-    @Override
-    public void updateBeszallito(Beszallito a) {
-        EntityManager entityManager = createEntityManager();
-        try {
-            entityManager.getTransaction().begin();
-            entityManager.merge(a); // merge szükséges a frissítéshez
-            entityManager.getTransaction().commit();
-        } catch (Exception e) {
-            if (entityManager.getTransaction().isActive()) {
-                entityManager.getTransaction().rollback();
-            }
-            throw e;
-        } finally {
-            entityManager.close();
-        }
-    }
-
-    @Override
-    public void deleteBeszallito(Beszallito a) {
-        EntityManager entityManager = createEntityManager();
-        try {
-            entityManager.getTransaction().begin();
-            Beszallito beszallito = entityManager.merge(a); // szükséges lehet a merge, mielőtt törlöd
-            entityManager.remove(beszallito);
-            entityManager.getTransaction().commit();
-        } catch (Exception e) {
-            if (entityManager.getTransaction().isActive()) {
-                entityManager.getTransaction().rollback();
-            }
-            throw e;
-        } finally {
-            entityManager.close();
-        }
-    }
-
-    @Override
     public void saveRegLog(RegLogin a) {
         EntityManager entityManager = createEntityManager();
         try {
@@ -284,6 +221,33 @@ public class JPADAO extends DAO {
         } finally {
             entityManager.close();
         }
+    }
+
+    @Override
+    public void updateStafCredPassword(StaffCred a) {
+        EntityManager entityManager = createEntityManager();
+        entityManager.getTransaction().begin();
+        StaffCred existingProduct = entityManager.find(StaffCred.class, a.getId());
+        if (existingProduct != null) {
+            existingProduct.setCredentials(a.getCredentials());
+            existingProduct.setpImage(a.getpImage());
+            entityManager.merge(existingProduct);
+        }
+        entityManager.getTransaction().commit();
+    }
+
+    @Override
+    public void updateReglogpassword(RegLogin a) {
+        EntityManager entityManager = createEntityManager();
+        entityManager.getTransaction().begin();
+        RegLogin existingProduct = entityManager.find(RegLogin.class, a.getId());
+        if (existingProduct != null) {
+            existingProduct.setCredentials(a.getCredentials());
+            existingProduct.setpImage(a.getpImage());
+            entityManager.merge(existingProduct);
+        }
+        entityManager.getTransaction().commit();
+
     }
 
     public void close() {

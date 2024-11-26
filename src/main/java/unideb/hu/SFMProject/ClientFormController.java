@@ -205,9 +205,62 @@ public class ClientFormController {
         ));
 
         submitButton.setOnAction(event -> {
-            // Gomb funkció
-            System.out.println("Password changed!");
-            popupStage.close();
+
+            if(jpaDAO.findStaffcredbyCredentials(Cred) != null) {
+                StaffCred staffCred = jpaDAO.findStaffcredbyCredentials(Cred);
+                String[] data;
+
+                data = staffCred.getCredentials().split(",");
+
+
+                String current = currentPasswordField.getText();
+                String newpassword = newPasswordField.getText();
+                try {
+                    if (current.equals(data[1])) {
+                        String newcred = data[0] + "," + newpassword + "," + data[2];
+                        StaffCred staff = jpaDAO.findStaffcredbyCredentials(Cred);
+                        staff.setCredentials(newcred);
+                        jpaDAO.updateStafCredPassword(staff);
+                        showAlert("Success", "Password successfully changed!", Alert.AlertType.INFORMATION);
+                    } else {
+                        showAlert("Error", "Current Password do not match!", Alert.AlertType.ERROR);
+                        return;
+
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    showAlert("Error", "Failed to change password!", Alert.AlertType.ERROR);
+                }
+                popupStage.close();
+            }
+            else
+            {
+                RegLogin regLogin = jpaDAO.findRegLogbyCredentials(Cred);
+                String[] data;
+
+                data = regLogin.getCredentials().split(",");
+
+
+                String current = currentPasswordField.getText();
+                String newpassword = newPasswordField.getText();
+                try {
+                    if (current.equals(data[1])) {
+                        String newcred = data[0] + "," + newpassword + "," + data[2];
+                        RegLogin client = jpaDAO.findRegLogbyCredentials(Cred);
+                        client.setCredentials(newcred);
+                        jpaDAO.updateReglogpassword(client);
+                        showAlert("Success", "Password successfully changed!", Alert.AlertType.INFORMATION);
+                    } else {
+                        showAlert("Error", "Current Password do not match!", Alert.AlertType.ERROR);
+                        return;
+
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    showAlert("Error", "Failed to change password!", Alert.AlertType.ERROR);
+                }
+                popupStage.close();
+            }
         });
 
         // Ablak elrendezése
