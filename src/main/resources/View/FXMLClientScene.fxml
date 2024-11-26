@@ -125,12 +125,12 @@
     <AnchorPane fx:id="AccountForm" layoutX="240.0" prefHeight="800.0" prefWidth="959.0">
       <Pane layoutX="34.0" layoutY="175.0" prefHeight="620.0" prefWidth="890.0" style="-fx-background-color: #3a4750; -fx-background-radius: 20;">
          <children>
-            <Button layoutX="599.0" layoutY="571.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="223.0" styleClass="user_transparent_button_borderless" stylesheets="@style.css" text="Change profile picture" textFill="#ea9215">
+            <Button fx:id="changeProfilePictureButton" layoutX="599.0" layoutY="571.0" mnemonicParsing="false" onAction="#handleClientProfilePicture" prefHeight="43.0" prefWidth="223.0" styleClass="user_transparent_button_borderless" stylesheets="@style.css" text="Change profile picture" textFill="#ea9215">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button layoutX="114.0" layoutY="569.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="170.0" styleClass="user_transparent_button_borderless" stylesheets="@style.css" text="Change password" textFill="#ea9215">
+            <Button fx:id="changePasswordButton" layoutX="114.0" layoutY="569.0" mnemonicParsing="false" onAction="#handleChangePasswordClient" prefHeight="47.0" prefWidth="170.0" styleClass="user_transparent_button_borderless" stylesheets="@style.css" text="Change password" textFill="#ea9215">
                <font>
                   <Font size="24.0" />
                </font>
