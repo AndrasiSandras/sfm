@@ -130,13 +130,14 @@ public class SceneController {
             // Átadjuk a bejelentkezett felhasználó nevét
 
             byte[] profileP = jpadao.findStaffcredbyCredentials(Creds).getpImage();
+            Image pImage = null;
             if( profileP != null)
             {
-                Image pImage = null;
+
                 pImage = new Image(new ByteArrayInputStream(profileP));
                 staffController.setLoggedInUser(loginName, Creds,pImage);
             }
-
+            staffController.setLoggedInUser(loginName, Creds,pImage);
 
 
             // Scene betöltése
