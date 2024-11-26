@@ -221,6 +221,10 @@ public class ClientFormController {
                 String current = currentPasswordField.getText();
                 String newpassword = newPasswordField.getText();
                 try {
+                    if (current.equals(newpassword)) {
+                        showAlert("Error", "The new password cannot be the same as the current password!", Alert.AlertType.ERROR);
+                        return;
+                    }
                     if (current.equals(data[1])) {
                         String newcred = data[0] + "," + newpassword + "," + data[2];
                         StaffCred staff = jpaDAO.findStaffcredbyCredentials(Cred);
