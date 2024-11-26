@@ -408,7 +408,7 @@ public class StaffFormController {
     }
 
     @FXML
-    private void handleChangePasswordStaff() {
+    private void handleCHangePassword() {
         // Ellenőrizzük, hogy az ablak már nyitva van-e
         if (popupStage != null) {
             popupStage.toFront();
@@ -477,8 +477,33 @@ public class StaffFormController {
         ));
 
         submitButton.setOnAction(event -> {
-            // Gomb funkció
-            System.out.println("Password changed!");
+            StaffCred staffCred = jpaDAO.findStaffcredbyCredentials(Cred);
+            String[] data;
+
+            data = staffCred.getCredentials().split(",");
+
+
+            String current = currentPasswordField.getText();
+            String newpassword = newPasswordField.getText();
+            try {
+                if (current.equals(data[1])) {
+                    String newcred = data[0] + "," + newpassword + "," + data[2];
+                    StaffCred staff =jpaDAO.findStaffcredbyCredentials(Cred);
+                    staff.setCredentials(newcred);
+                    jpaDAO.updateStafCredPassword(staff);
+                    showAlert("Success", "Password successfully changed!", Alert.AlertType.INFORMATION);
+                } else {
+                    showAlert("Error", "Current Password do not match!", Alert.AlertType.ERROR);
+                    return;
+
+                }
+            }catch (Exception e)
+            {
+                e.printStackTrace();
+                showAlert("Error", "Failed to change password!", Alert.AlertType.ERROR);
+            }
+
+
             popupStage.close();
         });
 
@@ -619,9 +644,6 @@ public class StaffFormController {
 
         reportTableView.setItems(reports);
 
-    }
-
-    public void handleCHangePassword(ActionEvent actionEvent) {
     }
 
     public void handleChangeProfilePicture(ActionEvent actionEvent) {

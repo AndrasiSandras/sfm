@@ -11,12 +11,6 @@ public abstract class DAO {
     public abstract void updateProduct(Product a);     //U
     public abstract void deleteProduct(Product a);
     public abstract Product findProductByName(String name);
-
-    public abstract void saveBeszallito(Beszallito a);       //C
-    public  abstract List<Beszallito> getAllBeszallito();    //R
-    public abstract void updateBeszallito(Beszallito a);     //U
-    public abstract void deleteBeszallito(Beszallito a);
-
     public abstract void saveRegLog(RegLogin a);
     public abstract List<String> getAllRegLog();
     public abstract List<String> getAllStaffCred();
@@ -26,4 +20,6 @@ public abstract class DAO {
     public abstract void updateRegLogpImage(RegLogin a);
     public abstract StaffCred findStaffcredbyCredentials(String cred);
     public abstract RegLogin findRegLogbyCredentials(String cred);
+    public abstract void updateStafCredPassword(StaffCred a);
+    public abstract void updateReglogpassword(RegLogin a);
 }
