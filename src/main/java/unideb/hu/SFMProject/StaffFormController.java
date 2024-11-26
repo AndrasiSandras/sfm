@@ -398,7 +398,7 @@ public class StaffFormController {
     }
 
     @FXML
-    private void handleChangePassword() {
+    private void handleChangePasswordStaff() {
         // Ellenőrizzük, hogy az ablak már nyitva van-e
         if (popupStage != null) {
             popupStage.toFront();
