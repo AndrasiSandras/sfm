@@ -37,12 +37,14 @@ import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.toList;
 import static unideb.hu.SFMProject.PDFGenerator.generateReport;
 
 public class StaffFormController {
 
     public Button GenerateReportButton;
     public ImageView ProfilePicture;
+    public Button HistoryRefreshButton;
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -71,6 +73,8 @@ public class StaffFormController {
     private TextField productQuantityField;
     @FXML
     private ListView<String> productListView;
+    @FXML
+    private ListView<String> StaffHistoryList;
     @FXML
     private TableView<Product> productTableView;
     @FXML
@@ -107,6 +111,8 @@ public class StaffFormController {
     private File selectedFile;
     private byte[] imageBytes;
     private byte[] ProfileimageBytes;
+
+    private int quantity;
 
     public byte[] getProfileimageBytes()
     {
@@ -237,7 +243,7 @@ public class StaffFormController {
 
         List<String> productnames = products.stream()
                 .map(Product::getName)
-                .collect(Collectors.toList());
+                .collect(toList());
 
 
         if(productnames.contains(name))
@@ -277,7 +283,7 @@ public class StaffFormController {
 
         List<String> productNames = products.stream()
                 .map(Product::getName)
-                .collect(Collectors.toList());
+                .collect(toList());
 
         productComboBox.getItems().addAll(productNames);
 
@@ -355,7 +361,7 @@ public class StaffFormController {
 
 
             String quantityText = productQuantityField.getText();
-            int quantity;
+
 
 
             try {
@@ -393,7 +399,6 @@ public class StaffFormController {
                 jpaDAO.updateProduct(product);
                 productListView.getItems().add(("Removed " + quantity + " from " + product.getName() + " (New quantity: " + product.getQuantity() + ")"));
                 //setTransOut(generateUniqueRandom()+ ",OUT," + product.getName() + "," + product.getQuantity() + "db\n");
-
                 Report report = new Report();
                 report.setTransactionId(generateUniqueRandom());
                 report.setInOut("OUT");
@@ -677,5 +682,16 @@ public class StaffFormController {
             }
         }
 
+    }
+
+    public void handelHistoryRefresh(ActionEvent actionEvent) {
+        List<Report> reportList = jpaDAO.getAllReportsbyName(this.loggedInUser + " (Staff)");
+
+        List<String> stringList = reportList.stream()
+                .map(report -> report.getpName() + ", " + report.getInOut() + ", " + report.getProduct() + ", " + report.getTransactionId() + ", " + report.getDate())
+                .collect(toList());
+
+        ObservableList<String> observableReportList = FXCollections.observableArrayList(stringList);
+        StaffHistoryList.setItems(observableReportList);
     }
 }

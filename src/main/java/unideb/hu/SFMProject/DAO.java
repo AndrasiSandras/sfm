@@ -16,6 +16,7 @@ public abstract class DAO {
     public abstract List<String> getAllStaffCred();
     public abstract void saveReport(Report a);
     public abstract List<Report> getAllReports();
+    public abstract List<Report> getAllReportsbyName(String a);
     public abstract void updateStafCredpImage(StaffCred a);
     public abstract void updateRegLogpImage(RegLogin a);
     public abstract StaffCred findStaffcredbyCredentials(String cred);

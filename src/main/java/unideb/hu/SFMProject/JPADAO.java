@@ -3,6 +3,7 @@
 package unideb.hu.SFMProject;
 
 import javax.persistence.*;
+import java.util.Collections;
 import java.util.List;
 
 public class JPADAO extends DAO {
@@ -162,6 +163,25 @@ public class JPADAO extends DAO {
         } finally {
             entityManager.close();
         }
+    }
+
+    @Override
+    public List<Report> getAllReportsbyName(String a) {
+        EntityManager entityManager = createEntityManager();
+
+        List<Report> reports = null;
+        try {
+            reports = entityManager.createQuery("SELECT r FROM Report r WHERE r.starterName = :starterName", Report.class)
+                    .setParameter("starterName", a)
+                    .getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            entityManager.close();
+
+        }
+
+        return reports;
     }
 
     @Override
