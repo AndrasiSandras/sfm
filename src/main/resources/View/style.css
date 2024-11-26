@@ -427,3 +427,13 @@
     -fx-background-color: #EA9215;
     -fx-text-fill: white;
 }
+
+
+
+#popup-layout {
+    -fx-background-color: linear-gradient(to bottom, #3A4750, #282C30);
+    -fx-border-color: #EA9215;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+    -fx-padding: 10px;
+}

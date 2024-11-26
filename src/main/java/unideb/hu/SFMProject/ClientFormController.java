@@ -11,6 +11,7 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -20,6 +21,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
@@ -38,6 +40,8 @@ public class ClientFormController {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    private Stage popupStage = null;
+
 
     int min = 0,max = 1000;
 
@@ -129,6 +133,101 @@ public class ClientFormController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    @FXML
+    private void handleChangePasswordClient() {
+        // Ellenőrizzük, hogy az ablak már nyitva van-e
+        if (popupStage != null) {
+            popupStage.toFront();
+            return;
+        }
+
+        // Felugró ablak létrehozása
+        popupStage = new Stage();
+        popupStage.setTitle("Change Password");
+
+        // Logó betöltése
+        Image logoImage = new Image(getClass().getResourceAsStream("/image/palacklogo.png"));
+        ImageView logoImageView = new ImageView(logoImage);
+        logoImageView.setFitWidth(100);  // Méret beállítása
+        logoImageView.setPreserveRatio(true);
+        logoImageView.setSmooth(true);
+
+        // Stílusos TextField-ek
+        TextField currentPasswordField = new TextField();
+        currentPasswordField.setPromptText("Current Password");
+        currentPasswordField.setStyle(
+                "-fx-background-color: #3A4750;" +
+                        "-fx-text-fill: white;" +
+                        "-fx-border-color: #EA9215;" +
+                        "-fx-border-radius: 5px;" +
+                        "-fx-padding: 5px;" +
+                        "-fx-font-size: 14px;"
+        );
+
+        TextField newPasswordField = new TextField();
+        newPasswordField.setPromptText("New Password");
+        newPasswordField.setStyle(
+                "-fx-background-color: #3A4750;" +
+                        "-fx-text-fill: white;" +
+                        "-fx-border-color: #EA9215;" +
+                        "-fx-border-radius: 5px;" +
+                        "-fx-padding: 5px;" +
+                        "-fx-font-size: 14px;"
+        );
+
+        // Stílusos Submit gomb
+        Button submitButton = new Button("Submit");
+        submitButton.setStyle(
+                "-fx-background-color: #EA9215;" +
+                        "-fx-text-fill: white;" +
+                        "-fx-font-weight: bold;" +
+                        "-fx-border-radius: 5px;" +
+                        "-fx-padding: 10px 20px;"
+        );
+
+        submitButton.setOnMouseEntered(event -> submitButton.setStyle(
+                "-fx-background-color: #FFD479;" +
+                        "-fx-text-fill: white;" +
+                        "-fx-font-weight: bold;" +
+                        "-fx-border-radius: 5px;" +
+                        "-fx-padding: 10px 20px;" +
+                        "-fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 2);"
+        ));
+
+        submitButton.setOnMouseExited(event -> submitButton.setStyle(
+                "-fx-background-color: #EA9215;" +
+                        "-fx-text-fill: white;" +
+                        "-fx-font-weight: bold;" +
+                        "-fx-border-radius: 5px;" +
+                        "-fx-padding: 10px 20px;"
+        ));
+
+        submitButton.setOnAction(event -> {
+            // Gomb funkció
+            System.out.println("Password changed!");
+            popupStage.close();
+        });
+
+        // Ablak elrendezése
+        VBox layout = new VBox(15, logoImageView, currentPasswordField, newPasswordField, submitButton);
+        layout.setStyle(
+                "-fx-background-color: linear-gradient(to bottom, #3A4750, #282C30);" +
+                        "-fx-border-color: #EA9215;" +
+                        "-fx-border-width: 2px;" +
+                        "-fx-border-radius: 10px;" +
+                        "-fx-padding: 20px;"
+        );
+        layout.setAlignment(Pos.CENTER);
+
+        Scene popupScene = new Scene(layout, 350, 400);
+        popupStage.setScene(popupScene);
+
+        // Bezárás esemény
+        popupStage.setOnCloseRequest(event -> popupStage = null);
+
+        popupStage.show();
     }
 
     public void fillComboBoxBeszall(MouseEvent mouseEvent) {
