@@ -19,10 +19,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -61,6 +64,8 @@ public class ClientFormController {
     private TableColumn<Product,String> beszalTableDescription;
     @FXML
     private TableColumn<Product, ImageView> beszalTableImage;
+    public ImageView ProfilePicture;
+    private File selectedFile;
 
 
     private JPADAO jpaDAO = new JPADAO();
@@ -90,6 +95,13 @@ public class ClientFormController {
     private Label cUserLabel;
 
     private String loggedInUser;
+    private String Cred;
+    private byte[] pImage;
+
+    public String getCred()
+    {
+        return Cred;
+    }
 
     @FXML
     public void initialize() {
@@ -315,10 +327,43 @@ public class ClientFormController {
         return number;
     }
 
-    public void setLoggedInUser(String loggedInUser) {
+    public void setLoggedInUser(String loggedInUser, String Creds, Image pImage) {
         this.loggedInUser = loggedInUser;
+        this.Cred = Creds;
+        this.ProfilePicture.setImage(pImage);
         // Frissítjük a Label-t
         cUserLabel.setText("Logged in as: " + loggedInUser);
     }
 
+    public void handleClientProfilePicture(ActionEvent actionEvent) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select Profile Picture");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));
+
+        selectedFile = fileChooser.showOpenDialog(null);
+        if (selectedFile != null) {
+            try {
+                // Kép betöltése az ImageView-ba
+                Image image = new Image(new FileInputStream(selectedFile));
+                ProfilePicture.setImage(image);
+
+                // Kép átalakítása byte[] formátumba az adatbázishoz
+                pImage = Files.readAllBytes(selectedFile.toPath());
+
+                if (pImage.length == 0) {
+                    showAlert("Error", "The selected image is invalid or empty!", Alert.AlertType.ERROR);
+                    return;
+                }
+                System.out.println(Cred);
+                RegLogin regLogin = jpaDAO.findRegLogbyCredentials(Cred);
+                regLogin.setpImage(pImage); // Ezen dolgozol
+                jpaDAO.updateRegLogpImage(regLogin);
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                showAlert("Error", "Failed to load the image!", Alert.AlertType.ERROR);
+            }
+        }
+    }
 }

@@ -29,6 +29,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -92,13 +94,19 @@ public class StaffFormController {
     private Label sUserLabel;
 
     private String loggedInUser;
-
+    private String Cred;
 
     private JPADAO jpaDAO = new JPADAO();
     private Map<Button, AnchorPane> buttonPaneMap;
 
     private File selectedFile;
     private byte[] imageBytes;
+    private byte[] ProfileimageBytes;
+
+    public byte[] getProfileimageBytes()
+    {
+        return ProfileimageBytes;
+    }
 
 
     ClientFormController clientFormController;
@@ -322,6 +330,7 @@ public class StaffFormController {
             report.setInOut("IN");
             report.setpName(loggedInUser + " (Staff)");
             report.setProduct(product.getName()+": "+ quantity + ",(New quantity: " + product.getQuantity() + ")");
+            report.setDate(report.setDate(LocalDateTime.now()));
             jpaDAO.saveReport(report);
 
          } catch (Exception e) {
@@ -385,6 +394,7 @@ public class StaffFormController {
                 report.setInOut("OUT");
                 report.setpName(loggedInUser + " (Staff)");
                 report.setProduct(product.getName()+": "+quantity + ",(New quantity: " + product.getQuantity() + ")");
+                report.setDate(LocalDateTime.now());
                 jpaDAO.saveReport(report);
 
            } catch (Exception e) {
@@ -482,8 +492,10 @@ public class StaffFormController {
         }
 
 
-    public void setLoggedInUser(String loggedInUser) {
+    public void setLoggedInUser(String loggedInUser, String Creds, Image pImage) {
         this.loggedInUser = loggedInUser;
+        this.Cred = Creds;
+        ProfilePicture.setImage(pImage);
         // Frissítjük a Label-t
         sUserLabel.setText("Logged in as: "+ loggedInUser);
     }
@@ -506,6 +518,42 @@ public class StaffFormController {
 
 
         reportTableView.setItems(reports);
+
+    }
+
+    public void handleCHangePassword(ActionEvent actionEvent) {
+    }
+
+    public void handleChangeProfilePicture(ActionEvent actionEvent) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select Profile Picture");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));
+
+        selectedFile = fileChooser.showOpenDialog(null);
+        if (selectedFile != null) {
+            try {
+                // Kép betöltése az ImageView-ba
+                Image image = new Image(new FileInputStream(selectedFile));
+                ProfilePicture.setImage(image);
+
+                // Kép átalakítása byte[] formátumba az adatbázishoz
+                ProfileimageBytes = Files.readAllBytes(selectedFile.toPath());
+
+                if (ProfileimageBytes.length == 0) {
+                    showAlert("Error", "The selected image is invalid or empty!", Alert.AlertType.ERROR);
+                    return;
+                }
+
+                StaffCred staffCred = jpaDAO.findStaffcredbyCredentials(Cred);
+                staffCred.setpImage(ProfileimageBytes); // Ezen dolgozol
+                jpaDAO.updateStafCredpImage(staffCred);
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                showAlert("Error", "Failed to load the image!", Alert.AlertType.ERROR);
+            }
+        }
 
     }
 }

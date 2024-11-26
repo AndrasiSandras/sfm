@@ -1,9 +1,6 @@
 package unideb.hu.SFMProject;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 
@@ -12,6 +9,9 @@ public class StaffCred {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String Credentials;
+    @Lob
+    @Column(nullable = true)
+    private byte[] pImage;
 
     public String getCredentials() {
         return Credentials;
@@ -19,5 +19,18 @@ public class StaffCred {
 
     public void setCredentials(String credentials) {
         Credentials = credentials;
+    }
+
+    public byte[] getpImage() {
+        return pImage;
+    }
+
+    public void setpImage(byte[] pImage) {
+        System.out.println("Setting image bytes. Size: " + (pImage != null ? pImage.length : "null"));
+        this.pImage = pImage;
+    }
+
+    public Object getId() {
+        return id;
     }
 }
