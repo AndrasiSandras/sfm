@@ -76,7 +76,7 @@
          </Label>
       </Pane>
    </VBox>
-   <AnchorPane fx:id="AddProductForm" layoutX="240.0" prefHeight="800.0" prefWidth="961.0">
+   <AnchorPane fx:id="AddProductForm" layoutX="240.0" prefHeight="800.0" prefWidth="961.0" visible="false">
       <Pane layoutY="-1.0" prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: #3a4750; -fx-background-radius: 0 0 20;">
          <Label layoutX="117.0" layoutY="15.0" text="Add Product" textFill="#ea9215">
             <font>
@@ -230,19 +230,20 @@
          </Button>
       </Pane>
    </AnchorPane>
-   <AnchorPane fx:id="AccountForm" layoutX="240.0" prefHeight="800.0" prefWidth="961.0" visible="false">
+   <AnchorPane fx:id="AccountForm" layoutX="240.0" prefHeight="800.0" prefWidth="961.0">
       <Pane layoutX="35.0" layoutY="167.0" prefHeight="620.0" prefWidth="890.0" style="-fx-background-color: #3a4750; -fx-background-radius: 20;">
          <children>
-            <Button fx:id="changePassword" layoutX="90.0" layoutY="566.0" mnemonicParsing="false" onAction="#handleCHangePassword" prefHeight="42.0" prefWidth="179.0" styleClass="user_transparent_button_borderless" stylesheets="@style.css" text="Change password" textFill="#ea9215">
+            <Button layoutX="90.0" layoutY="566.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="179.0" styleClass="user_transparent_button_borderless" stylesheets="@style.css" text="Change password" textFill="#ea9215">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button fx:id="changeProfilePicture" layoutX="613.0" layoutY="566.0" mnemonicParsing="false" onAction="#handleChangeProfilePicture" prefHeight="35.0" prefWidth="212.0" styleClass="user_transparent_button_borderless" stylesheets="@style.css" text="Change profile picture" textFill="#ea9215">
+            <Button layoutX="613.0" layoutY="566.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="212.0" styleClass="user_transparent_button_borderless" stylesheets="@style.css" text="Change profile picture" textFill="#ea9215">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
+            <Button fx:id="HistoryRefreshButton" layoutX="345.0" layoutY="562.0" mnemonicParsing="false" onAction="#handelHistoryRefresh" prefHeight="47.0" prefWidth="200.0" styleClass="user_transparent_button_borderless" stylesheets="@style.css" text="Refresh" />
          </children></Pane>
       <Pane prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: #3a4750; -fx-background-radius: 0 0 20;">
          <Label layoutX="123.0" layoutY="15.0" text="My Account" textFill="#ea9215">
@@ -251,14 +252,14 @@
             </font>
          </Label>
       </Pane>
-      <ListView layoutX="50.0" layoutY="249.0" prefHeight="480.0" prefWidth="861.0" stylesheets="@style.css" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="92.0" />
+      <ListView fx:id="StaffHistoryList" layoutX="51.0" layoutY="249.0" prefHeight="447.0" prefWidth="859.0" stylesheets="@style.css" AnchorPane.leftAnchor="51.0" AnchorPane.rightAnchor="51.0" />
       <Label layoutX="50.0" layoutY="190.0" text="History:" textFill="#ea9215">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
       <ImageView fx:id="ProfilePicture" fitHeight="150.0" fitWidth="200.0" layoutX="803.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-
+         <Image url="@../image/profilkep.png" />
       </ImageView>
    </AnchorPane>
 </AnchorPane>
