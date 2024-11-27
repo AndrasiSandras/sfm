@@ -38,7 +38,7 @@
                      </stops>
                   </LinearGradient>
                </textFill></Button>
-               <ImageView fitHeight="201.0" fitWidth="328.0" layoutX="46.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
+               <ImageView fitHeight="201.0" fitWidth="328.0" layoutX="38.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@../image/palackmesterlogo.png" />
                   </image>
