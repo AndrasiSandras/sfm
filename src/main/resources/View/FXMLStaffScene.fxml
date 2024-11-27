@@ -16,7 +16,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="unideb.hu.SFMProject.StaffFormController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="unideb.hu.SFMProject.StaffFormController">
    <VBox prefHeight="400.0" prefWidth="240.0" style="-fx-background-color: #3A4750;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
       <Pane prefHeight="40.0" prefWidth="240.0" />
       <ImageView fitHeight="103.0" fitWidth="240.0" pickOnBounds="true" preserveRatio="true">
@@ -76,147 +76,147 @@
          </Label>
       </Pane>
    </VBox>
-   <AnchorPane fx:id="AddProductForm" layoutX="240.0" prefHeight="800.0" prefWidth="961.0">
-      <Pane layoutY="-1.0" prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: #3a4750; -fx-background-radius: 0 0 20;">
-         <Label layoutX="117.0" layoutY="15.0" text="Add Product" textFill="#ea9215">
+   <AnchorPane fx:id="AddProductForm" layoutX="240.0" prefHeight="800.0" prefWidth="1160.0">
+      <Pane layoutY="-1.0" prefHeight="100.0" prefWidth="700.0" style="-fx-background-color: #3a4750; -fx-background-radius: 0 0 20;">
+         <Label layoutX="216.0" layoutY="15.0" text="Add Product" textFill="#ea9215">
             <font>
                <Font size="48.0" />
             </font>
          </Label>
       </Pane>
-      <Pane layoutX="127.0" layoutY="172.0" prefHeight="455.0" prefWidth="707.0" style="-fx-background-color: #3a4750; -fx-background-radius: 20;">
-         <Button fx:id="AddButton" layoutX="109.0" layoutY="385.0" mnemonicParsing="false" onAction="#handleSaveProduct" prefHeight="43.0" prefWidth="151.0" style="-fx-border-width: 2 2 2 2; -fx-background-color: transparent; -fx-border-color: #ea9215; -fx-border-radius: 10;" styleClass="user_transparent_button" stylesheets="@style.css" text="Add product" textFill="#ea9215">
+      <Pane layoutX="100.0" layoutY="160.0" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #3a4750; -fx-background-radius: 20;" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="150.0">
+         <Button fx:id="AddButton" layoutX="137.0" layoutY="516.0" mnemonicParsing="false" onAction="#handleSaveProduct" prefHeight="43.0" prefWidth="151.0" style="-fx-border-width: 2 2 2 2; -fx-background-color: transparent; -fx-border-color: #ea9215; -fx-border-radius: 10;" styleClass="user_transparent_button" stylesheets="@style.css" text="Add product" textFill="#ea9215">
             <font>
                <Font size="18.0" />
             </font>
          </Button>
-         <Label layoutX="130.0" layoutY="95.0" text="Product price" textFill="#ea9215">
+         <Label layoutX="160.0" layoutY="95.0" text="Product price" textFill="#ea9215">
             <font>
                <Font size="18.0" />
             </font>
          </Label>
-         <Label layoutX="127.0" layoutY="13.0" text="Product name" textAlignment="CENTER" textFill="#ea9215">
+         <Label layoutX="157.0" layoutY="13.0" text="Product name" textAlignment="CENTER" textFill="#ea9215">
             <font>
                <Font size="18.0" />
             </font>
          </Label>
-         <TextField fx:id="productNameField" alignment="CENTER" layoutX="59.0" layoutY="40.0" opacity="0.8" promptText="Jägermeister 35% 0,7L" styleClass="user_text-field" stylesheets="@style.css">
+         <TextField fx:id="productNameField" alignment="CENTER" layoutX="55.0" layoutY="40.0" opacity="0.8" prefHeight="43.0" prefWidth="315.0" promptText="Jägermeister 35% 0,7L" styleClass="user_text-field" stylesheets="@style.css">
             <font>
                <Font size="18.0" />
             </font>
          </TextField>
-         <TextField fx:id="productPriceField" alignment="CENTER" layoutX="57.0" layoutY="122.0" opacity="0.8" promptText="5 560,– Ft" styleClass="user_text-field" stylesheets="@style.css">
+         <TextField fx:id="productPriceField" alignment="CENTER" layoutX="55.0" layoutY="122.0" opacity="0.8" prefHeight="43.0" prefWidth="315.0" promptText="5 560,– Ft" styleClass="user_text-field" stylesheets="@style.css">
             <font>
                <Font size="18.0" />
             </font>
          </TextField>
-         <Button fx:id="BrowseButton" layoutX="457.0" layoutY="385.0" mnemonicParsing="false" onAction="#handleBrowseImage" prefHeight="43.0" prefWidth="151.0" style="-fx-border-width: 2 2 2 2; -fx-background-color: transparent; -fx-border-color: #ea9215; -fx-border-radius: 10;" styleClass="user_transparent_button" stylesheets="@style.css" text="Browse" textFill="#ea9215">
+         <Button fx:id="BrowseButton" layoutX="607.0" layoutY="516.0" mnemonicParsing="false" onAction="#handleBrowseImage" prefHeight="43.0" prefWidth="151.0" style="-fx-border-width: 2 2 2 2; -fx-background-color: transparent; -fx-border-color: #ea9215; -fx-border-radius: 10;" styleClass="user_transparent_button" stylesheets="@style.css" text="Browse" textFill="#ea9215">
             <font>
                <Font size="18.0" />
             </font>
          </Button>
-         <Label layoutX="474.0" layoutY="13.0" text="Upload picture" textFill="#ea9215">
+         <Label layoutX="623.0" layoutY="13.0" text="Upload picture" textFill="#ea9215">
             <font>
                <Font size="18.0" />
             </font>
          </Label>
-         <ImageView fx:id="ProductImageView" fitHeight="331.0" fitWidth="252.0" layoutX="407.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+         <ImageView fx:id="ProductImageView" fitHeight="440.0" fitWidth="550.0" layoutX="407.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@../image/Jägermeister_35%_0,7L.jpg" />
          </ImageView>
-         <Label layoutX="104.0" layoutY="199.0" text="Product description" textFill="#ea9215">
+         <Label layoutX="135.0" layoutY="199.0" text="Product description" textFill="#ea9215">
             <font>
                <Font size="18.0" />
             </font>
          </Label>
-         <TextField fx:id="productDescriptionField" alignment="TOP_LEFT" layoutX="56.0" layoutY="228.0" opacity="0.8" prefHeight="131.0" prefWidth="252.0" promptText="Delicious!" styleClass="user_text-field" stylesheets="@style.css">
+         <TextField fx:id="productDescriptionField" alignment="TOP_LEFT" layoutX="55.0" layoutY="226.0" opacity="0.8" prefHeight="260.0" prefWidth="315.0" promptText="Delicious!" styleClass="user_text-field" stylesheets="@style.css">
             <font>
                <Font size="18.0" />
             </font>
          </TextField>
       </Pane>
    </AnchorPane>
-   <AnchorPane fx:id="TransactionInOutForm" layoutX="240.0" prefHeight="800.0" prefWidth="961.0" visible="false">
-      <Pane layoutY="-1.0" prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: #3a4750; -fx-background-radius: 0 0 20;">
-         <Label layoutX="53.0" layoutY="15.0" text="Transaction In/Out" textFill="#ea9215">
+   <AnchorPane fx:id="TransactionInOutForm" layoutX="240.0" prefHeight="800.0" prefWidth="1160.0" visible="false">
+      <Pane layoutY="-1.0" prefHeight="100.0" prefWidth="700.0" style="-fx-background-color: #3a4750; -fx-background-radius: 0 0 20;">
+         <Label layoutX="152.0" layoutY="15.0" text="Transaction In/Out" textFill="#ea9215">
             <font>
                <Font size="48.0" />
             </font>
          </Label>
       </Pane>
-      <Pane layoutX="100.0" layoutY="200.0" prefHeight="400.0" prefWidth="800.0" style="-fx-background-color: #3a4750; -fx-background-radius: 20;">
-         <ComboBox fx:id="productComboBox" layoutX="77.0" layoutY="50.0" onMouseClicked="#fillComboBox" prefWidth="200.0" styleClass="combo-box" stylesheets="@style.css" />
-         <Label layoutX="118.0" layoutY="14.0" text="Select item" textFill="#ea9215">
+      <Pane layoutX="100.0" layoutY="160.0" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #3a4750; -fx-background-radius: 20;" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="150.0">
+         <ComboBox fx:id="productComboBox" layoutX="76.0" layoutY="70.0" onMouseClicked="#fillComboBox" prefWidth="200.0" styleClass="combo-box" stylesheets="@style.css" />
+         <Label layoutX="118.0" layoutY="33.0" text="Select item" textFill="#ea9215">
             <font>
                <Font size="24.0" />
             </font>
          </Label>
-         <TextField fx:id="productQuantityField" alignment="CENTER" layoutX="50.0" layoutY="237.0" opacity="0.8" promptText="6 db" styleClass="user_text-field" stylesheets="@style.css">
+         <TextField fx:id="productQuantityField" alignment="CENTER" layoutX="50.0" layoutY="407.0" opacity="0.8" promptText="6 db" styleClass="user_text-field" stylesheets="@style.css">
             <font>
                <Font size="18.0" />
             </font>
          </TextField>
-         <ListView fx:id="productListView" layoutX="360.0" layoutY="50.0" prefHeight="230.0" prefWidth="370.0" stylesheets="@style.css" />
-         <Button fx:id="transactionInButton" layoutX="360.0" layoutY="326.0" mnemonicParsing="false" onAction="#transctionInHandle" prefHeight="43.0" prefWidth="170.0" styleClass="user_transparent_button" stylesheets="@style.css" text="Transaction in" textFill="#ea9215">
+         <ListView fx:id="productListView" layoutX="400.0" layoutY="70.0" prefHeight="380.0" prefWidth="550.0" stylesheets="@style.css" />
+         <Button fx:id="transactionInButton" layoutX="400.0" layoutY="491.0" mnemonicParsing="false" onAction="#transctionInHandle" prefHeight="43.0" prefWidth="170.0" styleClass="user_transparent_button" stylesheets="@style.css" text="Transaction in" textFill="#ea9215">
             <font>
                <Font size="18.0" />
             </font>
          </Button>
-         <Button fx:id="transactionOutButton" layoutX="560.0" layoutY="326.0" mnemonicParsing="false" onAction="#transactionOutHandle" prefHeight="43.0" prefWidth="170.0" styleClass="user_transparent_button" stylesheets="@style.css" text="Transaction out" textFill="#ea9215">
+         <Button fx:id="transactionOutButton" layoutX="780.0" layoutY="491.0" mnemonicParsing="false" onAction="#transactionOutHandle" prefHeight="43.0" prefWidth="170.0" styleClass="user_transparent_button" stylesheets="@style.css" text="Transaction out" textFill="#ea9215">
             <font>
                <Font size="18.0" />
             </font>
          </Button>
-         <Button fx:id="deleteButton" layoutX="124.0" layoutY="326.0" mnemonicParsing="false" onAction="#deleteProductHandle" prefHeight="40.0" prefWidth="105.0" styleClass="user_transparent_button" stylesheets="@style.css" text="Delete" textFill="#ea9215">
+         <Button fx:id="deleteButton" layoutX="123.0" layoutY="492.0" mnemonicParsing="false" onAction="#deleteProductHandle" prefHeight="40.0" prefWidth="105.0" styleClass="user_transparent_button" stylesheets="@style.css" text="Delete" textFill="#ea9215">
             <font>
                <Font size="18.0" />
             </font></Button>
-         <Label layoutX="479.0" layoutY="14.0" text="Transactions" textFill="#ea9215">
+         <Label layoutX="609.0" layoutY="33.0" text="Transactions" textFill="#ea9215">
             <font>
                <Font size="24.0" />
             </font>
          </Label>
       </Pane>
    </AnchorPane>
-   <AnchorPane fx:id="ViewProductStockForm" layoutX="240.0" prefHeight="800.0" prefWidth="961.0" visible="false">
-      <Pane layoutY="-1.0" prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: #3a4750; -fx-background-radius: 0 0 20;">
-         <Label layoutX="45.0" layoutY="15.0" text="View Product Stock" textFill="#ea9215">
+   <AnchorPane fx:id="ViewProductStockForm" layoutX="240.0" prefHeight="800.0" prefWidth="1160.0" visible="false">
+      <Pane layoutY="-1.0" prefHeight="100.0" prefWidth="700.0" style="-fx-background-color: #3a4750; -fx-background-radius: 0 0 20;">
+         <Label layoutX="145.0" layoutY="15.0" text="View Product Stock" textFill="#ea9215">
             <font>
                <Font size="48.0" />
             </font>
          </Label>
       </Pane>
-      <Pane layoutX="17.0" layoutY="125.0" prefHeight="650.0" prefWidth="909.0" style="-fx-background-color: #3a4750; -fx-background-radius: 20;">
+      <Pane layoutX="100.0" layoutY="160.0" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #3a4750; -fx-background-radius: 20;" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="150.0">
          <children>
-            <Button fx:id="refreshButton" layoutX="14.0" layoutY="30.0" mnemonicParsing="false" onAction="#refreshTableView" prefHeight="67.0" prefWidth="105.0" styleClass="user_transparent_button" stylesheets="@style.css" text="Refresh" textFill="#ea9215" />
+            <Button fx:id="refreshButton" layoutX="39.0" layoutY="50.0" mnemonicParsing="false" onAction="#refreshTableView" prefHeight="60.0" prefWidth="120.0" styleClass="user_transparent_button" stylesheets="@style.css" text="Refresh" textFill="#ea9215" />
+            <TableView fx:id="productTableView" layoutX="200.0" layoutY="50.0" prefHeight="500.0" prefWidth="750.0" stylesheets="@style.css">
+               <columns>
+                  <TableColumn fx:id="tableImage" prefWidth="150.0" text="Image" />
+                  <TableColumn fx:id="tableName" prefWidth="150.0" text="Name" />
+                  <TableColumn fx:id="tablePrice" prefWidth="150.0" text="Price" />
+                  <TableColumn fx:id="tableQuantity" minWidth="0.0" prefWidth="150.0" text="Qunatity" />
+                  <TableColumn fx:id="tableDescription" prefWidth="150.0" resizable="false" text="Description" />
+               </columns>
+            </TableView>
          </children></Pane>
-      <TableView fx:id="productTableView" layoutX="151.0" layoutY="150.0" prefHeight="600.0" prefWidth="750.0" stylesheets="@style.css">
-         <columns>
-            <TableColumn fx:id="tableImage" prefWidth="150.0" text="Image" />
-            <TableColumn fx:id="tableName" prefWidth="150.0" text="Name" />
-            <TableColumn fx:id="tablePrice" prefWidth="150.0" text="Price" />
-            <TableColumn fx:id="tableQuantity" minWidth="0.0" prefWidth="150.0" text="Qunatity" />
-            <TableColumn fx:id="tableDescription" prefWidth="150.0" resizable="false" text="Description" />
-         </columns>
-      </TableView>
    </AnchorPane>
-   <AnchorPane fx:id="ReportsForm" layoutX="240.0" prefHeight="800.0" prefWidth="961.0" visible="false">
-      <Pane layoutY="-1.0" prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: #3a4750; -fx-background-radius: 0 0 20;">
-         <Label layoutX="168.0" layoutY="15.0" text="Reports" textFill="#ea9215">
+   <AnchorPane fx:id="ReportsForm" layoutX="240.0" prefHeight="800.0" prefWidth="1160.0" visible="false">
+      <Pane layoutY="-1.0" prefHeight="100.0" prefWidth="700.0" style="-fx-background-color: #3a4750; -fx-background-radius: 0 0 20;">
+         <Label layoutX="268.0" layoutY="15.0" text="Reports" textFill="#ea9215">
             <font>
                <Font size="48.0" />
             </font>
          </Label>
       </Pane>
-      <Pane layoutX="70.0" layoutY="160.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #3a4750; -fx-background-radius: 20;">
-         <TableView fx:id="reportTableView" layoutX="100.0" layoutY="30.0" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css">
+      <Pane layoutX="100.0" layoutY="160.0" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #3a4750; -fx-background-radius: 20;" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="150.0">
+         <TableView fx:id="reportTableView" layoutX="100.0" layoutY="30.0" prefHeight="400.0" prefWidth="800.0" stylesheets="@style.css">
             <columns>
-               <TableColumn fx:id="transactionId" prefWidth="135.33334350585938" text="Transaction ID" />
-               <TableColumn fx:id="inOut" prefWidth="86.6666259765625" text="In/Out" />
-               <TableColumn fx:id="pName" prefWidth="215.3333740234375" text="Transaction strater name" />
-               <TableColumn fx:id="pProduct" prefWidth="151.33331298828125" text="Product " />
+               <TableColumn fx:id="transactionId" prefWidth="191.20001220703125" text="Transaction ID" />
+               <TableColumn fx:id="inOut" prefWidth="91.199951171875" text="In/Out" />
+               <TableColumn fx:id="pName" prefWidth="336.80010986328125" text="Transaction strater name" />
+               <TableColumn fx:id="pProduct" prefWidth="174.39990234375" text="Product " />
             </columns>
          </TableView>
-         <Button fx:id="GenerateReportButton" layoutX="451.0" layoutY="477.0" mnemonicParsing="false" onAction="#reportGenerator" styleClass="user_transparent_button_bigger" stylesheets="@style.css" text="Generate report" textFill="#ea9215">
+         <Button fx:id="GenerateReportButton" layoutX="651.0" layoutY="477.0" mnemonicParsing="false" onAction="#reportGenerator" styleClass="user_transparent_button_bigger" stylesheets="@style.css" text="Generate report" textFill="#ea9215">
             <font>
                <Font size="24.0" />
             </font>
@@ -230,35 +230,35 @@
          </Button>
       </Pane>
    </AnchorPane>
-   <AnchorPane fx:id="AccountForm" layoutX="240.0" prefHeight="800.0" prefWidth="961.0" visible="false">
-      <Pane layoutX="35.0" layoutY="167.0" prefHeight="620.0" prefWidth="890.0" style="-fx-background-color: #3a4750; -fx-background-radius: 20;">
+   <AnchorPane fx:id="AccountForm" layoutX="240.0" prefHeight="800.0" prefWidth="1160.0" visible="false">
+      <Pane layoutX="100.0" layoutY="160.0" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #3a4750; -fx-background-radius: 20;" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="150.0">
          <children>
-            <Button fx:id="changePasswordButton" layoutX="90.0" layoutY="566.0" mnemonicParsing="false" onAction="#handleCHangePassword" prefHeight="42.0" prefWidth="179.0" styleClass="user_transparent_button_borderless" stylesheets="@style.css" text="Change password" textFill="#ea9215">
+            <Button fx:id="changePasswordButton" layoutX="100.0" layoutY="550.0" mnemonicParsing="false" onAction="#handleCHangePassword" prefHeight="42.0" prefWidth="179.0" styleClass="user_transparent_button_borderless" stylesheets="@style.css" text="Change password" textFill="#ea9215">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button fx:id="changeProfilePicture" layoutX="613.0" layoutY="566.0" mnemonicParsing="false" onAction="#handleChangeProfilePicture" prefHeight="35.0" prefWidth="212.0" styleClass="user_transparent_button_borderless" stylesheets="@style.css" text="Change profile picture" textFill="#ea9215">
+            <Button fx:id="changeProfilePicture" layoutX="688.0" layoutY="550.0" mnemonicParsing="false" onAction="#handleChangeProfilePicture" prefHeight="35.0" prefWidth="212.0" styleClass="user_transparent_button_borderless" stylesheets="@style.css" text="Change profile picture" textFill="#ea9215">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button fx:id="HistoryRefreshButton" layoutX="345.0" layoutY="562.0" mnemonicParsing="false" onAction="#handelHistoryRefresh" prefHeight="47.0" prefWidth="200.0" styleClass="user_transparent_button_borderless" stylesheets="@style.css" text="Refresh" />
+            <Button fx:id="HistoryRefreshButton" layoutX="400.0" layoutY="550.0" mnemonicParsing="false" onAction="#handelHistoryRefresh" prefHeight="47.0" prefWidth="200.0" styleClass="user_transparent_button_borderless" stylesheets="@style.css" text="Refresh" />
+            <ListView fx:id="StaffHistoryList" layoutX="100.0" layoutY="85.0" prefHeight="450.0" prefWidth="800.0" stylesheets="@style.css" />
+            <Label layoutX="14.0" layoutY="15.0" prefHeight="70.0" prefWidth="85.0" text="History:" textFill="#ea9215">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
          </children></Pane>
-      <Pane prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: #3a4750; -fx-background-radius: 0 0 20;">
-         <Label layoutX="123.0" layoutY="15.0" text="My Account" textFill="#ea9215">
+      <Pane prefHeight="100.0" prefWidth="700.0" style="-fx-background-color: #3a4750; -fx-background-radius: 0 0 20;">
+         <Label layoutX="223.0" layoutY="15.0" text="My Account" textFill="#ea9215">
             <font>
                <Font size="48.0" />
             </font>
          </Label>
       </Pane>
-      <ListView fx:id="StaffHistoryList" layoutX="51.0" layoutY="249.0" prefHeight="447.0" prefWidth="859.0" stylesheets="@style.css" AnchorPane.leftAnchor="51.0" AnchorPane.rightAnchor="51.0" />
-      <Label layoutX="50.0" layoutY="190.0" text="History:" textFill="#ea9215">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <ImageView fx:id="ProfilePicture" fitHeight="150.0" fitWidth="200.0" layoutX="803.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="ProfilePicture" fitHeight="150.0" fitWidth="200.0" layoutX="931.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../image/profilkep.png" />
       </ImageView>
    </AnchorPane>
