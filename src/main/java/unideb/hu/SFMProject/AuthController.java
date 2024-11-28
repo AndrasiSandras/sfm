@@ -52,11 +52,15 @@ public class AuthController {
     {
        JPADAO jpadao = new JPADAO();
         List<String> list = jpadao.getAllRegLog();
+        if(list.isEmpty())
+        {
+            return false;
+        }
         String[] cred;
         for(String e : list)
         {
             cred = e.split(",");
-            if(cred[0].equals(userNameText.getText()) && cred[2].equals(emailText.getText()));
+            if(cred[0].equals(userNameText.getText()) && cred[2].equals(emailText.getText()))
             {
                 return true;
             }
@@ -71,7 +75,7 @@ public class AuthController {
             return false;
         }
 
-        if(!isItAlreadyUsed())
+        if(isItAlreadyUsed())
         {
             registerErrorText.setText("Username or Email is already being used!");
             return false;
