@@ -28,6 +28,7 @@ public class Application extends javafx.application.Application{
         try {
             startDatabase();
             Parent root = FXMLLoader.load(getClass().getResource("/view/FXMLLoginScene.fxml"));
+            stage.setTitle("My Application");
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
