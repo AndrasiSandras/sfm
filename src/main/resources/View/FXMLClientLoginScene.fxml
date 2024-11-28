@@ -4,27 +4,24 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="unideb.hu.SFMProject.SceneController">
-   <left>
-      <AnchorPane prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: #3A4750;" BorderPane.alignment="CENTER">
+<StackPane xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="unideb.hu.SFMProject.SceneController">
+   <SplitPane dividerPositions="0.5" prefHeight="200.0" prefWidth="200.0">
+      <items>
+      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: #3A4750;">
          <children>
-            <ImageView fitHeight="400.0" fitWidth="400.0" layoutX="1.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../image/palackmesterlogo.png" />
-               </image>
-            </ImageView>
-            <Button fx:id="GoBackButton" layoutX="150.0" layoutY="401.0" mnemonicParsing="false" onAction="#goBack" styleClass="front_orange_button" stylesheets="@style.css" text="Go back">
+            <Button fx:id="GoBackButton" layoutX="70.0" layoutY="402.0" mnemonicParsing="false" onAction="#goBack" styleClass="front_orange_button" stylesheets="@style.css" text="Go back" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0">
                <textFill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -40,16 +37,24 @@
                         </Stop>
                      </stops>
                   </LinearGradient>
-               </textFill></Button>
+               </textFill>
+               </Button>
+               <AnchorPane layoutX="-1.0" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <children>
+                     <ImageView fitHeight="201.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0">
+                        <image>
+                           <Image url="@../image/palackmesterlogo.png" />
+                        </image>
+                     </ImageView>
+                  </children>
+               </AnchorPane>
          </children>
       </AnchorPane>
-   </left>
-   <right>
-      <AnchorPane prefHeight="500.0" prefWidth="300.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
+      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="300.0" style="-fx-background-color: #FFFFFF;">
          <children>
-            <TextField fx:id="ClientUserNameText" layoutX="64.0" layoutY="146.0" promptText="User Name" styleClass="front_text-field" stylesheets="@style.css" />
-            <PasswordField fx:id="ClientPasswordText" layoutX="64.0" layoutY="217.0" promptText="Password" styleClass="front_text-field" stylesheets="@style.css" />
-            <Button fx:id="ClientRegisterButton" alignment="BOTTOM_CENTER" layoutX="95.0" layoutY="411.0" mnemonicParsing="false" onAction="#registerNewClient" opacity="0.75" pickOnBounds="false" styleClass="front_transparent_button" stylesheets="@style.css" text="     Register     " textAlignment="CENTER" textFill="#3a4750">
+            <TextField fx:id="ClientUserNameText" layoutX="64.0" layoutY="146.0" promptText="User Name" styleClass="front_text-field" stylesheets="@style.css" AnchorPane.bottomAnchor="320.0" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="66.0" />
+            <PasswordField fx:id="ClientPasswordText" layoutX="64.0" layoutY="217.0" promptText="Password" styleClass="front_text-field" stylesheets="@style.css" AnchorPane.bottomAnchor="250.0" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="66.0" />
+            <Button fx:id="ClientRegisterButton" alignment="BOTTOM_CENTER" layoutX="68.0" layoutY="453.0" mnemonicParsing="false" onAction="#registerNewClient" opacity="0.75" pickOnBounds="false" styleClass="front_transparent_button" stylesheets="@style.css" text="     Register     " textAlignment="CENTER" textFill="#3a4750" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -57,14 +62,15 @@
                   <Insets bottom="0.1" />
                </padding>
             </Button>
-            <Button fx:id="LoginButton" layoutX="110.0" layoutY="294.0" mnemonicParsing="false" onAction="#logInClient" styleClass="front_grey_button" stylesheets="@style.css" text="Login" textFill="WHITE" />
-            <Text fill="#3a4750" layoutX="118.0" layoutY="56.0" scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Client">
+            <Button fx:id="LoginButton" layoutX="103.0" layoutY="294.0" mnemonicParsing="false" onAction="#logInClient" styleClass="front_grey_button" stylesheets="@style.css" text="Login" textFill="WHITE" AnchorPane.bottomAnchor="160.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
+            <Text fill="#3a4750" layoutX="117.0" layoutY="56.0" scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Client" textAlignment="CENTER" AnchorPane.bottomAnchor="400.0" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="50.0">
                <font>
                   <Font size="24.0" />
                </font>
             </Text>
-            <Label fx:id="clientLoginErrorText" alignment="CENTER" layoutX="-2.0" layoutY="350.0" prefHeight="18.0" prefWidth="300.0" textFill="#3a4750" />
+            <Label fx:id="clientLoginErrorText" alignment="CENTER" layoutX="-2.0" layoutY="350.0" prefHeight="18.0" prefWidth="300.0" textFill="#3a4750" AnchorPane.bottomAnchor="130.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="350.0" />
          </children>
       </AnchorPane>
-   </right>
-</BorderPane>
+      </items>
+   </SplitPane>
+</StackPane>

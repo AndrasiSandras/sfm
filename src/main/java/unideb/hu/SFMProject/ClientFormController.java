@@ -221,6 +221,10 @@ public class ClientFormController {
                 String current = currentPasswordField.getText();
                 String newpassword = newPasswordField.getText();
                 try {
+                    if (current.equals(newpassword)) {
+                        showAlert("Error", "The new password cannot be the same as the current password!", Alert.AlertType.ERROR);
+                        return;
+                    }
                     if (current.equals(data[1])) {
                         String newcred = data[0] + "," + newpassword + "," + data[2];
                         StaffCred staff = jpaDAO.findStaffcredbyCredentials(Cred);
@@ -494,6 +498,8 @@ public class ClientFormController {
         cUserLabel.setText("Logged in as: " + loggedInUser);
     }
 
+
+
     public void handleClientProfilePicture(ActionEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select Profile Picture");
@@ -506,6 +512,7 @@ public class ClientFormController {
                 Image image = new Image(new FileInputStream(selectedFile));
                 ProfilePicture.setImage(image);
 
+
                 // Kép átalakítása byte[] formátumba az adatbázishoz
                 pImage = Files.readAllBytes(selectedFile.toPath());
 
@@ -513,10 +520,22 @@ public class ClientFormController {
                     showAlert("Error", "The selected image is invalid or empty!", Alert.AlertType.ERROR);
                     return;
                 }
-                System.out.println(Cred);
+
                 RegLogin regLogin = jpaDAO.findRegLogbyCredentials(Cred);
-                regLogin.setpImage(pImage); // Ezen dolgozol
-                jpaDAO.updateRegLogpImage(regLogin);
+
+                if(regLogin != null)
+                {
+                    regLogin.setpImage(pImage);
+                    jpaDAO.updateRegLogpImage(regLogin);
+                }
+                else
+                {
+                 StaffCred staffCred = jpaDAO.findStaffcredbyCredentials(Cred);
+                 staffCred.setpImage(pImage);
+                 jpaDAO.updateStafCredpImage(staffCred);
+                }
+
+
 
 
             } catch (IOException e) {
