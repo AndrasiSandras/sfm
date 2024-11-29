@@ -6,28 +6,23 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import org.hibernate.loader.Loader;
-
-
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class SceneController {
 
-
-
     private Stage stage;
     private Scene scene;
     private Parent root;
+    private String loginName;
+    private String Creds;
+
+    JPADAO jpadao = new JPADAO();
 
     @FXML
     private Label clientLoginErrorText;
@@ -52,37 +47,8 @@ public class SceneController {
     @FXML
     private Label LoginErrorText;
 
-    private String loginName;
-    private String Creds;
-
-    public String getCreds()
-    {
-        return Creds;
-    }
-
     public SceneController() throws IOException {
     }
-
-    public String getloginName()
-    {
-        return loginName;
-    }
-
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FXMLClientScene.fxml"));
-    Parent root2 = loader.load();
-
-    // Lekérjük a Client Scene controller-ét
-    ClientFormController clientController = loader.getController();
-
-    JPADAO jpadao = new JPADAO();
-    private byte[] image;
-
-
-
-
-    AuthController authController = new AuthController(emailText, passwordText, rePasswordText, userNameText, registerErrorText);
-
-
 
     private void loadScene(ActionEvent event, String fxmlPath) throws IOException {
         root = FXMLLoader.load(getClass().getResource(fxmlPath));
@@ -124,30 +90,22 @@ public class SceneController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FXMLStaffScene.fxml"));
             Parent root = loader.load();
 
-            // Lekérjük a Staff Scene controller-ét
             StaffFormController staffController = loader.getController();
-
-            // Átadjuk a bejelentkezett felhasználó nevét
 
             byte[] profileP = jpadao.findStaffcredbyCredentials(Creds).getpImage();
             Image pImage = null;
             if( profileP != null)
             {
-
                 pImage = new Image(new ByteArrayInputStream(profileP));
                 staffController.setLoggedInUser(loginName, Creds,pImage);
             }
             staffController.setLoggedInUser(loginName, Creds,pImage);
 
-
-            // Scene betöltése
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
         }
-
-
     }
 
     @FXML
@@ -162,7 +120,6 @@ public class SceneController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FXMLClientScene.fxml"));
             Parent root = loader.load();
 
-            // Lekérjük a Staff Scene controller-ét
             ClientFormController clientController = loader.getController();
 
             if(jpadao.findRegLogbyCredentials(Creds) != null) {
@@ -171,7 +128,6 @@ public class SceneController {
                 if (profileP != null) {
                     pImage = new Image(new ByteArrayInputStream(profileP));
                     clientController.setLoggedInUser(loginName, Creds, pImage);
-
                 }
                 clientController.setLoggedInUser(loginName, Creds, pImage);
             }
@@ -181,15 +137,11 @@ public class SceneController {
                 Image pImage = null;
                 if( profileP != null)
                 {
-
                     pImage = new Image(new ByteArrayInputStream(profileP));
                     clientController.setLoggedInUser(loginName, Creds,pImage);
                 }
                 clientController.setLoggedInUser(loginName, Creds,pImage);
             }
-
-
-            // Scene betöltése
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
@@ -235,16 +187,12 @@ public class SceneController {
 
         for (String e:Clist)
         {
-
             Ccred = e.split(",");
-
             if(Ccred[0].equals(Credentials[0]) && Ccred[1].equals(Credentials[1]))
             {
                 credentail = true;
                 Creds = e;
-
             }
-
         }
 
         for(String e : Slist)
@@ -254,16 +202,13 @@ public class SceneController {
             {
                 credentail = true;
                 Creds = e;
-
             }
-
         }
 
 
         if(credentail)
         {
             loginName = Credentials[0];
-
             return true;
         }
         else
@@ -271,8 +216,8 @@ public class SceneController {
             clientLoginErrorText.setText("The Username or Password is incorrect. Try again.");
             return false;
         }
-
     }
+
     public boolean Slogin(String[] Credentials) throws IOException {
         Utils sutils = new Utils(new JPADAO());
         List<String> Slist = sutils.runStaffUtils();
@@ -287,15 +232,11 @@ public class SceneController {
                 Staffcred = true;
                 Creds = e;
             }
-
         }
-
-
 
         if(Staffcred)
         {
             loginName = Credentials[0];
-
             return true;
         }
         else

@@ -1,9 +1,6 @@
-
-
 package unideb.hu.SFMProject;
 
 import javax.persistence.*;
-import java.util.Collections;
 import java.util.List;
 
 public class JPADAO extends DAO {
@@ -61,7 +58,6 @@ public class JPADAO extends DAO {
         }
         entityManager.getTransaction().commit();
     }
-
 
     @Override
     public void deleteProduct(Product a) {
@@ -140,9 +136,7 @@ public class JPADAO extends DAO {
 
     @Override
     public Product findProductByName(String name) {
-
         EntityManager entityManager = createEntityManager();
-
         try {
             return entityManager.createQuery("SELECT p FROM Product p WHERE p.name = :name", Product.class)
                     .setParameter("name", name)
@@ -168,7 +162,6 @@ public class JPADAO extends DAO {
     @Override
     public List<Report> getAllReportsbyName(String a) {
         EntityManager entityManager = createEntityManager();
-
         List<Report> reports = null;
         try {
             reports = entityManager.createQuery("SELECT r FROM Report r WHERE r.starterName = :starterName", Report.class)
@@ -196,7 +189,6 @@ public class JPADAO extends DAO {
             entityManager.flush();
         }
         entityManager.getTransaction().commit();
-
     }
 
     @Override
@@ -210,13 +202,11 @@ public class JPADAO extends DAO {
             entityManager.merge(existingProduct);
         }
         entityManager.getTransaction().commit();
-
     }
 
     @Override
     public StaffCred findStaffcredbyCredentials(String cred) {
         EntityManager entityManager = createEntityManager();
-
         try {
             return entityManager.createQuery("SELECT p FROM StaffCred p WHERE p.Credentials = :Cred", StaffCred.class)
                     .setParameter("Cred", cred)
@@ -231,7 +221,6 @@ public class JPADAO extends DAO {
     @Override
     public RegLogin findRegLogbyCredentials(String cred) {
         EntityManager entityManager = createEntityManager();
-
         try {
             return entityManager.createQuery("SELECT p FROM RegLogin p WHERE p.Credentials = :Cred", RegLogin.class)
                     .setParameter("Cred", cred)
@@ -267,7 +256,6 @@ public class JPADAO extends DAO {
             entityManager.merge(existingProduct);
         }
         entityManager.getTransaction().commit();
-
     }
 
     public void close() {

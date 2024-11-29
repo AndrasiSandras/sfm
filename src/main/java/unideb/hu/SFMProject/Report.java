@@ -4,7 +4,6 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-
 @Entity
 public class Report {
     @Id
@@ -16,8 +15,6 @@ public class Report {
     @Column(nullable = false)
     private String product;
     private String date;
-
-
 
     public String getProduct() {
         return product;
@@ -61,6 +58,4 @@ public class Report {
         this.date =  date.format(formatter);
         return date;
     }
-
-
 }

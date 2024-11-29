@@ -2,7 +2,6 @@ package unideb.hu.SFMProject;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-
 import java.util.List;
 
 public class AuthController {
@@ -12,6 +11,14 @@ public class AuthController {
     private TextField rePasswordText;
     private TextField userNameText;
     private Label registerErrorText;
+
+    public boolean validatePasswordLength() {
+        return passwordText.getText().length() >= 4;
+    }
+
+    public boolean passwordsMatch() {
+        return passwordText.getText().equals(rePasswordText.getText());
+    }
 
     public AuthController(TextField emailText, TextField passwordText, TextField rePasswordText, TextField userNameText, Label registerErrorText) {
         this.emailText = emailText;
@@ -26,20 +33,13 @@ public class AuthController {
         return email.matches("^[\\w\\.-]+@[\\w\\.-]+\\.[a-z]{2,}$");
     }
 
-    public boolean validatePasswordLength() {
-        return passwordText.getText().length() >= 4;
-    }
-
-    public boolean passwordsMatch() {
-        return passwordText.getText().equals(rePasswordText.getText());
-    }
-
     public boolean fieldsFilledOut() {
         return !emailText.getText().isEmpty() &&
                 !userNameText.getText().isEmpty() &&
                 !passwordText.getText().isEmpty() &&
                 !rePasswordText.getText().isEmpty();
     }
+
     public boolean fieldsCantContainDash()
     {
         return !emailText.getText().contains(",") &&
@@ -50,7 +50,7 @@ public class AuthController {
 
     public boolean isItAlreadyUsed()
     {
-       JPADAO jpadao = new JPADAO();
+        JPADAO jpadao = new JPADAO();
         List<String> list = jpadao.getAllRegLog();
         if(list.isEmpty())
         {
@@ -60,12 +60,12 @@ public class AuthController {
         for(String e : list)
         {
             cred = e.split(",");
+
             if(cred[0].equals(userNameText.getText()) && cred[2].equals(emailText.getText()))
             {
                 return true;
             }
         }
-
         return false;
     }
 

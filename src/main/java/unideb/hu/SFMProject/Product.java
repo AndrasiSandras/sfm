@@ -11,19 +11,13 @@ public class Product {
     private String name;
     private double price;
     private String description;
+    private int quantity = 0;
 
-
-    private int quantity = 0; // Alapértelmezett érték
-
-    @Lob // Jelzi, hogy ez egy nagy méretű bináris adat
+    @Lob
     private byte[] image;
 
     public long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -45,8 +39,6 @@ public class Product {
     public byte[] getImage() {
         return image;
     }
-
-
 
     public void setName(String name) {
         this.name = name;
