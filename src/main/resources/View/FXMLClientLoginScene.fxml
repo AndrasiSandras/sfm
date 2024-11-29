@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?fxml: <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
@@ -16,61 +17,63 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="unideb.hu.SFMProject.SceneController">
-   <SplitPane dividerPositions="0.5" prefHeight="200.0" prefWidth="200.0">
-      <items>
-      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: #3A4750;">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="unideb.hu.SFMProject.SceneController">
+   <children>
+      <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="GoBackButton" layoutX="70.0" layoutY="402.0" mnemonicParsing="false" onAction="#goBack" styleClass="front_orange_button" stylesheets="@style.css" text="Go back" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0">
-               <textFill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color red="1.0" green="1.0" blue="1.0" />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="1.0" green="1.0" blue="1.0" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </textFill>
-               </Button>
-               <AnchorPane layoutX="-1.0" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                  <children>
-                     <ImageView fitHeight="201.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0">
-                        <image>
-                           <Image url="@../image/palackmesterlogo.png" />
-                        </image>
-                     </ImageView>
-                  </children>
-               </AnchorPane>
+            <HBox alignment="CENTER" prefHeight="500.0" prefWidth="700.0" spacing="0.0">
+               <children>
+                  <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: #3A4750;" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Button fx:id="GoBackButton" mnemonicParsing="false" onAction="#goBack" styleClass="front_orange_button" stylesheets="@style.css" text="Go back" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0">
+                           <textFill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color red="1.0" green="1.0" blue="1.0" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color red="1.0" green="1.0" blue="1.0" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </textFill>
+                        </Button>
+                        <ImageView fitHeight="200.0" fitWidth="500.0" layoutX="-2.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                           <image>
+                              <Image url="@../image/palackmesterlogo.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="300.0" style="-fx-background-color: #FFFFFF;" HBox.hgrow="ALWAYS">
+                     <children>
+                        <TextField fx:id="ClientUserNameText" promptText="User Name" styleClass="front_text-field" stylesheets="@style.css" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="150.0" />
+                        <PasswordField fx:id="ClientPasswordText" promptText="Password" styleClass="front_text-field" stylesheets="@style.css" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="200.0" />
+                        <Button fx:id="ClientRegisterButton" alignment="BOTTOM_CENTER" mnemonicParsing="false" onAction="#registerNewClient" opacity="0.75" styleClass="front_transparent_button" stylesheets="@style.css" text="Register" textAlignment="CENTER" textFill="#3a4750" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets bottom="0.1" />
+                           </padding>
+                        </Button>
+                        <Button fx:id="LoginButton" mnemonicParsing="false" onAction="#logInClient" styleClass="front_grey_button" stylesheets="@style.css" text="Login" textFill="WHITE" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="320.0" />
+                        <Text fill="#3a4750" layoutX="119.0" layoutY="96.0" scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Client" textAlignment="CENTER" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="70.0">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                        <Label fx:id="clientLoginErrorText" alignment="CENTER" prefHeight="18.0" prefWidth="300.0" textFill="#3a4750" AnchorPane.bottomAnchor="220.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
          </children>
-      </AnchorPane>
-      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="300.0" style="-fx-background-color: #FFFFFF;">
-         <children>
-            <TextField fx:id="ClientUserNameText" layoutX="64.0" layoutY="146.0" promptText="User Name" styleClass="front_text-field" stylesheets="@style.css" AnchorPane.bottomAnchor="320.0" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="66.0" />
-            <PasswordField fx:id="ClientPasswordText" layoutX="64.0" layoutY="217.0" promptText="Password" styleClass="front_text-field" stylesheets="@style.css" AnchorPane.bottomAnchor="250.0" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="66.0" />
-            <Button fx:id="ClientRegisterButton" alignment="BOTTOM_CENTER" layoutX="68.0" layoutY="453.0" mnemonicParsing="false" onAction="#registerNewClient" opacity="0.75" pickOnBounds="false" styleClass="front_transparent_button" stylesheets="@style.css" text="     Register     " textAlignment="CENTER" textFill="#3a4750" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <padding>
-                  <Insets bottom="0.1" />
-               </padding>
-            </Button>
-            <Button fx:id="LoginButton" layoutX="103.0" layoutY="294.0" mnemonicParsing="false" onAction="#logInClient" styleClass="front_grey_button" stylesheets="@style.css" text="Login" textFill="WHITE" AnchorPane.bottomAnchor="160.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
-            <Text fill="#3a4750" layoutX="117.0" layoutY="56.0" scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Client" textAlignment="CENTER" AnchorPane.bottomAnchor="400.0" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="50.0">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Text>
-            <Label fx:id="clientLoginErrorText" alignment="CENTER" layoutX="-2.0" layoutY="350.0" prefHeight="18.0" prefWidth="300.0" textFill="#3a4750" AnchorPane.bottomAnchor="130.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="350.0" />
-         </children>
-      </AnchorPane>
-      </items>
-   </SplitPane>
-</StackPane>
+      </StackPane>
+   </children>
+</AnchorPane>

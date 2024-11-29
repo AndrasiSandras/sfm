@@ -203,6 +203,17 @@ public class StaffFormController {
             showAlert("Error","Product already in database!",Alert.AlertType.ERROR);
             return;
         }
+        int maxNameLength = 50;
+        int maxDescriptionLength = 250;
+
+        if (name.length() > maxNameLength) {
+            showAlert("Error", "The product name is too long! Maximum " + maxNameLength + " characters allowed.", Alert.AlertType.ERROR);
+            return;
+        }
+        if (description.length() > maxDescriptionLength) {
+            showAlert("Error", "The product description is too long! Maximum " + maxDescriptionLength + " characters allowed.", Alert.AlertType.ERROR);
+            return;
+        }
 
         double price;
         try {

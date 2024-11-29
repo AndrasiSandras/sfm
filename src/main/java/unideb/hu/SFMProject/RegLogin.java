@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class RegLogin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String Credentials;
     @Lob
     @Column(nullable = true)
@@ -29,7 +29,7 @@ public class RegLogin {
         this.pImage = pImage;
     }
 
-    public int getId(){
+    public long getId(){
         return id;
     }
 }
