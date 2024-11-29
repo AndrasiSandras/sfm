@@ -258,7 +258,7 @@
             </font>
          </Label>
       </Pane>
-      <ImageView fx:id="ProfilePicture" fitHeight="150.0" fitWidth="200.0" layoutX="931.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="ProfilePicture" fitHeight="150.0" fitWidth="200.0" layoutX="931.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="0.0">
          <Image url="@../image/profilkep.png" />
       </ImageView>
    </AnchorPane>
