@@ -113,11 +113,11 @@
                 <Button fx:id="refreshButton" layoutX="29.0" layoutY="50.0" mnemonicParsing="false" onAction="#RefreshTableView" prefHeight="61.0" prefWidth="117.0" styleClass="user_transparent_button" stylesheets="@style.css" text="Refresh" textFill="#ea9215" />
               <TableView fx:id="beszallTableview" layoutX="184.0" layoutY="50.0" prefHeight="500.0" prefWidth="750.0" stylesheets="@style.css">
                   <columns>
-                      <TableColumn fx:id="beszalTableImage" prefWidth="170.0" text="Image" />
-                      <TableColumn fx:id="beszalTableName" prefWidth="170.0" text="Name" />
-                      <TableColumn fx:id="beszalTablePrice" prefWidth="100.0" text="Price" />
-                      <TableColumn fx:id="beszalTableStock" prefWidth="100.0" text="Stock" />
-                      <TableColumn fx:id="beszalTableDescription" prefWidth="250.0" text="Description" />
+                      <TableColumn fx:id="beszalTableImage" prefWidth="69.5999755859375" text="Image" />
+                      <TableColumn fx:id="beszalTableName" prefWidth="92.79998779296875" text="Name" />
+                      <TableColumn fx:id="beszalTablePrice" prefWidth="95.20001220703125" text="Price" />
+                      <TableColumn fx:id="beszalTableDescription" prefWidth="488.8002014160156" text="Description" />
+                      <TableColumn fx:id="beszalTableStock" minWidth="0.0" prefWidth="47.9998779296875" text="Stock" />
                   </columns>
               </TableView>
             </children></Pane>

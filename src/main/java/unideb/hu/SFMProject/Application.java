@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-
 import javafx.stage.Stage;
 import org.h2.tools.Server;
 
@@ -16,13 +15,12 @@ public class Application extends javafx.application.Application{
 
     public static void main(String[] args) throws SQLException {
         launch();
-
-
     }
 
     private static void startDatabase() throws SQLException {
         new Server().runTool("-tcp", "-web", "-ifNotExists");
     }
+
     @Override
     public void start(Stage stage) {
         try {
@@ -37,21 +35,10 @@ public class Application extends javafx.application.Application{
         }
     }
 
-
-
     @Override
     public void stop() {
         if (scene != null) {
             jpadao.close();
         }
-    }
-
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
-
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("/view/" + fxml + ".fxml"));
-        return fxmlLoader.load();
     }
 }
