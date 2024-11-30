@@ -37,16 +37,15 @@ public class ClientFormController {
     private Scene scene;
     private Parent root;
     public ImageView ProfilePicture;
-    private File selectedFile;
     private JPADAO jpaDAO = new JPADAO();
     private Map<Button, AnchorPane> buttonPaneMap;
     private String loggedInUser;
     private String Cred;
-    private byte[] pImage;
     int min = 0,max = 1000;
 
     private final PasswordManager passwordManager = new PasswordManager();
     private final ProfilePictureManager profilePictureManager = new ProfilePictureManager();
+    private final TableViewManager tableViewManager = new TableViewManager();
 
     @FXML
     private Button AccountButton, TransInOutButton, ViewProdButton;
@@ -61,17 +60,17 @@ public class ClientFormController {
     @FXML
     private TextField beszallQuantityField;
     @FXML
-    private TableView<Product> beszallTableview;
+    private TableView<Product> productTableView;
     @FXML
-    private TableColumn<Product,String> beszalTableName;
+    private TableColumn<Product,String> tableName;
     @FXML
-    private TableColumn<Product,Double> beszalTablePrice;
+    private TableColumn<Product,Double> tablePrice;
     @FXML
-    private TableColumn<Product,Integer> beszalTableStock;
+    private TableColumn<Product,Integer> tableQuantity;
     @FXML
-    private TableColumn<Product,String> beszalTableDescription;
+    private TableColumn<Product,String> tableDescription;
     @FXML
-    private TableColumn<Product, ImageView> beszalTableImage;
+    private TableColumn<Product, ImageView> tableImage;
     @FXML
     private Label cUserLabel;
 
@@ -217,30 +216,19 @@ public class ClientFormController {
         generateTableView();
     }
 
+    @FXML
     private void generateTableView() {
-        ObservableList<Product> products;
-        products = FXCollections.observableList(jpaDAO.getAllProduct());
-        beszalTableName.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getName()));
-        beszalTablePrice.setCellValueFactory(cellData -> new SimpleDoubleProperty(cellData.getValue().getPrice()).asObject());
-        beszalTableDescription.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDescription()));
-        beszalTableStock.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getQuantity()).asObject());
-
-        beszalTableImage.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Product, ImageView>, ObservableValue<ImageView>>() {
-            @Override
-            public ObservableValue<ImageView> call(TableColumn.CellDataFeatures<Product, ImageView> param) {
-                byte[] imageBytes = param.getValue().getImage();
-                Image image = null;
-                if (imageBytes != null) {
-                    image = new Image(new ByteArrayInputStream(imageBytes)); // Byte[] -> Image
-                }
-                ImageView imageView = new ImageView(image);
-                imageView.setFitWidth(150);
-                imageView.setFitHeight(150);
-                return new SimpleObjectProperty<>(imageView);
-            }
-        });
-        beszallTableview.setItems(products);
+        tableViewManager.generateTableView(
+                jpaDAO.getAllProduct(),
+                tableName,
+                tablePrice,
+                tableQuantity,
+                tableDescription,
+                tableImage,
+                productTableView
+        );
     }
+
     private static final int MIN = 100000;
     private static final int MAX = 999999;
     private Set<Integer> generatedNumbers = new HashSet<>();
