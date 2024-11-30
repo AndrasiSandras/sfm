@@ -7,7 +7,6 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,18 +23,14 @@ import javafx.stage.FileChooser;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
-
 import static java.util.stream.Collectors.toList;
 
 public class ClientFormController {
@@ -44,13 +39,17 @@ public class ClientFormController {
     private Scene scene;
     private Parent root;
     private Stage popupStage = null;
-
-
+    public ImageView ProfilePicture;
+    private File selectedFile;
+    private JPADAO jpaDAO = new JPADAO();
+    private Map<Button, AnchorPane> buttonPaneMap;
+    private String loggedInUser;
+    private String Cred;
+    private byte[] pImage;
     int min = 0,max = 1000;
 
     @FXML
-    private Button AccountButton, TransInOutButton, ViewProdButton, LogoutButton;
-
+    private Button AccountButton, TransInOutButton, ViewProdButton;
     @FXML
     private AnchorPane AccountForm, TransactionInOutForm, ViewProductStocForm;
     @FXML
@@ -73,44 +72,8 @@ public class ClientFormController {
     private TableColumn<Product,String> beszalTableDescription;
     @FXML
     private TableColumn<Product, ImageView> beszalTableImage;
-    public ImageView ProfilePicture;
-    private File selectedFile;
-
-
-    private JPADAO jpaDAO = new JPADAO();
-
-    private Map<Button, AnchorPane> buttonPaneMap;
-
-    private String transIn;
-    private String transOut;
-
-    public String getTransOut() {
-        return transOut;
-    }
-
-    public void setTransOut(String transOut) {
-        this.transOut = transOut;
-    }
-
-    public String getTransIn() {
-        return transIn;
-    }
-
-    public void setTransIn(String transIn) {
-        this.transIn = transIn;
-    }
-
     @FXML
     private Label cUserLabel;
-
-    private String loggedInUser;
-    private String Cred;
-    private byte[] pImage;
-
-    public String getCred()
-    {
-        return Cred;
-    }
 
     @FXML
     public void initialize() {
@@ -123,7 +86,6 @@ public class ClientFormController {
     @FXML
     void switchForm(ActionEvent event) {
         buttonPaneMap.values().forEach(pane -> pane.setVisible(false));
-
         Button sourceButton = (Button) event.getSource();
         AnchorPane targetPane = buttonPaneMap.get(sourceButton);
         if (targetPane != null) {
@@ -142,24 +104,18 @@ public class ClientFormController {
 
     @FXML
     private void handleChangePasswordClient() {
-        // Ellenőrizzük, hogy az ablak már nyitva van-e
         if (popupStage != null) {
             popupStage.toFront();
             return;
         }
 
-        // Felugró ablak létrehozása
         popupStage = new Stage();
         popupStage.setTitle("Change Password");
-
-        // Logó betöltése
         Image logoImage = new Image(getClass().getResourceAsStream("/image/palacklogo.png"));
         ImageView logoImageView = new ImageView(logoImage);
-        logoImageView.setFitWidth(100);  // Méret beállítása
+        logoImageView.setFitWidth(100);
         logoImageView.setPreserveRatio(true);
         logoImageView.setSmooth(true);
-
-        // Stílusos TextField-ek
         TextField currentPasswordField = new TextField();
         currentPasswordField.setPromptText("Current Password");
         currentPasswordField.setStyle(
@@ -181,8 +137,6 @@ public class ClientFormController {
                         "-fx-padding: 5px;" +
                         "-fx-font-size: 14px;"
         );
-
-        // Stílusos Submit gomb
         Button submitButton = new Button("Submit");
         submitButton.setStyle(
                 "-fx-background-color: #EA9215;" +
@@ -191,7 +145,6 @@ public class ClientFormController {
                         "-fx-border-radius: 5px;" +
                         "-fx-padding: 10px 20px;"
         );
-
         submitButton.setOnMouseEntered(event -> submitButton.setStyle(
                 "-fx-background-color: #FFD479;" +
                         "-fx-text-fill: white;" +
@@ -200,7 +153,6 @@ public class ClientFormController {
                         "-fx-padding: 10px 20px;" +
                         "-fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 2);"
         ));
-
         submitButton.setOnMouseExited(event -> submitButton.setStyle(
                 "-fx-background-color: #EA9215;" +
                         "-fx-text-fill: white;" +
@@ -208,16 +160,11 @@ public class ClientFormController {
                         "-fx-border-radius: 5px;" +
                         "-fx-padding: 10px 20px;"
         ));
-
         submitButton.setOnAction(event -> {
-
             if(jpaDAO.findStaffcredbyCredentials(Cred) != null) {
-                StaffCred staffCred = jpaDAO.findStaffcredbyCredentials(Cred);
+                StaffCredential staffCredential = jpaDAO.findStaffcredbyCredentials(Cred);
                 String[] data;
-
-                data = staffCred.getCredentials().split(",");
-
-
+                data = staffCredential.getCredentials().split(",");
                 String current = currentPasswordField.getText();
                 String newpassword = newPasswordField.getText();
                 try {
@@ -227,7 +174,7 @@ public class ClientFormController {
                     }
                     if (current.equals(data[1])) {
                         String newcred = data[0] + "," + newpassword + "," + data[2];
-                        StaffCred staff = jpaDAO.findStaffcredbyCredentials(Cred);
+                        StaffCredential staff = jpaDAO.findStaffcredbyCredentials(Cred);
                         staff.setCredentials(newcred);
                         jpaDAO.updateStafCredPassword(staff);
                         showAlert("Success", "Password successfully changed!", Alert.AlertType.INFORMATION);
@@ -246,10 +193,7 @@ public class ClientFormController {
             {
                 RegLogin regLogin = jpaDAO.findRegLogbyCredentials(Cred);
                 String[] data;
-
                 data = regLogin.getCredentials().split(",");
-
-
                 String current = currentPasswordField.getText();
                 String newpassword = newPasswordField.getText();
                 try {
@@ -271,8 +215,6 @@ public class ClientFormController {
                 popupStage.close();
             }
         });
-
-        // Ablak elrendezése
         VBox layout = new VBox(15, logoImageView, currentPasswordField, newPasswordField, submitButton);
         layout.setStyle(
                 "-fx-background-color: linear-gradient(to bottom, #3A4750, #282C30);" +
@@ -282,19 +224,14 @@ public class ClientFormController {
                         "-fx-padding: 20px;"
         );
         layout.setAlignment(Pos.CENTER);
-
         Scene popupScene = new Scene(layout, 350, 400);
         popupStage.setScene(popupScene);
-
-        // Bezárás esemény
         popupStage.setOnCloseRequest(event -> popupStage = null);
-
         popupStage.show();
     }
 
     public void fillComboBoxBeszall(MouseEvent mouseEvent) {
             List<Product> products;
-
             beszallComboBox.getItems().clear();
 
             products = jpaDAO.getAllProduct();
@@ -323,39 +260,28 @@ public class ClientFormController {
             showAlert("Error", "Please select a product!", Alert.AlertType.ERROR);
             return;
         }
-
         String quantityText = beszallQuantityField.getText(); // A beírt mennyiség
         int quantity;
-
         try {
             quantity = Integer.parseInt(quantityText);
         } catch (NumberFormatException e) {
             showAlert("Error", "Please enter a valid number for quantity!", Alert.AlertType.ERROR);
             return;
         }
-
         if (quantity <= min || quantity >= max) {
             showAlert("Error", "Quantity must be between " + min+1 + " and " + max + "!", Alert.AlertType.ERROR);
             return;
         }
-
-
         Product product = jpaDAO.findProductByName(selectedProductName);
         if (product == null) {
             showAlert("Error", "Product not found in the database!", Alert.AlertType.ERROR);
             return;
         }
-
-
         if (product.getQuantity() + quantity > max) {
             showAlert("Error", "The product quantity exceeds the maximum limit!", Alert.AlertType.ERROR);
             return;
         }
-
-
         product.setQuantity(product.getQuantity() + quantity);
-
-
         try {
             jpaDAO.updateProduct(product);
             beszalListView.getItems().add("Added " + quantity + " to " + product.getName() + " (New quantity: " + product.getQuantity() + ")");
@@ -363,11 +289,10 @@ public class ClientFormController {
             Report report = new Report();
             report.setTransactionId(generateUniqueRandom());
             report.setInOut("IN");
-            report.setpName(loggedInUser + " (Client)");
+            report.setStarterName(loggedInUser + " (Client)");
             report.setProduct(product.getName()+": "+quantity + ",(New quantity: " + product.getQuantity() + ")");
             report.setDate(LocalDateTime.now());
             jpaDAO.saveReport(report);
-
         } catch (Exception e) {
             showAlert("Error", "Failed to update the product quantity!", Alert.AlertType.ERROR);
         }
@@ -375,48 +300,33 @@ public class ClientFormController {
 
     public void beszalTransOutHandle(ActionEvent actionEvent) {
 
-        String selectedProductName = beszallComboBox.getValue(); // A kiválasztott termék neve
+        String selectedProductName = beszallComboBox.getValue();
         if (selectedProductName == null) {
             showAlert("Error", "Please select a product!", Alert.AlertType.ERROR);
             return;
         }
-
-
         String quantityText = beszallQuantityField.getText();
         int quantity;
-
-
         try {
             quantity = Integer.parseInt(quantityText);
         } catch (NumberFormatException e) {
             showAlert("Error", "Please enter a valid number for quantity!", Alert.AlertType.ERROR);
             return;
         }
-
         if (quantity < min || quantity > max) {
             showAlert("Error", "Quantity must be between " + min + " and " + max + "!", Alert.AlertType.ERROR);
             return;
         }
-
-
         Product product = jpaDAO.findProductByName(selectedProductName);
         if (product == null) {
             showAlert("Error", "Product not found in the database!", Alert.AlertType.ERROR);
             return;
         }
-
-
         if (product.getQuantity() - quantity < 0) {
             showAlert("Error", "The product quantity cannot be less than 0!", Alert.AlertType.ERROR);
             return;
         }
-
-
-
-
         product.setQuantity(product.getQuantity() - quantity);
-
-
         try {
             jpaDAO.updateProduct(product);
             beszalListView.getItems().add(("Removed " + quantity + " from " + product.getName() + " (New quantity: " + product.getQuantity() + ")"));
@@ -424,7 +334,7 @@ public class ClientFormController {
             Report report = new Report();
             report.setTransactionId(generateUniqueRandom());
             report.setInOut("OUT");
-            report.setpName(loggedInUser + " (Client)");
+            report.setStarterName(loggedInUser + " (Client)");
             report.setProduct(product.getName()+": "+quantity + ",(New quantity: " + product.getQuantity() + ")");
             report.setDate(LocalDateTime.now());
             jpaDAO.saveReport(report);
@@ -440,37 +350,28 @@ public class ClientFormController {
 
     private void generateTableView() {
         ObservableList<Product> products;
-
         products = FXCollections.observableList(jpaDAO.getAllProduct());
-
         beszalTableName.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getName()));
         beszalTablePrice.setCellValueFactory(cellData -> new SimpleDoubleProperty(cellData.getValue().getPrice()).asObject());
         beszalTableStock.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getQuantity()).asObject());
         beszalTableDescription.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDescription()));
+
         beszalTableImage.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Product, ImageView>, ObservableValue<ImageView>>() {
             @Override
             public ObservableValue<ImageView> call(TableColumn.CellDataFeatures<Product, ImageView> param) {
                 byte[] imageBytes = param.getValue().getImage();
                 Image image = null;
-
                 if (imageBytes != null) {
                     image = new Image(new ByteArrayInputStream(imageBytes)); // Byte[] -> Image
                 }
-
-
                 ImageView imageView = new ImageView(image);
                 imageView.setFitWidth(150);
                 imageView.setFitHeight(150);
                 return new SimpleObjectProperty<>(imageView);
             }
         });
-
-
-
         beszallTableview.setItems(products);
     }
-
-
     private static final int MIN = 100000;
     private static final int MAX = 999999;
     private Set<Integer> generatedNumbers = new HashSet<>();
@@ -480,12 +381,10 @@ public class ClientFormController {
         if (generatedNumbers.size() >= (MAX - MIN + 1)) {
             throw new IllegalStateException("Minden lehetséges 6 jegyű számot generáltál!");
         }
-
         int number;
         do {
             number = random.nextInt(MAX - MIN + 1) + MIN;
         } while (generatedNumbers.contains(number));
-
         generatedNumbers.add(number);
         return number;
     }
@@ -494,11 +393,8 @@ public class ClientFormController {
         this.loggedInUser = loggedInUser;
         this.Cred = Creds;
         ProfilePicture.setImage(pImage);
-        // Frissítjük a Label-t
         cUserLabel.setText("Logged in as: " + loggedInUser);
     }
-
-
 
     public void handleClientProfilePicture(ActionEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();
@@ -508,36 +404,25 @@ public class ClientFormController {
         selectedFile = fileChooser.showOpenDialog(null);
         if (selectedFile != null) {
             try {
-                // Kép betöltése az ImageView-ba
                 Image image = new Image(new FileInputStream(selectedFile));
                 ProfilePicture.setImage(image);
-
-
-                // Kép átalakítása byte[] formátumba az adatbázishoz
                 pImage = Files.readAllBytes(selectedFile.toPath());
-
                 if (pImage.length == 0) {
                     showAlert("Error", "The selected image is invalid or empty!", Alert.AlertType.ERROR);
                     return;
                 }
-
                 RegLogin regLogin = jpaDAO.findRegLogbyCredentials(Cred);
-
                 if(regLogin != null)
                 {
-                    regLogin.setpImage(pImage);
+                    regLogin.setProfileImage(pImage);
                     jpaDAO.updateRegLogpImage(regLogin);
                 }
                 else
                 {
-                 StaffCred staffCred = jpaDAO.findStaffcredbyCredentials(Cred);
-                 staffCred.setpImage(pImage);
-                 jpaDAO.updateStafCredpImage(staffCred);
+                 StaffCredential staffCredential = jpaDAO.findStaffcredbyCredentials(Cred);
+                 staffCredential.setProfileImage(pImage);
+                 jpaDAO.updateStafCredpImage(staffCredential);
                 }
-
-
-
-
             } catch (IOException e) {
                 e.printStackTrace();
                 showAlert("Error", "Failed to load the image!", Alert.AlertType.ERROR);
@@ -547,14 +432,11 @@ public class ClientFormController {
 
     public void handleClientHistoryRefresh(ActionEvent actionEvent) {
         List<Report> reportList = jpaDAO.getAllReportsbyName(this.loggedInUser + " (Client)");
-
         List<String> stringList = reportList.stream()
-                .map(report -> report.getpName() + ", " + report.getInOut() + ", " + report.getProduct() + ", " + report.getTransactionId() + ", " + report.getDate())
+                .map(report -> report.getStarterName() + ", " + report.getInOut() + ", " + report.getProduct() + ", " + report.getTransactionId() + ", " + report.getDate())
                 .collect(toList());
 
         ObservableList<String> observableReportList = FXCollections.observableArrayList(stringList);
         clientHistoryList.setItems(observableReportList);
     }
-
 }
-

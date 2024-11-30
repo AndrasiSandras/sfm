@@ -1,9 +1,6 @@
-
-
 package unideb.hu.SFMProject;
 
 import javax.persistence.*;
-import java.util.Collections;
 import java.util.List;
 
 public class JPADAO extends DAO {
@@ -62,7 +59,6 @@ public class JPADAO extends DAO {
         entityManager.getTransaction().commit();
     }
 
-
     @Override
     public void deleteProduct(Product a) {
         EntityManager entityManager = createEntityManager();
@@ -102,7 +98,7 @@ public class JPADAO extends DAO {
     public List<String> getAllRegLog() {
         EntityManager entityManager = createEntityManager();
         try {
-            TypedQuery<String> query = entityManager.createQuery("SELECT a.Credentials FROM RegLogin a", String.class);
+            TypedQuery<String> query = entityManager.createQuery("SELECT a.credentials FROM RegLogin a", String.class);
             return query.getResultList();
         } finally {
             entityManager.close();
@@ -113,7 +109,7 @@ public class JPADAO extends DAO {
     public List<String> getAllStaffCred() {
         EntityManager entityManager = createEntityManager();
         try {
-            TypedQuery<String> query = entityManager.createQuery("SELECT a.Credentials FROM StaffCred a", String.class);
+            TypedQuery<String> query = entityManager.createQuery("SELECT a.credentials FROM StaffCredential a", String.class);
             return query.getResultList();
         } finally {
             entityManager.close();
@@ -140,9 +136,7 @@ public class JPADAO extends DAO {
 
     @Override
     public Product findProductByName(String name) {
-
         EntityManager entityManager = createEntityManager();
-
         try {
             return entityManager.createQuery("SELECT p FROM Product p WHERE p.name = :name", Product.class)
                     .setParameter("name", name)
@@ -168,7 +162,6 @@ public class JPADAO extends DAO {
     @Override
     public List<Report> getAllReportsbyName(String a) {
         EntityManager entityManager = createEntityManager();
-
         List<Report> reports = null;
         try {
             reports = entityManager.createQuery("SELECT r FROM Report r WHERE r.starterName = :starterName", Report.class)
@@ -185,18 +178,17 @@ public class JPADAO extends DAO {
     }
 
     @Override
-    public void updateStafCredpImage(StaffCred a) {
+    public void updateStafCredpImage(StaffCredential a) {
         EntityManager entityManager = createEntityManager();
         entityManager.getTransaction().begin();
-        StaffCred existingProduct = entityManager.find(StaffCred.class, a.getId());
+        StaffCredential existingProduct = entityManager.find(StaffCredential.class, a.getId());
         if (existingProduct != null) {
             existingProduct.setCredentials(a.getCredentials());
-            existingProduct.setpImage(a.getpImage()); // Új mező kezelése
+            existingProduct.setProfileImage(a.getProfileImage()); // Új mező kezelése
             entityManager.merge(existingProduct);
             entityManager.flush();
         }
         entityManager.getTransaction().commit();
-
     }
 
     @Override
@@ -206,19 +198,17 @@ public class JPADAO extends DAO {
         RegLogin existingProduct = entityManager.find(RegLogin.class, a.getId());
         if (existingProduct != null) {
             existingProduct.setCredentials(a.getCredentials());
-            existingProduct.setpImage(a.getpImage()); // Új mező kezelése
+            existingProduct.setProfileImage(a.getProfileImage()); // Új mező kezelése
             entityManager.merge(existingProduct);
         }
         entityManager.getTransaction().commit();
-
     }
 
     @Override
-    public StaffCred findStaffcredbyCredentials(String cred) {
+    public StaffCredential findStaffcredbyCredentials(String cred) {
         EntityManager entityManager = createEntityManager();
-
         try {
-            return entityManager.createQuery("SELECT p FROM StaffCred p WHERE p.Credentials = :Cred", StaffCred.class)
+            return entityManager.createQuery("SELECT p FROM StaffCredential p WHERE p.credentials = :Cred", StaffCredential.class)
                     .setParameter("Cred", cred)
                     .getSingleResult();
         } catch (NoResultException e) {
@@ -231,10 +221,9 @@ public class JPADAO extends DAO {
     @Override
     public RegLogin findRegLogbyCredentials(String cred) {
         EntityManager entityManager = createEntityManager();
-
         try {
-            return entityManager.createQuery("SELECT p FROM RegLogin p WHERE p.Credentials = :Cred", RegLogin.class)
-                    .setParameter("Cred", cred)
+            return entityManager.createQuery("SELECT p FROM RegLogin p WHERE p.credentials = :cred", RegLogin.class)
+                    .setParameter("cred", cred)
                     .getSingleResult();
         } catch (NoResultException e) {
             return null;
@@ -243,14 +232,15 @@ public class JPADAO extends DAO {
         }
     }
 
+
     @Override
-    public void updateStafCredPassword(StaffCred a) {
+    public void updateStafCredPassword(StaffCredential a) {
         EntityManager entityManager = createEntityManager();
         entityManager.getTransaction().begin();
-        StaffCred existingProduct = entityManager.find(StaffCred.class, a.getId());
+        StaffCredential existingProduct = entityManager.find(StaffCredential.class, a.getId());
         if (existingProduct != null) {
             existingProduct.setCredentials(a.getCredentials());
-            existingProduct.setpImage(a.getpImage());
+            existingProduct.setProfileImage(a.getProfileImage());
             entityManager.merge(existingProduct);
         }
         entityManager.getTransaction().commit();
@@ -263,11 +253,10 @@ public class JPADAO extends DAO {
         RegLogin existingProduct = entityManager.find(RegLogin.class, a.getId());
         if (existingProduct != null) {
             existingProduct.setCredentials(a.getCredentials());
-            existingProduct.setpImage(a.getpImage());
+            existingProduct.setProfileImage(a.getProfileImage());
             entityManager.merge(existingProduct);
         }
         entityManager.getTransaction().commit();
-
     }
 
     public void close() {

@@ -10,7 +10,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -26,17 +25,13 @@ import javafx.stage.Stage;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.util.Callback;
-
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
-import java.util.stream.Collectors;
-
 import static java.util.stream.Collectors.toList;
 import static unideb.hu.SFMProject.PDFGenerator.generateReport;
 
@@ -49,20 +44,24 @@ public class StaffFormController {
     private Scene scene;
     private Parent root;
     private Stage popupStage = null;
+    private String loggedInUser;
+    private String Cred;
+    private JPADAO jpaDAO = new JPADAO();
+    private Map<Button, AnchorPane> buttonPaneMap;
+    private File selectedFile;
+    private byte[] imageBytes;
+    private byte[] ProfileimageBytes;
+    private int quantity;
+    int min = 0, max = 1000;
 
-
     @FXML
-    private TextField productNameField; // Termék neve
+    private TextField productNameField;
     @FXML
-    private TextField productPriceField; // Termék ára
+    private TextField productPriceField;
     @FXML
-    private TextField productDescriptionField; // Termék leírása
+    private TextField productDescriptionField;
     @FXML
-    private ImageView ProductImageView; // Termékkép
-    @FXML
-    private Button BrowseButton;
-    @FXML
-    private Button AddButton; // Mentés gomb
+    private ImageView ProductImageView;
     @FXML
     private Button AccountButton, AddProductButton, ReportsButton, TransInOutButton, ViewProdButton, LogoutButton;
     @FXML
@@ -96,41 +95,9 @@ public class StaffFormController {
     @FXML
     private TableColumn<Report,String> pName;
     @FXML
-
     private TableColumn<Report,String> pProduct;
-
     @FXML
     private Label sUserLabel;
-
-    private String loggedInUser;
-    private String Cred;
-
-    private JPADAO jpaDAO = new JPADAO();
-    private Map<Button, AnchorPane> buttonPaneMap;
-
-    private File selectedFile;
-    private byte[] imageBytes;
-    private byte[] ProfileimageBytes;
-
-    private int quantity;
-
-    public byte[] getProfileimageBytes()
-    {
-        return ProfileimageBytes;
-    }
-
-
-    ClientFormController clientFormController;
-
-    public ClientFormController getClientFormController() {
-        return clientFormController;
-    }
-
-    SceneController sceneController;
-
-    public SceneController getSceneController() {
-        return sceneController;
-    }
 
     @FXML
     public void initialize() {
@@ -145,7 +112,6 @@ public class StaffFormController {
     @FXML
     void switchForm(ActionEvent event) {
         buttonPaneMap.values().forEach(pane -> pane.setVisible(false));
-
         Button sourceButton = (Button) event.getSource();
         AnchorPane targetPane = buttonPaneMap.get(sourceButton);
         if (targetPane != null) {
@@ -167,15 +133,11 @@ public class StaffFormController {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select Product Image");
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));
-
         selectedFile = fileChooser.showOpenDialog(null);
         if (selectedFile != null) {
             try {
-                // Kép betöltése az ImageView-ba
                 Image image = new Image(new FileInputStream(selectedFile));
                 ProductImageView.setImage(image);
-
-                // Kép átalakítása byte[] formátumba az adatbázishoz
                 imageBytes = Files.readAllBytes(selectedFile.toPath());
             } catch (IOException e) {
                 e.printStackTrace();
@@ -186,26 +148,22 @@ public class StaffFormController {
 
     @FXML
     private void handleSaveProduct(ActionEvent event) {
-        // 1. Adatok begyűjtése
+        int maxNameLength = 50;
+        int maxDescriptionLength = 250;
+        double price;
+
         String name = productNameField.getText();
         String priceText = productPriceField.getText();
         String description = productDescriptionField.getText();
-
-
-        // 2. Adatok validálása
         if (name.isEmpty() || priceText.isEmpty() || description.isEmpty()) {
             showAlert("Error", "All fields must be filled in!", Alert.AlertType.ERROR);
             return;
         }
-
         if(isItAlreadyIn(name))
         {
             showAlert("Error","Product already in database!",Alert.AlertType.ERROR);
             return;
         }
-        int maxNameLength = 50;
-        int maxDescriptionLength = 250;
-
         if (name.length() > maxNameLength) {
             showAlert("Error", "The product name is too long! Maximum " + maxNameLength + " characters allowed.", Alert.AlertType.ERROR);
             return;
@@ -214,8 +172,6 @@ public class StaffFormController {
             showAlert("Error", "The product description is too long! Maximum " + maxDescriptionLength + " characters allowed.", Alert.AlertType.ERROR);
             return;
         }
-
-        double price;
         try {
             price = Double.parseDouble(priceText); // Ár konvertálása számra
         } catch (NumberFormatException e) {
@@ -223,20 +179,14 @@ public class StaffFormController {
             return;
         }
 
-        // 3. Új termék példány létrehozása
         Product newProduct = new Product();
         newProduct.setName(name);
         newProduct.setPrice(price);
         newProduct.setDescription(description);
-        //newProduct.setQuantity(0);
 
-
-        // Kép hozzáadása
         if (imageBytes != null) {
-            newProduct.setImage(imageBytes); // A kép byte tömbként tárolva
+            newProduct.setImage(imageBytes);
         }
-
-        // 4. Adatok mentése az adatbázisba
         try {
             jpaDAO.saveProduct(newProduct);
             showAlert("Success", "The product has been successfully saved!", Alert.AlertType.INFORMATION);
@@ -251,11 +201,9 @@ public class StaffFormController {
     {
         List<Product> products;
         products = jpaDAO.getAllProduct();
-
         List<String> productnames = products.stream()
                 .map(Product::getName)
                 .collect(toList());
-
 
         if(productnames.contains(name))
         {
@@ -285,36 +233,31 @@ public class StaffFormController {
     }
 
     public void fillComboBox() {
-
         List<Product> products;
-
         productComboBox.getItems().clear();
-
         products = jpaDAO.getAllProduct();
-
         List<String> productNames = products.stream()
                 .map(Product::getName)
                 .collect(toList());
 
         productComboBox.getItems().addAll(productNames);
-
         productComboBox.hide();
         productComboBox.show();
-        
     }
 
-    int min = 0, max = 1000;
-    
     public void transctionInHandle(ActionEvent actionEvent) {
-        String selectedProductName = productComboBox.getValue(); // Kiválasztott termék neve
+        int quantity;
+
+        // Ellenőrizze, hogy van-e kiválasztott termék
+        String selectedProductName = productComboBox.getValue();
+        String quantityText = productQuantityField.getText();
+
         if (selectedProductName == null) {
             showAlert("Error", "Please select a product!", Alert.AlertType.ERROR);
             return;
         }
 
-        String quantityText = productQuantityField.getText(); // A beírt mennyiség
-        int quantity;
-
+        // Mennyiség ellenőrzése
         try {
             quantity = Integer.parseInt(quantityText);
         } catch (NumberFormatException e) {
@@ -323,44 +266,45 @@ public class StaffFormController {
         }
 
         if (quantity <= min || quantity >= max) {
-            showAlert("Error", "Quantity must be between " + min+1 + " and " + max + "!", Alert.AlertType.ERROR);
+            showAlert("Error", "Quantity must be between " + (min + 1) + " and " + max + "!", Alert.AlertType.ERROR);
             return;
         }
 
-
+        // Kiválasztott termék keresése
         Product product = jpaDAO.findProductByName(selectedProductName);
         if (product == null) {
             showAlert("Error", "Product not found in the database!", Alert.AlertType.ERROR);
             return;
         }
 
-
         if (product.getQuantity() + quantity > max) {
             showAlert("Error", "The product quantity exceeds the maximum limit!", Alert.AlertType.ERROR);
             return;
         }
 
-
+        // Termék mennyiségének frissítése
         product.setQuantity(product.getQuantity() + quantity);
-
 
         try {
             jpaDAO.updateProduct(product);
+
+            // Terméklista frissítése
             productListView.getItems().add("Added " + quantity + " to " + product.getName() + " (New quantity: " + product.getQuantity() + ")");
+
+            // Jelentés létrehozása és mentése
             Report report = new Report();
             report.setTransactionId(generateUniqueRandom());
             report.setInOut("IN");
-            report.setpName(loggedInUser + " (Staff)");
-            report.setProduct(product.getName()+": "+ quantity + ",(New quantity: " + product.getQuantity() + ")");
-            report.setDate(report.setDate(LocalDateTime.now()));
+            report.setStarterName(loggedInUser + " (Staff)");
+            report.setProduct(product.getName() + ": " + quantity + ",(New quantity: " + product.getQuantity() + ")");
+            report.setDate(LocalDateTime.now()); // Dátum beállítása közvetlenül
+
             jpaDAO.saveReport(report);
 
-         } catch (Exception e) {
+        } catch (Exception e) {
             showAlert("Error", "Failed to update the product quantity!", Alert.AlertType.ERROR);
         }
-
     }
-
 
     @FXML
     private void transactionOutHandle(ActionEvent event) {
@@ -370,10 +314,7 @@ public class StaffFormController {
                 return;
             }
 
-
             String quantityText = productQuantityField.getText();
-
-
 
             try {
                 quantity = Integer.parseInt(quantityText);
@@ -387,33 +328,26 @@ public class StaffFormController {
                 return;
             }
 
-
             Product product = jpaDAO.findProductByName(selectedProductName);
             if (product == null) {
                 showAlert("Error", "Product not found in the database!", Alert.AlertType.ERROR);
                 return;
             }
 
-
             if (product.getQuantity() - quantity < 0) {
                 showAlert("Error", "The product quantity cannot be less than 0!", Alert.AlertType.ERROR);
                 return;
             }
 
-
-
-
             product.setQuantity(product.getQuantity() - quantity);
-
 
             try {
                 jpaDAO.updateProduct(product);
                 productListView.getItems().add(("Removed " + quantity + " from " + product.getName() + " (New quantity: " + product.getQuantity() + ")"));
-                //setTransOut(generateUniqueRandom()+ ",OUT," + product.getName() + "," + product.getQuantity() + "db\n");
                 Report report = new Report();
                 report.setTransactionId(generateUniqueRandom());
                 report.setInOut("OUT");
-                report.setpName(loggedInUser + " (Staff)");
+                report.setStarterName(loggedInUser + " (Staff)");
                 report.setProduct(product.getName()+": "+quantity + ",(New quantity: " + product.getQuantity() + ")");
                 report.setDate(LocalDateTime.now());
                 jpaDAO.saveReport(report);
@@ -425,24 +359,20 @@ public class StaffFormController {
 
     @FXML
     private void handleCHangePassword() {
-        // Ellenőrizzük, hogy az ablak már nyitva van-e
         if (popupStage != null) {
             popupStage.toFront();
             return;
         }
 
-        // Felugró ablak létrehozása
         popupStage = new Stage();
         popupStage.setTitle("Change Password");
 
-        // Logó betöltése
         Image logoImage = new Image(getClass().getResourceAsStream("/image/palacklogo.png"));
         ImageView logoImageView = new ImageView(logoImage);
         logoImageView.setFitWidth(100);  // Méret beállítása
         logoImageView.setPreserveRatio(true);
         logoImageView.setSmooth(true);
 
-        // Stílusos TextField-ek
         TextField currentPasswordField = new TextField();
         currentPasswordField.setPromptText("Current Password");
         currentPasswordField.setStyle(
@@ -465,7 +395,6 @@ public class StaffFormController {
                         "-fx-font-size: 14px;"
         );
 
-        // Stílusos Submit gomb
         Button submitButton = new Button("Submit");
         submitButton.setStyle(
                 "-fx-background-color: #EA9215;" +
@@ -493,12 +422,9 @@ public class StaffFormController {
         ));
 
         submitButton.setOnAction(event -> {
-            StaffCred staffCred = jpaDAO.findStaffcredbyCredentials(Cred);
+            StaffCredential staffCredential = jpaDAO.findStaffcredbyCredentials(Cred);
             String[] data;
-
-            data = staffCred.getCredentials().split(",");
-
-
+            data = staffCredential.getCredentials().split(",");
             String current = currentPasswordField.getText();
             String newpassword = newPasswordField.getText();
             try {
@@ -508,7 +434,7 @@ public class StaffFormController {
                 }
                 if (current.equals(data[1])) {
                     String newcred = data[0] + "," + newpassword + "," + data[2];
-                    StaffCred staff =jpaDAO.findStaffcredbyCredentials(Cred);
+                    StaffCredential staff =jpaDAO.findStaffcredbyCredentials(Cred);
                     staff.setCredentials(newcred);
                     jpaDAO.updateStafCredPassword(staff);
                     showAlert("Success", "Password successfully changed!", Alert.AlertType.INFORMATION);
@@ -523,11 +449,9 @@ public class StaffFormController {
                 showAlert("Error", "Failed to change password!", Alert.AlertType.ERROR);
             }
 
-
             popupStage.close();
         });
 
-        // Ablak elrendezése
         VBox layout = new VBox(15, logoImageView, currentPasswordField, newPasswordField, submitButton);
         layout.setStyle(
                 "-fx-background-color: linear-gradient(to bottom, #3A4750, #282C30);" +
@@ -540,19 +464,14 @@ public class StaffFormController {
 
         Scene popupScene = new Scene(layout, 350, 400);
         popupStage.setScene(popupScene);
-
-        // Bezárás esemény
         popupStage.setOnCloseRequest(event -> popupStage = null);
-
         popupStage.show();
     }
 
     public void generateTableView()
     {
         ObservableList<Product> products;
-
         products = FXCollections.observableList(jpaDAO.getAllProduct());
-
         tableName.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getName()));
         tablePrice.setCellValueFactory(cellData -> new SimpleDoubleProperty(cellData.getValue().getPrice()).asObject());
         tableQuantity.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getQuantity()).asObject());
@@ -574,8 +493,6 @@ public class StaffFormController {
             }
         });
 
-
-
         productTableView.setItems(products);
     }
 
@@ -586,7 +503,6 @@ public class StaffFormController {
 
     public void deleteProductHandle(ActionEvent actionEvent) {
 
-        // Kiválasztott név lekérése
         String selectedProductName = productComboBox.getValue();
 
         if (selectedProductName == null || selectedProductName.isEmpty()) {
@@ -594,7 +510,6 @@ public class StaffFormController {
             return;
         }
 
-        // Keresd meg a Product objektumot a név alapján
         Product productToDelete = jpaDAO.findProductByName(selectedProductName);
 
         if (productToDelete == null) {
@@ -602,12 +517,10 @@ public class StaffFormController {
             return;
         }
 
-        // Törlés a jpaDAO.deleteProduct() segítségével
         try {
             jpaDAO.deleteProduct(productToDelete);
             showAlert("Success", "The product has been successfully deleted!", Alert.AlertType.INFORMATION);
 
-            // Frissítsük a ComboBox tartalmát
             productComboBox.getItems().remove(selectedProductName);
         } catch (Exception e) {
             e.printStackTrace();
@@ -615,8 +528,6 @@ public class StaffFormController {
         }
 
     }
-
-
         private static final int MIN = 100000;
         private static final int MAX = 999999;
         private Set<Integer> generatedNumbers = new HashSet<>();
@@ -641,7 +552,6 @@ public class StaffFormController {
         this.loggedInUser = loggedInUser;
         this.Cred = Creds;
         ProfilePicture.setImage(pImage);
-        // Frissítjük a Label-t
         sUserLabel.setText("Logged in as: "+ loggedInUser);
     }
 
@@ -649,21 +559,15 @@ public class StaffFormController {
         generateReportTableivew();
     }
 
-
     public void generateReportTableivew()
     {
         ObservableList<Report> reports;
-
         reports = FXCollections.observableList(jpaDAO.getAllReports());
-
         transactionId.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getTransactionId()).asObject());
         inOut.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getInOut()));
-        pName.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getpName()));
+        pName.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getStarterName()));
         pProduct.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getProduct()));
-
-
         reportTableView.setItems(reports);
-
     }
 
     public void handleChangeProfilePicture(ActionEvent actionEvent) {
@@ -674,11 +578,8 @@ public class StaffFormController {
         selectedFile = fileChooser.showOpenDialog(null);
         if (selectedFile != null) {
             try {
-                // Kép betöltése az ImageView-ba
                 Image image = new Image(new FileInputStream(selectedFile));
                 ProfilePicture.setImage(image);
-
-                // Kép átalakítása byte[] formátumba az adatbázishoz
                 ProfileimageBytes = Files.readAllBytes(selectedFile.toPath());
 
                 if (ProfileimageBytes.length == 0) {
@@ -686,24 +587,20 @@ public class StaffFormController {
                     return;
                 }
 
-                StaffCred staffCred = jpaDAO.findStaffcredbyCredentials(Cred);
-                staffCred.setpImage(ProfileimageBytes); // Ezen dolgozol
-                jpaDAO.updateStafCredpImage(staffCred);
-
-
+                StaffCredential staffCredential = jpaDAO.findStaffcredbyCredentials(Cred);
+                staffCredential.setProfileImage(ProfileimageBytes);
+                jpaDAO.updateStafCredpImage(staffCredential);
             } catch (IOException e) {
                 e.printStackTrace();
                 showAlert("Error", "Failed to load the image!", Alert.AlertType.ERROR);
             }
         }
-
     }
 
     public void handelHistoryRefresh(ActionEvent actionEvent) {
         List<Report> reportList = jpaDAO.getAllReportsbyName(this.loggedInUser + " (Staff)");
-
         List<String> stringList = reportList.stream()
-                .map(report -> report.getpName() + ", " + report.getInOut() + ", " + report.getProduct() + ", " + report.getTransactionId() + ", " + report.getDate())
+                .map(report -> report.getStarterName() + ", " + report.getInOut() + ", " + report.getProduct() + ", " + report.getTransactionId() + ", " + report.getDate())
                 .collect(toList());
 
         ObservableList<String> observableReportList = FXCollections.observableArrayList(stringList);

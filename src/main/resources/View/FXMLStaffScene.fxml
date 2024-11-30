@@ -190,11 +190,11 @@
             <Button fx:id="refreshButton" layoutX="39.0" layoutY="50.0" mnemonicParsing="false" onAction="#refreshTableView" prefHeight="60.0" prefWidth="120.0" styleClass="user_transparent_button" stylesheets="@style.css" text="Refresh" textFill="#ea9215" />
             <TableView fx:id="productTableView" layoutX="200.0" layoutY="50.0" prefHeight="500.0" prefWidth="750.0" stylesheets="@style.css">
                <columns>
-                  <TableColumn fx:id="tableImage" prefWidth="150.0" text="Image" />
-                  <TableColumn fx:id="tableName" prefWidth="150.0" text="Name" />
-                  <TableColumn fx:id="tablePrice" prefWidth="150.0" text="Price" />
-                  <TableColumn fx:id="tableQuantity" minWidth="0.0" prefWidth="150.0" text="Qunatity" />
-                  <TableColumn fx:id="tableDescription" prefWidth="150.0" resizable="false" text="Description" />
+                  <TableColumn fx:id="tableImage" prefWidth="92.800048828125" text="Image" />
+                  <TableColumn fx:id="tableName" prefWidth="69.60003662109375" text="Name" />
+                  <TableColumn fx:id="tablePrice" prefWidth="72.79998779296875" text="Price" />
+                  <TableColumn fx:id="tableDescription" prefWidth="479.1999206542969" resizable="false" text="Description" />
+                  <TableColumn fx:id="tableQuantity" minWidth="0.0" prefWidth="39.2000732421875" text="Stock" />
                </columns>
             </TableView>
          </children></Pane>
