@@ -50,7 +50,9 @@ public class StaffFormController {
     private byte[] ProfileimageBytes;
     private int quantity;
     int min = 0, max = 1000;
+
     private final PasswordManager passwordManager = new PasswordManager();
+    private final ProfilePictureManager profilePictureManager = new ProfilePictureManager();
 
     @FXML
     private TextField productNameField;
@@ -115,6 +117,13 @@ public class StaffFormController {
         if (targetPane != null) {
             targetPane.setVisible(true);
         }
+    }
+
+    public void setLoggedInUser(String loggedInUser, String Creds, Image pImage) {
+        this.loggedInUser = loggedInUser;
+        this.Cred = Creds;
+        ProfilePicture.setImage(pImage);
+        sUserLabel.setText("Logged in as: "+ loggedInUser);
     }
 
     @FXML
@@ -216,14 +225,6 @@ public class StaffFormController {
         productDescriptionField.clear();
         ProductImageView.setImage(null);
         imageBytes = null;
-    }
-
-    private void showAlert(String title, String message, Alert.AlertType alertType) {
-        Alert alert = new Alert(alertType);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
     }
 
     public void reportGenerator(ActionEvent actionEvent) {
@@ -434,14 +435,6 @@ public class StaffFormController {
             return number;
         }
 
-
-    public void setLoggedInUser(String loggedInUser, String Creds, Image pImage) {
-        this.loggedInUser = loggedInUser;
-        this.Cred = Creds;
-        ProfilePicture.setImage(pImage);
-        sUserLabel.setText("Logged in as: "+ loggedInUser);
-    }
-
     public void refreshReportHandle(ActionEvent actionEvent) {
         generateReportTableivew();
     }
@@ -457,31 +450,9 @@ public class StaffFormController {
         reportTableView.setItems(reports);
     }
 
+    @FXML
     public void handleChangeProfilePicture(ActionEvent actionEvent) {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Select Profile Picture");
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));
-
-        selectedFile = fileChooser.showOpenDialog(null);
-        if (selectedFile != null) {
-            try {
-                Image image = new Image(new FileInputStream(selectedFile));
-                ProfilePicture.setImage(image);
-                ProfileimageBytes = Files.readAllBytes(selectedFile.toPath());
-
-                if (ProfileimageBytes.length == 0) {
-                    showAlert("Error", "The selected image is invalid or empty!", Alert.AlertType.ERROR);
-                    return;
-                }
-
-                StaffCredential staffCredential = jpaDAO.findStaffcredbyCredentials(Cred);
-                staffCredential.setProfileImage(ProfileimageBytes);
-                jpaDAO.updateStafCredpImage(staffCredential);
-            } catch (IOException e) {
-                e.printStackTrace();
-                showAlert("Error", "Failed to load the image!", Alert.AlertType.ERROR);
-            }
-        }
+        profilePictureManager.handleStaffProfilePicture(Cred, jpaDAO, ProfilePicture);
     }
 
     @FXML
@@ -497,5 +468,13 @@ public class StaffFormController {
 
         ObservableList<String> observableReportList = FXCollections.observableArrayList(stringList);
         StaffHistoryList.setItems(observableReportList);
+    }
+
+    private void showAlert(String title, String message, Alert.AlertType alertType) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

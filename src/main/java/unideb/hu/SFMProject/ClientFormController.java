@@ -44,7 +44,9 @@ public class ClientFormController {
     private String Cred;
     private byte[] pImage;
     int min = 0,max = 1000;
+
     private final PasswordManager passwordManager = new PasswordManager();
+    private final ProfilePictureManager profilePictureManager = new ProfilePictureManager();
 
     @FXML
     private Button AccountButton, TransInOutButton, ViewProdButton;
@@ -91,6 +93,13 @@ public class ClientFormController {
         }
     }
 
+    public void setLoggedInUser(String loggedInUser, String Creds, Image pImage) {
+        this.loggedInUser = loggedInUser;
+        this.Cred = Creds;
+        ProfilePicture.setImage(pImage);
+        cUserLabel.setText("Logged in as: " + loggedInUser);
+    }
+
     @FXML
     void logOut(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("/view/FXMLLoginScene.fxml"));
@@ -114,14 +123,6 @@ public class ClientFormController {
 
             beszallComboBox.hide();
             beszallComboBox.show();
-    }
-
-    private void showAlert(String title, String message, Alert.AlertType alertType) {
-        Alert alert = new Alert(alertType);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
     }
 
     public void beszalTransInHandle(ActionEvent actionEvent) {
@@ -155,7 +156,6 @@ public class ClientFormController {
         try {
             jpaDAO.updateProduct(product);
             beszalListView.getItems().add("Added " + quantity + " to " + product.getName() + " (New quantity: " + product.getQuantity() + ")");
-            //setTransIn(generateUniqueRandom()+ ",IN," + product.getName() + "," + product.getQuantity() + "db\n");
             Report report = new Report();
             report.setTransactionId(generateUniqueRandom());
             report.setInOut("IN");
@@ -200,7 +200,6 @@ public class ClientFormController {
         try {
             jpaDAO.updateProduct(product);
             beszalListView.getItems().add(("Removed " + quantity + " from " + product.getName() + " (New quantity: " + product.getQuantity() + ")"));
-            //setTransOut(generateUniqueRandom()+ ",OUT," + product.getName() + "," + product.getQuantity() + "db\n");
             Report report = new Report();
             report.setTransactionId(generateUniqueRandom());
             report.setInOut("OUT");
@@ -223,8 +222,8 @@ public class ClientFormController {
         products = FXCollections.observableList(jpaDAO.getAllProduct());
         beszalTableName.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getName()));
         beszalTablePrice.setCellValueFactory(cellData -> new SimpleDoubleProperty(cellData.getValue().getPrice()).asObject());
-        beszalTableStock.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getQuantity()).asObject());
         beszalTableDescription.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDescription()));
+        beszalTableStock.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getQuantity()).asObject());
 
         beszalTableImage.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Product, ImageView>, ObservableValue<ImageView>>() {
             @Override
@@ -259,45 +258,9 @@ public class ClientFormController {
         return number;
     }
 
-    public void setLoggedInUser(String loggedInUser, String Creds, Image pImage) {
-        this.loggedInUser = loggedInUser;
-        this.Cred = Creds;
-        ProfilePicture.setImage(pImage);
-        cUserLabel.setText("Logged in as: " + loggedInUser);
-    }
-
+    @FXML
     public void handleClientProfilePicture(ActionEvent actionEvent) {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Select Profile Picture");
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));
-
-        selectedFile = fileChooser.showOpenDialog(null);
-        if (selectedFile != null) {
-            try {
-                Image image = new Image(new FileInputStream(selectedFile));
-                ProfilePicture.setImage(image);
-                pImage = Files.readAllBytes(selectedFile.toPath());
-                if (pImage.length == 0) {
-                    showAlert("Error", "The selected image is invalid or empty!", Alert.AlertType.ERROR);
-                    return;
-                }
-                RegLogin regLogin = jpaDAO.findRegLogbyCredentials(Cred);
-                if(regLogin != null)
-                {
-                    regLogin.setProfileImage(pImage);
-                    jpaDAO.updateRegLogpImage(regLogin);
-                }
-                else
-                {
-                 StaffCredential staffCredential = jpaDAO.findStaffcredbyCredentials(Cred);
-                 staffCredential.setProfileImage(pImage);
-                 jpaDAO.updateStafCredpImage(staffCredential);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-                showAlert("Error", "Failed to load the image!", Alert.AlertType.ERROR);
-            }
-        }
+        profilePictureManager.handleClientProfilePicture(Cred, jpaDAO, ProfilePicture);
     }
 
     @FXML
@@ -313,5 +276,13 @@ public class ClientFormController {
 
         ObservableList<String> observableReportList = FXCollections.observableArrayList(stringList);
         clientHistoryList.setItems(observableReportList);
+    }
+
+    private void showAlert(String title, String message, Alert.AlertType alertType) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

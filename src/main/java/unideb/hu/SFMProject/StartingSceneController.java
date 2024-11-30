@@ -14,7 +14,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.List;
 
-public class SceneController {
+public class StartingSceneController {
 
     private Stage stage;
     private Scene scene;
@@ -47,7 +47,7 @@ public class SceneController {
     @FXML
     private Label LoginErrorText;
 
-    public SceneController() throws IOException {
+    public StartingSceneController() throws IOException {
     }
 
     private void loadScene(ActionEvent event, String fxmlPath) throws IOException {

@@ -109,7 +109,6 @@ public class PasswordManager {
     }
 
     private void handleStaffPasswordChange(String cred, JPADAO jpaDAO, String currentPassword, String newPassword) {
-        System.out.println("Changing password for staff: " + cred);
         StaffCredential staff = jpaDAO.findStaffcredbyCredentials(cred);
 
         String[] data = staff.getCredentials().split(",");
@@ -126,7 +125,6 @@ public class PasswordManager {
     }
 
     private void handleClientPasswordChange(String cred, JPADAO jpaDAO, String currentPassword, String newPassword) {
-        System.out.println("Changing password for client: " + cred);
         RegLogin client = jpaDAO.findRegLogbyCredentials(cred);
         if (client == null) {
             showAlert("Error", "Sign out and login!", Alert.AlertType.ERROR);
