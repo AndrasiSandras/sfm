@@ -233,7 +233,7 @@
    <AnchorPane fx:id="AccountForm" layoutX="240.0" prefHeight="800.0" prefWidth="1160.0" visible="false">
       <Pane layoutX="100.0" layoutY="160.0" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #3a4750; -fx-background-radius: 20;" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="150.0">
          <children>
-            <Button fx:id="changePasswordButton" layoutX="100.0" layoutY="550.0" mnemonicParsing="false" onAction="#handleCHangePassword" prefHeight="42.0" prefWidth="179.0" styleClass="user_transparent_button_borderless" stylesheets="@style.css" text="Change password" textFill="#ea9215">
+            <Button fx:id="changePasswordButton" layoutX="100.0" layoutY="550.0" mnemonicParsing="false" onAction="#handleChangePasswordStaff" prefHeight="42.0" prefWidth="179.0" styleClass="user_transparent_button_borderless" stylesheets="@style.css" text="Change password" textFill="#ea9215">
                <font>
                   <Font size="24.0" />
                </font>

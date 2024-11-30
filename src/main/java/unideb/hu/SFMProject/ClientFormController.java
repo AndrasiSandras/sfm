@@ -10,7 +10,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -20,7 +19,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import java.io.ByteArrayInputStream;
@@ -38,7 +36,6 @@ public class ClientFormController {
     private Stage stage;
     private Scene scene;
     private Parent root;
-    private Stage popupStage = null;
     public ImageView ProfilePicture;
     private File selectedFile;
     private JPADAO jpaDAO = new JPADAO();
@@ -47,6 +44,7 @@ public class ClientFormController {
     private String Cred;
     private byte[] pImage;
     int min = 0,max = 1000;
+    private final PasswordManager passwordManager = new PasswordManager();
 
     @FXML
     private Button AccountButton, TransInOutButton, ViewProdButton;
@@ -100,134 +98,6 @@ public class ClientFormController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-    }
-
-    @FXML
-    private void handleChangePasswordClient() {
-        if (popupStage != null) {
-            popupStage.toFront();
-            return;
-        }
-
-        popupStage = new Stage();
-        popupStage.setTitle("Change Password");
-        Image logoImage = new Image(getClass().getResourceAsStream("/image/palacklogo.png"));
-        ImageView logoImageView = new ImageView(logoImage);
-        logoImageView.setFitWidth(100);
-        logoImageView.setPreserveRatio(true);
-        logoImageView.setSmooth(true);
-        TextField currentPasswordField = new TextField();
-        currentPasswordField.setPromptText("Current Password");
-        currentPasswordField.setStyle(
-                "-fx-background-color: #3A4750;" +
-                        "-fx-text-fill: white;" +
-                        "-fx-border-color: #EA9215;" +
-                        "-fx-border-radius: 5px;" +
-                        "-fx-padding: 5px;" +
-                        "-fx-font-size: 14px;"
-        );
-
-        TextField newPasswordField = new TextField();
-        newPasswordField.setPromptText("New Password");
-        newPasswordField.setStyle(
-                "-fx-background-color: #3A4750;" +
-                        "-fx-text-fill: white;" +
-                        "-fx-border-color: #EA9215;" +
-                        "-fx-border-radius: 5px;" +
-                        "-fx-padding: 5px;" +
-                        "-fx-font-size: 14px;"
-        );
-        Button submitButton = new Button("Submit");
-        submitButton.setStyle(
-                "-fx-background-color: #EA9215;" +
-                        "-fx-text-fill: white;" +
-                        "-fx-font-weight: bold;" +
-                        "-fx-border-radius: 5px;" +
-                        "-fx-padding: 10px 20px;"
-        );
-        submitButton.setOnMouseEntered(event -> submitButton.setStyle(
-                "-fx-background-color: #FFD479;" +
-                        "-fx-text-fill: white;" +
-                        "-fx-font-weight: bold;" +
-                        "-fx-border-radius: 5px;" +
-                        "-fx-padding: 10px 20px;" +
-                        "-fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 2);"
-        ));
-        submitButton.setOnMouseExited(event -> submitButton.setStyle(
-                "-fx-background-color: #EA9215;" +
-                        "-fx-text-fill: white;" +
-                        "-fx-font-weight: bold;" +
-                        "-fx-border-radius: 5px;" +
-                        "-fx-padding: 10px 20px;"
-        ));
-        submitButton.setOnAction(event -> {
-            if(jpaDAO.findStaffcredbyCredentials(Cred) != null) {
-                StaffCredential staffCredential = jpaDAO.findStaffcredbyCredentials(Cred);
-                String[] data;
-                data = staffCredential.getCredentials().split(",");
-                String current = currentPasswordField.getText();
-                String newpassword = newPasswordField.getText();
-                try {
-                    if (current.equals(newpassword)) {
-                        showAlert("Error", "The new password cannot be the same as the current password!", Alert.AlertType.ERROR);
-                        return;
-                    }
-                    if (current.equals(data[1])) {
-                        String newcred = data[0] + "," + newpassword + "," + data[2];
-                        StaffCredential staff = jpaDAO.findStaffcredbyCredentials(Cred);
-                        staff.setCredentials(newcred);
-                        jpaDAO.updateStafCredPassword(staff);
-                        showAlert("Success", "Password successfully changed!", Alert.AlertType.INFORMATION);
-                    } else {
-                        showAlert("Error", "Current Password do not match!", Alert.AlertType.ERROR);
-                        return;
-
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    showAlert("Error", "Failed to change password!", Alert.AlertType.ERROR);
-                }
-                popupStage.close();
-            }
-            else
-            {
-                RegLogin regLogin = jpaDAO.findRegLogbyCredentials(Cred);
-                String[] data;
-                data = regLogin.getCredentials().split(",");
-                String current = currentPasswordField.getText();
-                String newpassword = newPasswordField.getText();
-                try {
-                    if (current.equals(data[1])) {
-                        String newcred = data[0] + "," + newpassword + "," + data[2];
-                        RegLogin client = jpaDAO.findRegLogbyCredentials(Cred);
-                        client.setCredentials(newcred);
-                        jpaDAO.updateReglogpassword(client);
-                        showAlert("Success", "Password successfully changed!", Alert.AlertType.INFORMATION);
-                    } else {
-                        showAlert("Error", "Current Password do not match!", Alert.AlertType.ERROR);
-                        return;
-
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    showAlert("Error", "Failed to change password!", Alert.AlertType.ERROR);
-                }
-                popupStage.close();
-            }
-        });
-        VBox layout = new VBox(15, logoImageView, currentPasswordField, newPasswordField, submitButton);
-        layout.setStyle(
-                "-fx-background-color: linear-gradient(to bottom, #3A4750, #282C30);" +
-                        "-fx-border-color: #EA9215;" +
-                        "-fx-border-width: 2px;" +
-                        "-fx-border-radius: 10px;" +
-                        "-fx-padding: 20px;"
-        );
-        layout.setAlignment(Pos.CENTER);
-        Scene popupScene = new Scene(layout, 350, 400);
-        popupStage.setScene(popupScene);
-        popupStage.setOnCloseRequest(event -> popupStage = null);
-        popupStage.show();
     }
 
     public void fillComboBoxBeszall(MouseEvent mouseEvent) {
@@ -428,6 +298,11 @@ public class ClientFormController {
                 showAlert("Error", "Failed to load the image!", Alert.AlertType.ERROR);
             }
         }
+    }
+
+    @FXML
+    private void handleChangePasswordClient() {
+        passwordManager.handlePasswordChange(Cred, jpaDAO);
     }
 
     public void handleClientHistoryRefresh(ActionEvent actionEvent) {

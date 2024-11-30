@@ -430,10 +430,36 @@
 
 
 
-#popup-layout {
+.popup-password-field {
+    -fx-background-color: #3A4750;
+    -fx-text-fill: white;
+    -fx-border-color: #EA9215;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px;
+    -fx-font-size: 14px;
+}
+
+.popup-submit-button {
+    -fx-background-color: #EA9215;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px 20px;
+}
+
+.popup-submit-button:hover {
+    -fx-background-color: #FFD479;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 2);
+}
+
+.popup-layout {
     -fx-background-color: linear-gradient(to bottom, #3A4750, #282C30);
     -fx-border-color: #EA9215;
     -fx-border-width: 2px;
     -fx-border-radius: 10px;
-    -fx-padding: 10px;
+    -fx-padding: 20px;
 }
