@@ -160,7 +160,7 @@ public class SceneController {
     }
 
     public void registerClient(ActionEvent actionEvent) throws IOException {
-        AuthController authController = new AuthController(emailText, passwordText, rePasswordText, userNameText, registerErrorText);
+        AuthController authController = new AuthController(emailText, passwordText, rePasswordText, userNameText, registerErrorText, jpadao);
         if (authController.register()) {
             String name = userNameText.getText();
             String password = passwordText.getText();
@@ -172,14 +172,14 @@ public class SceneController {
             Credentials.setCredentials(credentials);
 
             Utils cutil = new Utils(new JPADAO());
-            cutil.runCUtils(Credentials);
+            cutil.saveRegLogin(Credentials);
         }
     }
 
     public boolean Clogin(String[] Credentials) throws IOException {
         Utils rutils = new Utils(new JPADAO());
-        List<String> Clist = rutils.runReadUtils();
-        List<String> Slist = rutils.runStaffUtils();
+        List<String> Clist = rutils.getAllRegLog();
+        List<String> Slist = rutils.getAllStaffCredentials();
         String[] Ccred;
         String[] Scred;
         boolean credentail = false;
@@ -220,7 +220,7 @@ public class SceneController {
 
     public boolean Slogin(String[] Credentials) throws IOException {
         Utils sutils = new Utils(new JPADAO());
-        List<String> Slist = sutils.runStaffUtils();
+        List<String> Slist = sutils.getAllStaffCredentials();
         String[] cred = new String[0];
         boolean Staffcred = false;
 

@@ -57,8 +57,6 @@ public class Product {
         return image;
     }
 
-    // =============== Setters ===============
-
     public void setName(String name) {
         this.name = name;
     }
