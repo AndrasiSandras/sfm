@@ -92,7 +92,7 @@ public class SceneController {
 
             StaffFormController staffController = loader.getController();
 
-            byte[] profileP = jpadao.findStaffcredbyCredentials(Creds).getpImage();
+            byte[] profileP = jpadao.findStaffcredbyCredentials(Creds).getProfileImage();
             Image pImage = null;
             if( profileP != null)
             {
@@ -123,7 +123,7 @@ public class SceneController {
             ClientFormController clientController = loader.getController();
 
             if(jpadao.findRegLogbyCredentials(Creds) != null) {
-                byte[] profileP = jpadao.findRegLogbyCredentials(Creds).getpImage();
+                byte[] profileP = jpadao.findRegLogbyCredentials(Creds).getProfileImage();
                 Image pImage = null;
                 if (profileP != null) {
                     pImage = new Image(new ByteArrayInputStream(profileP));
@@ -133,7 +133,7 @@ public class SceneController {
             }
             else
             {
-                byte[] profileP = jpadao.findStaffcredbyCredentials(Creds).getpImage();
+                byte[] profileP = jpadao.findStaffcredbyCredentials(Creds).getProfileImage();
                 Image pImage = null;
                 if( profileP != null)
                 {

@@ -244,10 +244,11 @@ public class StaffFormController {
         productComboBox.hide();
         productComboBox.show();
     }
-    
+
     public void transctionInHandle(ActionEvent actionEvent) {
         int quantity;
 
+        // Ellenőrizze, hogy van-e kiválasztott termék
         String selectedProductName = productComboBox.getValue();
         String quantityText = productQuantityField.getText();
 
@@ -256,6 +257,7 @@ public class StaffFormController {
             return;
         }
 
+        // Mennyiség ellenőrzése
         try {
             quantity = Integer.parseInt(quantityText);
         } catch (NumberFormatException e) {
@@ -264,10 +266,11 @@ public class StaffFormController {
         }
 
         if (quantity <= min || quantity >= max) {
-            showAlert("Error", "Quantity must be between " + min+1 + " and " + max + "!", Alert.AlertType.ERROR);
+            showAlert("Error", "Quantity must be between " + (min + 1) + " and " + max + "!", Alert.AlertType.ERROR);
             return;
         }
 
+        // Kiválasztott termék keresése
         Product product = jpaDAO.findProductByName(selectedProductName);
         if (product == null) {
             showAlert("Error", "Product not found in the database!", Alert.AlertType.ERROR);
@@ -279,20 +282,27 @@ public class StaffFormController {
             return;
         }
 
+        // Termék mennyiségének frissítése
         product.setQuantity(product.getQuantity() + quantity);
 
         try {
             jpaDAO.updateProduct(product);
+
+            // Terméklista frissítése
             productListView.getItems().add("Added " + quantity + " to " + product.getName() + " (New quantity: " + product.getQuantity() + ")");
+
+            // Jelentés létrehozása és mentése
             Report report = new Report();
             report.setTransactionId(generateUniqueRandom());
             report.setInOut("IN");
-            report.setpName(loggedInUser + " (Staff)");
-            report.setProduct(product.getName()+": "+ quantity + ",(New quantity: " + product.getQuantity() + ")");
-            report.setDate(report.setDate(LocalDateTime.now()));
+            report.setStarterName(loggedInUser + " (Staff)");
+            report.setProduct(product.getName() + ": " + quantity + ",(New quantity: " + product.getQuantity() + ")");
+            report.setDate(LocalDateTime.now()); // Dátum beállítása közvetlenül
+
             jpaDAO.saveReport(report);
-            } catch (Exception e) {
-                showAlert("Error", "Failed to update the product quantity!", Alert.AlertType.ERROR);
+
+        } catch (Exception e) {
+            showAlert("Error", "Failed to update the product quantity!", Alert.AlertType.ERROR);
         }
     }
 
@@ -337,7 +347,7 @@ public class StaffFormController {
                 Report report = new Report();
                 report.setTransactionId(generateUniqueRandom());
                 report.setInOut("OUT");
-                report.setpName(loggedInUser + " (Staff)");
+                report.setStarterName(loggedInUser + " (Staff)");
                 report.setProduct(product.getName()+": "+quantity + ",(New quantity: " + product.getQuantity() + ")");
                 report.setDate(LocalDateTime.now());
                 jpaDAO.saveReport(report);
@@ -412,9 +422,9 @@ public class StaffFormController {
         ));
 
         submitButton.setOnAction(event -> {
-            StaffCred staffCred = jpaDAO.findStaffcredbyCredentials(Cred);
+            StaffCredential staffCredential = jpaDAO.findStaffcredbyCredentials(Cred);
             String[] data;
-            data = staffCred.getCredentials().split(",");
+            data = staffCredential.getCredentials().split(",");
             String current = currentPasswordField.getText();
             String newpassword = newPasswordField.getText();
             try {
@@ -424,7 +434,7 @@ public class StaffFormController {
                 }
                 if (current.equals(data[1])) {
                     String newcred = data[0] + "," + newpassword + "," + data[2];
-                    StaffCred staff =jpaDAO.findStaffcredbyCredentials(Cred);
+                    StaffCredential staff =jpaDAO.findStaffcredbyCredentials(Cred);
                     staff.setCredentials(newcred);
                     jpaDAO.updateStafCredPassword(staff);
                     showAlert("Success", "Password successfully changed!", Alert.AlertType.INFORMATION);
@@ -555,7 +565,7 @@ public class StaffFormController {
         reports = FXCollections.observableList(jpaDAO.getAllReports());
         transactionId.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getTransactionId()).asObject());
         inOut.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getInOut()));
-        pName.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getpName()));
+        pName.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getStarterName()));
         pProduct.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getProduct()));
         reportTableView.setItems(reports);
     }
@@ -577,9 +587,9 @@ public class StaffFormController {
                     return;
                 }
 
-                StaffCred staffCred = jpaDAO.findStaffcredbyCredentials(Cred);
-                staffCred.setpImage(ProfileimageBytes);
-                jpaDAO.updateStafCredpImage(staffCred);
+                StaffCredential staffCredential = jpaDAO.findStaffcredbyCredentials(Cred);
+                staffCredential.setProfileImage(ProfileimageBytes);
+                jpaDAO.updateStafCredpImage(staffCredential);
             } catch (IOException e) {
                 e.printStackTrace();
                 showAlert("Error", "Failed to load the image!", Alert.AlertType.ERROR);
@@ -590,7 +600,7 @@ public class StaffFormController {
     public void handelHistoryRefresh(ActionEvent actionEvent) {
         List<Report> reportList = jpaDAO.getAllReportsbyName(this.loggedInUser + " (Staff)");
         List<String> stringList = reportList.stream()
-                .map(report -> report.getpName() + ", " + report.getInOut() + ", " + report.getProduct() + ", " + report.getTransactionId() + ", " + report.getDate())
+                .map(report -> report.getStarterName() + ", " + report.getInOut() + ", " + report.getProduct() + ", " + report.getTransactionId() + ", " + report.getDate())
                 .collect(toList());
 
         ObservableList<String> observableReportList = FXCollections.observableArrayList(stringList);

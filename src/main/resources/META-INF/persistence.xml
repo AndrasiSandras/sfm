@@ -8,7 +8,7 @@
         <description>Hibernate EntityManager Demo</description>
         <class>unideb.hu.SFMProject.Product</class>
         <class>unideb.hu.SFMProject.RegLogin</class>
-        <class>unideb.hu.SFMProject.StaffCred</class>
+        <class>unideb.hu.SFMProject.StaffCredential</class>
         <class>unideb.hu.SFMProject.Report</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>

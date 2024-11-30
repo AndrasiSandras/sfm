@@ -14,10 +14,10 @@ public abstract class DAO {
     public abstract void saveReport(Report a);
     public abstract List<Report> getAllReports();
     public abstract List<Report> getAllReportsbyName(String a);
-    public abstract void updateStafCredpImage(StaffCred a);
+    public abstract void updateStafCredpImage(StaffCredential a);
     public abstract void updateRegLogpImage(RegLogin a);
-    public abstract StaffCred findStaffcredbyCredentials(String cred);
+    public abstract StaffCredential findStaffcredbyCredentials(String cred);
     public abstract RegLogin findRegLogbyCredentials(String cred);
-    public abstract void updateStafCredPassword(StaffCred a);
+    public abstract void updateStafCredPassword(StaffCredential a);
     public abstract void updateReglogpassword(RegLogin a);
 }

@@ -162,9 +162,9 @@ public class ClientFormController {
         ));
         submitButton.setOnAction(event -> {
             if(jpaDAO.findStaffcredbyCredentials(Cred) != null) {
-                StaffCred staffCred = jpaDAO.findStaffcredbyCredentials(Cred);
+                StaffCredential staffCredential = jpaDAO.findStaffcredbyCredentials(Cred);
                 String[] data;
-                data = staffCred.getCredentials().split(",");
+                data = staffCredential.getCredentials().split(",");
                 String current = currentPasswordField.getText();
                 String newpassword = newPasswordField.getText();
                 try {
@@ -174,7 +174,7 @@ public class ClientFormController {
                     }
                     if (current.equals(data[1])) {
                         String newcred = data[0] + "," + newpassword + "," + data[2];
-                        StaffCred staff = jpaDAO.findStaffcredbyCredentials(Cred);
+                        StaffCredential staff = jpaDAO.findStaffcredbyCredentials(Cred);
                         staff.setCredentials(newcred);
                         jpaDAO.updateStafCredPassword(staff);
                         showAlert("Success", "Password successfully changed!", Alert.AlertType.INFORMATION);
@@ -289,7 +289,7 @@ public class ClientFormController {
             Report report = new Report();
             report.setTransactionId(generateUniqueRandom());
             report.setInOut("IN");
-            report.setpName(loggedInUser + " (Client)");
+            report.setStarterName(loggedInUser + " (Client)");
             report.setProduct(product.getName()+": "+quantity + ",(New quantity: " + product.getQuantity() + ")");
             report.setDate(LocalDateTime.now());
             jpaDAO.saveReport(report);
@@ -334,7 +334,7 @@ public class ClientFormController {
             Report report = new Report();
             report.setTransactionId(generateUniqueRandom());
             report.setInOut("OUT");
-            report.setpName(loggedInUser + " (Client)");
+            report.setStarterName(loggedInUser + " (Client)");
             report.setProduct(product.getName()+": "+quantity + ",(New quantity: " + product.getQuantity() + ")");
             report.setDate(LocalDateTime.now());
             jpaDAO.saveReport(report);
@@ -414,14 +414,14 @@ public class ClientFormController {
                 RegLogin regLogin = jpaDAO.findRegLogbyCredentials(Cred);
                 if(regLogin != null)
                 {
-                    regLogin.setpImage(pImage);
+                    regLogin.setProfileImage(pImage);
                     jpaDAO.updateRegLogpImage(regLogin);
                 }
                 else
                 {
-                 StaffCred staffCred = jpaDAO.findStaffcredbyCredentials(Cred);
-                 staffCred.setpImage(pImage);
-                 jpaDAO.updateStafCredpImage(staffCred);
+                 StaffCredential staffCredential = jpaDAO.findStaffcredbyCredentials(Cred);
+                 staffCredential.setProfileImage(pImage);
+                 jpaDAO.updateStafCredpImage(staffCredential);
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -433,7 +433,7 @@ public class ClientFormController {
     public void handleClientHistoryRefresh(ActionEvent actionEvent) {
         List<Report> reportList = jpaDAO.getAllReportsbyName(this.loggedInUser + " (Client)");
         List<String> stringList = reportList.stream()
-                .map(report -> report.getpName() + ", " + report.getInOut() + ", " + report.getProduct() + ", " + report.getTransactionId() + ", " + report.getDate())
+                .map(report -> report.getStarterName() + ", " + report.getInOut() + ", " + report.getProduct() + ", " + report.getTransactionId() + ", " + report.getDate())
                 .collect(toList());
 
         ObservableList<String> observableReportList = FXCollections.observableArrayList(stringList);
