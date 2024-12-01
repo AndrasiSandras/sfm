@@ -22,8 +22,8 @@ public class AuthControllerTest  {
 
     private AuthController authController;
 
-    @Before
-    public void setUp() {
+    @BeforeClass
+    public static void setUp() {
         // Inicializálja a JavaFX platformot
         Platform.startup(() -> {});
     }
@@ -41,54 +41,51 @@ public class AuthControllerTest  {
         AuthController authController = new AuthController(emailText,passwordText,rePasswordText, userNameText,registerErrorText,jpadao);
 
         assertFalse(authController.register());
+        assertEquals("Password must be at least 4 characters long!",registerErrorText.getText());
 
     }
 
     @Test
     public void testRegister_PasswordsDoNotMatch() {
         // Simulate user input
-        emailText.setText("test@example.com");
-        passwordText.setText("password");
-        rePasswordText.setText("differentpassword");
-        userNameText.setText("testuser");
-
-        // Trigger the registration process
-        boolean result = authController.register();
-
+        TextField emailText = new TextField(); emailText.setText("test@example.com");
+        TextField passwordText = new TextField(); passwordText.setText("password");
+        TextField rePasswordText = new TextField(); rePasswordText.setText("differentpassword");
+        TextField userNameText = new TextField(); userNameText.setText("testuser");
+        Label registerErrorText = new Label();
+        JPADAO jpadao = new JPADAO();
+        AuthController authController = new AuthController(emailText,passwordText,rePasswordText, userNameText,registerErrorText,jpadao);
         // Verify the expected behavior
-        assertFalse(result);
+        assertFalse(authController.register());
         assertEquals("Passwords do not match!", registerErrorText.getText());
     }
 
     @Test
     public void testRegister_ValidRegistration() {
         // Simulate user input
-        emailText.setText("test@example.com");
-        passwordText.setText("password");
-        rePasswordText.setText("password");
-        userNameText.setText("testuser");
-
-        // Simulate valid registration
-        boolean result = authController.register();
-
-        // Verify the expected outcome
-        assertTrue(result);
+        TextField emailText = new TextField(); emailText.setText("test@example.com");
+        TextField passwordText = new TextField(); passwordText.setText("password");
+        TextField rePasswordText = new TextField(); rePasswordText.setText("password");
+        TextField userNameText = new TextField(); userNameText.setText("testuser");
+        Label registerErrorText = new Label();
+        JPADAO jpadao = new JPADAO();
+        AuthController authController = new AuthController(emailText,passwordText,rePasswordText, userNameText,registerErrorText,jpadao);
+        // Verify the expected behavior
+        assertTrue(authController.register());
         assertEquals("Registration successful.", registerErrorText.getText());
     }
 
     @Test
     public void testRegister_EmailInvalid() {
-        // Simulate user input
-        emailText.setText("invalid-email");
-        passwordText.setText("password");
-        rePasswordText.setText("password");
-        userNameText.setText("testuser");
-
-        // Trigger the registration process
-        boolean result = authController.register();
-
+        TextField emailText = new TextField(); emailText.setText("invalid-email");
+        TextField passwordText = new TextField(); passwordText.setText("password");
+        TextField rePasswordText = new TextField(); rePasswordText.setText("password");
+        TextField userNameText = new TextField(); userNameText.setText("testuser");
+        Label registerErrorText = new Label();
+        JPADAO jpadao = new JPADAO();
+        AuthController authController = new AuthController(emailText,passwordText,rePasswordText, userNameText,registerErrorText,jpadao);
         // Verify the expected behavior
-        assertFalse(result);
+        assertFalse(authController.register());
         assertEquals("Invalid email address!", registerErrorText.getText());
     }
 }
