@@ -14,14 +14,6 @@ import static org.mockito.Mockito.*;
 
 public class AuthControllerTest  {
 
-    private TextField emailText;
-    private TextField passwordText;
-    private TextField rePasswordText;
-    private TextField userNameText;
-    private Label registerErrorText;
-
-    private AuthController authController;
-
     @BeforeClass
     public static void setUp() {
         // Inicializálja a JavaFX platformot
