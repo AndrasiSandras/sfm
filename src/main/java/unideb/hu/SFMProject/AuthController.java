@@ -11,11 +11,11 @@ import java.util.List;
 public class AuthController {
 
     // UI elements and DAO instance
-    private TextField emailText;
-    private TextField passwordText;
-    private TextField rePasswordText;
-    private TextField userNameText;
-    private Label registerErrorText;
+    TextField emailText;
+    TextField passwordText;
+    TextField rePasswordText;
+    TextField userNameText;
+    Label registerErrorText;
     private JPADAO jpadao;
 
     /**
@@ -29,6 +29,9 @@ public class AuthController {
         this.userNameText = userNameText;
         this.registerErrorText = registerErrorText;
         this.jpadao = jpadao;
+    }
+    public AuthController()
+    {
     }
 
     // Helper Methods for Validation
