@@ -80,4 +80,33 @@ public class AuthControllerTest  {
         assertFalse(authController.register());
         assertEquals("Invalid email address!", registerErrorText.getText());
     }
+
+    @Test
+    public void testAreFieldsValid(){
+        TextField emailText = new TextField(); emailText.setText("test@example.com");
+        TextField passwordText = new TextField(); passwordText.setText("pas,sword");
+        TextField rePasswordText = new TextField(); rePasswordText.setText("password");
+        TextField userNameText = new TextField(); userNameText.setText("test,user");
+        Label registerErrorText = new Label();
+        JPADAO jpadao = new JPADAO();
+        AuthController authController = new AuthController(emailText,passwordText,rePasswordText, userNameText,registerErrorText,jpadao);
+        // Verify the expected behavior
+        assertFalse(authController.register());
+        assertEquals("No field can contain the comma character!", registerErrorText.getText());
+
+    }
+
+    @Test
+    public void testAreFieldsEmpty(){
+        TextField emailText = new TextField(); emailText.setText("");
+        TextField passwordText = new TextField(); passwordText.setText("pas,sword");
+        TextField rePasswordText = new TextField(); rePasswordText.setText("password");
+        TextField userNameText = new TextField(); userNameText.setText("test,user");
+        Label registerErrorText = new Label();
+        JPADAO jpadao = new JPADAO();
+        AuthController authController = new AuthController(emailText,passwordText,rePasswordText, userNameText,registerErrorText,jpadao);
+        // Verify the expected behavior
+        assertFalse(authController.register());
+        assertEquals("All fields must be filled out!", registerErrorText.getText());
+    }
 }
