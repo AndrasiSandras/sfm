@@ -19,13 +19,13 @@ public class StartingSceneController {
     private Stage stage;
     private Scene scene;
     private Parent root;
-    private String loginName;
+    String loginName;
     private String Creds;
 
     JPADAO jpadao = new JPADAO();
 
     @FXML
-    private Label clientLoginErrorText;
+    Label clientLoginErrorText;
     @FXML
     private Label registerErrorText;
     @FXML
@@ -37,15 +37,15 @@ public class StartingSceneController {
     @FXML
     private TextField rePasswordText;
     @FXML
-    private TextField ClientUserNameText;
+    TextField ClientUserNameText;
     @FXML
-    private TextField ClientPasswordText;
+    TextField ClientPasswordText;
     @FXML
-    private TextField staffNameText;
+    TextField staffNameText;
     @FXML
-    private TextField staffPasswordText;
+    TextField staffPasswordText;
     @FXML
-    private Label LoginErrorText;
+    Label LoginErrorText;
 
     public StartingSceneController() throws IOException {
     }
@@ -171,15 +171,13 @@ public class StartingSceneController {
             RegLogin Credentials = new RegLogin();
             Credentials.setCredentials(credentials);
 
-            Utils cutil = new Utils(new JPADAO());
-            cutil.saveRegLogin(Credentials);
+            jpadao.saveRegLog(Credentials);
         }
     }
 
     public boolean Clogin(String[] Credentials) throws IOException {
-        Utils rutils = new Utils(new JPADAO());
-        List<String> Clist = rutils.getAllRegLog();
-        List<String> Slist = rutils.getAllStaffCredentials();
+        List<String> Clist = jpadao.getAllRegLog();
+        List<String> Slist = jpadao.getAllStaffCred();
         String[] Ccred;
         String[] Scred;
         boolean credentail = false;
@@ -219,8 +217,7 @@ public class StartingSceneController {
     }
 
     public boolean Slogin(String[] Credentials) throws IOException {
-        Utils sutils = new Utils(new JPADAO());
-        List<String> Slist = sutils.getAllStaffCredentials();
+        List<String> Slist = jpadao.getAllStaffCred();
         String[] cred = new String[0];
         boolean Staffcred = false;
 
