@@ -37,8 +37,8 @@ public class ClientFormController {
     private Scene scene;
     private Parent root;
     public ImageView ProfilePicture;
-    private JPADAO jpaDAO = new JPADAO();
-    private Map<Button, AnchorPane> buttonPaneMap;
+    JPADAO jpaDAO = new JPADAO();
+    Map<Button, AnchorPane> buttonPaneMap;
     private String loggedInUser;
     private String Cred;
     int min = 0,max = 1000;
@@ -48,19 +48,27 @@ public class ClientFormController {
     private final TableViewManager tableViewManager = new TableViewManager();
 
     @FXML
-    private Button AccountButton, TransInOutButton, ViewProdButton;
+    Button AccountButton;
     @FXML
-    private AnchorPane AccountForm, TransactionInOutForm, ViewProductStocForm;
+    Button TransInOutButton;
     @FXML
-    private ComboBox<String> beszallComboBox;
+    Button ViewProdButton;
     @FXML
-    private ListView<String> beszalListView;
+    AnchorPane AccountForm;
     @FXML
-    private ListView<String> clientHistoryList;
+    AnchorPane TransactionInOutForm;
     @FXML
-    private TextField beszallQuantityField;
+    AnchorPane ViewProductStocForm;
     @FXML
-    private TableView<Product> productTableView;
+    ComboBox<String> beszallComboBox;
+    @FXML
+    ListView<String> beszalListView;
+    @FXML
+    ListView<String> clientHistoryList;
+    @FXML
+    TextField beszallQuantityField;
+    @FXML
+    TableView<Product> productTableView;
     @FXML
     private TableColumn<Product,String> tableName;
     @FXML
@@ -72,7 +80,7 @@ public class ClientFormController {
     @FXML
     private TableColumn<Product, ImageView> tableImage;
     @FXML
-    private Label cUserLabel;
+    Label cUserLabel;
 
     @FXML
     public void initialize() {
