@@ -3,14 +3,10 @@ package unideb.hu.SFMProject;
 import javafx.application.Platform;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-
 import static org.junit.Assert.*;
-
-import static org.mockito.Mockito.*;
 
 public class AuthControllerTest  {
 
@@ -23,7 +19,6 @@ public class AuthControllerTest  {
     @Test
     public void testRegister_PasswordTooShort() {
 
-
         TextField emailText = new TextField(); emailText.setText("test@example.com");
         TextField passwordText = new TextField(); passwordText.setText("123");
         TextField rePasswordText = new TextField(); rePasswordText.setText("123");
@@ -34,7 +29,6 @@ public class AuthControllerTest  {
 
         assertFalse(authController.register());
         assertEquals("Password must be at least 4 characters long!",registerErrorText.getText());
-
     }
 
     @Test
@@ -93,7 +87,6 @@ public class AuthControllerTest  {
         // Verify the expected behavior
         assertFalse(authController.register());
         assertEquals("No field can contain the comma character!", registerErrorText.getText());
-
     }
 
     @Test
