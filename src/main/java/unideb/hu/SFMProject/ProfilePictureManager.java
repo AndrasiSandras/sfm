@@ -86,7 +86,7 @@ public class ProfilePictureManager {
      *
      * @return The selected file or null if no file was selected.
      */
-    private File openFileChooser() {
+    public File openFileChooser() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select Profile Picture");
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));

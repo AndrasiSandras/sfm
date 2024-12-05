@@ -49,23 +49,23 @@ public class StaffFormController {
     private final TableViewManager tableViewManager = new TableViewManager();
 
     @FXML
-    private TextField productNameField;
+    TextField productNameField;
     @FXML
-    private TextField productPriceField;
+    TextField productPriceField;
     @FXML
-    private TextField productDescriptionField;
+    TextField productDescriptionField;
     @FXML
-    private ImageView ProductImageView;
+    ImageView ProductImageView;
     @FXML
     private Button AccountButton, AddProductButton, ReportsButton, TransInOutButton, ViewProdButton, LogoutButton;
     @FXML
     private AnchorPane AccountForm, AddProductForm, ReportsForm, TransactionInOutForm, ViewProductStockForm;
     @FXML
-    private ComboBox<String> productComboBox;
+    ComboBox<String> productComboBox;
     @FXML
-    private TextField productQuantityField;
+    TextField productQuantityField;
     @FXML
-    private ListView<String> productListView;
+    ListView<String> productListView;
     @FXML
     private ListView<String> StaffHistoryList;
     @FXML
@@ -148,7 +148,7 @@ public class StaffFormController {
     }
 
     @FXML
-    private void handleSaveProduct(ActionEvent event) {
+    void handleSaveProduct(ActionEvent event) {
         int maxNameLength = 50;
         int maxDescriptionLength = 250;
         double price;
@@ -300,7 +300,7 @@ public class StaffFormController {
     }
 
     @FXML
-    private void transactionOutHandle(ActionEvent event) {
+    void transactionOutHandle(ActionEvent event) {
             String selectedProductName = productComboBox.getValue(); // A kiválasztott termék neve
             if (selectedProductName == null) {
                 showAlert("Error", "Please select a product!", Alert.AlertType.ERROR);
