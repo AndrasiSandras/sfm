@@ -57,7 +57,6 @@ public class ClientFormControllerTest {
         assertTrue(controller.buttonPaneMap.containsKey(controller.AccountButton));
         assertTrue(controller.buttonPaneMap.containsKey(controller.TransInOutButton));
         assertTrue(controller.buttonPaneMap.containsKey(controller.ViewProdButton));
-
     }
 
     @Test

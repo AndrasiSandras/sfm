@@ -69,7 +69,6 @@ class StartingSceneControllerTest {
 
         assertTrue(result);
         assertEquals("clientUser", controller.loginName);
-
     }
 
     @Test
@@ -102,7 +101,6 @@ class StartingSceneControllerTest {
 
         assertTrue(result);
         assertEquals("staffUser", controller.loginName);
-
     }
 
     @Test
